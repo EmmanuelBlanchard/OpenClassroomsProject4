@@ -1,0 +1,189 @@
+@font-face {
+    font-family: 'bebas_neueregular';
+    src: url('../fonts/bebasneue-regular-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue-regular-webfont.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'merienda_oneregular';
+    src: url('../fonts/meriendaone-regular-webfont.woff2') format('woff2'),
+         url('../fonts/meriendaone-regular-webfont.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'fondamentoitalic';
+    src: url('../fonts/fondamento-italic-webfont.woff2') format('woff2'),
+         url('../fonts/fondamento-italic-webfont.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'fondamentoregular';
+    src: url('../fonts/fondamento-regular-webfont.woff2') format('woff2'),
+         url('../fonts/fondamento-regular-webfont.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'kaushan_scriptregular';
+    src: url('../fonts/kaushanscript-regular-webfont.woff2') format('woff2'),
+         url('../fonts/kaushanscript-regular-webfont.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-regular-webfont.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+html {
+    font-size: 100%;
+    font-family: 'merienda_oneregular', Arial, sans-serif, serif;
+    font-weight: 400;
+    color: #FFF;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/*  "reset" */
+html, body {
+	margin:0;
+	padding:0;
+}
+
+/* COPIE PROJET 1 ADAPTER */
+
+/* BODY */
+body {
+    font-size: 1rem;
+
+    background-color: #025AA0;
+}
+/* NAV  1423px * 100px */
+nav {
+	position: fixed;
+    top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	height: 100px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /*
+    background-color: #FFF;*/
+    background-color: #025AA0;
+    font-family: 'merienda_oneregular', Arial, sans-serif, serif;
+    font-size: 1.5rem;
+}
+
+/* Copie projet 1 a adapter */
+/* pour enlever mouvement du logo et bordure-top bleue */
+.nav-a-logo:hover {
+	padding: 0 15px;	/* pour effacer le nav a :hover | deplacement du logo */
+	margin: 0;
+	border-top: 0;
+}
+nav .navBrand {
+    background-color: #FFF;
+    color: #025AA0;
+    border-color:#013E70; /* essai verifier après accessibilité ? ... */
+    border-radius: 2em;
+    padding: 15px 15px;
+	font-weight: 600;
+    margin: 0;
+    border-top: 0;
+
+    font-family: 'bebas_neueregular', Arial, sans-serif, serif;
+}
+nav .navEpisodes {
+    font-family: 'merienda_oneregular', Arial, sans-serif, serif;
+}
+nav .navConnexion {
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+}
+
+/* pour mettre l'onglet accueil comme avec nav a:hover */
+.nav-a-accueil-default, nav a:hover {
+    color: #2B4E6A;
+    /*
+	color: #FFC921;	*/		
+	padding: 15px 15px;	
+}
+nav ul {
+	display: flex; 				/* Pour aligner en version horizontale les li */
+}
+nav li {
+	list-style-type: none; 		/* Aucun marqueur n'est affiché. */
+}
+nav a {
+    background-color: #FFF;
+    color: #025AA0;
+    border-radius: 2em;
+    /*
+    color: #ffffff;*/
+	padding: 15px 15px;
+	font-weight: 600;
+}
+nav a:link {
+	text-decoration:none; 		/* enlever le surlignement des a */
+} 
+
+img {
+    width: 80%;
+    max-width: 100%;
+}
+
+h2 {
+    color: #FFF;
+}
+.ticket {
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgb(88, 91, 236);
+    border-radius: 3%;
+    display: flex;
+    flex-flow: column nowrap;
+
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+}
+.divTicket1 {
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+}
+.divTicket2 {
+    width: 100%;
+    height: 100%;
+    border: 3px solid blue;
+    border-radius: 3%;
+    display: flex;
+    flex-flow: column nowrap;
+    font-family: 'merienda_oneregular', Arial, sans-serif, serif;
+}
+
+.divTicket3 {
+    width: 100%;
+    height: 100%;
+    border: 3px solid blue;
+    border-radius: 3%;
+    display: flex;
+    flex-flow: column nowrap;
+    font-family: 'kaushan_scriptregular', Arial, sans-serif, serif;
+}
+
+.divTicket4 {
+    font-family: 'open_sansregular';
+}
