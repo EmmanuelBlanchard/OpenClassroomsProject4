@@ -8,7 +8,7 @@ use App\Controller\Frontoffice\PostController;
 use App\Model\PostManager;
 use App\View\View;
 
-// cette classe router est un exemple très basic. Cette façon de faire n'est pas optimale
+// Cette classe router est un exemple très basique. Cette façon de faire n'est pas optimale
 class Router
 {
     private PostManager $postManager;
@@ -18,14 +18,14 @@ class Router
 
     public function __construct()
     {
-        // dépendance
+        // Dépendances
         $this->postManager = new PostManager();
         $this->view = new View();
 
-        // injection des dépendances
+        // Injection des dépendances
         $this->postController = new PostController($this->postManager, $this->view);
 
-        // En attendent de mettre ne place la class App\Service\Http\Request
+        // En attendant de mettre en place la classe App\Service\Http\Request
         $this->get = $_GET;
     }
 
@@ -35,7 +35,7 @@ class Router
         // - une pour afficher tous les posts => http://localhost:8000/?action=posts
         // - une pour afficher un post en particulier => http://localhost:8000/?action=post&id=5
         
-        //On test si une action a été défini ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action posts)
+        //On test si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action posts)
         $action = isset($this->get['action']) ? $this->get['action'] : 'posts';
 
         //Déterminer sur quelle route nous sommes // Attention algorithme naïf
