@@ -18,27 +18,35 @@ class Router
 
     public function __construct()
     {
-        // Dépendances
+        // dépendance
         $this->postManager = new PostManager();
         $this->view = new View();
 
-        // Injection des dépendances
+        // injection des dépendances
         $this->postController = new PostController($this->postManager, $this->view);
 
-        // En attendant de mettre en place la class App\Service\Http\Request
+        // En attendent de mettre ne place la class App\Service\Http\Request
         $this->get = $_GET;
     }
 
     public function run(): void
     {
-        $action = isset($this->get['action']) && isset($this->get['id']) && $this->get['action'] === 'post';
+        // Nous avons deux routes :
+        // - une pour afficher tous les posts => http://localhost:8000/?action=posts
+        // - une pour afficher un post en particulier => http://localhost:8000/?action=post&id=5
+        
+        //On test si une action a été défini ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action posts)
+        $action = isset($this->get['action']) ? $this->get['action'] : 'posts';
 
-        if ($action) {
+        //Déterminer sur quelle route nous sommes // Attention algorithme naïf
+        if ($action === 'posts') {
+            // route http://localhost:8000/?action=posts
+            $this->postController->displayAllAction();
+        } elseif ($action === 'post' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=post&id=5
             $this->postController->displayOneAction((int)$this->get['id']);
-        } elseif (!$action) {
-            // faire un controller pour la gestion d'erreur
-            echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=post&id=5>Aller Ici</a>";
+        } else {
+            echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=posts>Aller Ici</a>";
         }
     }
 }

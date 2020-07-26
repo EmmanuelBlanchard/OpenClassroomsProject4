@@ -9,6 +9,9 @@
         <!-- Navigation -->
         <nav>
             <h2>Menu</h2>
+            <a href="index.php?action=posts">Liste des posts</a><br>
+            <a href="index.php?action=post&id=500">Un post qui n'existe pas</a><br>
+            <a href="index.php?action=unknow">Une route qui n'existe pas</a><br>
         </nav>
 
         <!-- Page Header -->
