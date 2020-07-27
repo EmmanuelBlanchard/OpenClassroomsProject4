@@ -4,7 +4,7 @@
     <?php foreach($data['allposts'] as $post): ?>
     <p>id = <?=$post['id']?></p>
     <p>title = <?=$post['title']?></p>
-    <p>text = <?=$post['text']?></p>
+    <p>introduction = <?=$post['introduction']?></p>
     <a href="index.php?action=post&id=<?=$post['id']?> class='linkToTheRestOfThePost' ">Lire la suite</a>
     <hr>
 </section>
