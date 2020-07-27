@@ -266,6 +266,12 @@ p {
         top: 35%;
     }
 }
+/* Mobile menu - 437px and DPR=1 */
+@media all and (min-width: 437px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 33%;
+    }
+}
 /* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
 @media all and (min-width: 568px) and (min-resolution: 2dppx) {
     header h1 {
