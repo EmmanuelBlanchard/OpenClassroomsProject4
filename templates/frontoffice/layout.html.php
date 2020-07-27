@@ -36,7 +36,10 @@
         </main>
         
         <footer class="footer text-center">
-            <h3>Copyright Toto</h3>
-        </footer>        
+            <h3>Copyright Emmanuel Blanchard</h3>
+            <p>Projet 4 d'Openclassrooms</p>
+            <p>Les textes sont issus du roman "De Québec à Victoria" de 
+                Adolphe-Basile Routhier</p>
+        </footer>     
     </body>
 </html>
