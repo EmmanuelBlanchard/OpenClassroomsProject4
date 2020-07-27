@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace App\Model;
 
+use App\Service\Database;
+
 class PostManager
 {
+    private Database $database;
+    
+    public function __construct(Database $database)
+    {
+        $this->database = $database;
+    }
+
     private function executeSqlDB(?int $id = null) : ?array
     {
         // *** exemple fictif d'accès à la base de données

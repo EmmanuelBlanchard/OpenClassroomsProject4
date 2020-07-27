@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace  App\Service;
 
+use App\Service\Database;
 use App\Controller\Frontoffice\PostController;
 use App\Model\PostManager;
 use App\View\View;
@@ -11,6 +12,7 @@ use App\View\View;
 // Cette classe router est un exemple très basique. Cette façon de faire n'est pas optimale
 class Router
 {
+    private Database $database;
     private PostManager $postManager;
     private View $view;
     private PostController $postController;
@@ -19,7 +21,8 @@ class Router
     public function __construct()
     {
         // Dépendances
-        $this->postManager = new PostManager();
+        $this->database = new Database();
+        $this->postManager = new PostManager($this->database);
         $this->view = new View();
 
         // Injection des dépendances
