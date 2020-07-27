@@ -1,4 +1,4 @@
     <article>
-        <h2><?=$data['onepost']['title']?></h2>
+        <h3><?=$data['onepost']['title']?></h3>
         <p><?=$data['onepost']['text']?></p>
     </article>
