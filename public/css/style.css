@@ -1,0 +1,530 @@
+@font-face {
+    font-family: 'fondamentoregular';
+    src: url('../fonts/fondamento-regular-webfont.woff2') format('woff2'),
+         url('../fonts/fondamento-regular-webfont.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-regular-webfont.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+html {
+    font-size: 100%;
+    font-family: 'merienda_oneregular', Arial, sans-serif, serif;
+    font-weight: 400;
+    color: #FFF;
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+/*  "reset" */
+html, body {
+	margin:0;
+	padding:0;
+}
+body {
+    font-size: 1rem;
+    background-color: #025AA0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+nav {
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+    font-size: 1.25rem;
+    background: #025AA0;
+    padding: 0 15px;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+nav li {
+    list-style-type: none;
+}
+.logo {
+    font-size: 1.6rem;
+    padding: 7.5px 10px 7.5px 0;
+}
+.item {
+    font-size: 1.3rem;
+    padding: 10px;
+}
+.item.button {
+    padding: 9px 5px;
+}
+.item:not(.button) a:hover, .item a:hover::after {
+    color: #ccc;
+}
+.item.button a {
+    color: #025AA0;
+    background-color: white;
+}
+/* Règles CSS après la barre de navigation */
+/* Mobile menu Nokia 8110 - 240px*320px and DPR=1 */
+header h1 {
+    position: absolute;
+    top: 98%;
+    left: 9%;
+    font-size: 11px;
+}
+.classImg {
+    display: flex;
+}
+.classImg img {
+    margin: auto;
+    width: 91vw;
+    height: auto;
+    border-radius: 6%;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+section h2 {
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+}
+article {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    color: whitesmoke;
+    border: 3px solid rgb(242, 243, 248);
+    border-radius: 20px;
+    background-color: #025AA0;
+}
+article:last-child {
+    margin-bottom: 20px;
+}
+article h3 {
+    color: #FFF;
+    padding-left: 7%;
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+}
+p {
+    line-height: 1.7;
+    padding: 0 4%;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-family: 'open_sansregular';
+}
+.linkToTheRestOfThePost {
+    width: 8rem;
+    text-align: center;
+    background-color: #FFF;
+    color: #025AA0;
+    border-color:#013E70;
+    border-radius: 2em;
+    padding: 10px 10px;
+    font-weight: 600;
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+    margin-left: 4.5%;
+    margin-bottom: 4%;
+    align-self: flex-start;
+}
+/* Mobile menu */
+.menu {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu li a {
+    display: block;
+    padding: 15px 5px;
+}
+/* Mobile menu Nokia 8110 - 240px*320px and DPR=1 */
+@media all and (min-width: 320px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 117%;
+        left: 16%;
+        font-size: 13px;
+    }
+}
+/* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
+@media all and (min-width: 320px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 50%;
+        left: 16%;
+        font-size: 13px;
+    }
+}
+/* Mobile menu - 360px*640px and DPR=1 */
+@media all and (min-width: 360px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 45%;
+        left: 23%;
+    }
+}
+/*************  regler problemes regles css media queries *******************/
+/* Mobile menu Microsoft Lumia 550 - 360px*640px and DPR=2 
+@media all and (min-width: 360px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 45%;
+        left: 23%;
+    }
+}
+*/
+/*************  regler problemes regles css media queries *******************/
+/* Mobil menu Nexus 5 - 360px*640px and DPR=? */
+@media all and (min-width: 360px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 51%;
+    }
+}
+/* Mobile menu Microsoft Lumia 950 - 360px*640px and DPR=4 */
+@media only screen and (device-width : 360px) and (device-height : 640px) and (min-resolution: 4dppx) {
+    header h1 {
+        top: 44%;
+    }
+}
+/* Mobile menu Galasy S9 - 360px*740px and DPR=4 */
+@media only screen and (device-width : 360px) and (device-height : 740px) and (min-resolution: 4dppx) {
+    header h1 {
+        top: 39%;
+    }
+}
+/* Mobile menu Iphon 6/7/8 - 375px*667px and DPR=2 */
+@media all and (min-width: 375px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 43%;
+        left: 23%;
+    }
+}
+/* Mobile menu Iphon X/XS - 375px*812px and DPR=3  */
+@media all and (min-width: 375px) and (min-resolution: 3dppx) {
+    header h1 {
+        top: 36%;
+    }
+}
+/* Mobile menu LG Optimus L70 - 384px*640px and DPR=1 */
+@media all and (min-width: 384px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 45%;
+        left: 24%;
+    }
+}
+/* Mobile menu Pixel 2 - 411px*731px and DPR=2 */
+@media all and (min-width: 411px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 39%;
+        left: 22%;
+    }
+}
+/* Mobile menu Pixel 2 XL - 411px*823px and DPR=3.5 */
+@media all and (min-width: 411px) and (min-resolution: 3.5dppx) {
+    header h1 {
+        top: 35%;
+    }
+}
+/* Mobile menu Nexus 6P - 412px*732px and DPR=3.5 */
+@media all and (min-width: 412px) and (min-resolution: 3.5dppx) {
+    header h1 {
+        top: 40%;
+    }
+}
+/* Mobile menu Iphon XR - 414px*896px and DPR=2 */
+@media all and (min-width: 414px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 32%;
+    }
+}
+/* Mobile menu Iphon 6/7/8 PLUS - 414px*736px and DPR=3 */
+@media only screen and (device-width : 414px) and (device-height : 736px) and (min-resolution: 3dppx) {
+    header h1 {
+        top: 39%;
+    }
+}
+/* Apple iPhone XS Max 2688x1242px at 458ppi Media Queries */
+@media only screen and (device-width : 414px) and (device-height : 896px) and (min-resolution: 3dppx) {
+    header h1 {
+        top: 33%;
+    }
+}
+/* Mobile menu Galaxy Note 9 - 414px*846px and DPR=3.5 */
+@media all and (min-width: 414px) and (min-resolution: 3.5dppx) {
+    header h1 {
+        top: 35%;
+    }
+}
+/* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
+@media all and (min-width: 568px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 92%;
+        font-size: 19px;
+    }
+}
+/* Tablet menu Blacberry Playbook - 600px*1024px and DPR=?  Mobile menu Nexus 7 Android - 600px*960px and DPR=2 */
+@media all and (min-width: 600px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 30%;
+        left: 23%;
+        font-size: 19px;
+    }
+    p {
+        width: 556px;
+    }
+}
+/*************  regler problemes regles css media queries *******************/
+/* screen width 360px*640px and DPR=1
+@media all and (device-width: 360px) and (device-height: 640px) and (min-resolution: 1dppx) and (orientation: landscape) {
+    header h1 {
+        top: 83%;
+    }
+}
+*/
+/* Mobile menu LG Optimus L70 - 384px*640px and DPR=1 */
+@media all and (min-width: 640px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 76%;
+        font-size: 22px;
+    }
+}
+/* Mobile menu Microsoft Lumia 550 - 360px*640px and DPR=2 */
+@media all and (min-width: 640px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 83%;
+    }
+}
+/* Mobile menu Iphon 6/7/8 - 375px*667px and DPR=2 */
+@media all and (min-width: 667px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 79%;
+        left: 25%;
+        font-size: 22px;
+    }
+}
+/* Tablet menu */
+@media all and (min-width: 700px) {
+    header h1 {
+        top: 18%;
+        left: 18%;
+        font-size: 27px;
+    }
+    nav {
+        display: flex;
+        flex-direction: row;
+    }
+    .menu {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .logo {
+        flex: 1;
+    }
+    .item.button {
+        width: auto;
+        order: 1;
+        display: block;
+    }
+    /* Button up from tablet screen */
+    .menu li.button a {
+      padding: 10px 15px;
+      margin: 5px 0;
+    }
+    .button a {
+      background: #0080ff;
+      border: 1px royalblue solid;
+    }
+    .button a:hover {
+      text-decoration: none;
+    }
+}
+/* TV 720 HD - 720px*1280px DPR=1 */
+@media all and (min-width: 720px) {
+    header h1 {
+        top: 11%;
+        left: 19%;
+    }
+}
+/* Mobile menu Pixel 2 - 411px*731px and DPR=2 */
+@media all and (min-width: 731px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 35%;
+    }
+}
+/* Iphon 6/7/8 Plus breakpoints 736px */
+@media all and (min-width: 736px) {
+    header h1 {
+        top: 35%;
+    }
+}
+/* Galaxy S9 breakpoints 740px */
+@media all and (min-width: 739px) {
+    header h1 {
+        top: 38%;
+        left: 19%;
+        font-size: 25px;
+    }
+}
+/* Laptop width 768px*1366px and DPR=1 */
+@media all and (min-width: 768px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 11%;
+        left: 26%;
+        font-size: 25px;
+    }
+}
+/* Tablet menu IPAD - 768px*1024px and DPR=2 */
+@media all and (min-width: 768px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 14%;
+    }
+}
+/* Laptop with MDPi 1280px*800px and Tablet menu Kindle Fire 800px*1280px and DPR=2 */
+@media all and (min-width: 800px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 12%;
+    }
+}
+/* Laptop width 1536px*864px DPR=1 */
+@media all and (min-width: 864px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 11%;
+    }
+}
+/* Mobile menu Iphon X/XS - 375px*812px and DPR=3  */
+@media all and (min-width: 812px) and (min-resolution: 3dppx) {
+    header h1 {
+        top: 43%;
+    }
+}
+/* Mobile menu Pixel 2 XL  411px*823px DPR=3.5 */
+@media all and (min-width: 823px) and (min-resolution: 3.5dppx) {
+    header h1 {
+        top: 34%;
+    }
+}
+/* Mobile menu Iphon XR  414px*896px DPR=2 */
+@media all and (min-width: 896px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 38%;
+    }
+}
+/* Laptop with HiDPI - 1440px*900px and DPR=2 */
+@media all and (min-width: 900px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 11%;
+    }
+}
+/* Mobile menu Nexus 7 Android - 600px*960px and DPR=2 */
+@media all and (min-width: 960px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 23%;
+        left: 32%;
+        font-size: 22px;
+    }
+    .classImg img {
+        width: 70vw;
+    }
+}
+/* Width 983px */
+@media all and (min-width: 983px) {
+    header h1 {
+        top: 18%;
+    }
+}
+/*************  regler problemes regles css media queries *******************/
+/* Laptop width 1024px and 768px and DPR=1 
+@media all and (device-width : 1024px) and (device-height : 768px) and (min-resolution: 1dppx){
+    header h1 {
+        top: 23%;
+    }
+}
+*/
+/* Laptop width 1024px and 1280px and DPR=1 */
+@media all and (min-width: 1024px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 14%;
+        left: 28%;
+        font-size: 27px;
+    }
+    main {
+        width: 1000px;
+        border: 3px solid rgb(242, 243, 248);
+        border-radius: 20px;
+        background-color: #f5f5f5;
+    }
+    section h2 {
+        color: #025AA0;
+    }
+}
+/* Tablet menu IPAD - 768px*1024px and DPR=2 */
+@media all and (min-width: 1024px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 19%;
+    }
+}
+/* Tablet menu Ipad Pro 12,9-inch - 1024px*1366px and DPR=2 */
+@media only screen and (device-width : 1024px) and (device-height : 1366px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 11%;
+    }
+}
+/* TV Full HD - 1080px*1920px DPR=1 */
+@media all and (min-width: 1080px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 17%;
+    }
+}
+/* Laptop width 1200px and 1600px and DPR=1 */
+@media all and (min-width: 1200px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 12%;
+    }
+}
+/* Laptop with MDPi 1280px*800px and Tablet menu Kindle Fire 800px*1280px and DPR=2 and Nexus 10 Android - 800px*1280px and DPR=2 */
+@media all and (min-width: 1280px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 19%;
+        left: 32%;
+        font-size: 29px;
+    }
+}
+/* Laptop width 1366px and 768px and DPR=1 */
+@media all and (device-width: 1366px) and (device-height: 768px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 25%;
+    }
+}
+/* Laptop width HiDPI - 1440px*900px and DPR=2 */
+@media all and (min-width: 1400px) and (min-resolution: 2dppx) {
+    .classImg img {
+        width: 50vw;
+    }
+    header h1 {
+        top: 15%;
+        left: 34%;
+        font-size: 28px;
+    }
+}
+/* Desktop menu  1745px */
+@media all and (min-width: 1745px) {
+    header h1 {
+        top: 25%;
+        left: 37%;
+        font-size: 32px;
+    }
+}
+/* TV Full HD - 1080px*1920px DPR=1 */
+@media all and (min-width: 1920px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 15%;
+        left: 33%;
+        font-size: 42px;
+    }
+    .classImg img {
+        width: 60vw;
+    }
+}
