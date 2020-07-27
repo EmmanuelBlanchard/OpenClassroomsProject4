@@ -1,4 +1,12 @@
 @font-face {
+    font-family: 'merienda_oneregular';
+    src: url('../fonts/meriendaone-regular-webfont.woff2') format('woff2'),
+         url('../fonts/meriendaone-regular-webfont.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
     font-family: 'fondamentoregular';
     src: url('../fonts/fondamento-regular-webfont.woff2') format('woff2'),
          url('../fonts/fondamento-regular-webfont.woff') format('woff');
