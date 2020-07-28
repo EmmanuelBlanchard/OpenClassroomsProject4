@@ -18,7 +18,7 @@
         <nav id="navBar"> 
             <ul class="menu">
               <li class="logo"><a href="index.php?action=posts">Jean Forteroche</a></li>
-              <li class="item episodes"><a href="index.php?action=posts">Les épisodes</a></li>
+              <li class="item episodes"><a href="index.php?action=listofepisodes">Les épisodes</a></li>
               <li class="item button"><a href="#">Connexion</a></li>
             </ul>
         </nav>
