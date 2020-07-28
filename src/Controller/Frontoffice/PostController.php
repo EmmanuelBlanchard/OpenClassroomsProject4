@@ -45,7 +45,7 @@ class PostController
         $data = $this->postManager->showAll();
 
         if ($data !== null) {
-            $this->view->render(['template' => 'lisofepisodes', 'allposts' => $data]);
+            $this->view->render(['template' => 'listofepisodes', 'allposts' => $data]);
         } elseif ($data === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1>';
         }
