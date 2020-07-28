@@ -126,6 +126,10 @@ p {
     margin-bottom: 10px;
     font-family: 'open_sansregular';
 }
+.pCreatedAt {
+    font-family: 'merienda_oneregular', Arial, sans-serif, serif;
+    text-align: end;
+}
 .linkToTheRestOfThePost {
     width: 8rem;
     text-align: center;
