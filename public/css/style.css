@@ -145,6 +145,10 @@ footer {
     flex-direction: column;
     align-items: center;
 }
+footer p {
+    text-align: center;
+    font-family: 'merienda_oneregular', Arial, sans-serif, serif;
+}
 /* Mobile menu */
 .menu {
     display: flex;
