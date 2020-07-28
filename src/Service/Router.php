@@ -42,9 +42,9 @@ class Router
         $action = isset($this->get['action']) ? $this->get['action'] : 'posts';
 
         //Déterminer sur quelle route nous sommes // Attention algorithme naïf
-        if ($action === 'home') {
+        if ($action === 'home' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=home
-            $this->postController->displayTheLastThreeEpisodes();
+            $this->postController->displayTheLastThreeEpisodes((int)$this->get['id']);
         } elseif ($action === 'posts') {
             // route http://localhost:8000/?action=posts
             $this->postController->displayAllAction();

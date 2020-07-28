@@ -21,6 +21,14 @@ class PostManager
         $req = $database->query('SELECT id, title, content, DATE_FORMAT(created_at, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM episodes ORDER BY created_at DESC LIMIT 0, 3');
 
         return $req;
+
+        if ($id === null) {
+            $data = $postTable;
+        } elseif ($id !== null && array_key_exists($id, $postTable)) {
+            $data = $postTable[$id];
+        }
+
+        return $data;
     }
 
     private function executeSqlDB(?int $id = null) : ?array
