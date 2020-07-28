@@ -48,6 +48,9 @@ class Router
         } elseif ($action === 'post' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=post&id=5
             $this->postController->displayOneAction((int)$this->get['id']);
+        } elseif ($action === 'listofepisodes') {
+            // route http://localhost:8000/?action=listofepisodes
+            $this->postController->displayListOfEpisodes();
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=posts>Aller Ici</a>";
         }
