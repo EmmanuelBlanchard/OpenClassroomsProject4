@@ -39,4 +39,15 @@ class PostController
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1>';
         }
     }
+
+    public function displayListOfEpisodes(): void
+    {
+        $data = $this->postManager->showAll();
+
+        if ($data !== null) {
+            $this->view->render(['template' => 'lisofepisodes', 'allposts' => $data]);
+        } elseif ($data === null) {
+            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1>';
+        }
+    }
 }
