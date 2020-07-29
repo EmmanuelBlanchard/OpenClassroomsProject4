@@ -67,7 +67,7 @@ class PostController
         $data = $this->postManager->showCommentAll();
 
         if ($data !== null) {
-            $this->view->render(['template' => 'detailofepisodes', 'allcomments' => $data]);
+            $this->view->render(['template' => 'detailofepisodes', 'allposts' => $data, 'allcomments' => $data]);
         } elseif ($data === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1>';
         }
