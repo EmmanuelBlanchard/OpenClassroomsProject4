@@ -4,8 +4,10 @@
     <?php foreach($data['allposts'] as $post): ?>
 
     <article>
-        <h3><?=$post['title']?></h3>
-        <a href="index.php?action=post&id=<?=$post['id']?>\" class="linkToTheRestOfThePost">Lire l'épisode</a>
+        <h3>Épisode <?=$post['title']?></h3>
+        <p>Introduction de l'épisode</p>
+        <p><?=$post['introduction']?></p>
+        <a href="index.php?action=post&id=<?=$post['id']?>\" class="linkToTheRestOfThePost">Lire l'épisode en entier</a>
     </article>
     
 </section>
