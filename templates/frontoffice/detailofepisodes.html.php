@@ -7,6 +7,8 @@
         <h3>Épisode <?=$post['title']?></h3>
         <p><?=$post['content']?></p>
         <p class="pCreatedAt">Écrit le <?=$post['created_at']?></p>
+
+        <p class="pComment"> Commentaires </p>
     </article>
 
     <!-- chercher ajout commentaires table différente -->
