@@ -10,7 +10,8 @@
         <p class="pCreatedAt">Écrit le <?=$post['created_at']?></p>
     </article>
 
-    <!-- <p>Commentaires<?=$post['comment']?></p> -->
+    <!-- chercher ajout commentaires table différente -->
+    <!-- ajouter formulaire -->
     
 </section>
 <?php endforeach; ?>
