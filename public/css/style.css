@@ -126,6 +126,9 @@ p {
     margin-bottom: 10px;
     font-family: 'open_sansregular';
 }
+.pIntroductionToTheEpisode {
+    font-weight: 400;
+}
 .pCreatedAt {
     font-family: 'merienda_oneregular', Arial, sans-serif, serif;
     text-align: end;
