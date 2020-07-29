@@ -115,6 +115,9 @@ class PostManager
     public function showCommentAll(): ?array
     {
         // renvoie tous les posts
-        return $this->executeSqlDB2();
+        $this->executeSqlDB();
+        // renvoie tous les comments
+        $this->executeSqlDB2();
+        return
     }
 }
