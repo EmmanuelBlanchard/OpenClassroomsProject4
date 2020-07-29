@@ -1,5 +1,5 @@
 <section>
-    <h2>Letails des épisodes</h2>
+    <h2>Details des épisodes</h2>
 
     <?php foreach($data['allposts'] as $post): ?>
 
