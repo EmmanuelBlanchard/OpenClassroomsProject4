@@ -44,7 +44,7 @@ class Router
         //Déterminer sur quelle route nous sommes // Attention algorithme naïf
         if ($action === 'home') {
             // route http://localhost:8000/?action=home
-            $this->postController->displayAllAction();
+            $this->postController->displayHomeWithTheLastThreeEpisodes();
         } elseif ($action === 'posts') {
             // route http://localhost:8000/?action=posts
             $this->postController->displayAllAction();
