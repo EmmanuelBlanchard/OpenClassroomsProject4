@@ -38,8 +38,8 @@ class Router
         // - une pour afficher tous les posts => http://localhost:8000/?action=posts
         // - une pour afficher un post en particulier => http://localhost:8000/?action=post&id=5
         
-        //On test si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action posts)
-        $action = isset($this->get['action']) ? $this->get['action'] : 'posts';
+        //On test si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action home)
+        $action = isset($this->get['action']) ? $this->get['action'] : 'home';
 
         //Déterminer sur quelle route nous sommes // Attention algorithme naïf
         if ($action === 'home') {
