@@ -64,10 +64,10 @@ class PostController
     
     public function displayDetailOfEpisodes(): void
     {
-        $data = $this->postManager->showAll();
+        $data = $this->postManager->showCommentAll();
 
         if ($data !== null) {
-            $this->view->render(['template' => 'detailofepisodes', 'allposts' => $data]);
+            $this->view->render(['template' => 'detailofepisodes', 'allcomments' => $data]);
         } elseif ($data === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1>';
         }
