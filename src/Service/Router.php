@@ -54,6 +54,9 @@ class Router
         } elseif ($action === 'listofepisodes' || $action === 'allepisodes' || $action === 'listofepisodes' || $action === 'listepisodes' || $action === 'showallepisodes' || $action === 'touslesepisodes' ) {
             // route http://localhost:8000/?action=listofepisodes
             $this->postController->displayListOfEpisodes();
+        } elseif ($action === 'detailofepisodes') {
+            // route http://localhost:8000/?action=detailofepisodes
+            $this->postController->displayDetailOfEpisodes();
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=posts>Aller Ici</a>";
         }
