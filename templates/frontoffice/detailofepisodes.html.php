@@ -3,8 +3,6 @@
 
     <?php foreach($data['allposts'] as $post): ?>
 
-    <?php foreach($data['allcomments'] as $comment): ?>
-
     <article>
         <h3>Épisode <?=$post['title']?></h3>
         <p><?=$post['content']?></p>
@@ -16,6 +14,8 @@
 <!-- chercher ajout commentaires table différente -->
 <section>
 
+    <?php foreach($data['allcomments'] as $comment): ?>
+    
     <article>
         <h4>Commentaires</h4>
         <p><?=$comment['author']?></p>
