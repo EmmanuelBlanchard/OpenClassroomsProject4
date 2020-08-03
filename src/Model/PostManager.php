@@ -126,7 +126,7 @@ class PostManager
         return $episodes;
     }
 
-    // inserer les commentaires publiés dans la base de donnees comments
+    // Inserer les commentaires publiés dans la base de donnees comments
     public function insertComment() 
     {
         $_POST['pseudo']; // recupère le pseudo de la publication, création du commentaire sous les commentaires deja cree, donc dans le 'author' de la table comments ?

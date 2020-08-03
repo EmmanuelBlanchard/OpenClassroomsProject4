@@ -5,16 +5,19 @@ declare(strict_types=1);
 namespace  App\Controller\Frontoffice;
 
 use App\Model\PostManager;
+use App\Model\CommentManager;
 use App\View\View;
 
 class PostController
 {
     private PostManager $postManager;
+    private CommentManager $commentManager;
     private View $view;
 
-    public function __construct(PostManager $postManager, View $view)
+    public function __construct(PostManager $postManager,CommentManager $commentManager, View $view)
     {
         $this->postManager = $postManager;
+        $this->commentManager = $commentManager;
         $this->view = $view;
     }
 
@@ -65,12 +68,13 @@ class PostController
     public function displayDetailOfEpisodes(int $id): void
     {
         $episode = $this->postManager->findId($id);
-        // $commentaires=$this->commentManager->findAllEpisode($id);
-        var_dump($episode);
+        $commentaires= $this->commentManager->findAllEpisode($id);
+        //var_dump($episode);
+        var_dump($commentaires);
         die();
-        if ($data !== null) {
+        if ($episode !== null) {
             $this->view->render(['template' => 'detailofepisodes', 'episode' => $episode, 'allcomments' => $commentaires]);
-        } elseif ($data === null) {
+        } elseif ($episode === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1>';
         }
     }

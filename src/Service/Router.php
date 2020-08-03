@@ -7,6 +7,7 @@ namespace  App\Service;
 use App\Service\Database;
 use App\Controller\Frontoffice\PostController;
 use App\Model\PostManager;
+use App\Model\CommentManager;
 use App\View\View;
 
 // Cette classe router est un exemple très basique. Cette façon de faire n'est pas optimale
@@ -14,6 +15,7 @@ class Router
 {
     private Database $database;
     private PostManager $postManager;
+    private CommentManager $commentManager;
     private View $view;
     private PostController $postController;
     private array $get;
@@ -23,11 +25,12 @@ class Router
         // Dépendances
         $this->database = new Database();
         $this->postManager = new PostManager($this->database);
+        $this->commentManager = new CommentManager($this->database);
         $this->view = new View();
 
         // Injection des dépendances
-        $this->postController = new PostController($this->postManager, $this->view);
-
+        $this->postController = new PostController($this->postManager,$this->commentManager, $this->view);
+        
         // En attendant de mettre en place la classe App\Service\Http\Request
         $this->get = $_GET;
     }
