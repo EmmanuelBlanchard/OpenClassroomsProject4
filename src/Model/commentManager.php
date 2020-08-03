@@ -17,7 +17,7 @@ class CommentManager
     
     public function findAllEpisode(int $id): ?array
     {
-        $request= $this->database->prepare('SELECT * FROM comments WHERE id=:episode_id');
+        $request= $this->database->prepare('SELECT * FROM comments WHERE episode_id=:id');
         $request->execute(['id'=> $id]);
         return $request->fetch();
     }
