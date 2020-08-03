@@ -8,12 +8,11 @@ use App\Service\Database;
 
 class PostManager
 {
-    private Database $database;
+    private $database;
     
     public function __construct(Database $database)
     {
-        $this->database = $database;
-        $database->getPdo();
+        $this->database = $database->getPdo();
     }
 
     private function executeSqlDB(?int $id = null) : ?array
@@ -102,32 +101,6 @@ class PostManager
         return $data;
     }
 
-    private function executeSqlDBTry(?int $id = null) : ?array
-    {
-        $reponse = $database->query('SELECT * FROM comments');
-        
-        while ($donnees = $reponse->fetch())
-        {
-        ?>
-            <p>
-                Identifiant : <?php echo $donnees['id']; ?><br />
-                Le Pseudo est : <?php echo $donnees['author']; ?><br />
-                Commentaire : <?php echo $donnees['content']; ?><br />
-                Publié le  <?php echo $donnees['created_at']; ?><br />
-            </p>
-        <?php
-        }
-
-        $reponse->closeCursor(); // Termine le traitement de la requête
-        
-    }
-
-    public function showNewsTable(): ?array
-    {
-        // renvoie les informations de la table
-        return $this->executeSqlDBTry();
-    }
-
     public function showAll(): ?array
     {
         // renvoie tous les posts
@@ -143,16 +116,11 @@ class PostManager
     {
         // renvoie tous les posts
         return $this->executeSqlDB();
-        // renvoie tous les comments
-        return $this->executeSqlDB2();
     }
 
     public function getEpisodes() 
     {
-        $this->database = $database;
-        $database->getPdo();
-
-        $episodes = $database->query('select id, created_at,'
+        $episodes = $this->database->query('select id, created_at,'
           . ' title, , introduction, content from episodes'
           . ' order by id desc');
         return $episodes;
@@ -169,12 +137,14 @@ class PostManager
     {
         // Requete SQL , recuperation données pour affichage des trois derniers épisodes
         // SELECT title, introduction, created_at, id FROM episodes LIMIT 0, 3 ORDER BY id DESC;
-
-        $this->database = $database;
-        $database->getPdo();
-
-        $lastthreeepisodes = $database->query('SELECT title, introduction, created_at, id FROM episodes LIMIT 0, 3 ORDER BY id DESC;');
+        $lastthreeepisodes = $this->database->query('SELECT title, introduction, created_at, id FROM episodes LIMIT 0, 3 ORDER BY id DESC;');
         return $lastthreeepisodes;
     }
 
+    public function findId(int $id): ?array
+    {
+        $request= $this->database->prepare('SELECT * FROM episodes WHERE id=:id');
+        $request->execute(['id'=> $id]);
+        return $request->fetch();
+    }
 }

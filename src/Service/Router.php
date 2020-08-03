@@ -45,18 +45,12 @@ class Router
         if ($action === 'home') {
             // route http://localhost:8000/?action=home
             $this->postController->displayHomeWithTheLastThreeEpisodes();
-        } elseif ($action === 'posts') {
-            // route http://localhost:8000/?action=posts
-            $this->postController->displayAllAction();
-        } elseif ($action === 'post' && isset($this->get['id'])) {
+        } elseif ($action === 'detailofepisodes' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=post&id=5
-            $this->postController->displayOneAction((int)$this->get['id']);
-        } elseif ($action === 'listofepisodes' || $action === 'allepisodes' || $action === 'listofepisodes' || $action === 'listepisodes' || $action === 'showallepisodes' || $action === 'touslesepisodes' ) {
+            $this->postController->displayDetailOfEpisodes((int)$this->get['id']);
+        } elseif ($action === 'listofepisodes') {
             // route http://localhost:8000/?action=listofepisodes
             $this->postController->displayListOfEpisodes();
-        } elseif ($action === 'detailofepisodes') {
-            // route http://localhost:8000/?action=detailofepisodes
-            $this->postController->displayDetailOfEpisodes();
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=posts>Aller Ici</a>";
         }

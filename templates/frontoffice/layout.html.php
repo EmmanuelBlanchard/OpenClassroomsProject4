@@ -20,7 +20,6 @@
               <li class="logo"><a href="index.php?action=home">Jean Forteroche</a></li>
               <li class="item episodes"><a href="index.php?action=home">Accueil</a></li>
               <li class="item episodes"><a href="index.php?action=listofepisodes">Liste des épisodes</a></li>
-              <li class="item episodes"><a href="index.php?action=detailofepisodes">Détail des épisodes</a></li>
               <li class="item button"><a href="#">Connexion</a></li>
             </ul>
         </nav>

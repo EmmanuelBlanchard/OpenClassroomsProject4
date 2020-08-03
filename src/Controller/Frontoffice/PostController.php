@@ -62,12 +62,14 @@ class PostController
         }
     }
     
-    public function displayDetailOfEpisodes(): void
+    public function displayDetailOfEpisodes(int $id): void
     {
-        $data = $this->postManager->showCommentAll();
-
+        $episode = $this->postManager->findId($id);
+        // $commentaires=$this->commentManager->findAllEpisode($id);
+        var_dump($episode);
+        die();
         if ($data !== null) {
-            $this->view->render(['template' => 'detailofepisodes', 'allposts' => $data, 'allcomments' => $data]);
+            $this->view->render(['template' => 'detailofepisodes', 'episode' => $episode, 'allcomments' => $commentaires]);
         } elseif ($data === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1>';
         }
