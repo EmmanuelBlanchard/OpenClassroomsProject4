@@ -147,6 +147,20 @@ p {
     margin-bottom: 4%;
     align-self: flex-start;
 }
+.inputTypeSubmitPublishComment {
+    width: 8rem;
+    text-align: center;
+    background-color: #FFF;
+    color: #025AA0;
+    border-color:#013E70;
+    border-radius: 2em;
+    padding: 10px 10px;
+    font-weight: 600;
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+    margin-left: 4.5%;
+    margin-bottom: 4%;
+    align-self: flex-start;
+}
 footer {
     display: flex;
     flex-direction: column;
