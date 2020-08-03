@@ -34,7 +34,7 @@
 
             <p>
                 <label for="comment">Votre commentaire : </label>
-                <textarea name="message" id="comment" rows="8" cols="45">
+                <textarea name="message" id="comment" rows="10" cols="62">
                     Commentaire
                 </textarea>
             </p>
