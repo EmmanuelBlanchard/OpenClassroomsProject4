@@ -111,7 +111,7 @@ class PostManager
         //return $request->fetch();
     }
 
-    // Essai remplacer la fonction showAll() , affiche que les trois derniers episodes
+    // Essai, remplacer la fonction showAll()
     public function showLastThreeEpisodes(): ?array
     {
         // Requete SQL, recuperation données pour l'affichage des trois derniers épisodes
@@ -119,6 +119,8 @@ class PostManager
         $request = $this->database->prepare('SELECT id, title, introduction, created_at FROM episodes ORDER BY id DESC LIMIT 0,3');
         $request->execute();
         return $request->fetch();
+        var_dump($request);
+        die();
     }
 
     public function showOne(int $id): ?array
