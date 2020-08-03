@@ -14,13 +14,11 @@
 <!-- ajout des commentaires provient d'une table différente -->
 <section>
 
-    <?php foreach($data['allcomments'] as $comment): ?>
-    
     <article>
         <h4>Commentaires</h4>
-        <p><?=$comment['author']?></p>
-        <p><?=$comment['content']?></p>
-        <p><?=$comment['created_at']?></p>
+        <p>Auteur</p>
+        <p>Contenu</p>
+        <p>Publié le  </p>
     </article>
     
     <!-- Ajouter formulaire -->
@@ -44,8 +42,7 @@
             </p>
             
         </form>
-        
+
     </article>
 
 </section>
-<?php endforeach; ?>
