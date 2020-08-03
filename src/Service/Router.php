@@ -30,7 +30,7 @@ class Router
 
         // Injection des dépendances
         $this->postController = new PostController($this->postManager,$this->commentManager, $this->view);
-        
+
         // En attendant de mettre en place la classe App\Service\Http\Request
         $this->get = $_GET;
     }
@@ -55,7 +55,7 @@ class Router
             // route http://localhost:8000/?action=listofepisodes
             $this->postController->displayListOfEpisodes();
         } else {
-            echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=posts>Aller Ici</a>";
+            echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }
     }
 }
