@@ -116,8 +116,8 @@ class PostManager
     {
         // Requete SQL, recuperation données pour l'affichage des trois derniers épisodes
         // 'SELECT id, title, introduction, created_at FROM episodes ORDER BY id DESC LIMIT 0,3'
-        $request = $this->database->prepare('SELECT id=:id, title=:title, introduction=:introduction, created_at=:created_at FROM episodes ORDER BY id=:id DESC LIMIT 0,3');
-        $request->execute(['id'=> $id, 'title' => $title, 'introduction' => $introduction, 'created_at' => $created_at]);
+        $request = $this->database->prepare('SELECT id, title, introduction, created_at FROM episodes ORDER BY id DESC LIMIT 0,3');
+        $request->execute();
         return $request->fetch();
     }
 

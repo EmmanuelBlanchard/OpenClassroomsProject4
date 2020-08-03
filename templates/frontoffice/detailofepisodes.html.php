@@ -11,7 +11,7 @@
 </section>
 
 <?php endforeach; ?>
-<!-- ajout des commentaires provient d'une table différente -->
+
 <section>
 
     <?php foreach($commentaires['allcomments'] as $comment): ?>
