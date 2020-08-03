@@ -121,7 +121,8 @@ class PostManager
         return $this->executeSqlDB2();
     }
 
-    public function getEpisodes() {
+    public function getEpisodes() 
+    {
         $this->database = $database;
         $database->getPdo();
 
@@ -129,6 +130,13 @@ class PostManager
           . ' title, , introduction, content from episodes'
           . ' order by id desc');
         return $episodes;
-      }
+    }
+
+    // inserer les commentaires publiés dans la base de donnees comments
+    public function insertComment() 
+    {
+        $_POST['pseudo']; // recupère le pseudo de la publication, création du commentaire sous les commentaires deja cree, donc dans le 'author' de la table comments ?
+        $_POST['comment']; // recupère le commentaire de la publication, création du commentaire sous les commentaires deja cree, donc dans le 'content' de la table comments ?
+    }
 
 }
