@@ -136,8 +136,8 @@ class PostManager
     public function showLastThreeEpisodes(int $id): ?array
     {
         // Requete SQL , recuperation données pour affichage des trois derniers épisodes
-        // 'SELECT title, introduction, created_at, id FROM episodes WHERE id=:id ORDER BY id DESC LIMIT 0, 3'
-        $request = $this->database->prepare('SELECT title, introduction, created_at, id FROM episodes WHERE id=:id ORDER BY id DESC LIMIT 0, 3');
+        // 'SELECT title, introduction, created_at, id FROM episodes WHERE id=:id ORDER BY id DESC LIMIT 0,3'
+        $request = $this->database->prepare('SELECT title, introduction, created_at, id FROM episodes WHERE id=:id ORDER BY id DESC LIMIT 0,3');
         $request->execute(['id'=> $id]);
         return $request->fetch();
     }
