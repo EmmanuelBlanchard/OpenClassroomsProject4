@@ -133,12 +133,13 @@ class PostManager
         $_POST['comment']; // recupère le commentaire de la publication, création du commentaire sous les commentaires deja cree, donc dans le 'content' de la table comments ?
     }
 
-    public function showLastThreeEpisodes()
+    public function showLastThreeEpisodes(int $id): ?array
     {
         // Requete SQL , recuperation données pour affichage des trois derniers épisodes
-        // SELECT title, introduction, created_at, id FROM episodes LIMIT 0, 3 ORDER BY id DESC;
-        $lastthreeepisodes = $this->database->query('SELECT title, introduction, created_at, id FROM episodes LIMIT 0, 3 ORDER BY id DESC;');
-        return $lastthreeepisodes;
+        // 'SELECT title, introduction, created_at, id FROM episodes WHERE id=:id ORDER BY id DESC LIMIT 0, 3'
+        $request = $this->database->prepare('SELECT title, introduction, created_at, id FROM episodes WHERE id=:id ORDER BY id DESC LIMIT 0, 3');
+        $request->execute(['id'=> $id]);
+        return $request->fetch();
     }
 
     public function findId(int $id): ?array
