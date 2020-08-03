@@ -168,8 +168,13 @@ class PostManager
     public function showLastThreeEpisodes()
     {
         // Requete SQL , recuperation données pour affichage des trois derniers épisodes
-        // SELECT title, introduction, created_at, id FROM episodes LIMIT 0, 3 ORDER BY DESC;
+        // SELECT title, introduction, created_at, id FROM episodes LIMIT 0, 3 ORDER BY id DESC;
 
+        $this->database = $database;
+        $database->getPdo();
+
+        $lastthreeepisodes = $database->query('SELECT title, introduction, created_at, id FROM episodes LIMIT 0, 3 ORDER BY id DESC;');
+        return $lastthreeepisodes;
     }
 
 }
