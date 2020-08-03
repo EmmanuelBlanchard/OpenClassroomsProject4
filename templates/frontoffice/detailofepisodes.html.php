@@ -9,7 +9,7 @@
         <p class="pCreatedAt">Écrit le <?=$post['created_at']?></p>
     </article>
 </section>
-<?php endforeach; ?>
+
 
 <!-- ajout des commentaires provient d'une table différente -->
 <section>
@@ -46,3 +46,5 @@
     </article>
 
 </section>
+
+<?php endforeach; ?>
