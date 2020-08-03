@@ -102,6 +102,31 @@ class PostManager
         return $data;
     }
 
+    private function executeSqlDBTry(?int $id = null) : ?array
+    {
+        $reponse = $database->query('SELECT * FROM comments');
+        
+        while ($donnees = $reponse->fetch())
+        {
+        ?>
+            <p>
+            Identifiant : <?php echo $donnees['id']; ?><br />
+            Le Pseudo est : <?php echo $donnees['author']; ?><br />
+            Commentaire : <?php echo $donnees['content']; ?><br />
+            Publié le  <?php echo $donnees['created_at']; ?><br />
+        </p>
+        <?php
+        }
+
+        $reponse->closeCursor(); // Termine le traitement de la requête
+    }
+
+    public function showNewsTable(): ?array
+    {
+        // renvoie les informations de la table
+        return $this->executeSqlDBTry();
+    }
+
     public function showAll(): ?array
     {
         // renvoie tous les posts
