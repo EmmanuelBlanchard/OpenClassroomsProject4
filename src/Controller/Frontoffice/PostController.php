@@ -72,8 +72,8 @@ class PostController
     {
         $episode = $this->postManager->findId($id);
         $commentaires= $this->commentManager->findAllEpisode($id);
-        //var_dump($episode);
-        var_dump($commentaires);
+        var_dump($episode);
+        //var_dump($commentaires);
         die();
         if ($episode !== null) {
             $this->view->render(['template' => 'detailofepisodes', 'episode' => $episode, 'allcomments' => $commentaires]);

@@ -1,7 +1,7 @@
 <section>
     <h2>Details des épisodes</h2>
 
-    <?php foreach($data['allposts'] as $post): ?>
+    <?php foreach($episode['episode'] as $post): ?>
 
     <article>
         <h3>Épisode <?=$post['title']?></h3>
@@ -10,20 +10,18 @@
     </article>
 </section>
 
-
+<?php endforeach; ?>
 <!-- ajout des commentaires provient d'une table différente -->
 <section>
 
-    <!-- foreach($data['allcomments'] as $comment): -->
-
+    <?php foreach($commentaires['allcomments'] as $comment): ?>
     <article>
         <h4>Commentaires</h4>
-        <p>Auteur <!-- $comment['author'] --></p>
-        <p>Contenu <!-- $comment['content'] --></p>
-        <p>Publié le <!-- $comment['created_at'] -->  </p>
+        <p>Pseudo : <?=$comment['pseudo']?></p>
+        <p>Commentaire : <?=$comment['comment']?></p>
+        <p>Publié le : <?=$comment['created_at']?></p>
     </article>
     
-    <!-- Ajouter formulaire -->
     <article>
         <h4> Publier un commentaire : </h4>
 
