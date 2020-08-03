@@ -11,7 +11,7 @@
 </section>
 <?php endforeach; ?>
 
-<!-- chercher ajout commentaires table différente -->
+<!-- ajout des commentaires provient d'une table différente -->
 <section>
 
     <?php foreach($data['allcomments'] as $comment): ?>
@@ -23,7 +23,29 @@
         <p><?=$comment['created_at']?></p>
     </article>
     
-    <!-- ajouter formulaire -->
+    <!-- Ajouter formulaire -->
+
+    <article>
+        <h4> Publier un commentaire : </h4>
+
+        <form action="cible.php" method="post">
+            <p>
+                <label for="pseudo">Votre pseudo : </label>
+                <input type="text" id="pseudo" name="pseudo" value="Pseudo" />
+            </p>
+
+            <p>
+                <label for="comment">Votre commentaire : </label>
+                <textarea name="message" id="comment" rows="8" cols="45" value="Commentaire"></textarea>
+            </p>
+
+            <p>
+                <input type="submit" value="Publier" />
+            </p>
+            
+        </form>
+        
+    </article>
 
 </section>
 <?php endforeach; ?>

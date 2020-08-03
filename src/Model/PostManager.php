@@ -13,6 +13,7 @@ class PostManager
     public function __construct(Database $database)
     {
         $this->database = $database;
+        $database->getPdo();
     }
 
     private function executeSqlDB(?int $id = null) : ?array
@@ -119,4 +120,15 @@ class PostManager
         // renvoie tous les comments
         return $this->executeSqlDB2();
     }
+
+    public function getEpisodes() {
+        $this->database = $database;
+        $database->getPdo();
+
+        $episodes = $database->query('select id, created_at,'
+          . ' title, , introduction, content from episodes'
+          . ' order by id desc');
+        return $episodes;
+      }
+
 }
