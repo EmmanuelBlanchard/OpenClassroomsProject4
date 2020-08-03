@@ -45,7 +45,7 @@ class PostController
 
     public function displayHomeWithTheLastThreeEpisodes(): void
     {
-        $data = $this->postManager->showAll();
+        $data = $this->postManager->showLastThreeEpisodes();
 
         if ($data !== null) {
             $this->view->render(['template' => 'home', 'allposts' => $data]);

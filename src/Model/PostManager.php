@@ -111,6 +111,16 @@ class PostManager
         //return $request->fetch();
     }
 
+    // Essai remplacer la fonction showAll() , affiche que les trois derniers episodes
+    public function showLastThreeEpisodes(): ?array
+    {
+        // Requete SQL, recuperation données pour l'affichage des trois derniers épisodes
+        // 'SELECT id, title, introduction, created_at FROM episodes ORDER BY id DESC LIMIT 0,3'
+        $request = $this->database->prepare('SELECT id, title, introduction, created_at FROM episodes ORDER BY id DESC LIMIT 0,3');
+        $request->execute();
+        return $request->fetch();
+    }
+
     public function showOne(int $id): ?array
     {
         return $this->executeSqlDB($id);
@@ -135,15 +145,6 @@ class PostManager
     {
         $_POST['pseudo']; // recupère le pseudo de la publication, création du commentaire sous les commentaires deja cree, donc dans le 'author' de la table comments ?
         $_POST['comment']; // recupère le commentaire de la publication, création du commentaire sous les commentaires deja cree, donc dans le 'content' de la table comments ?
-    }
-
-    public function showLastThreeEpisodes(int $id): ?array
-    {
-        // Requete SQL , recuperation données pour affichage des trois derniers épisodes
-        // 'SELECT title, introduction, created_at, id FROM episodes WHERE id=:id ORDER BY id DESC LIMIT 0,3'
-        $request = $this->database->prepare('SELECT title, introduction, created_at, id FROM episodes WHERE id=:id ORDER BY id DESC LIMIT 0,3');
-        $request->execute(['id'=> $id]);
-        return $request->fetch();
     }
 
     public function findId(int $id): ?array

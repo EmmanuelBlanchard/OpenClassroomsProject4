@@ -24,11 +24,10 @@
     </article>
     
     <!-- Ajouter formulaire -->
-
     <article>
         <h4> Publier un commentaire : </h4>
 
-        <form action="CommentController.php" method="post">
+        <form action="CommentManager.php" method="post">
             <p>
                 <label for="pseudo">Votre pseudo : </label>
                 <input type="text" id="pseudo" name="pseudo" value="Pseudo" />
@@ -44,9 +43,7 @@
             <p>
                 <input type="submit" class="inputTypeSubmitPublishComment" value="Publier" />
             </p>
-            
         </form>
-
     </article>
 
 </section>
