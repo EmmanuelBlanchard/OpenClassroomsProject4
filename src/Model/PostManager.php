@@ -110,17 +110,18 @@ class PostManager
         {
         ?>
             <p>
-            Identifiant : <?php echo $donnees['id']; ?><br />
-            Le Pseudo est : <?php echo $donnees['author']; ?><br />
-            Commentaire : <?php echo $donnees['content']; ?><br />
-            Publié le  <?php echo $donnees['created_at']; ?><br />
-        </p>
+                Identifiant : <?php echo $donnees['id']; ?><br />
+                Le Pseudo est : <?php echo $donnees['author']; ?><br />
+                Commentaire : <?php echo $donnees['content']; ?><br />
+                Publié le  <?php echo $donnees['created_at']; ?><br />
+            </p>
         <?php
         }
 
         $reponse->closeCursor(); // Termine le traitement de la requête
+        
     }
-
+    
     public function showNewsTable(): ?array
     {
         // renvoie les informations de la table
