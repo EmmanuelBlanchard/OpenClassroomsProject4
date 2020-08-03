@@ -39,7 +39,7 @@ class PostController
         if ($data !== null) {
             $this->view->render(['template' => 'posts', 'allposts' => $data]);
         } elseif ($data === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1>';
+            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
     }
 
@@ -50,7 +50,7 @@ class PostController
         if ($data !== null) {
             $this->view->render(['template' => 'home', 'allposts' => $data]);
         } elseif ($data === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1>';
+            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
     }
 
@@ -61,7 +61,7 @@ class PostController
         if ($data !== null) {
             $this->view->render(['template' => 'listofepisodes', 'allposts' => $data]);
         } elseif ($data === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1>';
+            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
     }
     
@@ -75,7 +75,7 @@ class PostController
         if ($episode !== null) {
             $this->view->render(['template' => 'detailofepisodes', 'episode' => $episode, 'allcomments' => $commentaires]);
         } elseif ($episode === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1>';
+            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
     }
 }
