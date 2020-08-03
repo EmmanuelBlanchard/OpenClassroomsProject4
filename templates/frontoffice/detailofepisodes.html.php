@@ -14,11 +14,13 @@
 <!-- ajout des commentaires provient d'une table différente -->
 <section>
 
+    <!-- foreach($data['allcomments'] as $comment): -->
+
     <article>
         <h4>Commentaires</h4>
-        <p>Auteur</p>
-        <p>Contenu</p>
-        <p>Publié le  </p>
+        <p>Auteur <!-- $comment['author'] --></p>
+        <p>Contenu <!-- $comment['content'] --></p>
+        <p>Publié le <!-- $comment['created_at'] -->  </p>
     </article>
     
     <!-- Ajouter formulaire -->
@@ -26,7 +28,7 @@
     <article>
         <h4> Publier un commentaire : </h4>
 
-        <form action="cible.php" method="post">
+        <form action="CommentController.php" method="post">
             <p>
                 <label for="pseudo">Votre pseudo : </label>
                 <input type="text" id="pseudo" name="pseudo" value="Pseudo" />
