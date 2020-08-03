@@ -47,6 +47,9 @@ class PostController
     {
         $data = $this->postManager->showLastThreeEpisodes();
 
+        var_dump($data);
+        die();
+
         if ($data !== null) {
             $this->view->render(['template' => 'home', 'allposts' => $data]);
         } elseif ($data === null) {
