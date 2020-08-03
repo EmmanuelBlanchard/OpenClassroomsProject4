@@ -121,7 +121,7 @@ class PostManager
         $reponse->closeCursor(); // Termine le traitement de la requête
         
     }
-    
+
     public function showNewsTable(): ?array
     {
         // renvoie les informations de la table
@@ -163,6 +163,13 @@ class PostManager
     {
         $_POST['pseudo']; // recupère le pseudo de la publication, création du commentaire sous les commentaires deja cree, donc dans le 'author' de la table comments ?
         $_POST['comment']; // recupère le commentaire de la publication, création du commentaire sous les commentaires deja cree, donc dans le 'content' de la table comments ?
+    }
+
+    public function showLastThreeEpisodes()
+    {
+        // Requete SQL , recuperation données pour affichage des trois derniers épisodes
+        // SELECT title, introduction, created_at, id FROM episodes LIMIT 0, 3 ORDER BY DESC;
+
     }
 
 }
