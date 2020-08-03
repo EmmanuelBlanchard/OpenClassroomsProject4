@@ -40,7 +40,7 @@
             </p>
 
             <p>
-                <input type="submit" value="Publier" />
+                <input type="submit" class="inputTypeSubmitPublishComment" value="Publier" />
             </p>
             
         </form>
