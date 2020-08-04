@@ -96,10 +96,11 @@ class PostManager
     }
 
     // Afficher les commentaires publiés à partir de l'id d'un episode
-    public function showAllComment() 
+    public function showAllComment(int $id) : ?array
     {
-        $_POST['pseudo']; 
-        $_POST['comment'];
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_created_the, episode_id FROM comments WHERE episode_id=:id ORDER BY comment_created_the DESC');
+        $request->execute(array(['episode_id' => $id]));
+        return $request->fetch();
     }
 
 }
