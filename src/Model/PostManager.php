@@ -84,7 +84,7 @@ class PostManager
     public function findId(int $id) : ?array
     {
         $request= $this->database->prepare('SELECT * FROM episodes WHERE id=:id');
-        $request->execute(array(['id'=> $id]));
+        $request->execute(array(['id' => $id]));
         return $request->fetch();
     }
 

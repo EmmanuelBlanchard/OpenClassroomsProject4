@@ -7,7 +7,7 @@
         <h3>Épisode <?=$post['title']?></h3>
         <p class="pIntroductionToTheEpisode">Introduction de l'épisode</p>
         <p><?=$post['introduction']?></p>
-        <a href="index.php?action=detailofepisodes&id=<?=$post['id']?>\" class="linkToTheRestOfThePost">Lire l'épisode en entier</a>
+        <a href="index.php?action=detailofepisode&id=<?=$post['id']?>\" class="linkToTheRestOfThePost">Lire l'épisode en entier</a>
     </article>
     
 </section>

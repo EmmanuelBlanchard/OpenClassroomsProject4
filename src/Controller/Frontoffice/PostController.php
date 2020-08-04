@@ -47,9 +47,10 @@ class PostController
     {
         $data = $this->postManager->showLastThreeEpisodes();
         //var_dump($threeEpisodes);
-        echo implode(' ', $data);
-        var_dump($data);
-        die();
+        // echo implode(' ', $data);
+        // var_dump($data);
+        // die();
+
         if ($data !== null) {
             $this->view->render(['template' => 'home', 'threeEpisodes' => $data]);
         } elseif ($data === null) {
@@ -61,9 +62,9 @@ class PostController
     {
         $data = $this->postManager->showAll();
 
-        echo implode(' ', $data);
-        var_dump($data);
-        die();
+        // echo implode(' ', $data);
+        // var_dump($data);
+        // die();
 
         if ($data !== null) {
             $this->view->render(['template' => 'listofepisodes', 'allposts' => $data]);
@@ -75,14 +76,15 @@ class PostController
     public function displayDetailOfEpisode(int $id): void
     {
         $episode = $this->postManager->findId($id);
-        $commentaires= $this->commentManager->findAllEpisode($id);
+        // $commentaires= $this->commentManager->findAllEpisode($id);
+        // $this->view->render(['template' => 'detailofepisodes', 'episode' => $episode, 'allcomments' => $commentaires]);
+        // echo implode(' ', $episode);
+        // var_dump($episode);
+        // var_dump($commentaires);
+        //die();
 
-        echo implode(' ', $episode);
-        var_dump($episode);
-        //var_dump($commentaires);
-        die();
         if ($episode !== null) {
-            $this->view->render(['template' => 'detailofepisodes', 'episode' => $episode, 'allcomments' => $commentaires]);
+            $this->view->render(['template' => 'detailofepisodes', 'episode' => $episode]);
         } elseif ($episode === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
