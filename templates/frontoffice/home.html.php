@@ -1,12 +1,16 @@
 <section>
     <h2>Liste des trois derniers épisodes</h2>
 
-    <?php foreach($data['threeEpisodes'] as $post): ?>
+    <?php foreach($data['allposts'] as $post): ?>
 
     <article>
+        
         <h3><?=$post['title']?></h3>
-        <p><?=$post['introduction']?></p>
-        <p class="pCreatedAt">Écrit le <?=$post['episode_created_the']?></p>
+
+        <h3><?=$post['introduction']?></h3>
+
+        <p class="pCreatedAt">Écrit le  <?=$post['episode_created_the']?></p>
+
         <a href="index.php?action=detailofepisodes&id=<?=$post['id']?>\" class="linkToTheRestOfThePost">Lire la suite</a>
     </article>
     

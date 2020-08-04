@@ -43,16 +43,16 @@ class PostController
         }
     }
 
-    public function displayHomeWithTheLastThreeEpisodes(): void
+    public function displayHomeWithTheLastThreeEpisodes(int $id): void
     {
-        $data = $this->postManager->showLastThreeEpisodes();
+        $data = $this->postManager->showLastThreeEpisodes($id);
         //var_dump($threeEpisodes);
         // echo implode(' ', $data);
         // var_dump($data);
         // die();
 
         if ($data !== null) {
-            $this->view->render(['template' => 'home', 'threeEpisodes' => $data]);
+            $this->view->render(['template' => 'home', 'allposts' => $data]);
         } elseif ($data === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
