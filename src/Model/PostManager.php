@@ -116,10 +116,25 @@ class PostManager
         return $this->executeSqlDB($id);
     }
 
+    public function findId(int $id): ?array
+    {
+        $request= $this->database->prepare('SELECT * FROM episodes WHERE id=:id');
+        $request->execute(['id'=> $id]);
+        return $request->fetch();
+    }
+
     public function showLastThreeEpisodes(): ?array
     {
         // Requete SQL, recuperation données pour l'affichage des trois derniers épisodes
         // 'SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3'
+        // 'SELECT id, title, introduction, DATE_FORMAT(episode_created_the, \'%d/%m/%Y à %Hh%imin%ss\') AS episode_created_the_fr FROM episodes ORDER BY id DESC LIMIT 0,3'
+        /*
+        $req = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT 0, 5');
+
+        while ($donnees = $req->fetch())
+        {
+        ?>
+        */
         $request = $this->database->prepare('SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3');
         $request->execute();
         return $request->fetch();
@@ -135,14 +150,8 @@ class PostManager
     // Inserer les commentaires publiés dans la base de donnees comments
     public function insertComment() 
     {
-        $_POST['pseudo']; // recupère le pseudo de la publication, création du commentaire sous les commentaires deja cree, donc dans le 'author' de la table comments ?
-        $_POST['comment']; // recupère le commentaire de la publication, création du commentaire sous les commentaires deja cree, donc dans le 'content' de la table comments ?
+        $_POST['pseudo']; // recupère le pseudo de la publication, création du commentaire sous les commentaires deja cree
+        $_POST['comment']; // recupère le commentaire de la publication, création du commentaire sous les commentaires deja cree
     }
 
-    public function findId(int $id): ?array
-    {
-        $request= $this->database->prepare('SELECT * FROM episodes WHERE id=:id');
-        $request->execute(['id'=> $id]);
-        return $request->fetch();
-    }
 }
