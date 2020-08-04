@@ -72,11 +72,11 @@ class PostController
         }
     }
     
-    public function displayDetailOfEpisodes(int $id): void
+    public function displayDetailOfEpisode(int $id): void
     {
         $episode = $this->postManager->findId($id);
         $commentaires= $this->commentManager->findAllEpisode($id);
-        
+
         echo implode(' ', $episode);
         var_dump($episode);
         //var_dump($commentaires);

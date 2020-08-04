@@ -50,7 +50,7 @@ class Router
             $this->postController->displayHomeWithTheLastThreeEpisodes();
         } elseif ($action === 'detailofepisodes' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=post&id=5
-            $this->postController->displayDetailOfEpisodes((int)$this->get['id']);
+            $this->postController->displayDetailOfEpisode((int)$this->get['id']);
         } elseif ($action === 'listofepisodes') {
             // route http://localhost:8000/?action=listofepisodes
             $this->postController->displayListOfEpisodes();
