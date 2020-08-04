@@ -111,33 +111,25 @@ class PostManager
         //return $request->fetch();
     }
 
-    // Essai, remplacer la fonction showAll()
-    public function showLastThreeEpisodes(): ?array
-    {
-        // Requete SQL, recuperation données pour l'affichage des trois derniers épisodes
-        // 'SELECT id, title, introduction, created_at FROM episodes ORDER BY id DESC LIMIT 0,3'
-        $request = $this->database->prepare('SELECT id, title, introduction, created_at FROM episodes ORDER BY id DESC LIMIT 0,3');
-        $request->execute();
-        return $request->fetch();
-    }
-
     public function showOne(int $id): ?array
     {
         return $this->executeSqlDB($id);
     }
 
-    public function showCommentAll(): ?array
+    public function showLastThreeEpisodes(): ?array
     {
-        // renvoie tous les posts
-        return $this->executeSqlDB();
+        // Requete SQL, recuperation données pour l'affichage des trois derniers épisodes
+        // 'SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3'
+        $request = $this->database->prepare('SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3');
+        $request->execute();
+        return $request->fetch();
     }
 
     public function getEpisodes() 
     {
-        $episodes = $this->database->query('select id, created_at,'
-          . ' title, , introduction, content from episodes'
-          . ' order by id desc');
-        return $episodes;
+        $request = $this->database->prepare('SELECT id, title, introduction, content, episode_created_the FROM episodes ORDER BY id DESC');
+        $request->execute();
+        return $request->fetch();
     }
 
     // Inserer les commentaires publiés dans la base de donnees comments
