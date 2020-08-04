@@ -11,7 +11,7 @@
 
         <p class="pCreatedAt">Écrit le  <?=$post['episode_created_the']?></p>
 
-        <a href="index.php?action=detailofepisodes&id=<?=$post['id']?>\" class="linkToTheRestOfThePost">Lire la suite</a>
+        <a href="index.php?action=detailofepisode&id=<?=$post['id']?>\" class="linkToTheRestOfThePost">Lire la suite</a>
     </article>
     
 </section>
