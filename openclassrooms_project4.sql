@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(255) NOT NULL,
   `comment` text NOT NULL,
-  `comments_created_the` datetime NOT NULL,
+  `comment_created_the` datetime NOT NULL,
   `episode_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_EPISODES` (`episode_id`)
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`id`, `pseudo`, `comment`, `comments_created_the`, `episode_id`) VALUES
+INSERT INTO `comments` (`id`, `pseudo`, `comment`, `comment_created_the`, `episode_id`) VALUES
 (1, 'alexandre.thibault', '<p>Est quod qui nisi consequatur voluptatem accusantium voluptate. Enim aut veniam dolor veritatis quis. Velit rerum aliquam dolorem aperiam enim debitis.</p><p>Inventore ducimus nisi omnis rerum nemo facere nihil neque. Consectetur est delectus natus dolor veniam voluptatem sit est. Laudantium sit totam unde dolor. Omnis rerum sapiente quia nihil aut. Corrupti molestiae nisi hic voluptatem repudiandae.</p><p>Labore eum ipsa quam asperiores molestiae pariatur. Sed at voluptas dignissimos sint ut assumenda. Labore deserunt deserunt quia iure facilis qui.</p><p>Sequi est id voluptate unde distinctio doloremque non sequi. Qui omnis temporibus non eum nesciunt. Sunt vel ipsam quisquam explicabo magni alias. Qui non ut et occaecati. Reiciendis excepturi minus aut qui beatae non soluta.</p><p>Pariatur aperiam dolore aut. Eos minima harum sed nobis placeat molestias dolor assumenda. Atque sed nisi sit ratione occaecati unde ad. Ad dolores corrupti sit quo consequatur qui.</p>', '2020-06-17 05:03:02', 1),
 (2, 'delahaye.augustin', '<p>Et laborum ut ducimus eum odio est ut. Eos aspernatur aut sit id et sed. Rerum est molestiae pariatur deleniti sapiente rerum nesciunt.</p><p>Temporibus ullam quia expedita veritatis dolor in. Deserunt et corporis omnis quis autem reprehenderit. Doloribus et similique ea accusamus rerum nihil quo.</p><p>Repellendus aperiam ut in quaerat cum. Dolores exercitationem veniam adipisci qui. Non quia aut dolores a quae rerum. Consectetur ut laboriosam fuga minima harum. Et quia et rerum possimus veritatis voluptatum delectus omnis.</p><p>Praesentium et nam ad quis repudiandae ut. Cupiditate delectus qui modi aut. Iusto et facere voluptas ad.</p><p>Aperiam sit qui dolore qui et. Ut quo sit dolores consequuntur. Rerum animi mollitia nostrum qui. Voluptas dolorem aut placeat nisi.</p>', '2020-06-13 14:40:15', 1),
 (3, 'cbrunel', '<p>Consequatur aliquam dolores aut autem quis aut nisi. Quaerat ea non laboriosam quibusdam nostrum. Eum qui sit voluptatem architecto autem deserunt voluptatum.</p><p>Nesciunt iste ea sit modi et. Dolor vero et asperiores expedita minus dolorem et.</p><p>Impedit provident quia et voluptatibus natus ab. Dolore facilis doloremque ipsum aut ab distinctio. Eveniet fugiat delectus rerum sunt iure accusantium.</p><p>Quas quisquam dolores aut excepturi vitae temporibus. Reiciendis maxime quia sit at eos quas. Rerum et deserunt similique ullam. Rerum ipsa dolores sapiente nam repellendus doloremque.</p><p>Voluptas nam enim qui quibusdam. Autem aspernatur ut nisi officiis exercitationem. Eum neque ea nam itaque laudantium voluptas qui.</p>', '2020-06-18 16:20:24', 2),

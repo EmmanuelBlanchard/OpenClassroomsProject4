@@ -70,7 +70,7 @@ class PostController
     {
         $episode = $this->postManager->findId($id);
         $commentaires= $this->commentManager->findAllEpisode($id);
-        //var_dump($episode);
+        var_dump($episode);
         //var_dump($commentaires);
         //die();
         if ($episode !== null) {

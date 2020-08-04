@@ -6,7 +6,7 @@
     <article>
         <h3>Épisode <?=$post['title']?></h3>
         <p><?=$post['content']?></p>
-        <p class="pCreatedAt">Écrit le <?=$post['created_at']?></p>
+        <p class="pCreatedAt">Écrit le <?=$post['episode_created_the']?></p>
     </article>
 </section>
 
@@ -19,7 +19,7 @@
         <h4>Commentaires</h4>
         <p>Pseudo : <?=$comment['pseudo']?></p>
         <p>Commentaire : <?=$comment['comment']?></p>
-        <p>Publié le : <?=$comment['created_at']?></p>
+        <p>Publié le : <?=$comment['comment_created_the']?></p>
     </article>
     
     <article>
