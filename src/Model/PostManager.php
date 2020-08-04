@@ -81,11 +81,10 @@ class PostManager
     }
 
     public function showLastThreeEpisodes(): ?array
-    {
-        // 'SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3'
+    {   // 'SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3'
         // 'SELECT id, title, introduction, DATE_FORMAT(episode_created_the, \'%d/%m/%Y à %Hh%imin%ss\') AS episode_created_the_fr FROM episodes ORDER BY id DESC LIMIT 0,3'
         $request = $this->database->prepare('SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3');
-        $request->execute(array(['id' => $id, 'title' => $title, 'introduction' => $introduction, 'episode_created_the' => $episode_created_the]));
+        $request->execute();
         return $request->fetch();
     }
 
