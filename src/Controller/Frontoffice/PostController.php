@@ -45,12 +45,12 @@ class PostController
 
     public function displayHomeWithTheLastThreeEpisodes(): void
     {
-        $data = $this->postManager->showLastThreeEpisodes();
-        var_dump($data);
-        die();
-        if ($data !== null) {
-            $this->view->render(['template' => 'home', 'allposts' => $data]);
-        } elseif ($data === null) {
+        $threeEpisodes = $this->postManager->showLastThreeEpisodes();
+        //var_dump($threeEpisodes);
+        //die();
+        if ($threeEpisodes !== null) {
+            $this->view->render(['template' => 'home', 'threeEpisodes' => $threeEpisodes]);
+        } elseif ($threeEpisodes === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
     }

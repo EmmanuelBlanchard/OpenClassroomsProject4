@@ -1,7 +1,7 @@
 <section>
     <h2>Liste des trois derniers épisodes</h2>
 
-    <?php foreach($data['allposts'] as $post): ?>
+    <?php foreach($threeEpisodes['threeEpisodes'] as $post): ?>
 
     <article>
         <h3><?=$post['title']?></h3>

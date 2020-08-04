@@ -61,11 +61,11 @@ class PostManager
     public function showAll(): ?array
     {
         // renvoie tous les posts
-        return $this->executeSqlDB();
+        //return $this->executeSqlDB();
 
-        //$request= $this->database->prepare('SELECT * FROM episodes');
-        //$request->execute();
-        //return $request->fetch();
+        $request= $this->database->prepare('SELECT * FROM episodes');
+        $request->execute();
+        return $request->fetch();
     }
 
     public function showOne(int $id): ?array
@@ -82,11 +82,10 @@ class PostManager
 
     public function showLastThreeEpisodes(): ?array
     {
-        // Requete SQL, recuperation données pour l'affichage des trois derniers épisodes
         // 'SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3'
         // 'SELECT id, title, introduction, DATE_FORMAT(episode_created_the, \'%d/%m/%Y à %Hh%imin%ss\') AS episode_created_the_fr FROM episodes ORDER BY id DESC LIMIT 0,3'
         $request = $this->database->prepare('SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3');
-        $request->execute();
+        $request->execute(array());
         return $request->fetch();
     }
 
