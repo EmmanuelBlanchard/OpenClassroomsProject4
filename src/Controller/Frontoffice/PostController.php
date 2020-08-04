@@ -47,8 +47,8 @@ class PostController
     {
         $data = $this->postManager->showLastThreeEpisodes();
         //var_dump($threeEpisodes);
-        //var_dump($data);
-        //die();
+        var_dump($data);
+        die();
         if ($data !== null) {
             $this->view->render(['template' => 'home', 'threeEpisodes' => $data]);
         } elseif ($data === null) {
@@ -59,6 +59,10 @@ class PostController
     public function displayListOfEpisodes(): void
     {
         $data = $this->postManager->showAll();
+
+        echo implode(' ', $data);
+        var_dump($data);
+        die();
 
         if ($data !== null) {
             $this->view->render(['template' => 'listofepisodes', 'allposts' => $data]);
