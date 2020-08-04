@@ -58,7 +58,7 @@ class PostManager
         return $data;
     }
     
-    public function showAll(): ?array
+    public function showAll() : ?array
     {
         // renvoie tous les posts
         //return $this->executeSqlDB();
@@ -68,23 +68,23 @@ class PostManager
         return $request->fetch();
     }
 
-    public function showOne(int $id): ?array
-    {
-        return $this->executeSqlDB($id);
-    }
-
-    public function findId(int $id): ?array
-    {
-        $request= $this->database->prepare('SELECT * FROM episodes WHERE id=:id');
-        $request->execute(array(['id'=> $id]));
-        return $request->fetch();
-    }
-
-    public function showLastThreeEpisodes(): ?array
+    public function showLastThreeEpisodes() : ?array
     {   // 'SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3'
         // 'SELECT id, title, introduction, DATE_FORMAT(episode_created_the, \'%d/%m/%Y à %Hh%imin%ss\') AS episode_created_the_fr FROM episodes ORDER BY id DESC LIMIT 0,3'
         $request = $this->database->prepare('SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3');
         $request->execute();
+        return $request->fetch();
+    }
+
+    public function showOne(int $id) : ?array
+    {
+        return $this->executeSqlDB($id);
+    }
+
+    public function findId(int $id) : ?array
+    {
+        $request= $this->database->prepare('SELECT * FROM episodes WHERE id=:id');
+        $request->execute(array(['id'=> $id]));
         return $request->fetch();
     }
 
@@ -95,11 +95,11 @@ class PostManager
         return $request->fetch();
     }
 
-    // Inserer les commentaires publiés dans la base de donnees comments
-    public function insertComment() 
+    // Afficher les commentaires publiés à partir de l'id d'un episode
+    public function showAllComment() 
     {
-        $_POST['pseudo']; // recupère le pseudo de la publication, création du commentaire sous les commentaires deja cree
-        $_POST['comment']; // recupère le commentaire de la publication, création du commentaire sous les commentaires deja cree
+        $_POST['pseudo']; 
+        $_POST['comment'];
     }
 
 }
