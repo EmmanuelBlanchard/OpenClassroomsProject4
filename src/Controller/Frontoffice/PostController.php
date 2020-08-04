@@ -46,8 +46,8 @@ class PostController
     public function displayHomeWithTheLastThreeEpisodes(): void
     {
         $data = $this->postManager->showLastThreeEpisodes();
-        //var_dump($data);
-        //die();
+        var_dump($data);
+        die();
         if ($data !== null) {
             $this->view->render(['template' => 'home', 'allposts' => $data]);
         } elseif ($data === null) {
@@ -72,7 +72,7 @@ class PostController
         $commentaires= $this->commentManager->findAllEpisode($id);
         var_dump($episode);
         //var_dump($commentaires);
-        //die();
+        die();
         if ($episode !== null) {
             $this->view->render(['template' => 'detailofepisodes', 'episode' => $episode, 'allcomments' => $commentaires]);
         } elseif ($episode === null) {
