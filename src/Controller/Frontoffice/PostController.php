@@ -47,6 +47,7 @@ class PostController
     {
         $data = $this->postManager->showLastThreeEpisodes();
         //var_dump($threeEpisodes);
+        echo implode(' ', $data);
         var_dump($data);
         die();
         if ($data !== null) {
@@ -75,6 +76,8 @@ class PostController
     {
         $episode = $this->postManager->findId($id);
         $commentaires= $this->commentManager->findAllEpisode($id);
+        
+        echo implode(' ', $episode);
         var_dump($episode);
         //var_dump($commentaires);
         die();
