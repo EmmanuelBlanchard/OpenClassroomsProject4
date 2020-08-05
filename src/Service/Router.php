@@ -41,19 +41,26 @@ class Router
         // - une pour afficher tous les posts => http://localhost:8000/?action=posts
         // - une pour afficher un post en particulier => http://localhost:8000/?action=post&id=5
         
-        //On test si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action home)
+        // On teste si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action home)
         $action = isset($this->get['action']) ? $this->get['action'] : 'home';
 
-        //Déterminer sur quelle route nous sommes // Attention algorithme naïf
+        // Déterminer sur quelle route nous sommes // Attention algorithme naïf
         if ($action === 'home' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=home
             $this->postController->displayHomeWithTheLastThreeEpisodes((int)$this->get['id']);
-        } elseif ($action === 'detailofepisodes' && isset($this->get['id'])) {
-            // route http://localhost:8000/?action=post&id=5
+        } elseif ($action === 'detailofepisode' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=detailofepisode&id=5
             $this->postController->displayDetailOfEpisode((int)$this->get['id']);
         } elseif ($action === 'listofepisodes') {
             // route http://localhost:8000/?action=listofepisodes
             $this->postController->displayListOfEpisodes();
+        } elseif ($action === 'addcomment' && isset($this->get['id']) && ($this->get['id']) < 8) {
+            // route http://localhost:8000/?action=addCommente&id=5
+            if (!empty($this->post['pseudo']) && !empty($this->post['comment']) ) {
+                $this->postController->addComment((int)$this->get['id'], (string)$this->post['pseudo'], (string)$this->post['comment']);
+            } else {
+                echo 'Erreur : tous les champs ne sont pas remplis !';
+            }
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }

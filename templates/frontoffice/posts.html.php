@@ -6,7 +6,7 @@
     <article>
         <h3><?=$post['title']?></h3>
         <p><?=$post['introduction']?></p>
-        <a href="index.php?action=post&id=<?=$post['id']?>\" class="linkToTheRestOfThePost">Lire la suite</a>
+        <a href="index.php?action=detailofepisode&id=<?=$post['id']?>\" class="linkToTheRestOfThePost">Lire la suite</a>
     </article>
     
 </section>

@@ -61,7 +61,7 @@ class PostManager
     public function showAll() : ?array
     {
         // renvoie tous les posts
-        //return $this->executeSqlDB();
+        // return $this->executeSqlDB();
 
         $request= $this->database->prepare('SELECT * FROM episodes');
         $request->execute();
