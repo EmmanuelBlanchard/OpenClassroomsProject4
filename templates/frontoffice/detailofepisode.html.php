@@ -10,24 +10,42 @@
     </article>
 </section>
 
+<?php endforeach; ?>
+
 <section>
+    <?php foreach($commentaires['allcomments'] as $comment): ?>
     
-    <form action="index.php?action=addcomment&amp;id=<?= $post['id'] ?>" method="post">
-        <article>
-            <h4> Commentaires </h4>
-            <div>
-                <label for="pseudo">Pseudo : </label><br />
-                <input type="text" id="pseudo" name="pseudo" />
-            </div>
-            <div>
-                <label for="comment">Commentaire : </label><br />
-                <textarea id="comment" name="comment"></textarea>
-            </div>
-            <div>
-                <input type="submit" />
-            </div>
-        </article>
-    </form>
+    <article>
+        <h4>Commentaires</h4>
+        <p>Pseudo : <?=$comment['pseudo']?></p>
+        <p>Commentaire : <?=$comment['comment']?></p>
+        <p>Publié le : <?=$comment['comment_created_the']?></p>
+    </article>
+    
+    <article>
+    
+</section>
+
+<?php endforeach; ?>
+
+<section>
+    <article>
+        <h4> Publier un commentaire : </h4>
+    
+        <form action="index.php?action=addcomment&amp;id=<?= $post['id'] ?>" method="post">
+                <div>
+                    <label for="pseudo">Pseudo : </label><br />
+                    <input type="text" id="pseudo" name="pseudo" />
+                </div>
+                <div>
+                    <label for="comment">Commentaire : </label><br />
+                    <textarea id="comment" name="comment"></textarea>
+                </div>
+                <div>
+                    <input type="submit" />
+                </div>
+        </form>
+    </article>
     
     <article>
         <h4> Publier un commentaire : </h4>
@@ -52,5 +70,3 @@
     </article>
 
 </section>
-
-<?php endforeach; ?>
