@@ -1,7 +1,10 @@
 <section>
     <h2>Liste des épisodes</h2>
 
-    <?php foreach($data['allposts'] as $post): ?>
+    <?php foreach($data['allposts'] as $post): 
+    
+    var_dump($post);
+    die(); ?>
 
     <article>
         <h3>Épisode <?=$post['title']?></h3>
