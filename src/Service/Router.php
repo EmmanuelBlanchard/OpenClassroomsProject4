@@ -45,9 +45,9 @@ class Router
         $action = isset($this->get['action']) ? $this->get['action'] : 'home';
 
         // Déterminer sur quelle route nous sommes // Attention algorithme naïf
-        if ($action === 'home' && isset($this->get['id'])) {
+        if ($action === 'home') {
             // route http://localhost:8000/?action=home
-            $this->postController->displayHomeWithTheLastThreeEpisodes((int)$this->get['id']);
+            $this->postController->displayHomeWithTheLastThreeEpisodes();
         } elseif ($action === 'detailofepisode' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=detailofepisode&id=5
             $this->postController->displayDetailOfEpisode((int)$this->get['id']);
@@ -59,7 +59,7 @@ class Router
             if (!empty($this->post['pseudo']) && !empty($this->post['comment']) ) {
                 $this->postController->addComment((int)$this->get['id'], (string)$this->post['pseudo'], (string)$this->post['comment']);
             } else {
-                echo 'Erreur : tous les champs ne sont pas remplis !';
+                echo "Erreur : tous les champs ne sont pas remplis !<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
             }
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";

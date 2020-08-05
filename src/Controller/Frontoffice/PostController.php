@@ -43,9 +43,9 @@ class PostController
         }
     }
 
-    public function displayHomeWithTheLastThreeEpisodes(int $id): void
+    public function displayHomeWithTheLastThreeEpisodes(): void
     {
-        $data = $this->postManager->showLastThreeEpisodes($id);
+        $data = $this->postManager->showLastThreeEpisodes();
         // var_dump($threeEpisodes);
         // echo implode(' ', $data);
         // var_dump($data);
