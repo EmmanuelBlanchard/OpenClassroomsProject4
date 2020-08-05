@@ -46,7 +46,7 @@ class PostController
     public function displayHomeWithTheLastThreeEpisodes(): void
     {
         $data = $this->postManager->showLastThreeEpisodes();
-        // var_dump($threeEpisodes);
+
         // echo implode(' ', $data);
         // var_dump($data);
         // die();
@@ -63,8 +63,8 @@ class PostController
         $data = $this->postManager->showAll();
 
         // echo implode(' ', $data);
-        // var_dump($data);
-        // die();
+        var_dump($data);
+        die();
 
         if ($data !== null) {
             $this->view->render(['template' => 'listofepisodes', 'allposts' => $data]);

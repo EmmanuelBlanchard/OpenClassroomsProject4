@@ -2,7 +2,9 @@
     <h2>Liste des épisodes</h2>
 
     <?php foreach($data['allposts'] as $post): 
-    
+    // affiche -> 
+    // Liste des épisodes
+    // string(1) "1" 
     var_dump($post);
     die(); ?>
 
