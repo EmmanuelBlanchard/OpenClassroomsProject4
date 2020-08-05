@@ -13,7 +13,7 @@
 <?php endforeach; ?>
 
 <section>
-    <?php foreach($commentaires['allcomments'] as $comment): ?>
+    <?php foreach($comments['allcomment'] as $comment): ?>
     
     <article>
         <h4>Commentaires</h4>

@@ -83,8 +83,10 @@ class PostController
         // var_dump($commentaires);
         // die();
 
+        $comments = $this->commentManager->getComments($id);
+
         if ($episode !== null) {
-            $this->view->render(['template' => 'detailofepisode', 'episode' => $episode]);
+            $this->view->render(['template' => 'detailofepisode', 'episode' => $episode, 'allcomment' => $comments]);
         } elseif ($episode === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
