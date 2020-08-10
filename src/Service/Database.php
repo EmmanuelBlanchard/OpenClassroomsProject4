@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-// class pour gérer la connection à la base de donnée
+// Class pour gérer la connection à la base de données
 class Database
 {
     /**

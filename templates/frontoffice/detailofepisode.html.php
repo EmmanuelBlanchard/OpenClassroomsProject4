@@ -1,6 +1,6 @@
 <section>
     <h2>Details des épisodes</h2>
-
+    
     <article>
         <h3>Épisode <?=$data['episode']['title']?></h3>
         <p><?=$data['episode']['content']?></p>
@@ -18,9 +18,9 @@ Whoops\Exception\ErrorException
     <h4>Commentaires</h4>
     
     <article>
-        <p>Pseudo : <?=$comment['pseudo']?></p>
-        <p>Commentaire : <?=$comment['comment']?></p>
-        <p>Publié le : <?=$comment['comment_created_the']?></p>
+        <p>Pseudo : <?=$comments['pseudo']?></p>
+        <p>Commentaire : <?=$comments['comment']?></p>
+        <p>Publié le : <?=$comments['comment_created_the']?></p>
     </article>
     
 </section>
