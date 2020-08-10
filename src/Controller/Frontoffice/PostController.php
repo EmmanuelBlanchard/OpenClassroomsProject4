@@ -61,12 +61,7 @@ class PostController
 
     public function displayListOfEpisodes(): void
     {
-        $data = $this->postManager->showAll();
-        /*
-        echo"<pre>";
-        print_r($data);
-        echo"</pre>";
-        die();*/
+        $data = $this->postManager->showAllEpisodes();
 
         if ($data !== null) {
             $this->view->render(['template' => 'listofepisodes', 'allposts' => $data]);
@@ -80,6 +75,12 @@ class PostController
         $episode = $this->postManager->findId($id);
         // $commentaires= $this->commentManager->findAllEpisode($id);
         $comments = $this->commentManager->getComments($id);
+
+        echo"<pre>";
+        //print_r($episode);
+        print_r($comments);
+        echo"</pre>";
+        die();
 
         if ($episode !== null) {
             $this->view->render(['template' => 'detailofepisode', 'episode' => $episode, 'allcomment' => $comments]);

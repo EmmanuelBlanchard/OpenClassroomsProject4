@@ -22,6 +22,13 @@ class PostManager
         return $request->fetchAll();
     }
 
+    public function showAllEpisodes() : ?array
+    {
+        $request= $this->database->prepare('SELECT id, title, introduction FROM episodes ORDER BY episode_created_the');
+        $request->execute();
+        return $request->fetchAll();
+    }
+
     public function showLastThreeEpisodes() : ?array
     {
         $request = $this->database->prepare('SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY episode_created_the DESC LIMIT 0,3');
@@ -47,18 +54,12 @@ class PostManager
     public function findId(int $id) : ?array
     {
         $request= $this->database->prepare('SELECT * FROM episodes WHERE id=:id');
-        // affiche -> object(PDOStatement)#14 (1) { ["queryString"]=> string(35) "SELECT * FROM episodes WHERE id=:id" } 
-        var_dump($request);
-        die();
-        $request->execute(array(['id' => $id]));
-        return $request->fetch();
-    }
-
-    public function getEpisodes() 
-    {
-        $request = $this->database->prepare('SELECT id, title, introduction, content, episode_created_the FROM episodes ORDER BY id DESC');
-        $request->execute();
-        return $request->fetch();
+        //var_dump($request);
+        //die();
+        $request->execute(['id' => $id]);
+        //var_dump($request);
+        //die();
+        return $request->fetchAll();
     }
 
     // Afficher les commentaires publiés à partir de l'id d'un episode

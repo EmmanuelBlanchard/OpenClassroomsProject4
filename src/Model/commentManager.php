@@ -17,7 +17,7 @@ class CommentManager
     
     public function findAllEpisode(int $id): ?array
     {
-        $request= $this->database->prepare('SELECT * FROM comments WHERE episode_id=:id');
+        $request= $this->database->prepare('SELECT * FROM comments WHERE id=:episode_id');
         $request->execute(['episode_id'=> $id]);
         return $request->fetch();
     }
@@ -25,7 +25,7 @@ class CommentManager
     public function getComments(int $id)
     {
         $request= $this->database->prepare('SELECT episode_id, pseudo, comment, comment_created_the FROM comments WHERE episode_id=:id ORDER BY comment_created_the DESC');
-        $request->execute(array(['episode_id' => $id]));
+        $request->execute(['id' => $id]);
         return $request->fetch();
     }
 
@@ -34,8 +34,9 @@ class CommentManager
         // INSERT INTO `episodes` (`id`, `title`, `introduction`, `content`, `episode_created_the`) VALUES
         // Table comments
         // INSERT INTO `comments` (`id`, `pseudo`, `comment`, `comment_created_the`, `episode_id`)
-        $request= $this->database->prepare('INSERT INTO comments (episode_id, pseudo, comment, comment_created_the) VALUES(episode_id=:id, pseudo=:pseudo, comment=:comment, NOW())');
-        $request->execute(array(['episode_id'=> $id, 'pseudo' => $pseudo, 'comment' => $comment]));
+        // Recuperer les commentaires où id de la table episodes = episode_id de la table comments
+        $request= $this->database->prepare('INSERT INTO comments (episode_id, pseudo, comment, comment_created_the) VALUES(id=:episode_id, pseudo=:pseudo, comment=:comment, NOW())');
+        $request->execute(['episode_id'=> $id, 'pseudo' => $pseudo, 'comment' => $comment]);
         return $request->fetch();
     }
 
