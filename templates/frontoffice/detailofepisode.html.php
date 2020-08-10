@@ -23,8 +23,8 @@
 <section>
     <article>
         <h4> Publier un commentaire : </h4>
-    
-        <form action="index.php?action=addcomment&amp;id=<?= $post['id'] ?>" method="post">
+
+        <form action="index.php?action=addcomment&id=<?=$post['id']?>" method="post">
                 <div>
                     <label for="pseudo">Pseudo : </label><br />
                     <input type="text" id="pseudo" name="pseudo" />
