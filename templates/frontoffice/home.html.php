@@ -5,7 +5,7 @@
 
     <article>
         
-        <h3><?=$post['title']?></h3>
+        <h3>Épisode <?=$post['title']?></h3>
 
         <p><?=$post['introduction']?></p>
 

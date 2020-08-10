@@ -17,7 +17,7 @@ class PostManager
     
     public function showAll() : ?array
     {
-        $request= $this->database->prepare('SELECT * FROM episodes');
+        $request= $this->database->prepare('SELECT id, title, introduction FROM episodes ORDER BY episode_created_the');
         $request->execute();
         return $request->fetchAll();
     }
@@ -27,7 +27,6 @@ class PostManager
         $request = $this->database->prepare('SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY episode_created_the DESC LIMIT 0,3');
         $request->execute();
         return $request->fetchAll();
-        
     }
 
     public function showOne(int $id) : ?array
