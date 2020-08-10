@@ -46,10 +46,11 @@ class PostController
     public function displayHomeWithTheLastThreeEpisodes(): void
     {
         $data = $this->postManager->showLastThreeEpisodes();
-
-        // echo implode(' ', $data);
-        // var_dump($data);
-        // die();
+        /*
+        echo"<pre>";
+        print_r($data);
+        echo"</pre>";
+        die();*/
 
         if ($data !== null) {
             $this->view->render(['template' => 'home', 'allposts' => $data]);
@@ -61,10 +62,11 @@ class PostController
     public function displayListOfEpisodes(): void
     {
         $data = $this->postManager->showAll();
-
-        // echo implode(' ', $data);
-        var_dump($data);
-        die();
+        /*
+        echo"<pre>";
+        print_r($data);
+        echo"</pre>";
+        die();*/
 
         if ($data !== null) {
             $this->view->render(['template' => 'listofepisodes', 'allposts' => $data]);
@@ -77,12 +79,6 @@ class PostController
     {
         $episode = $this->postManager->findId($id);
         // $commentaires= $this->commentManager->findAllEpisode($id);
-        // $this->view->render(['template' => 'detailofepisodes', 'episode' => $episode, 'allcomments' => $commentaires]);
-        // echo implode(' ', $episode);
-        // var_dump($episode);
-        // var_dump($commentaires);
-        // die();
-
         $comments = $this->commentManager->getComments($id);
 
         if ($episode !== null) {

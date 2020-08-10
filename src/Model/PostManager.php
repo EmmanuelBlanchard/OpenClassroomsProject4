@@ -63,23 +63,16 @@ class PostManager
         // renvoie tous les posts
         // return $this->executeSqlDB();
 
-        $request= $this->database->prepare('SELECT * FROM episodes=:episodes');
-        // affiche -> object(PDOStatement)#14 (1) { ["queryString"]=> string(32) "SELECT * FROM episodes=:episodes" } 
-        var_dump($request);
-        die();
-        $request->execute(array([]));
-        return $request->fetch();
+        $request= $this->database->prepare('SELECT * FROM episodes');
+        $request->execute();
+        return $request->fetchAll();
     }
 
     public function showLastThreeEpisodes() : ?array
-    {   // 'SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY id DESC LIMIT 0,3'
-        // 'SELECT id, title, introduction, DATE_FORMAT(episode_created_the, \'%d/%m/%Y à %Hh%imin%ss\') AS episode_created_the_fr FROM episodes ORDER BY id DESC LIMIT 0,3'
-        $request = $this->database->prepare('SELECT id, title, introduction, episode_created_the FROM episodes WHERE id=:id ORDER BY id DESC LIMIT 0,3');
-        // affiche -> object(PDOStatement)#14 (1) { ["queryString"]=> string(105) "SELECT id, title, introduction, episode_created_the FROM episodes WHERE id=:id ORDER BY id DESC LIMIT 0,3" } 
-        var_dump($request);
-        die();
-        $request->execute(array([]));
-        return $request->fetch();
+    {
+        $request = $this->database->prepare('SELECT id, title, introduction, episode_created_the FROM episodes ORDER BY episode_created_the DESC LIMIT 0,3');
+        $request->execute();
+        return $request->fetchAll();
         
     }
 

@@ -8,6 +8,10 @@ class View
 {
     public function render(array $data): void
     {
+        //echo"<pre>";
+        //print_r($data);
+        //echo"</pre>";
+        //die();
         ob_start();
         require_once "..\\templates\\frontoffice\\${data['template']}.html.php";
         $content = ob_get_clean();

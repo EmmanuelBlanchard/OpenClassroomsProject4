@@ -1,32 +1,24 @@
 <section>
     <h2>Details des épisodes</h2>
 
-    <?php foreach($episode['episode'] as $post): ?>
-
     <article>
-        <h3>Épisode <?=$post['title']?></h3>
-        <p><?=$post['content']?></p>
-        <p class="pCreatedAt">Écrit le <?=$post['episode_created_the']?></p>
+        <h3>Épisode <?=$data['episode']['title']?></h3>
+        <p><?=$data['episode']['content']?></p>
+        <p class="pCreatedAt">Écrit le <?=$data['episode']['episode_created_the']?></p>
     </article>
 </section>
 
-<?php endforeach; ?>
-
 <section>
-    <?php foreach($comments['allcomment'] as $comment): ?>
+    
+    <h4>Commentaires</h4>
     
     <article>
-        <h4>Commentaires</h4>
         <p>Pseudo : <?=$comment['pseudo']?></p>
         <p>Commentaire : <?=$comment['comment']?></p>
         <p>Publié le : <?=$comment['comment_created_the']?></p>
     </article>
-    
-    <article>
     
 </section>
-
-<?php endforeach; ?>
 
 <section>
     <article>

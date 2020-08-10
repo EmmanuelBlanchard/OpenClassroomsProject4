@@ -7,7 +7,7 @@
         
         <h3><?=$post['title']?></h3>
 
-        <h3><?=$post['introduction']?></h3>
+        <p><?=$post['introduction']?></p>
 
         <p class="pCreatedAt">Écrit le  <?=$post['episode_created_the']?></p>
 
