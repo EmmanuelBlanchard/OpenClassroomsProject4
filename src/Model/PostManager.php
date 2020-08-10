@@ -40,11 +40,6 @@ class PostManager
     {
         //return $this->executeSqlDB($id);
 
-        echo"<pre>";
-        print_r($id);
-        echo"</pre>";
-        die();
-
         $request= $this->database->prepare('SELECT * FROM episodes WHERE id=:id');
         $request->execute(array(['id' => $id]));
         return $request->fetch();
@@ -54,11 +49,7 @@ class PostManager
     public function findId(int $id) : ?array
     {
         $request= $this->database->prepare('SELECT * FROM episodes WHERE id=:id');
-        //var_dump($request);
-        //die();
         $request->execute(['id' => $id]);
-        //var_dump($request);
-        //die();
         return $request->fetchAll();
     }
 
@@ -66,8 +57,8 @@ class PostManager
     public function showAllComment(int $id) : ?array
     {
         $request = $this->database->prepare('SELECT id, pseudo, comment, comment_created_the, episode_id FROM comments WHERE episode_id=:id ORDER BY comment_created_the DESC');
-        $request->execute(array(['episode_id' => $id]));
-        return $request->fetch();
+        $request->execute(['episode_id' => $id]);
+        return $request->fetchAll();
     }
 
 }

@@ -7,7 +7,12 @@
         <p class="pCreatedAt">Écrit le <?=$data['episode']['episode_created_the']?></p>
     </article>
 </section>
-
+<!--  Whoops \ Exception \ ErrorException (E_NOTICE)
+Undefined index: title 
+ 5
+Whoops\Exception\ErrorException
+…\templates\frontoffice\detailofepisode.html.php5
+-->
 <section>
     
     <h4>Commentaires</h4>

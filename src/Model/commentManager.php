@@ -19,14 +19,14 @@ class CommentManager
     {
         $request= $this->database->prepare('SELECT * FROM comments WHERE id=:episode_id');
         $request->execute(['episode_id'=> $id]);
-        return $request->fetch();
+        return $request->fetchAll();
     }
 
-    public function getComments(int $id)
+    public function getComments(int $id) : ?array
     {
         $request= $this->database->prepare('SELECT episode_id, pseudo, comment, comment_created_the FROM comments WHERE episode_id=:id ORDER BY comment_created_the DESC');
         $request->execute(['id' => $id]);
-        return $request->fetch();
+        return $request->fetchAll();
     }
 
     public function postComment(int $id, string $pseudo, string $comment)
@@ -37,7 +37,7 @@ class CommentManager
         // Recuperer les commentaires où id de la table episodes = episode_id de la table comments
         $request= $this->database->prepare('INSERT INTO comments (episode_id, pseudo, comment, comment_created_the) VALUES(id=:episode_id, pseudo=:pseudo, comment=:comment, NOW())');
         $request->execute(['episode_id'=> $id, 'pseudo' => $pseudo, 'comment' => $comment]);
-        return $request->fetch();
+        return $request->fetchAll();
     }
 
 }
