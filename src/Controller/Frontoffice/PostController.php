@@ -76,11 +76,11 @@ class PostController
         // $commentaires= $this->commentManager->findAllEpisode($id);
         $comments = $this->commentManager->getComments($id);
 
-        echo"<pre>";
+        //echo"<pre>";
         //print_r($episode);
-        print_r($comments);
-        echo"</pre>";
-        die();
+        //print_r($comments);
+        //echo"</pre>";
+        //die();
 
         if ($episode !== null) {
             $this->view->render(['template' => 'detailofepisode', 'episode' => $episode, 'allcomment' => $comments]);

@@ -18,9 +18,9 @@ Whoops\Exception\ErrorException
     <h4>Commentaires</h4>
     
     <article>
-        <p>Pseudo : <?=$comments['pseudo']?></p>
-        <p>Commentaire : <?=$comments['comment']?></p>
-        <p>Publié le : <?=$comments['comment_created_the']?></p>
+        <p>Pseudo : <?=$data['allcomment']['pseudo']?></p>
+        <p>Commentaire : <?=$data['allcomment']['comment']?></p>
+        <p>Publié le : <?=$data['allcomment']['comment_created_the']?></p>
     </article>
     
 </section>
