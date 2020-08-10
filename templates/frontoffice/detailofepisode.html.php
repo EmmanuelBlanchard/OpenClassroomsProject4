@@ -31,39 +31,18 @@ Whoops\Exception\ErrorException
 
         <form action="index.php?action=addcomment&id=<?=$post['id']?>" method="post">
                 <div>
-                    <label for="pseudo">Pseudo : </label><br />
+                    <label for="pseudo">Votre pseudo : </label><br />
                     <input type="text" id="pseudo" name="pseudo" />
                 </div>
                 <div>
-                    <label for="comment">Commentaire : </label><br />
-                    <textarea id="comment" name="comment"></textarea>
+                    <label for="comment">Votre commentaire : </label><br />
+                    <textarea id="comment" name="comment" rows="10" cols="62">
+                        Commentaire
+                    </textarea>
                 </div>
                 <div>
-                    <input type="submit" />
+                    <input type="submit" class="inputTypeSubmitPublishComment" value="Publier" />
                 </div>
         </form>
     </article>
-    
-    <article>
-        <h4> Publier un commentaire : </h4>
-
-        <form action="CommentManager.php" method="post">
-            <p>
-                <label for="pseudo">Votre pseudo : </label>
-                <input type="text" id="pseudo" name="pseudo" value="Pseudo" />
-            </p>
-
-            <p>
-                <label for="comment">Votre commentaire : </label>
-                <textarea name="message" id="comment" rows="10" cols="62">
-                    Commentaire
-                </textarea>
-            </p>
-
-            <p>
-                <input type="submit" class="inputTypeSubmitPublishComment" value="Publier" />
-            </p>
-        </form>
-    </article>
-
 </section>
