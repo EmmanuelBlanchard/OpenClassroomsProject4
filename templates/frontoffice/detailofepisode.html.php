@@ -2,9 +2,9 @@
     <h2>Details des épisodes</h2>
 
     <article>
-        <h3>Épisode <?=$data['episode']['title']?></h3>
-        <p><?=$data['episode']['content']?></p>
-        <p class="pCreatedAt">Écrit le <?=$data['episode']['episode_created_the']?></p>
+        <h3>Épisode <?=$data['title']?></h3>
+        <p><?=$data['content']?></p>
+        <p class="pCreatedAt">Écrit le <?=$data['episode_created_the']?></p>
     </article>
 </section>
 <!--  Whoops \ Exception \ ErrorException (E_NOTICE)
@@ -17,9 +17,9 @@ Whoops\Exception\ErrorException
     <article>
         <h4>Commentaires</h4>
         
-        <p>Pseudo : <?=$data['allcomment']['pseudo']?></p>
-        <p>Commentaire : <?=$data['allcomment']['comment']?></p>
-        <p>Publié le : <?=$data['allcomment']['comment_created_the']?></p>
+        <p>Pseudo : <?=$data['pseudo']?></p>
+        <p>Commentaire : <?=$data['comment']?></p>
+        <p>Publié le : <?=$data['comment_created_the']?></p>
     </article>
     
 </section>
