@@ -1,6 +1,6 @@
 <section>
     <h2>Details des épisodes</h2>
-    
+
     <article>
         <h3>Épisode <?=$data['episode']['title']?></h3>
         <p><?=$data['episode']['content']?></p>
