@@ -14,35 +14,36 @@ Whoops\Exception\ErrorException
 …\templates\frontoffice\detailofepisode.html.php5
 -->
 <section>
-    
-    <h4>Commentaires</h4>
-    
     <article>
-        <p>Pseudo : <?=$data['allcomment']['pseudo']?></p>
-        <p>Commentaire : <?=$data['allcomment']['comment']?></p>
-        <p>Publié le : <?=$data['allcomment']['comment_created_the']?></p>
-    </article>
+        <h4>Commentaires</h4>
+        
+        <p>Pseudo : <?=$data['allcomment']['pseudo']?></p>
+        <p>Commentaire : <?=$data['allcomment']['comment']?></p>
+        <p>Publié le : <?=$data['allcomment']['comment_created_the']?></p>
+    </article>
     
 </section>
 
 <section>
     <article>
         <h4> Publier un commentaire : </h4>
-
+    
         <form action="index.php?action=addcomment&id=<?=$post['id']?>" method="post">
-                <div>
-                    <label for="pseudo">Votre pseudo : </label><br />
-                    <input type="text" id="pseudo" name="pseudo" />
-                </div>
-                <div>
-                    <label for="comment">Votre commentaire : </label><br />
-                    <textarea id="comment" name="comment" rows="10" cols="62">
-                        Commentaire
-                    </textarea>
-                </div>
-                <div>
-                    <input type="submit" class="inputTypeSubmitPublishComment" value="Publier" />
-                </div>
+            <div>
+                <label for="pseudo">Votre pseudo : </label><br />
+                <input type="text" id="pseudo" name="pseudo" />
+            </div>
+            
+            <div>
+                <label for="comment">Votre commentaire : </label><br />
+                <textarea id="comment" name="comment" rows="10" cols="62">
+                    Commentaire
+                </textarea>
+            </div>
+            
+            <div>
+                <input type="submit" class="inputTypeSubmitPublishComment" value="Publier" />
+            </div>
         </form>
     </article>
 </section>

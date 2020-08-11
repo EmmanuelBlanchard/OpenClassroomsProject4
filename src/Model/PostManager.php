@@ -38,8 +38,6 @@ class PostManager
 
     public function showOne(int $id) : ?array
     {
-        //return $this->executeSqlDB($id);
-
         $request= $this->database->prepare('SELECT * FROM episodes WHERE id=:id');
         $request->execute(array(['id' => $id]));
         return $request->fetch();
