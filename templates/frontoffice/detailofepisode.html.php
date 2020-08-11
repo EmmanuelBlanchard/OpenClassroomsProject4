@@ -2,33 +2,41 @@
     <h2>Details des épisodes</h2>
 
     <article>
-        <h3>Épisode <?=$data['title']?></h3>
-        <p><?=$data['content']?></p>
-        <p class="pCreatedAt">Écrit le <?=$data['episode_created_the']?></p>
+        <h3>Épisode <?=$data['episode']['title']?></h3>
+        <p><?=$data['episode']['content']?></p>
+        <p class="pCreatedAt">Écrit le <?=$data['episode']['episode_created_the']?></p>
     </article>
-</section>
-<!--  Whoops \ Exception \ ErrorException (E_NOTICE)
-Undefined index: title 
- 5
-Whoops\Exception\ErrorException
-…\templates\frontoffice\detailofepisode.html.php5
--->
-<section>
-    <article>
-        <h4>Commentaires</h4>
-        
-        <p>Pseudo : <?=$data[0]['pseudo']?></p>
-        <p>Commentaire : <?=$data[0]['comment']?></p>
-        <p>Publié le : <?=$data[0]['comment_created_the']?></p>
-    </article>
-    
 </section>
 
 <section>
     <article>
+        <h4>Commentaires</h4>
+        
+        <p>Pseudo : <?=$data['allcomment'][0]['pseudo']?></p>
+        <p>Commentaire : <?=$data['allcomment'][0]['comment']?></p>
+        <p>Publié le : <?=$data['allcomment'][0]['comment_created_the']?></p>
+    </article>
+    
+</section>
+
+<!-- Essai pour afficher tous les commentaires et pas seulement premier tableau [0] comme home.html.php ou listofepisodes.html.php avec boucle foreach php -->
+<section>
+    <h4 class="sectionH4TitleComments">Commentaires</h4>
+    <?php foreach($data['allcomment'] as $post): ?>
+    <article>    
+        <p>Commentaire : <?=$post['comment']?></p>
+        <p>Pseudo : <?=$post['pseudo']?></p>
+        <p>Publié le : <?=$post['comment_created_the']?></p>
+    </article>
+</section>
+<?php endforeach; ?>
+
+<!-- Formulaire pour ecrire et publier un commentaire -->
+<section>
+    <article>
         <h4> Publier un commentaire : </h4>
     
-        <form action="index.php?action=addcomment&id=<?=$post['id']?>" method="post">
+        <form action="index.php?action=addcomment&id=<?=$data['episode']['id']?>" method="post">
             <div>
                 <label for="pseudo">Votre pseudo : </label><br />
                 <input type="text" id="pseudo" name="pseudo" />
