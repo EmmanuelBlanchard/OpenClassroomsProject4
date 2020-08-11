@@ -22,10 +22,11 @@ class CommentManager
         return $request->fetchAll();
     }
 
+    // Changement de WHERE episode_id=:id et execute(['id' => $id])
     public function getComments(int $id) : ?array
     {
-        $request= $this->database->prepare('SELECT episode_id, pseudo, comment, comment_created_the FROM comments WHERE episode_id=:id ORDER BY comment_created_the DESC');
-        $request->execute(['id' => $id]);
+        $request= $this->database->prepare('SELECT episode_id, pseudo, comment, comment_created_the FROM comments WHERE episode_id=:episode_id ORDER BY comment_created_the DESC');
+        $request->execute(['episode_id' => $id]);
         return $request->fetchAll();
     }
 
