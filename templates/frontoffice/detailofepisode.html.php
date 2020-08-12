@@ -25,22 +25,25 @@
     <?php endforeach; ?>
 </section>
 
-<!-- Chercher pourquoi la balise section ne s'affiche pas de la meme dimension que les deux balises sections au dessus ?? -->
 <section class="sectionPostcomment">
     <h4 class="sectionH4TitlePostComment"> Publier un commentaire</h4>
     <article>
-        <form class="postCommentForm" action="index.php?action=addcomment&id=<?=$data['episode']['id']?>\" method="post">
-            <p>
-                <label for="pseudo">Votre pseudo : </label> <input type="text" name="pseudo" id="pseudo" />
+        <form class="commentForm" action="index.php?action=addcomment&id=<?=$data['episode']['id']?>\" method="post">
+            <p class="commentFormComment">
+                <label for="comment">Commentaire <span>(obligatoire)</span> </label>
+                <textarea name="comment" id="comment" rows="10" cols="50" required></textarea>
             </p>
-            <p>
-                <label for="comment">
-                Votre Commentaire :
-                </label>
-                
-                <textarea name="comment" id="comment" rows="10" cols="50">
-                Commentaire
-                </textarea>
+            <p class="commentFormAuthor">
+                <label for="author">Nom <span>(obligatoire)</span> </label>
+                <input id="author" name="author" type="text" value="" size="30" maxlength="245" required>
+            </p>
+            <p class="commentFormEmail">
+                <label for="email">Courriel <span>(obligatoire)</span> </label>
+                <input id="email" name="email" type="email" value="" size="30" maxlength="100" required>
+            </p>
+            <p class="commentFormUrl">
+                <label for="url">Site web</label> 
+                <input id="url" name="url" type="url" value="" size="30" maxlength="200">
             </p>
             <p>
                 <input type="submit" class="inputTypeSubmitPublishComment" value="Publier" />
