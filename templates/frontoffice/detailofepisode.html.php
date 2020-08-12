@@ -8,30 +8,19 @@
     </article>
 </section>
 
-<section>
-    <article>
-        <h4>Commentaires</h4>
-        
-        <p>Pseudo : <?=$data['allcomment'][0]['pseudo']?></p>
-        <p>Commentaire : <?=$data['allcomment'][0]['comment']?></p>
-        <p>Publié le : <?=$data['allcomment'][0]['comment_created_the']?></p>
-    </article>
-    
-</section>
-
-<!-- Essai pour afficher tous les commentaires et pas seulement premier tableau [0] comme home.html.php ou listofepisodes.html.php avec boucle foreach php -->
+<!-- Reflexion nommage class de balise <p> , reflechir pour l'affichage de la date du commentaire : 2020-06-25 12:07:49 => 25 Juin 2020 à 12 h 07 min | 25 Juin 2020 - 12h 07 -->
+<!-- couleur fond : #025AA0  => couleur text : HEX: #ffffff ou HEX: #fefefe-->
 <section>
     <h4 class="sectionH4TitleComments">Commentaires</h4>
     <?php foreach($data['allcomment'] as $post): ?>
     <article>    
-        <p>Commentaire : <?=$post['comment']?></p>
-        <p>Pseudo : <?=$post['pseudo']?></p>
-        <p>Publié le : <?=$post['comment_created_the']?></p>
+        <p class="pPseudoComments"><?=$post['pseudo']?></p>
+        <p class="pDateComments"><?=$post['comment_created_the']?></p>
+        <p class="pComments"><?=$post['comment']?></p>
     </article>
 </section>
 <?php endforeach; ?>
 
-<!-- Formulaire pour ecrire et publier un commentaire -->
 <section>
     <article>
         <h4> Publier un commentaire : </h4>

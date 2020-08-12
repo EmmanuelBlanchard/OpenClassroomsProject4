@@ -133,6 +133,26 @@ p {
     font-family: 'merienda_oneregular', Arial, sans-serif, serif;
     text-align: end;
 }
+/* 12/08/2020 */
+.pPseudoComments {
+    /*
+    font-family: "Raleway", sans-serif;
+    font-weight: bold; */
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 11px;
+    margin-bottom: 11px;
+    font-weight: 600;
+    /*
+    line-height: 1.4285714;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;*/
+}
+.pDateComments {
+    color: #F5F5F5;
+}
+
 .linkToTheRestOfThePost {
     width: 8rem;
     text-align: center;

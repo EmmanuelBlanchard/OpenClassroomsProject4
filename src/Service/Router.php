@@ -54,7 +54,7 @@ class Router
         } elseif ($action === 'listofepisodes') {
             // route http://localhost:8000/?action=listofepisodes
             $this->postController->displayListOfEpisodes();
-        } elseif ($action === 'addcomment' && isset($this->get['id']) && ($this->get['id']) < 8) {
+        } elseif ($action === 'addcomment' && isset($this->get['id']) && ($this->get['id']) < 7) {
             // route http://localhost:8000/?action=addCommente&id=5
             if (!empty($this->post['pseudo']) && !empty($this->post['comment']) ) {
                 $this->postController->addComment((int)$this->get['id'], (string)$this->post['pseudo'], (string)$this->post['comment']);
