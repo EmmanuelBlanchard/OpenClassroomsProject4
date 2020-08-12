@@ -25,7 +25,7 @@
     <article>
         <h4> Publier un commentaire : </h4>
     
-        <form class="postCommentForm" action="index.php?action=addcomment&id=<?=$data['episode']['id']?>" method="post">
+        <form class="postCommentForm" action="index.php?action=addcomment&id=<?=$data['episode']['id']?>\" method="post">
             <div>
                 <label for="pseudo">Votre pseudo : </label>
                 <input type="text" id="pseudo" name="pseudo" />
