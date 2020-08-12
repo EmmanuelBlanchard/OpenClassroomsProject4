@@ -18,8 +18,9 @@
         <p class="pDateComments"><?=$post['comment_created_the']?></p>
         <p class="pComments"><?=$post['comment']?></p>
     </article>
+    <?php endforeach; ?>
 </section>
-<?php endforeach; ?>
+
 
 <section>
     <article>
