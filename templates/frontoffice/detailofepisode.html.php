@@ -14,7 +14,7 @@
  25 Juin 2020 - 12h 07 -->
 <!-- couleur background : #025AA0  => couleur text : HEX: #ffffff ou HEX: #fefefe-->
 <!-- Probleme selection css, si veux cibler .pComments, n'affiche que le premier pas la suite des <p> n'ont pas la class -->
-<section>
+<section class="sectionDisplayComments">
     <h4 class="sectionH4TitleComments">Commentaires</h4>
     <?php foreach($data['allcomment'] as $post): ?>
     <article>    

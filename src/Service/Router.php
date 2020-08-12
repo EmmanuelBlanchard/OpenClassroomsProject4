@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace  App\Service;
 
-use App\Service\Database;
 use App\Controller\Frontoffice\PostController;
-use App\Model\PostManager;
 use App\Model\CommentManager;
+use App\Model\PostManager;
+use App\Service\Database;
 use App\View\View;
 
 // Cette classe router est un exemple très basique. Cette façon de faire n'est pas optimale
@@ -29,7 +29,7 @@ class Router
         $this->view = new View();
 
         // Injection des dépendances
-        $this->postController = new PostController($this->postManager,$this->commentManager, $this->view);
+        $this->postController = new PostController($this->postManager, $this->commentManager, $this->view);
 
         // En attendant de mettre en place la classe App\Service\Http\Request
         $this->get = $_GET;
@@ -56,7 +56,7 @@ class Router
             $this->postController->displayListOfEpisodes();
         } elseif ($action === 'addcomment' && isset($this->get['id']) && ($this->get['id']) < 7) {
             // route http://localhost:8000/?action=addCommente&id=5
-            if (!empty($this->post['pseudo']) && !empty($this->post['comment']) ) {
+            if (!empty($this->post['pseudo']) && !empty($this->post['comment'])) {
                 $this->postController->addComment((int)$this->get['id'], (string)$this->post['pseudo'], (string)$this->post['comment']);
             } else {
                 echo "Erreur : tous les champs ne sont pas remplis !<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";

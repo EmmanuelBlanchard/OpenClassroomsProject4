@@ -40,7 +40,4 @@ class CommentManager
         $request->execute(['episode_id'=> $id, 'pseudo' => $pseudo, 'comment' => $comment]);
         return $request->fetchAll();
     }
-
 }
-
-

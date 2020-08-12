@@ -39,9 +39,8 @@ class PostManager
     public function showOne(int $id) : ?array
     {
         $request= $this->database->prepare('SELECT * FROM episodes WHERE id=:id');
-        $request->execute(array(['id' => $id]));
+        $request->execute([['id' => $id]]);
         return $request->fetch();
-
     }
 
     public function findId(int $id) : ?array
@@ -58,5 +57,4 @@ class PostManager
         $request->execute(['episode_id' => $id]);
         return $request->fetch();
     }
-
 }
