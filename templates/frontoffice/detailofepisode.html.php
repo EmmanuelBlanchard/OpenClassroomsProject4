@@ -13,6 +13,7 @@
  25 Juin 2020 à 12 h 07 min
  25 Juin 2020 - 12h 07 -->
 <!-- couleur background : #025AA0  => couleur text : HEX: #ffffff ou HEX: #fefefe-->
+<!-- Probleme selection css, si veux cibler .pComments, n'affiche que le premier pas la suite des <p> n'ont pas la class -->
 <section>
     <h4 class="sectionH4TitleComments">Commentaires</h4>
     <?php foreach($data['allcomment'] as $post): ?>
@@ -24,6 +25,7 @@
     <?php endforeach; ?>
 </section>
 
+<!-- Chercher pourquoi la balise section ne s'affiche pas de la meme dimension que les deux balises sections au dessus ?? -->
 <section>
     <h4> Publier un commentaire</h4>
     <article>

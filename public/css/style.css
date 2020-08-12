@@ -22,6 +22,14 @@
     font-weight: 400;
     font-display: swap;
 }
+@font-face {
+    font-family: 'ralewayregular';
+    src: url('../fonts/raleway-regular-webfont.woff2') format('woff2'),
+         url('../fonts/raleway-regular-webfont.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
 html {
     font-size: 100%;
     font-family: 'merienda_oneregular', Arial, sans-serif, serif;
@@ -138,6 +146,7 @@ p {
     /*
     font-family: "Raleway", sans-serif;
     font-weight: bold; */
+    font-family: 'ralewayregular', sans-serif;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -152,7 +161,9 @@ p {
 .pDateComments {
     color: #F5F5F5;
 }
-
+.pComments {
+    font-family: 'ralewayregular', sans-serif;
+}
 /* class pour la mise en forme de l'affichage de publication d'un commentaire */
 .postCommentForm {
     width: 80%;
