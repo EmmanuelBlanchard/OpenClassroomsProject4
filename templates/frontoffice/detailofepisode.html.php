@@ -1,4 +1,4 @@
-<section>
+<section class="sectionDisplayEpisode">
     <h2>Details des épisodes</h2>
 
     <article>
@@ -26,25 +26,25 @@
 </section>
 
 <!-- Chercher pourquoi la balise section ne s'affiche pas de la meme dimension que les deux balises sections au dessus ?? -->
-<section>
-    <h4> Publier un commentaire</h4>
+<section class="sectionPostcomment">
+    <h4 class="sectionH4TitlePostComment"> Publier un commentaire</h4>
     <article>
         <form class="postCommentForm" action="index.php?action=addcomment&id=<?=$data['episode']['id']?>\" method="post">
-            <div>
+            <p>
                 <label for="pseudo">Votre pseudo : </label>
                 <input type="text" id="pseudo" name="pseudo" />
-            </div>
+            </p>
             
-            <div>
+            <p>
                 <label for="comment">Votre commentaire : </label>
                 <textarea id="comment" name="comment" rows="10" cols="62">
                     Commentaire
                 </textarea>
-            </div>
+            </p>
             
-            <div>
+            <p>
                 <input type="submit" class="inputTypeSubmitPublishComment" value="Publier" />
-            </div>
+            </p>
         </form>
     </article>
 </section>
