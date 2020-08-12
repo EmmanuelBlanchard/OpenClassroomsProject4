@@ -25,14 +25,14 @@
     <article>
         <h4> Publier un commentaire : </h4>
     
-        <form action="index.php?action=addcomment&id=<?=$data['episode']['id']?>" method="post">
+        <form class="postCommentForm" action="index.php?action=addcomment&id=<?=$data['episode']['id']?>" method="post">
             <div>
-                <label for="pseudo">Votre pseudo : </label><br />
+                <label for="pseudo">Votre pseudo : </label>
                 <input type="text" id="pseudo" name="pseudo" />
             </div>
             
             <div>
-                <label for="comment">Votre commentaire : </label><br />
+                <label for="comment">Votre commentaire : </label>
                 <textarea id="comment" name="comment" rows="10" cols="62">
                     Commentaire
                 </textarea>

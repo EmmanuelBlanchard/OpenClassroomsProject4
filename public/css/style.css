@@ -153,6 +153,12 @@ p {
     color: #F5F5F5;
 }
 
+input {
+    /*
+    width: 100%;*/
+    width: 300px;
+
+}
 .linkToTheRestOfThePost {
     width: 8rem;
     text-align: center;
