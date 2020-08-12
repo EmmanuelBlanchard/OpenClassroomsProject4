@@ -31,17 +31,27 @@
     <article>
         <form class="postCommentForm" action="index.php?action=addcomment&id=<?=$data['episode']['id']?>\" method="post">
             <p>
+                <!--
                 <label for="pseudo">Votre pseudo : </label>
-                <input type="text" id="pseudo" name="pseudo" />
+                <input type="text" id="pseudo" name="pseudo" required /> --> 
+                <!-- le code ci dessus n'affiche pas l'input ?? -->
+                <label for="pseudo">Votre pseudo : </label> <input type="text" name="pseudo" id="pseudo" />
             </p>
-            
             <p>
+                <!--
                 <label for="comment">Votre commentaire : </label>
-                <textarea id="comment" name="comment" rows="10" cols="62">
+                <textarea id="comment" name="comment" rows="10" cols="62" required>
                     Commentaire
+                </textarea> -->
+                <!-- le code ci dessus n'affiche pas l'input ?? -->
+                <label for="comment">
+                Votre Commentaire :
+                </label>
+                
+                <textarea name="comment" id="comment" rows="10" cols="50">
+                Commentaire
                 </textarea>
             </p>
-            
             <p>
                 <input type="submit" class="inputTypeSubmitPublishComment" value="Publier" />
             </p>
