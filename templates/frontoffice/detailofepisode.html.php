@@ -8,8 +8,11 @@
     </article>
 </section>
 
-<!-- Reflexion nommage class de balise <p> , reflechir pour l'affichage de la date du commentaire : 2020-06-25 12:07:49 => 25 Juin 2020 à 12 h 07 min | 25 Juin 2020 - 12h 07 -->
-<!-- couleur fond : #025AA0  => couleur text : HEX: #ffffff ou HEX: #fefefe-->
+<!-- Reflexion nommage class de balise <p>,
+ reflechir pour l'affichage de la date du commentaire : 2020-06-25 12:07:49 => 
+ 25 Juin 2020 à 12 h 07 min
+ 25 Juin 2020 - 12h 07 -->
+<!-- couleur background : #025AA0  => couleur text : HEX: #ffffff ou HEX: #fefefe-->
 <section>
     <h4 class="sectionH4TitleComments">Commentaires</h4>
     <?php foreach($data['allcomment'] as $post): ?>
@@ -21,11 +24,9 @@
     <?php endforeach; ?>
 </section>
 
-
 <section>
+    <h4> Publier un commentaire</h4>
     <article>
-        <h4> Publier un commentaire : </h4>
-    
         <form class="postCommentForm" action="index.php?action=addcomment&id=<?=$data['episode']['id']?>\" method="post">
             <div>
                 <label for="pseudo">Votre pseudo : </label>
