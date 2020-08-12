@@ -142,27 +142,21 @@ p {
     text-align: end;
 }
 /* 12/08/2020 ajout de class pour la mise en forme de l'affichage des commentaires */
+.sectionDisplayComments p {
+    font-family: 'ralewayregular','open_sansregular', sans-serif;
+}
 .pPseudoComments {
-    /*
-    font-family: "Raleway", sans-serif;
-    font-weight: bold; */
-    font-family: 'ralewayregular', sans-serif;
-    font-size: 14px;
+    font-family: 'ralewayregular','open_sansregular', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 11px;
     margin-bottom: 11px;
     font-weight: 600;
     /*
-    line-height: 1.4285714;
-    font-family: "Raleway", sans-serif;
-    font-weight: bold;*/
+    line-height: 1.4285714;*/
 }
 .pDateComments {
     color: #F5F5F5;
-}
-.pComments {
-    font-family: 'ralewayregular', sans-serif;
 }
 /* class pour la mise en forme de l'affichage de publication d'un commentaire */
 .postCommentForm {
