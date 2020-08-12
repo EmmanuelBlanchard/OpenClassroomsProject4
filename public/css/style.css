@@ -133,7 +133,7 @@ p {
     font-family: 'merienda_oneregular', Arial, sans-serif, serif;
     text-align: end;
 }
-/* 12/08/2020 */
+/* 12/08/2020 ajout de class pour la mise en forme de l'affichage des commentaires */
 .pPseudoComments {
     /*
     font-family: "Raleway", sans-serif;
@@ -153,12 +153,22 @@ p {
     color: #F5F5F5;
 }
 
-input {
-    /*
-    width: 100%;*/
-    width: 300px;
+/* class pour la mise en forme de l'affichage de publication d'un commentaire */
+.postCommentForm {
+    width: 80%;
 
 }
+.postCommentForm input[type=text] {
+    width: 300px;
+    max-width: 98%;
+    margin-bottom: 13px;
+    padding: 2px;
+    border: 1px solid #bbb;
+    color: #4e4e4e;
+    background-color: #fff;
+ }
+
+
 .linkToTheRestOfThePost {
     width: 8rem;
     text-align: center;
