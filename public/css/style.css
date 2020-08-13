@@ -176,8 +176,7 @@ span {
 textarea {
     width: 100%;
 }
-/* Reflexion soit => color: #023E6E;  puis au focus color: #000000; 
-    ou soit => color: #000000; puis au focus color: color: #023E6E;   */
+/* Reflexion soit => color: #023E6E;  puis au focus color: #000000; ou inversement */
 input[type="email"], input[type="text"], input[type="url"], textarea {
     transition: border 3s ease, background-color 3s ease, color 3s ease;
     border: inset #e2e2e2;
@@ -199,7 +198,7 @@ input[name="author"] {
     border: dashed #023E6E;
 } ou pas de hover */
 
-/* Couleur au focus du fond #e2e2e2 , selection de la couleur du texte #023E6E Ratio 8.45 */
+/* Au focus, couleur du fond #e2e2e2 , selection de la couleur du texte #023E6E Ratio 8.45 */
 /* Reflexion , soit =>
 transition: border 3s ease;
 transition: color 3s ease;
@@ -209,10 +208,15 @@ color: #000000;
 background-color: #e2e2e2;
 */
 input:focus, textarea:focus {
-    transition: border 3s ease, background-color 3s ease, color 3s ease;
+    transition: border 2s ease, background-color 2s ease, color 2s ease;
     border: dashed #023E6E;
-    background-color: #e2e2e2;
-    color: #023E6E;
+    background-color: #e2e2e2; 
+    /*color: #023E6E;*/
+    /* essai couleurs
+    , #013E70 8.42, 
+    , #1C4884 => 7.02
+    , #033984 => 8.4 */
+    color: #1C4884;
 }
 .linkToTheRestOfThePost, .inputTypeSubmitPublishComment {
     width: 8rem;
@@ -221,7 +225,7 @@ input:focus, textarea:focus {
     transition: border 1.5s ease, background-color 2.5s ease, color 1.5s ease;
     background-color: #FFF;
     color: #013E70;
-    border: outset #013E70;
+    border: inset #013E70;
     border-radius: 2em;
     padding: 10px 10px;
     font-weight: 600;
@@ -232,27 +236,18 @@ input:focus, textarea:focus {
 }
 .linkToTheRestOfThePost:hover, .inputTypeSubmitPublishComment:hover {
     transition: border 1.5s ease, background-color 1.5s ease, color 1.0s ease;
-    border: inset #e2e2e2;
+    border: outset #e2e2e2;
     background-color: #025AA0;
     color: #e2e2e2;
-    /*
-    border-color: #F5F5F5;
-    background-color: #025AA0;
-    color: #F5F5F5;
-    */
-    /*essai autre version */
-    /*
-    border-color: #e2e2e2;
-    background-color: #000000;
-    color: #e2e2e2;
-    */
-    /*essai autre version */
-    /*
-    border-color: #000000;
-    background-color: #e2e2e2;
-    color: #000000;
-    */
 }
+.linkToTheRestOfThePost:active {
+    color: #000;
+     background: #444;
+     background: linear-gradient( #555, #2C2C2C);
+     box-shadow: 1px 1px 10px black inset, 
+                 0 1px 0 rgba( 255, 255, 255, 0.4);
+}
+
 footer {
     display: flex;
     flex-direction: column;
