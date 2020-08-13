@@ -169,26 +169,23 @@ form p {
 label {
     display: block;
 }
+/* Couleur du background : #025AA0 */
 span {
-    /* Couleur du background : #025AA0 */
     color: #e2e2e2; /* Ratio : 8.45 */
 }
 textarea {
     width: 100%;
 }
-input, textarea {
+input[type="email"], input[type="text"], input[type="url"], textarea {
+    transition: border 3s ease;
+    transition: color 3s ease;
+    transition: background-color 3s ease;
     font-weight: 600;
     color: #023E6E;
-    transition: border 2s ease;
-    transition: border-color 1s ease;
-    transition: background-color 1s ease;
-    
-}
-input[type="email"], input[type="text"], input[type="url"], textarea {
-    /*border-color: #e2e2e2;*/
-    border-color: #023E6E;
-    border-radius: 3px;
-    padding: 10px; /* avant 2px*/
+    border: inset #e2e2e2;
+    background-color: #FFF;
+    border-radius: 10px;    /* avant 3px */
+    padding: 10px;          /* avant 2px*/
 }
 input[name="author"] {
     text-transform: uppercase;
@@ -196,33 +193,29 @@ input[name="author"] {
 .commentForm input[type="text"],.commentForm input[type="email"], .commentForm input[type="url"] {
     max-width: 98%;
 }
-/* Trouver la couleur adaptée pour le hover et focus */
-/* Trouver comment enlever le decallage de bordure */
-input:hover, textarea:hover {
+.commentForm input[type="text"]:hover,.commentForm input[type="email"]:hover, .commentForm input[type="url"]:hover, textarea:hover {
     transition: border 2s ease;
-    /*border: solid #023E6E;*/
-    border: solid #e2e2e2;
+    border: dashed #023E6E;
 }
 /* Couleur au focus du fond #e2e2e2 , selection de la couleur du texte #023E6E Ratio 8.45 */
 input:focus, textarea:focus {
     /*border: 2px solid #e2e2e2;*/
     /*border: dashed red;*/
     /*border: dashed #023E6E;*/
+    /*outline: 2px solid #023E6E;*/
+    transition: border 3s ease;
+    transition: color 3s ease;
+    transition: background-color 3s ease;
     border: solid #000000;
     color: #000000;
     background-color: #e2e2e2;
-    /*outline: 2px solid #023E6E;*/
-    transition: border 2s ease;
-    transition: border-color 2s ease;
-    transition: background-color 2s ease;
 }
 .linkToTheRestOfThePost, .inputTypeSubmitPublishComment {
     width: 8rem;
     text-align: center;
     background-color: #FFF;
-    /*color: #025AA0;*/
     color: #013E70;
-    border-color:#013E70;
+    border: outset #013E70;
     border-radius: 2em;
     padding: 10px 10px;
     font-weight: 600;
@@ -233,12 +226,12 @@ input:focus, textarea:focus {
 }
 /* Essai bouton Publier, effet transition */
 .inputTypeSubmitPublishComment {
-    transition: border-color 1.5s ease;
+    transition: border 1.5s ease;
     transition: background-color 2.5s ease;
     transition: color 1.5s ease;
 }
 .inputTypeSubmitPublishComment:hover {
-    transition: border-color 1.5s ease;
+    transition: border 1.5s ease;
     transition: background-color 1.5s ease;
     transition: color 1.0s ease;
     /*
@@ -258,9 +251,9 @@ input:focus, textarea:focus {
     background-color: #e2e2e2;
     color: #000000;
     */
-    border-color: #e2e2e2;
-    background-color: #013E70;
+    border: inset #e2e2e2;
     color: #e2e2e2;
+    background-color: #025AA0;
 }
 footer {
     display: flex;
