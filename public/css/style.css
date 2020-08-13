@@ -156,6 +156,9 @@ p {
     color: #F5F5F5;
 }
 /* Mise en forme de l'affichage de publication d'un commentaire */
+form p, form input, form textarea, form .inputTypeSubmitPublishComment {
+    font-family: 'ralewayregular','open_sansregular', sans-serif;
+}
 form p {
     margin-top: 3%;
     margin-bottom: 3%;
@@ -164,7 +167,15 @@ label {
     display: block;
 }
 span {
-    color: #F5F5F5;
+    /* Couleur du background : #025AA0 */
+    /* color: #F5F5F5; Ratio : 6.48 */
+    /* color: #F0F0F0; Ratio: 6.2 */
+    /* color: #EEEEEE; Ratio: 6.09*/
+    /* color: #EBEBEB; Ratio: 5.93 */
+    /* color: #F4DBDB; Ratio 5.8 */
+    color: #E6E6E6; /* Ratio : 5.66 */
+    /* color: #DEDEDE; Ratio : 5.25 */
+    /* color: #DADADA; Ratio : 5.05 */
 }
 .commentForm input[type="text"],.commentForm input[type="email"], .commentForm input[type="url"] {
     max-width: 98%;
@@ -184,15 +195,26 @@ textarea {
 input {
     box-sizing: border-box;
 }
-/* Trouver, chercher la couleur adaptée pour le hover et focus quand with inferieur a 1000 px et superieur a 1000px */
-/* Voir comment eviter decallage quand ajoute px a la bordure */
+input, textarea {
+    width: 95%;
+    /* Ajouter une transition */
+    transition: width 2s ease;
+    transition: border-color 2s ease;
+    transition: background-color 2s ease;
+}
+/* Trouver la couleur adaptée pour le hover et focus quand with inferieur a 1000 px et superieur a 1000px */
+/* Voir comment eviter le decallage quand on ajoute px a la bordure */
 input:hover, textarea:hover {
-    border: 1px double palegreen; /*
-    border-color: #db0a5b;*/
+    border-color: #F5F5F5;
 }
 input:focus, textarea:focus {
-    border: 1px double #3b0053; /*
-    border-color: #db0a5b;*/
+    border: 2px solid #e2e2e2;
+    /* Ajouter une transition */
+    background-color: #e2e2e2;
+    transition: width 2s ease;
+    transition: border-color 2s ease;
+    transition: background-color 2s ease;
+    width: 100%;
 }
 
 .linkToTheRestOfThePost, .inputTypeSubmitPublishComment {
@@ -208,6 +230,10 @@ input:focus, textarea:focus {
     margin-left: 4.5%;
     margin-bottom: 4%;
     align-self: flex-start;
+}
+
+.inputTypeSubmitPublishComment:hover {
+    border-color: #F5F5F5;
 }
 
 footer {
