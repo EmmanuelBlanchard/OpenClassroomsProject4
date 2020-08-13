@@ -176,14 +176,14 @@ span {
 textarea {
     width: 100%;
 }
+/* Reflexion soit => color: #023E6E;  puis au focus color: #000000; 
+    ou soit => color: #000000; puis au focus color: color: #023E6E;   */
 input[type="email"], input[type="text"], input[type="url"], textarea {
-    transition: border 3s ease;
-    transition: color 3s ease;
-    transition: background-color 3s ease;
-    font-weight: 600;
-    color: #023E6E;
+    transition: border 3s ease, background-color 3s ease, color 3s ease;
     border: inset #e2e2e2;
     background-color: #FFF;
+    color: #000000;
+    font-weight: 600;    
     border-radius: 10px;    /* avant 3px */
     padding: 10px;          /* avant 2px*/
 }
@@ -193,26 +193,32 @@ input[name="author"] {
 .commentForm input[type="text"],.commentForm input[type="email"], .commentForm input[type="url"] {
     max-width: 98%;
 }
+/* Reflexion, soit ceci =>
 .commentForm input[type="text"]:hover,.commentForm input[type="email"]:hover, .commentForm input[type="url"]:hover, textarea:hover {
     transition: border 2s ease;
     border: dashed #023E6E;
-}
+} ou pas de hover */
+
 /* Couleur au focus du fond #e2e2e2 , selection de la couleur du texte #023E6E Ratio 8.45 */
+/* Reflexion , soit =>
+transition: border 3s ease;
+transition: color 3s ease;
+transition: background-color 3s ease;
+border: solid #000000;
+color: #000000;
+background-color: #e2e2e2;
+*/
 input:focus, textarea:focus {
-    /*border: 2px solid #e2e2e2;*/
-    /*border: dashed red;*/
-    /*border: dashed #023E6E;*/
-    /*outline: 2px solid #023E6E;*/
-    transition: border 3s ease;
-    transition: color 3s ease;
-    transition: background-color 3s ease;
-    border: solid #000000;
-    color: #000000;
+    transition: border 3s ease, background-color 3s ease, color 3s ease;
+    border: dashed #023E6E;
     background-color: #e2e2e2;
+    color: #023E6E;
 }
 .linkToTheRestOfThePost, .inputTypeSubmitPublishComment {
     width: 8rem;
     text-align: center;
+    /* Essai, effet transition */
+    transition: border 1.5s ease, background-color 2.5s ease, color 1.5s ease;
     background-color: #FFF;
     color: #013E70;
     border: outset #013E70;
@@ -224,16 +230,11 @@ input:focus, textarea:focus {
     margin-bottom: 4%;
     align-self: flex-start;
 }
-/* Essai bouton Publier, effet transition */
-.inputTypeSubmitPublishComment {
-    transition: border 1.5s ease;
-    transition: background-color 2.5s ease;
-    transition: color 1.5s ease;
-}
-.inputTypeSubmitPublishComment:hover {
-    transition: border 1.5s ease;
-    transition: background-color 1.5s ease;
-    transition: color 1.0s ease;
+.linkToTheRestOfThePost:hover, .inputTypeSubmitPublishComment:hover {
+    transition: border 1.5s ease, background-color 1.5s ease, color 1.0s ease;
+    border: inset #e2e2e2;
+    background-color: #025AA0;
+    color: #e2e2e2;
     /*
     border-color: #F5F5F5;
     background-color: #025AA0;
@@ -251,9 +252,6 @@ input:focus, textarea:focus {
     background-color: #e2e2e2;
     color: #000000;
     */
-    border: inset #e2e2e2;
-    color: #e2e2e2;
-    background-color: #025AA0;
 }
 footer {
     display: flex;
