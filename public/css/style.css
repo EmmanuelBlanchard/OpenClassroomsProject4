@@ -216,7 +216,6 @@ input:focus, textarea:focus {
     transition: background-color 2s ease;
     width: 100%;
 }
-
 .linkToTheRestOfThePost, .inputTypeSubmitPublishComment {
     width: 8rem;
     text-align: center;
@@ -231,11 +230,20 @@ input:focus, textarea:focus {
     margin-bottom: 4%;
     align-self: flex-start;
 }
-
-.inputTypeSubmitPublishComment:hover {
-    border-color: #F5F5F5;
+/* Essai bouton Publier, effet transition , ne pas oublier ajouter deux versions : version inferieure et superieure à 1000px */
+.inputTypeSubmitPublishComment {
+    transition: border-color 1.5s ease;
+    transition: background-color 1.5s ease;
+    transition: color 1.0s ease;
 }
-
+.inputTypeSubmitPublishComment:hover {
+    transition: border-color 1.5s ease;
+    transition: background-color 1.5s ease;
+    transition: color 1.0s ease;
+    border-color: #F5F5F5;
+    background-color: #025AA0;
+    color: #F5F5F5;
+}
 footer {
     display: flex;
     flex-direction: column;
