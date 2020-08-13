@@ -202,7 +202,7 @@ input, textarea {
     transition: border-color 2s ease;
     transition: background-color 2s ease;
 }
-/* Trouver la couleur adaptée pour le hover et focus quand with inferieur a 1000 px et superieur a 1000px */
+/* Trouver la couleur adaptée pour le hover et focus */
 /* Voir comment eviter le decallage quand on ajoute px a la bordure */
 input:hover, textarea:hover {
     border-color: #F5F5F5;
@@ -230,7 +230,7 @@ input:focus, textarea:focus {
     margin-bottom: 4%;
     align-self: flex-start;
 }
-/* Essai bouton Publier, effet transition , ne pas oublier ajouter deux versions : version inferieure et superieure à 1000px */
+/* Essai bouton Publier, effet transition */
 .inputTypeSubmitPublishComment {
     transition: border-color 1.5s ease;
     transition: background-color 1.5s ease;
