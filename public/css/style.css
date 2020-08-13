@@ -169,6 +169,7 @@ form p {
 label {
     display: block;
 }
+/* Couleur de fond #025AA0 , => color: #e2e2e2; Ratio : 5.45, #FFFFF7; Ratio : 7.03 */
 span {
     color: #e2e2e2;
 }
@@ -180,9 +181,9 @@ input[type="email"], input[type="text"], input[type="url"], textarea {
     border: inset #e2e2e2;
     background-color: #FFF;
     color: #000000;
-    font-weight: 600;    
-    border-radius: 10px;    /* avant 3px */
-    padding: 10px;          /* avant 2px*/
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 10px;
 }
 input[name="author"] {
     text-transform: uppercase;
@@ -193,7 +194,7 @@ input[name="author"] {
 input:focus, textarea:focus {
     transition: border 2s ease, background-color 2s ease, color 2s ease;
     border: dashed #023E6E;
-    background-color: #e2e2e2; 
+    background-color: #e2e2e2;
     color: #023E6E;
 }
 .linkToTheRestOfThePost, .inputTypeSubmitPublishComment {
@@ -214,13 +215,12 @@ input:focus, textarea:focus {
 .linkToTheRestOfThePost:hover, .inputTypeSubmitPublishComment:hover {
     transition: border 1.5s ease, background-color 1.5s ease, color 1.0s ease;
     border: outset #e2e2e2;
-    color: #e2e2e2;
+    color: #FFF;
     /*background-color: #025AA0;*/
     background: linear-gradient( #0267a0, #025aa0);
     box-shadow: 1px 1px 10px #FFFFFF inset,
                 0 1px 0 rgba( 255, 255, 255, 0.4);
 }
-
 footer {
     display: flex;
     flex-direction: column;
