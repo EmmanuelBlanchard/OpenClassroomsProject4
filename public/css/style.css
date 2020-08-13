@@ -141,7 +141,7 @@ p {
     font-family: 'merienda_oneregular', Arial, sans-serif, serif;
     text-align: end;
 }
-/* 12/08/2020 ajout de class pour la mise en forme de l'affichage des commentaires */
+/* 12/08/2020 Mise en forme de l'affichage des commentaires */
 .sectionDisplayComments p {
     font-family: 'ralewayregular','open_sansregular', sans-serif;
 }
@@ -156,6 +156,9 @@ p {
     color: #F5F5F5;
 }
 /* Mise en forme de l'affichage de publication d'un commentaire */
+form {
+    box-sizing: border-box;
+}
 form p, form input, form textarea, form .inputTypeSubmitPublishComment {
     font-family: 'ralewayregular','open_sansregular', sans-serif;
 }
@@ -168,59 +171,57 @@ label {
 }
 span {
     /* Couleur du background : #025AA0 */
-    /* color: #F5F5F5; Ratio : 6.48 */
-    /* color: #F0F0F0; Ratio: 6.2 */
-    /* color: #EEEEEE; Ratio: 6.09*/
-    /* color: #EBEBEB; Ratio: 5.93 */
-    /* color: #F4DBDB; Ratio 5.8 */
-    color: #E6E6E6; /* Ratio : 5.66 */
-    /* color: #DEDEDE; Ratio : 5.25 */
-    /* color: #DADADA; Ratio : 5.05 */
+    color: #e2e2e2; /* Ratio : 8.45 */
 }
-.commentForm input[type="text"],.commentForm input[type="email"], .commentForm input[type="url"] {
-    max-width: 98%;
+textarea {
+    width: 100%;
+}
+input, textarea {
+    font-weight: 600;
+    color: #023E6E;
+    transition: border 2s ease;
+    transition: border-color 1s ease;
+    transition: background-color 1s ease;
+    
 }
 input[type="email"], input[type="text"], input[type="url"], textarea {
-    color: #025AA0;
-    border: 1px solid #013E70;
+    /*border-color: #e2e2e2;*/
+    border-color: #023E6E;
     border-radius: 3px;
     padding: 10px; /* avant 2px*/
 }
 input[name="author"] {
     text-transform: uppercase;
 }
-textarea {
-    width: 100%;
-}
-input {
-    box-sizing: border-box;
-}
-input, textarea {
-    width: 95%;
-    /* Ajouter une transition */
-    transition: width 2s ease;
-    transition: border-color 2s ease;
-    transition: background-color 2s ease;
+.commentForm input[type="text"],.commentForm input[type="email"], .commentForm input[type="url"] {
+    max-width: 98%;
 }
 /* Trouver la couleur adaptée pour le hover et focus */
-/* Voir comment eviter le decallage quand on ajoute px a la bordure */
+/* Trouver comment enlever le decallage de bordure */
 input:hover, textarea:hover {
-    border-color: #F5F5F5;
+    transition: border 2s ease;
+    /*border: solid #023E6E;*/
+    border: solid #e2e2e2;
 }
+/* Couleur au focus du fond #e2e2e2 , selection de la couleur du texte #023E6E Ratio 8.45 */
 input:focus, textarea:focus {
-    border: 2px solid #e2e2e2;
-    /* Ajouter une transition */
+    /*border: 2px solid #e2e2e2;*/
+    /*border: dashed red;*/
+    /*border: dashed #023E6E;*/
+    border: solid #000000;
+    color: #000000;
     background-color: #e2e2e2;
-    transition: width 2s ease;
+    /*outline: 2px solid #023E6E;*/
+    transition: border 2s ease;
     transition: border-color 2s ease;
     transition: background-color 2s ease;
-    width: 100%;
 }
 .linkToTheRestOfThePost, .inputTypeSubmitPublishComment {
     width: 8rem;
     text-align: center;
     background-color: #FFF;
-    color: #025AA0;
+    /*color: #025AA0;*/
+    color: #013E70;
     border-color:#013E70;
     border-radius: 2em;
     padding: 10px 10px;
@@ -233,16 +234,33 @@ input:focus, textarea:focus {
 /* Essai bouton Publier, effet transition */
 .inputTypeSubmitPublishComment {
     transition: border-color 1.5s ease;
-    transition: background-color 1.5s ease;
-    transition: color 1.0s ease;
+    transition: background-color 2.5s ease;
+    transition: color 1.5s ease;
 }
 .inputTypeSubmitPublishComment:hover {
     transition: border-color 1.5s ease;
     transition: background-color 1.5s ease;
     transition: color 1.0s ease;
+    /*
     border-color: #F5F5F5;
     background-color: #025AA0;
     color: #F5F5F5;
+    */
+    /*essai autre version */
+    /*
+    border-color: #e2e2e2;
+    background-color: #000000;
+    color: #e2e2e2;
+    */
+    /*essai autre version */
+    /*
+    border-color: #000000;
+    background-color: #e2e2e2;
+    color: #000000;
+    */
+    border-color: #e2e2e2;
+    background-color: #013E70;
+    color: #e2e2e2;
 }
 footer {
     display: flex;
