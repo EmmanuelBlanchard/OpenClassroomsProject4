@@ -145,7 +145,7 @@ p {
 .sectionDisplayComments p {
     font-family: 'ralewayregular','open_sansregular', sans-serif;
 }
-.pPseudoComments {
+.pAuthorComments {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 11px;
@@ -197,10 +197,11 @@ input:focus, textarea:focus {
     background-color: #e2e2e2;
     color: #023E6E;
 }
-.linkToTheRestOfThePost, .inputTypeSubmitPublishComment {
+.linkToTheRestOfThePost, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .linkToTheReplyOfThePostComment {
     width: 8rem;
-    text-align: center;
-    transition: border 1.5s ease, background-color 2.5s ease, color 1.5s ease;
+    text-align: center;/*
+    transition: border 1.5s ease, background-color 2.5s ease, color 1.5s ease;*/
+    transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
     background-color: #FFF;
     color: #013E70;
     border: inset #013E70;
@@ -212,14 +213,23 @@ input:focus, textarea:focus {
     margin-bottom: 4%;
     align-self: flex-start;
 }
-.linkToTheRestOfThePost:hover, .inputTypeSubmitPublishComment:hover {
-    transition: border 1.5s ease, background-color 1.5s ease, color 1.0s ease;
+.inputTypeSubmitPublishComment {
+    cursor: pointer;
+}
+/* Essais boutons Signaler, Répondre cote a cote et a droite du commentaire */
+.linkToTheReportOfThePostComment, .linkToTheReplyOfThePostComment {
+    align-self: flex-end;
+}
+.linkToTheRestOfThePost:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover, .linkToTheReplyOfThePostComment:hover {
+    /* transition: border 1.5s ease, background-color 1.5s ease, color 1.0s ease;*/
+    transition: border 2.5s ease, background-color 2.5s ease, color 2.0s ease;
     border: outset #e2e2e2;
     color: #FFF;
     /*background-color: #025AA0;*/
     background: linear-gradient( #0267a0, #025aa0);
+    /* Garder ou enlever le box shadow ? Accessibilité
     box-shadow: 1px 1px 10px #FFFFFF inset,
-                0 1px 0 rgba( 255, 255, 255, 0.4);
+                0 1px 0 rgba( 255, 255, 255, 0.8);*/
 }
 footer {
     display: flex;
@@ -265,7 +275,7 @@ footer p {
         left: 23%;
     }
 }
-/*************  regler problemes regles css media queries *******************/
+/*************  Regler problemes regles css media queries *******************/
 /* Mobile menu Microsoft Lumia 550 - 360px*640px and DPR=2 
 @media all and (min-width: 360px) and (min-resolution: 2dppx) {
     header h1 {
@@ -274,7 +284,7 @@ footer p {
     }
 }
 */
-/*************  regler problemes regles css media queries *******************/
+/*************  Regler problemes regles css media queries *******************/
 /* Mobil menu Nexus 5 - 360px*640px and DPR=? */
 @media all and (min-width: 360px) and (min-resolution: 2dppx) {
     header h1 {

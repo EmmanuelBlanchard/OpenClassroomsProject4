@@ -8,19 +8,19 @@
     </article>
 </section>
 
-<!-- Reflexion nommage class de balise <p>,
- reflechir pour l'affichage de la date du commentaire : 2020-06-25 12:07:49 => 
- 25 Juin 2020 à 12 h 07 min
- 25 Juin 2020 - 12h 07 -->
-<!-- couleur background : #025AA0  => couleur text : HEX: #ffffff ou HEX: #fefefe-->
+<!-- Reflexion nommage class de balise <p> -->
+<!-- Reflechir pour l'affichage de la date du commentaire : 2020-06-25 12:07:49 => 25 Juin 2020 à 12 h 07 min | 25 Juin 2020 - 12h 07 -->
 <!-- Probleme selection css, si veux cibler .pComments, n'affiche que le premier pas la suite des <p> n'ont pas la class -->
 <section class="sectionDisplayComments">
     <h4 class="sectionH4TitleComments">Commentaires</h4>
     <?php foreach($data['allcomment'] as $post): ?>
-    <article>    
-        <p class="pPseudoComments"><?=$post['pseudo']?></p>
+    <article>
+        <p class="pAuthorComments"><?=$post['author']?></p>
         <p class="pDateComments"><?=$post['comment_created_the']?></p>
         <p class="pComments"><?=$post['comment']?></p>
+        <!-- Ajout boutons, liens : Signaler Repondre -->
+        <a href="index.php?action=reportComment&id=<?=$post['episode_id']?>\" class="linkToTheReportOfThePostComment">Signaler</a>
+        <a href="index.php?action=replyComment&id=<?=$post['episode_id']?>\" class="linkToTheReplyOfThePostComment">Répondre</a>
     </article>
     <?php endforeach; ?>
 </section>
@@ -28,7 +28,7 @@
 <section class="sectionPostcomment">
     <h4 class="sectionH4TitlePostComment"> Publier un commentaire</h4>
     <article>
-        <form class="commentForm" action="index.php?action=addcomment&id=<?=$data['episode']['id']?>\" method="post">
+        <form class="commentForm" action="index.php?action=addComment&id=<?=$data['episode']['id']?>\" method="post">
             <p class="commentFormComment">
                 <label for="comment">Commentaire <span>(obligatoire)</span> </label>
                 <textarea name="comment" id="comment" rows="10" cols="50" required></textarea>
