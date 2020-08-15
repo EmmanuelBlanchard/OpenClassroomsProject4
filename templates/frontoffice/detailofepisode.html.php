@@ -4,7 +4,7 @@
     <article>
         <h3>Épisode <?=$data['episode']['title']?></h3>
         <p><?=$data['episode']['content']?></p>
-        <p class="pCreatedAt">Écrit le <?=$data['episode']['episode_created_the']?></p>
+        <p class="pCreatedAt">Publié <?=$data['episode']['date_episode_created_the']?></p>
     </article>
 </section>
 
@@ -16,9 +16,10 @@
     <?php foreach($data['allcomment'] as $post): ?>
     <article>
         <p class="pAuthorComments"><?=$post['author']?></p>
-        <p class="pDateComments"><?=$post['comment_created_the']?></p>
+        
+        <p class="pDateComments"><?=$post['date_comment_created_the']?> </p>
+        
         <p class="pComments"><?=$post['comment']?></p>
-        <!-- Ajout boutons, liens : Signaler Repondre -->
         <a href="index.php?action=reportComment&id=<?=$post['episode_id']?>\" class="linkToTheReportOfThePostComment">Signaler</a>
         <a href="index.php?action=replyComment&id=<?=$post['episode_id']?>\" class="linkToTheReplyOfThePostComment">Répondre</a>
     </article>

@@ -134,8 +134,11 @@ p {
     margin-bottom: 10px;
     font-family: 'open_sansregular';
 }
-.pIntroductionToTheEpisode, .pComment {
+.pTitleIntroductionToTheEpisode, .pComment {
     font-weight: 600;
+}
+.pIntroductionToTheEpisode {
+    font-family: 'ralewayregular','open_sansregular', sans-serif;
 }
 .pCreatedAt {
     font-family: 'merienda_oneregular', Arial, sans-serif, serif;
@@ -197,7 +200,7 @@ input:focus, textarea:focus {
     background-color: #e2e2e2;
     color: #023E6E;
 }
-.linkToTheRestOfThePost, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .linkToTheReplyOfThePostComment {
+.linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .linkToTheReplyOfThePostComment {
     width: 8rem;
     text-align: center;/*
     transition: border 1.5s ease, background-color 2.5s ease, color 1.5s ease;*/
@@ -213,6 +216,9 @@ input:focus, textarea:focus {
     margin-bottom: 4%;
     align-self: flex-start;
 }
+.linkReadTheEntireEpisode {
+    width: 12rem;
+}
 .inputTypeSubmitPublishComment {
     cursor: pointer;
 }
@@ -220,7 +226,7 @@ input:focus, textarea:focus {
 .linkToTheReportOfThePostComment, .linkToTheReplyOfThePostComment {
     align-self: flex-end;
 }
-.linkToTheRestOfThePost:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover, .linkToTheReplyOfThePostComment:hover {
+.linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover, .linkToTheReplyOfThePostComment:hover {
     /* transition: border 1.5s ease, background-color 1.5s ease, color 1.0s ease;*/
     transition: border 2.5s ease, background-color 2.5s ease, color 2.0s ease;
     border: outset #e2e2e2;

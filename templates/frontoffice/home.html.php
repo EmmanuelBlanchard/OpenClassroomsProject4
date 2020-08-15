@@ -9,8 +9,8 @@
 
         <p><?=$post['introduction']?></p>
 
-        <p class="pCreatedAt">Écrit le  <?=$post['episode_created_the']?></p>
-
+        <p class="pCreatedAt">Publié <?=$post['date_episode_created_the']?> </p>
+        
         <a href="index.php?action=detailofepisode&id=<?=$post['id']?>\" class="linkToTheRestOfThePost">Lire la suite</a>
     </article>
     
