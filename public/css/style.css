@@ -160,6 +160,19 @@ p {
     color: #F5F5F5;
 }
 /* Mise en forme de l'affichage de publication d'un commentaire */
+
+/* Essai si suppresion de la balise article */
+.sectionPostcomment {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    color: whitesmoke;
+    border: 3px solid rgb(242, 243, 248);
+    border-radius: 20px;
+    background-color: #025AA0;
+}
+
+
 form {
     box-sizing: border-box;
 }
@@ -180,7 +193,7 @@ span {
 textarea {
     width: 100%;
 }
-input[type="email"], input[type="text"], input[type="url"], textarea {
+input[type="text"], textarea {
     transition: border 3s ease, background-color 3s ease, color 3s ease;
     border: inset #e2e2e2;
     background-color: #FFF;
@@ -192,7 +205,7 @@ input[type="email"], input[type="text"], input[type="url"], textarea {
 input[name="author"] {
     text-transform: uppercase;
 }
-.commentForm input[type="text"],.commentForm input[type="email"], .commentForm input[type="url"] {
+.commentForm input[type="text"] {
     max-width: 98%;
 }
 input:focus, textarea:focus {
@@ -201,14 +214,13 @@ input:focus, textarea:focus {
     background-color: #e2e2e2;
     color: #023E6E;
 }
-.buttonsReportReply {
+.buttonReport {
     display:inline-flex;
     width: 100%;
 }
-.linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .linkToTheReplyOfThePostComment {
+.linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment {
     width: 8rem;
-    text-align: center;/*
-    transition: border 1.5s ease, background-color 2.5s ease, color 1.5s ease;*/
+    text-align: center;
     transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
     background-color: #FFF;
     color: #013E70;
@@ -229,18 +241,13 @@ input:focus, textarea:focus {
 }
 /* Voir a divers pixels et adapter valeurs */
 .linkToTheReportOfThePostComment {
-    margin-left: 45.5%;
+    margin-left: 72.5%;
 }
-.linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover, .linkToTheReplyOfThePostComment:hover {
-    /* transition: border 1.5s ease, background-color 1.5s ease, color 1.0s ease;*/
+.linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover {
     transition: border 2.5s ease, background-color 2.5s ease, color 2.0s ease;
     border: outset #e2e2e2;
     color: #FFF;
-    /*background-color: #025AA0;*/
     background: linear-gradient( #0267a0, #025aa0);
-    /* Garder ou enlever le box shadow ? Accessibilité
-    box-shadow: 1px 1px 10px #FFFFFF inset,
-                0 1px 0 rgba( 255, 255, 255, 0.8);*/
 }
 footer {
     display: flex;
@@ -407,7 +414,7 @@ footer p {
         width: 556px;
     }
 }
-/*************  regler problemes regles css media queries *******************/
+/*************  Regler problemes regles css media queries *******************/
 /* screen width 360px*640px and DPR=1
 @media all and (device-width: 360px) and (device-height: 640px) and (min-resolution: 1dppx) and (orientation: landscape) {
     header h1 {
@@ -587,7 +594,7 @@ footer p {
         border-radius: 20px;
         background-color: #f5f5f5;
     }
-    section h2, .sectionH4TitleComments,.sectionH4TitlePostComment {
+    section h2, .sectionH4TitleComments {
         color: #025AA0;
     }
 }

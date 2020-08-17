@@ -7,6 +7,16 @@ namespace App\Service;
 // Class pour gérer la connection à la base de données
 class Database
 {
+    private $database;
+
+    public function __construct() 
+    {
+        $this->database = new \PDO('mysql:host=localhost;dbname=openclassrooms_project4;port=3306;charset=utf8mb4', 'root', 'vFaGsjLk8WpkQtxYJ8XZXAf690shjBzW', [
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC
+        ]);
+    }
+    
     /**
      *  Retourne une connexion à la base de données
      *
@@ -14,11 +24,6 @@ class Database
      */
     public function getPdo(): \PDO
     {
-        $pdo = new \PDO('mysql:host=localhost;dbname=openclassrooms_project4;port=3306;charset=utf8mb4', 'root', 'vFaGsjLk8WpkQtxYJ8XZXAf690shjBzW', [
-            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC
-        ]);
-
-        return $pdo;
+        return $this->database;
     }
 }
