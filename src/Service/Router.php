@@ -55,10 +55,10 @@ class Router
         } elseif ($action === 'listofepisodes') {
             // route http://localhost:8000/?action=listofepisodes
             $this->postController->displayListOfEpisodes();
-        } elseif ($action === 'addComment' && isset($this->get['id']) && ($this->get['id']) < 7) {
+        } elseif ($action === 'addComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=addCommente&id=5
-            if (!empty($this->post['author']) && !empty($this->post['email']) && !empty($this->post['comment'])) {
-                $this->postController->addComment((int)$this->get['id'], (string)$this->post['author'], (string)$this->post['email'], (string)$this->post['link_website'], (string)$this->post['comment']);
+            if (!empty($this->post['author']) && !empty($this->post['comment'])) {
+                $this->postController->addComment((int)$this->get['id'], (string)$this->post['author'], (string)$this->post['comment']);
             } else {
                 echo "Erreur : tous les champs ne sont pas remplis !<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
             }
