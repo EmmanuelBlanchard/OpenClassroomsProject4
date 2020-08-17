@@ -3,7 +3,7 @@
 
     <article>
         <h3>Épisode <?=$data['episode']['title']?></h3>
-        <p><?=$data['episode']['content']?></p>
+        <?=$data['episode']['content']?>
         <p class="pCreatedAt">Publié <?=$data['episode']['date_episode_created_the']?></p>
     </article>
 </section>
