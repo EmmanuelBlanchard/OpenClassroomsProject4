@@ -110,7 +110,6 @@ main {
 section h2 {
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
 }
-
 article {
     display: flex;
     flex-direction: column;
@@ -145,7 +144,7 @@ p {
     font-family: 'merienda_oneregular', Arial, sans-serif, serif;
     text-align: end;
 }
-/* 12/08/2020 Mise en forme de l'affichage des commentaires */
+/* Mise en forme de l'affichage des commentaires */
 .sectionDisplayComments p {
     font-family: 'ralewayregular','open_sansregular', sans-serif;
 }
@@ -160,8 +159,6 @@ p {
     color: #F5F5F5;
 }
 /* Mise en forme de l'affichage de publication d'un commentaire */
-
-/* Essai si suppresion de la balise article */
 .sectionPostComment {
     display: flex;
     flex-direction: column;
@@ -171,8 +168,9 @@ p {
     border-radius: 20px;
     background-color: #025AA0;
 }
-
-
+.sectionH4TitlePostComment {
+    margin-left: 20px;
+}
 form {
     box-sizing: border-box;
 }
