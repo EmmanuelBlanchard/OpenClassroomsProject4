@@ -23,7 +23,7 @@
     <?php endforeach; ?>
 </section>
 
-<section class="sectionPostcomment">
+<section class="sectionPostComment">
     <h4 class="sectionH4TitlePostComment"> Publier un commentaire</h4>
         <form class="commentForm" action="index.php?action=addComment&id=<?=$data['episode']['id']?>" method="post">
             <p class="commentFormComment">

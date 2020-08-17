@@ -162,7 +162,7 @@ p {
 /* Mise en forme de l'affichage de publication d'un commentaire */
 
 /* Essai si suppresion de la balise article */
-.sectionPostcomment {
+.sectionPostComment {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
