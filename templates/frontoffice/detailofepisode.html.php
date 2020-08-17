@@ -12,7 +12,7 @@
     <h4 class="sectionH4TitleComments">Commentaires</h4>
     <?php foreach($data['allcomment'] as $post): ?>
     <article>
-        <h5>Commentaire</h5>
+        <h5>Commentaire de </h5>
         <p class="pAuthorComments"><?=$post['author']?></p>
         <p class="pDateComments"><?=$post['date_comment_created_the']?> </p>
         <?=$post['comment']?>
