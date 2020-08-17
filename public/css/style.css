@@ -110,6 +110,7 @@ main {
 section h2 {
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
 }
+
 article {
     display: flex;
     flex-direction: column;
@@ -226,6 +227,7 @@ input:focus, textarea:focus {
 .inputTypeSubmitPublishComment {
     cursor: pointer;
 }
+/* Voir a divers pixels et adapter valeurs */
 .linkToTheReportOfThePostComment {
     margin-left: 45.5%;
 }
