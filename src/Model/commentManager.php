@@ -15,13 +15,6 @@ class CommentManager
         $this->database = $database->getPdo();
     }
     
-    public function findAllEpisode(int $id): ?array
-    {
-        $request= $this->database->prepare('SELECT * FROM comments WHERE id=:episode_id');
-        $request->execute(['episode_id'=> $id]);
-        return $request->fetchAll();
-    }
-
     // Changement de WHERE episode_id=:id et execute(['id' => $id])
     public function getComments(int $id) : ?array
     {
