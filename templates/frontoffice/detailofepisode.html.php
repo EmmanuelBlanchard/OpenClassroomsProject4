@@ -16,8 +16,10 @@
         <p class="pAuthorComments"><?=$post['author']?></p>
         <p class="pDateComments"><?=$post['date_comment_created_the']?> </p>
         <p class="pComments"><?=$post['comment']?></p>
-        <a href="index.php?action=reportComment&id=<?=$post['episode_id']?>\" class="linkToTheReportOfThePostComment">Signaler</a>
-        <a href="index.php?action=replyComment&id=<?=$post['episode_id']?>\" class="linkToTheReplyOfThePostComment">Répondre</a>
+        <div class="buttonsReportReply">
+            <a href="index.php?action=reportComment&id=<?=$post['episode_id']?>\" class="linkToTheReportOfThePostComment">Signaler</a>
+            <a href="index.php?action=replyComment&id=<?=$post['episode_id']?>\" class="linkToTheReplyOfThePostComment">Répondre</a>
+        </div>
     </article>
     <?php endforeach; ?>
 </section>

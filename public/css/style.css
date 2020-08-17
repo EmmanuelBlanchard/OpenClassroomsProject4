@@ -200,6 +200,10 @@ input:focus, textarea:focus {
     background-color: #e2e2e2;
     color: #023E6E;
 }
+.buttonsReportReply {
+    display:inline-flex;
+    width: 100%;
+}
 .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .linkToTheReplyOfThePostComment {
     width: 8rem;
     text-align: center;/*
@@ -222,9 +226,8 @@ input:focus, textarea:focus {
 .inputTypeSubmitPublishComment {
     cursor: pointer;
 }
-/* Essais boutons Signaler, Répondre cote a cote et a droite du commentaire */
-.linkToTheReportOfThePostComment, .linkToTheReplyOfThePostComment {
-    align-self: flex-end;
+.linkToTheReportOfThePostComment {
+    margin-left: 45.5%;
 }
 .linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover, .linkToTheReplyOfThePostComment:hover {
     /* transition: border 1.5s ease, background-color 1.5s ease, color 1.0s ease;*/
