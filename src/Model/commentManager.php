@@ -33,12 +33,11 @@ class CommentManager
     {   // Table episodes
         // INSERT INTO `episodes` (`id`, `title`, `introduction`, `content`, `episode_created_the`) VALUES
         // Table comments
-        // INSERT INTO `comments` (`id`, `pseudo`, `author`, `email`, `link_website`, `comment`, `comment_created_the`, `episode_id`) VALUES
+        // INSERT INTO `comments` (`id`, `pseudo`, `author`, `comment`, `comment_created_the`, `episode_id`) VALUES
         // Recuperer les commentaires où id de la table episodes = episode_id de la table comments
-        // Revoir tableau associatifs (cle valeur) pour la clé pseudo mettre la valeur de author
-        $request= $this->database->prepare('INSERT INTO comments (id, pseudo, author, email, link_website, comment, comment_created_the, episode_id) VALUES(id=:id, pseudo=:author, author=:author, email=;email, link_website=:link_website, comment=:comment, NOW(), episode_id=:id)');
-        $request->execute(['episode_id'=> $id, 'author' => $author, 'email' => $email, 'link_website' => $link_website, 'comment' => $comment]);
-        return $request->fetchAll();
+        $request= $this->database->prepare('INSERT INTO comments (id, pseudo, author, comment, comment_created_the, episode_id) VALUES(id=:id, pseudo=:author, author=:author, comment=:comment, NOW(), episode_id=:id)');
+        $request->execute(['episode_id'=> $id, 'author' => $author, 'comment' => $comment]);
+        return $request;
     }
 
     // Afficher les commentaires publiés à partir de l'id d'un episode
