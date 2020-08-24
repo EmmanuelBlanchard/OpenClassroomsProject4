@@ -93,6 +93,9 @@ class PostController
     {
         $data_comment = $this->commentManager->postComment($id, $author, $comment);
 
+        // Redirection du visiteur vers la page du detailofepisode avec l'identifiant du commentaire publié
+        header('Location: index.php?action=detailofepisode&id=$id');
+        
         echo"<pre>";
         print_r($data_comment);
         //print_r($comments);
