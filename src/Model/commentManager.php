@@ -33,24 +33,7 @@ class CommentManager
     }
 
     public function postComment(int $id, string $author, string $comment)
-    {/*
-        $request= $this->database->prepare('INSERT INTO comments (id, pseudo, author, comment, comment_created_the, episode_id) VALUES
-        (id=:id, pseudo=:author, author=:author, comment=:comment, NOW(), episode_id=:id)');
-        $request->execute(['id'=> $id, 'pseudo'=> $author, 'author' => $author, 'comment' => $comment, 'episode_id'=> $id]);
-        return $request;*/
-
-        /*
-        $request= $this->database->prepare('INSERT INTO comments (id, pseudo, author, comment, comment_created_the, episode_id) VALUES
-        (:id, :pseudo, :author, :comment, NOW(), :episode_id)');
-        $request->execute(array(
-            'id' => $id,
-            'pseudo' => $author,
-            'author' => $author,
-            'comment' => $comment,
-            'comment_created_the' => '',
-            'episode_id' => $id
-            ));
-        */
+    {
         $request= $this->database->prepare('INSERT INTO comments (pseudo, author, comment, comment_created_the, episode_id) VALUES
         (:pseudo, :author, :comment, NOW(), :episode_id)');
         $request->execute([
