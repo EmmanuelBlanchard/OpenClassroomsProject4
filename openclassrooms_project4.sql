@@ -209,7 +209,6 @@ INSERT INTO `Episodes` (`id`, `title`, `introduction`, `content`, `episode_creat
 DROP TABLE IF EXISTS `Comments`;
 CREATE TABLE IF NOT EXISTS `Comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pseudo` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
   `comment` text NOT NULL,
   `comment_created_the` datetime NOT NULL,
