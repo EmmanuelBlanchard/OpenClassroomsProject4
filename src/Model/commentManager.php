@@ -40,7 +40,7 @@ class CommentManager
         return $request;*/
 
         $request= $this->database->prepare('INSERT INTO comments (id, pseudo, author, comment, comment_created_the, episode_id) VALUES
-        (id=:id, pseudo=:author, author=:author, comment=:comment, NOW(), episode_id=:id)');
+        (:id, :pseudo, :author, :comment, NOW(), :episode_id)');
         $request->execute(array(
             'id' => $id,
             'pseudo' => $author,
