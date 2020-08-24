@@ -98,7 +98,6 @@ class PostController
         
         echo"<pre>";
         print_r($data_comment);
-        //print_r($comments);
         echo"</pre>";
         die();
 

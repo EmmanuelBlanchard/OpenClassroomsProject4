@@ -25,7 +25,7 @@
 
 <section class="sectionPostComment">
     <h4 class="sectionH4TitlePostComment"> Publier un commentaire</h4>
-        <form class="commentForm" action="index.php?action=addComment&id=<?=$data['episode']['id']?>" method="post">
+        <form class="commentForm" method="post" action="index.php?action=addComment&id=<?=$data['episode']['id']?>">
             <p class="commentFormComment">
                 <label for="comment">Commentaire <span>(obligatoire)</span> </label>
                 <textarea name="comment" id="comment" rows="10" cols="50" required></textarea>
