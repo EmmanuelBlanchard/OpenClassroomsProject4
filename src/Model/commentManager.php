@@ -33,10 +33,47 @@ class CommentManager
     }
 
     public function postComment(int $id, string $author, string $comment)
-    {
-        $request= $this->database->prepare('INSERT INTO comments (id, pseudo, author, comment, comment_created_the, episode_id) VALUES(id=:id, pseudo=:author, author=:author, comment=:comment, NOW(), episode_id=:id)');
-        $request->execute(['episode_id'=> $id, 'author' => $author, 'comment' => $comment]);
-        return $request;
+    {/*
+        $request= $this->database->prepare('INSERT INTO comments (id, pseudo, author, comment, comment_created_the, episode_id) VALUES
+        (id=:id, pseudo=:author, author=:author, comment=:comment, NOW(), episode_id=:id)');
+        $request->execute(['id'=> $id, 'pseudo'=> $author, 'author' => $author, 'comment' => $comment, 'episode_id'=> $id]);
+        return $request;*/
+
+        $request= $this->database->prepare('INSERT INTO comments (id, pseudo, author, comment, comment_created_the, episode_id) VALUES
+        (id=:id, pseudo=:author, author=:author, comment=:comment, NOW(), episode_id=:id)');
+        $request->execute(array(
+            'id' => $id,
+            'pseudo' => $author,
+            'author' => $author,
+            'comment' => $comment,
+            'comment_created_the' => '',
+            'episode_id' => $id
+            ));
+        /*
+        <?php
+        $req = $bdd->prepare('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires) VALUES(:nom, :possesseur, :console, :prix, :nbre_joueurs_max, :commentaires)');
+        $req->execute(array(
+            'nom' => $nom,
+            'possesseur' => $possesseur,
+            'console' => $console,
+            'prix' => $prix,
+            'nbre_joueurs_max' => $nbre_joueurs_max,
+            'commentaires' => $commentaires
+            ));
+
+        echo 'Le jeu a bien été ajouté !';
+        ?>
+
+        <?php
+        $req = $bdd->prepare('UPDATE jeux_video SET prix = :nvprix, nbre_joueurs_max = :nv_nb_joueurs WHERE nom = :nom_jeu');
+        $req->execute(array(
+            'nvprix' => $nvprix,
+            'nv_nb_joueurs' => $nv_nb_joueurs,
+            'nom_jeu' => $nom_jeu
+            ));
+        ?>
+        */
+
     }
 
 }

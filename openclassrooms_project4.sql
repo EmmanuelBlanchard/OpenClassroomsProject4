@@ -205,24 +205,6 @@ INSERT INTO `Episodes` (`id`, `title`, `introduction`, `content`, `episode_creat
 --
 -- Table structure for table `Comments`
 --
-/*
-DROP TABLE IF EXISTS `Comments`;
-CREATE TABLE IF NOT EXISTS `Comments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pseudo` varchar(255) NOT NULL,
-  `author` varchar(255) NOT NULL,
-  `comment` text NOT NULL,
-  `comment_created_the` datetime NOT NULL,
-  `episode_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `fk_episodes_id`          -- On donne un nom à notre clé
-      FOREIGN KEY (`episode_id`)       -- Colonne sur laquelle on crée la clé
-      REFERENCES `Episodes`(`id`)      -- Colonne de référence
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET='utf8mb4';
-
-ALTER TABLE `Comments`
-ADD CONSTRAINT `fk_episodes_id` FOREIGN KEY (`episode_id`) REFERENCES `Episodes`(`id`) ON DELETE CASCADE;
-*/
 
 DROP TABLE IF EXISTS `Comments`;
 CREATE TABLE IF NOT EXISTS `Comments` (
