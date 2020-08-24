@@ -32,7 +32,7 @@ class CommentManager
         return $request->fetch();
     }
 
-    public function postComment(int $id, string $author, string $comment)
+    public function postComment(int $id, string $comment, string $author)
     {
         $request = $this->database->prepare('INSERT INTO Comments (author, comment, comment_created_the, episode_id) VALUES
         (:author, :comment, NOW(), :episode_id)');
