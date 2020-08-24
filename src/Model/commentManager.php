@@ -39,6 +39,7 @@ class CommentManager
         $request->execute(['id'=> $id, 'pseudo'=> $author, 'author' => $author, 'comment' => $comment, 'episode_id'=> $id]);
         return $request;*/
 
+        /*
         $request= $this->database->prepare('INSERT INTO comments (id, pseudo, author, comment, comment_created_the, episode_id) VALUES
         (:id, :pseudo, :author, :comment, NOW(), :episode_id)');
         $request->execute(array(
@@ -49,6 +50,19 @@ class CommentManager
             'comment_created_the' => '',
             'episode_id' => $id
             ));
+        */
+        $request= $this->database->prepare('INSERT INTO comments (id, pseudo, author, comment, comment_created_the, episode_id) VALUES
+        (:id, :pseudo, :author, :comment, NOW(), :episode_id)');
+        $$request->bindParam(':id', $id);
+        $$request->bindParam(':pseudo', $author);
+        $$request->bindParam(':author', $author);
+        $$request->bindParam(':comment', $comment);
+        $$request->bindParam(':episode_id', $id);
+        $request->execute();
+        /*
+        <?php
+        $reponse = $bdd->query('SELECT nom FROM jeux_video') or die(print_r($bdd->errorInfo()));
+        */
         /*
         <?php
         $req = $bdd->prepare('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires) VALUES(:nom, :possesseur, :console, :prix, :nbre_joueurs_max, :commentaires)');
