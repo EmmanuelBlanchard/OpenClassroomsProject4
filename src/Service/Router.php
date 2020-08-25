@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace  App\Service;
 
 use App\Controller\Frontoffice\PostController;
+use App\Controller\Frontoffice\CommentController;
 use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Service\Database;
@@ -18,7 +19,9 @@ class Router
     private CommentManager $commentManager;
     private View $view;
     private PostController $postController;
+    private CommentController $commentController;
     private array $get;
+    private array $post;
 
     public function __construct()
     {
@@ -30,6 +33,7 @@ class Router
 
         // Injection des dépendances
         $this->postController = new PostController($this->postManager, $this->commentManager, $this->view);
+        $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
 
         // En attendant de mettre en place la classe App\Service\Http\Request
         $this->get = $_GET;
