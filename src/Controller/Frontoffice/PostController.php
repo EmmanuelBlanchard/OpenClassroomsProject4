@@ -21,28 +21,6 @@ class PostController
         $this->view = $view;
     }
 
-    public function displayOneAction(int $id): void
-    {
-        $data = $this->postManager->showOne($id);
-
-        if ($data !== null) {
-            $this->view->render(['template' => 'post','onepost' => $data]);
-        } elseif ($data === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, ce post n\'existe pas</h1><a href="index.php?action=home">Accueil</a><br>';
-        }
-    }
-
-    public function displayAllAction(): void
-    {
-        $data = $this->postManager->showAll();
-
-        if ($data !== null) {
-            $this->view->render(['template' => 'posts', 'allposts' => $data]);
-        } elseif ($data === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
-        }
-    }
-
     public function displayHomeWithTheLastThreeEpisodes(): void
     {
         $data = $this->postManager->showLastThreeEpisodes();
@@ -89,22 +67,4 @@ class PostController
         }
     }
 
-    public function addComment(int $id, string $comment, string $author): void
-    {
-        $data_episode = $this->postManager->findId($id);
-
-        $data_comment = $this->commentManager->postComment($id, $comment, $author);
-
-        echo"<pre>";
-        //print_r($data_episode);
-        print_r($data_comment);
-        echo"</pre>";
-        die();
-
-        if ($data_comment !== null) {
-            $this->view->render(['template' => 'detailofepisode', 'episode' => $data_episode, 'allcomment' => $data_comment]);
-        } elseif ($data_comment === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, Impossible d\'ajouter le commentaire !</h1><a href="index.php?action=home">Accueil</a><br>';
-        }
-    }
 }
