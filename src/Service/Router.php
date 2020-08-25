@@ -55,7 +55,7 @@ class Router
         } elseif ($action === 'addComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=addCommente&id=5
             if (!empty($this->post['author']) && !empty($this->post['comment'])) {
-                $this->postController->addComment((int)$this->get['id'], (string)$this->post['author'], (string)$this->post['comment']);
+                $this->commentController->addComment((int)$this->get['id'], (string)$this->post['author'], (string)$this->post['comment']);
             } else {
                 echo "Erreur : tous les champs ne sont pas remplis !<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
             }
