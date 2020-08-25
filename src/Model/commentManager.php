@@ -32,16 +32,16 @@ class CommentManager
         return $request->fetch();
     }
 
-    public function postComment(int $id, string $comment, string $author)
+    public function postComment(int $id, string $comment, string $author): bool
     {
         $request = $this->database->prepare('INSERT INTO Comments (author, comment, comment_created_the, episode_id) VALUES
         (:author, :comment, NOW(), :episode_id)');
-        $request->execute([
+        return $request->execute([
             'author' => $author,
             'comment' => $comment,
             'episode_id' => $id
             ]);
-        
+
         // Redirection du visiteur vers la page du detailofepisode avec l'identifiant de l'episode où le commentaire est publié
         //header('Location: index.php?action=detailofepisode&id=$id'); marche pas problème 
         header('Location: index.php?action=detailofepisode&id='.$id);
