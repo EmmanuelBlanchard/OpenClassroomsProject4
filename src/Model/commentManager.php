@@ -41,10 +41,6 @@ class CommentManager
             'comment' => $comment,
             'episode_id' => $id
             ]);
-
-        // Redirection du visiteur vers la page du detailofepisode avec l'identifiant de l'episode où le commentaire est publié
-        //header('Location: index.php?action=detailofepisode&id=$id'); marche pas problème 
-        header('Location: index.php?action=detailofepisode&id='.$id);
     }
 
 }

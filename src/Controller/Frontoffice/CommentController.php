@@ -23,21 +23,11 @@ class CommentController
 
     public function addComment(int $id, string $comment, string $author): void
     {
-        $data_episode = $this->postManager->findId($id);
+        $this->postManager->findId($id);
+        $this->commentManager->postComment($id, $comment, $author);
 
-        $data_comment = $this->commentManager->postComment($id, $comment, $author);
-
-        echo"<pre>";
-        //print_r($data_episode);
-        print_r($data_comment);
-        echo"</pre>";
-        die();
-
-        if ($data_comment !== null) {
-            $this->view->render(['template' => 'detailofepisode', 'episode' => $data_episode, 'allcomment' => $data_comment]);
-        } elseif ($data_comment === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, Impossible d\'ajouter le commentaire !</h1><a href="index.php?action=home">Accueil</a><br>';
-        }
+        // Redirection du visiteur vers la page du detailofepisode avec l'identifiant de l'episode où le commentaire est publié
+        header('Location: index.php?action=detailofepisode&id='.$id);
     }
 
 }
