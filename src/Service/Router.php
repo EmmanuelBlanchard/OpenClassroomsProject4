@@ -38,10 +38,7 @@ class Router
 
     public function run(): void
     {
-        // Nous avons deux routes :
-        // - une pour afficher tous les posts => http://localhost:8000/?action=posts
-        // - une pour afficher un post en particulier => http://localhost:8000/?action=post&id=5
-        
+        // Nous avons quatres routes
         // On teste si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action home)
         $action = isset($this->get['action']) ? $this->get['action'] : 'home';
 
