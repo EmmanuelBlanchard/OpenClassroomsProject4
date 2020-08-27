@@ -16,6 +16,14 @@
         <p class="pAuthorComments"><?=$post['author']?></p>
         <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
         <?=$post['comment']?>
+        
+        <!-- if $post['report'] === '1' {
+            <p>Ce commentaire a déjà été signalé</p>
+        } else {
+            <p><a href="index.php?action=report&commentid= $post['id'] &id= $post['episode_id'] " class="linkToTheReportOfThePostComment">Signaler</a></p>
+        }
+        -->
+
         <div class="buttonReport">
             <a href="index.php?action=report&commentid=<?=$post['id']?>&id=<?=$post['episode_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
         </div>

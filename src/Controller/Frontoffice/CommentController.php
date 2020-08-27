@@ -26,7 +26,6 @@ class CommentController
         $this->postManager->getEpisode($postId);
         $this->commentManager->postComment($postId, $comment, $author);
 
-        // Redirection du visiteur vers la page du detailofepisode avec l'identifiant de l'episode où le commentaire est publié
         header('Location: index.php?action=detailofepisode&id='.$postId);
     }
 
@@ -34,7 +33,6 @@ class CommentController
     {
         $this->commentManager->reportComment($commentId);
 
-         // Redirection du visiteur vers la page du detailofepisode avec l'identifiant de l'episode où le commentaire est publié
          header('Location: index.php?action=detailofepisode&id='.$postId);
     }
 
