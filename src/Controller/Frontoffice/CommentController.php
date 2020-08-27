@@ -21,13 +21,21 @@ class CommentController
         $this->view = $view;
     }
 
-    public function addComment(int $id, string $comment, string $author): void
+    public function addComment(int $postId, string $comment, string $author): void
     {
-        $this->postManager->findId($id);
-        $this->commentManager->postComment($id, $comment, $author);
+        $this->postManager->getEpisode($postId);
+        $this->commentManager->postComment($postId, $comment, $author);
 
         // Redirection du visiteur vers la page du detailofepisode avec l'identifiant de l'episode où le commentaire est publié
-        header('Location: index.php?action=detailofepisode&id='.$id);
+        header('Location: index.php?action=detailofepisode&id='.$postId);
+    }
+
+    public function report(int $commentId, int $postId): void
+    {
+        $this->commentManager->reportComment($commentId);
+
+         // Redirection du visiteur vers la page du detailofepisode avec l'identifiant de l'episode où le commentaire est publié
+         header('Location: index.php?action=detailofepisode&id='.$postId);
     }
 
 }

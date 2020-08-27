@@ -15,33 +15,33 @@ class PostManager
         $this->database = $database->getPdo();
     }
 
-    public function showLastThreeEpisodes() : ?array
+    public function showLastThreeEpisodes(): ?array
     {
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
         
-        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(episode_created_the), DAY(episode_created_the), MONTHNAME(episode_created_the), YEAR(episode_created_the)) AS date_episode_created_the FROM Episodes ORDER BY episode_created_the DESC LIMIT 0,3');
+        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(episode_date), DAY(episode_date), MONTHNAME(episode_date), YEAR(episode_date)) AS episode_date_fr FROM Episodes ORDER BY episode_date DESC LIMIT 0,3');
         $request->execute();
         return $request->fetchAll();
     }
 
-    public function showAllEpisodes() : ?array
+    public function showAllEpisodes(): ?array
     {
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
 
-        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(episode_created_the), DAY(episode_created_the), MONTHNAME(episode_created_the), YEAR(episode_created_the)) AS date_episode_created_the FROM Episodes ORDER BY episode_created_the');
+        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(episode_date), DAY(episode_date), MONTHNAME(episode_date), YEAR(episode_date)) AS episode_date_fr FROM Episodes ORDER BY episode_date');
         $request->execute();
         return $request->fetchAll();
     }
 
-    public function findId(int $id) : ?array
+    public function getEpisode(int $postId): ?array
     {
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
 
-        $request = $this->database->prepare('SELECT id, title, content, CONCAT_WS(\' \', \'le\', DAYNAME(episode_created_the), DAY(episode_created_the), MONTHNAME(episode_created_the), YEAR(episode_created_the)) AS date_episode_created_the FROM Episodes WHERE id=:id');
-        $request->execute(['id' => $id]);
+        $request = $this->database->prepare('SELECT id, title, content, CONCAT_WS(\' \', \'le\', DAYNAME(episode_date), DAY(episode_date), MONTHNAME(episode_date), YEAR(episode_date)) AS episode_date_fr FROM Episodes WHERE id=:id');
+        $request->execute(['id' => $postId]);
         return $request->fetch();
     }
 

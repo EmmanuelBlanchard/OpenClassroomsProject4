@@ -4,7 +4,7 @@
     <article>
         <h3>Épisode <?=$data['episode']['title']?></h3>
         <?=$data['episode']['content']?>
-        <p class="pCreatedAt">Publié <?=$data['episode']['date_episode_created_the']?></p>
+        <p class="pCreatedAt">Publié <?=$data['episode']['episode_date_fr']?></p>
     </article>
 </section>
 
@@ -14,10 +14,10 @@
     <article>
         <h5>Commentaire de </h5>
         <p class="pAuthorComments"><?=$post['author']?></p>
-        <p class="pDateComments"><?=$post['date_comment_created_the']?> </p>
+        <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
         <?=$post['comment']?>
         <div class="buttonReport">
-            <a href="index.php?action=reportComment&id=<?=$post['episode_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
+            <a href="index.php?action=report&commentid=<?=$post['id']?>&id=<?=$post['episode_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
         </div>
     </article>
     <?php endforeach; ?>

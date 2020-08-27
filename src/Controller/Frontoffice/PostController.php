@@ -48,11 +48,11 @@ class PostController
         }
     }
     
-    public function displayDetailOfEpisode(int $id): void
+    public function displayDetailOfEpisode(int $postId): void
     {
-        $data_episode = $this->postManager->findId($id);
+        $data_episode = $this->postManager->getEpisode($postId);
         // $commentaires= $this->commentManager->findAllEpisode($id);
-        $data_comments = $this->commentManager->getComments($id);
+        $data_comments = $this->commentManager->getComments($postId);
 
         //echo"<pre>";
         //print_r($data_episode);
