@@ -65,42 +65,6 @@ class CommentManager
 
     }
 
-    /*
-    <?php
-    
-    while ($comment = $getcomment->fetch())
-    {
-        if ($comment['alert'] == 1)
-        {
-            ?>
-            <div class="buttonReport">
-                    <p><a href="index.php?action=report&commentid=<?=$post['id']?>&id=<?=$post['episode_id']?>" class="linkToTheReportOfThePostComment">Commentaire signalé</a>
-            </div>
-            <?php
-        }
-
-        elseif ($comment['alert'] == 2)
-        {
-            ?>
-            <div class="buttonReport">
-                    <p><span>Commentaire modéré par l'auteur</span></p>
-            </div>
-            <?php
-        }
-
-        else
-        {
-            ?>
-            <div class="buttonReport">
-                    <p><a href="index.php?action=report&amp;commentid=<?= htmlspecialchars($comment['id'])?>&amp;id=<?= htmlspecialchars($post['id'])?>"> - Signaler le commentaire</a></em></p>
-            </div>
-            <?php
-        }
-    }
-    $getcomment->closeCursor();
-    ?>
-    */
-
     public function reportList()
     {
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
