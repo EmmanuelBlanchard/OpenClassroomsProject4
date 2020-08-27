@@ -73,36 +73,27 @@ class CommentManager
         if ($comment['alert'] == 1)
         {
             ?>
-            <section id="backcomments">
-                <aside id="separatecomments">
-                    <p><strong class="brown"><?= htmlspecialchars($comment['author']) ?></strong><em class="date"> - le <?= htmlspecialchars($comment['comment_date_fr']) ?><a class="brown" id="alert" href="index.php?action=alertc&amp;commentid=<?= htmlspecialchars($comment['id'])?>&amp;id=<?= htmlspecialchars($post['id'])?>"> - <span class="red">Commentaire signalé</span></a></em></p>
-                    <p><?= nl2br($comment['comment'])?></p>
-                </aside>
-            </section>
+            <div class="buttonReport">
+                    <p><a href="index.php?action=report&commentid=<?=$post['id']?>&id=<?=$post['episode_id']?>" class="linkToTheReportOfThePostComment">Commentaire signalé</a>
+            </div>
             <?php
         }
 
         elseif ($comment['alert'] == 2)
         {
             ?>
-            <section id="backcomments">
-                <aside id="separatecomments">
-                    <p><strong class="brown"><?= htmlspecialchars($comment['author']) ?></strong><em class="date"> - le <?= htmlspecialchars($comment['comment_date_fr']) ?> - <span class="brown">Commentaire modéré par l'auteur</span></em></p>
-                    <p><?= nl2br($comment['comment'])?></p>
-                </aside>
-            </section>
+            <div class="buttonReport">
+                    <p><span>Commentaire modéré par l'auteur</span></p>
+            </div>
             <?php
         }
 
         else
         {
             ?>
-            <section id="backcomments">
-                <aside id="separatecomments">
-                    <p><strong class="brown"><?= htmlspecialchars($comment['author']) ?></strong><em class="date"> - le <?= htmlspecialchars($comment['comment_date_fr']) ?><a class="brown" id="alert" href="index.php?action=alertc&amp;commentid=<?= htmlspecialchars($comment['id'])?>&amp;id=<?= htmlspecialchars($post['id'])?>"> - Signaler le commentaire</a></em></p>
-                    <p><?= nl2br($comment['comment'])?></p>
-                </aside>
-            </section>
+            <div class="buttonReport">
+                    <p><a href="index.php?action=report&amp;commentid=<?= htmlspecialchars($comment['id'])?>&amp;id=<?= htmlspecialchars($post['id'])?>"> - Signaler le commentaire</a></em></p>
+            </div>
             <?php
         }
     }
