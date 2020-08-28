@@ -45,4 +45,30 @@ class PostManager
         return $request->fetch();
     }
 
+    // Essai pagination de page
+    public function getPagination()
+    {
+        $page = $_GET['page'];
+        $page = (!empty($_GET['page']) ? $_GET['page'] : 1);
+
+        $limit = 10;
+        // Partie "Requête"
+        /* On commence par récupérer le nombre d'éléments total. Comme c'est une requête,
+        * il ne faut pas oublier qu'on ne récupère pas directement le nombre.
+        * Ici, comme la requête ne contient aucune donnée client pour fonctionner,
+        * on peut l'exécuter ainsi directement */
+        $resultFoundRows = $request = $this->database->prepare('SELECT COUNT(id) FROM `Episodes`');
+        /* On doit extraire le nombre du jeu de résultat */
+        $nombredElementsTotal = $resultFoundRows->fetchColumn();
+
+        // Partie "Requête"
+        /* On calcule le numéro du premier élément à récupérer */
+        $start = ($page - 1) * $limit;
+        /* La requête contient désormais l'indication de l'élément de départ,
+        * avec le nouveau marqueur … */
+        $request = $this->database->prepare('SELECT * FROM `Episodes` LIMIT :limit OFFSET :start');
+
+        $request->execute(['limit' => $limit, 'start' => $start]);
+        
+    }
 }

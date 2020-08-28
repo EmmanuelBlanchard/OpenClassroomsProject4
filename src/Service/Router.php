@@ -63,16 +63,29 @@ class Router
             } else {
                 echo "Erreur : tous les champs ne sont pas remplis !<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
             }
-        } elseif ($action === 'report')
-        {       
-                if (isset($this->get['commentid']) && isset($this->get['id'])) 
+        } elseif ($action === 'report') {
+            if (isset($this->get['commentid']) && isset($this->get['id'])) 
+            {
+                $this->commentController->report((int)$this->get['commentid'], (int)$this->get['id']);
+            } else {
+                echo "Le commentaire n\'a pas pu etre identifié";
+                //throw new Exception('<div class="exception">le commentaire n\'a pas pu etre identifié</div>');
+            }
+
+        } elseif ($action === 'page') {
+            if (isset($_GET['id'])) 
+            {
+                if (isset($this->get['page']) && intval($this->get['id']) )
                 {
-                    $this->commentController->report((int)$this->get['commentid'], (int)$this->get['id']);
+                    $this->postController->displayPageID( (int)$this->get['page']     );
                 } else {
-                    echo "Le commentaire n\'a pas pu etre identifié";
-                    //throw new Exception('<div class="exception">le commentaire n\'a pas pu etre identifié</div>');
+                    
                 }
 
+            } else {
+                echo "l\'id du post n\'est pas trouvable";
+            }
+            
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }

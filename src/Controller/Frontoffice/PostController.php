@@ -67,4 +67,15 @@ class PostController
         }
     }
 
+    public function displayPageID(): void
+    {
+        /*
+        $post = $this->postManager->getPost($postId);
+        $getcomment = $this->commentManager->getComments($postId, $start, $limit);
+        $totalcomments = $this->commentManager->getPagination($postId);
+        $total = $totalcomments['totalc'];  // Pagination
+        $totalpagecomments = ceil($total / $limit); // Pagination */
+
+        $this->postManager->getPagination();
+    }
 }
