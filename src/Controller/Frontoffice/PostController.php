@@ -67,15 +67,34 @@ class PostController
         }
     }
 
-    public function displayPageID(): void
-    {
-        /*
+    public function Post(int $postId, int $start, int $limit, int $page) //getcomment for one post
+	{
         $post = $this->postManager->getPost($postId);
-        $getcomment = $this->commentManager->getComments($postId, $start, $limit);
-        $totalcomments = $this->commentManager->getPagination($postId);
-        $total = $totalcomments['totalc'];  // Pagination
-        $totalpagecomments = ceil($total / $limit); // Pagination */
+		$getcomment = $this->commentManager->getCommentsP($postId, $start, $limit); 
+		$totalcomments = $this->commentManager->getPagination($postId);
+		$total = $totalcomments['totalc']; //Pagination
+        $totalpagecomments = ceil($total / $limit); //Pagination
+        
+        $page = 5;
+        //echo"<pre>";
+        //print_r($page);
+        //print_r($post);
+        //print_r($getcomment);
+        //print_r($totalcomments);
+        //print_r($total);
+        //print_r($limit);
+        //print_r($totalpagecomments);
+        //echo"</pre>";
+        //die();
 
-        $this->postManager->getPagination();
-    }
+        if ($post !== null) {
+            $this->view->render(['template' => 'detailofepisodeandpagination', 'episode' => $post, 'allcomment' => $getcomment, 'totalcomment' => $totalcomments, 'total' => $total, 'totalpagecomments' => $totalpagecomments, 'page' => $page]);
+        } elseif ($post === null) {
+            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
+        }
+
+	}
+
+
+
 }

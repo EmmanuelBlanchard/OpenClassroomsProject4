@@ -47,3 +47,24 @@
             </p>
         </form>
 </section>
+
+
+<p id="pagination">
+				<?php
+
+				echo 'Page : ';
+                // Undefined variable: totalpagecomments
+				for ($i = 1 ; $i <= $data['totalpagecomments'] /*$totalpagecomments*/ ; $i++)
+				{
+					if ($i == $data['page'] /*$page*/)
+					{
+						echo '<strong class="brown">' . $i . '<strong></a> ';
+					}
+					else
+					{
+						echo '<a href="index.php?action=postfront&page=' . $i . '&id='.htmlspecialchars($data['episode']['id']/*$post['id']*/).'">' . $i . '</a> ';
+					}
+
+				}
+				?>
+</p>

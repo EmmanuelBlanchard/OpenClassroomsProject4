@@ -72,20 +72,26 @@ class Router
                 //throw new Exception('<div class="exception">le commentaire n\'a pas pu etre identifié</div>');
             }
 
-        } elseif ($action === 'page') {
-            if (isset($_GET['id'])) 
+        } elseif ($action === 'postfront') {
+            // route http://localhost:8000/?action=postfront
+            if (isset($this->get['id'])) 
             {
-                if (isset($this->get['page']) && intval($this->get['id']) )
+                if(isset($this->get['page']) && intval($this->get['page']))
                 {
-                    $this->postController->displayPageID( (int)$this->get['page']     );
+                    $page = intval($this->get['page']);
+                    $limit = 10;
+                    $start = ($this->get['page']-1)*$limit;
+                    $PostAndComments = $this->postController->Post((int)$this->get['id'], $start, $limit, $page);
                 } else {
-                    
+                    $page = 1;
+                    $limit = 10;
+                    $start = ($page-1)*$limit;
+                    $PostAndComments = $this->postController->Post((int)$this->get['id'], $start, $limit, $page);
                 }
 
             } else {
-                echo "l\'id du post n\'est pas trouvable";
+                echo "l\'id du post n\'est pas trouvable <a href=http://localhost:8000/?action=home>Aller Ici</a>";
             }
-            
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }

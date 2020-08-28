@@ -75,5 +75,27 @@ class CommentManager
         return $request;
     }
 
+    //Essai pour la pagination
+    public function getCommentsP($postId, $start, $limit)
+	{   /*
+		$request = $this->database->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, "%d/%m/%Y %Hh%i:%ss") comment_date_fr, alert FROM comments WHERE post_id= ? ORDER BY comment_date DESC LIMIT '.$start.','.$limit);
+        $request->execute(array($postId)); */
+        
+        $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
+        $request->execute();
+
+		$request = $this->database->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, episode_id, report FROM Comments WHERE episode_id=:episode_id ORDER BY comment_date DESC LIMIT '.$start.','.$limit );
+        $request->execute(['episode_id' => $postId]);
+        return $request->fetchAll();
+    }
+    
+    //Essai pour la pagination
+    public function getPagination($postId): ?array
+	{
+		$request = $this->database->prepare('SELECT COUNT(*) totalc FROM Comments WHERE episode_id=:episode_id');
+		$request->execute(['episode_id' => $postId]);
+        $totalcomment = $request->fetch();
+        return $totalcomment;
+	}
 
 }
