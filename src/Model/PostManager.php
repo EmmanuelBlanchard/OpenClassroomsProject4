@@ -77,7 +77,7 @@ class PostManager
 
     }
 
-    public function getPostNbEpisodes(int $nbEpisodes)
+    public function getPostNbEpisodes()
     {
         // On détermine le nombre total d'articles
         //$sql = 'SELECT COUNT(*) AS nb_articles FROM `articles`;';
@@ -95,8 +95,22 @@ class PostManager
 
         //$nbArticles = (int) $result['nb_articles'];
         $nbEpisodes = (int) $request['nb_episodes'];
-        
+
         return $nbEpisodes;
+    }
+
+    public function getPostNbPages(int $nbEpisodes)
+    {
+        // On détermine le nombre d'articles par page
+        //$parPage = 10;
+        $perPage = 10;
+
+        // On calcule le nombre de pages total
+        //$pages = ceil($nbArticles / $parPage);
+
+        $pages = ceil($nbEpisodes / $perPage);
+
+        return $pages;
     }
 
 }
