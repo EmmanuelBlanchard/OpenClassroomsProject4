@@ -92,6 +92,14 @@ class Router
             } else {
                 echo "l\'id du post n\'est pas trouvable <a href=http://localhost:8000/?action=home>Aller Ici</a>";
             }
+        } elseif ($action === "pagepagination") {
+            // On détermine sur quelle page on se trouve
+            if(isset($_GET['page']) && !empty($_GET['page'])){
+                $currentPage = (int) strip_tags($_GET['page']);
+            }else{
+                $currentPage = 1;
+            }
+
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }
