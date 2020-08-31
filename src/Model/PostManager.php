@@ -98,8 +98,11 @@ class PostManager
         return $pages;
     }
 
-    public function getPostPagination(int $currentPage, int $perPage)
+    public function getPostPagination(int $currentPage)
     {
+        // On détermine le nombre d'episodes par page
+        $perPage = 10;
+
         // Calcul du 1er episode de la page
         $first = ($currentPage * $perPage) - $perPage;
 

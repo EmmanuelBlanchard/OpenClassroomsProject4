@@ -95,12 +95,12 @@ class PostController
 
 	}
 
-    public function Pagination(int $currentPage, int $perPage)
+    public function Pagination(int $currentPage)
     {
         $infosEpisodes = $this->postManager->getInfosEpisodes();
         $nbEpisodes = $this->postManager->getPostNbEpisodes();
         $nbTotalPages = $this->postManager->getPostNbPages($nbEpisodes);
-        $pagination = $this->postManager->getPostPagination($currentPage, $perPage);
+        $pagination = $this->postManager->getPostPagination($currentPage);
 
         if ($infosEpisodes !== null) {
             $this->view->render(['template' => 'detailofepisodeandpagination', 'episode' => $infosEpisodes, 'nbEpisodes' => $nbEpisodes, 'nbTotalPages' => $nbTotalPages, 'pagination' => $pagination]);
