@@ -102,6 +102,12 @@ class PostController
         $nbTotalPages = $this->postManager->getPostNbPages($nbEpisodes);
         $pagination = $this->postManager->getPostPagination($currentPage);
 
+        echo"<pre>";
+        //print_r($infosEpisodes);
+        print_r($nbEpisodes);
+        echo"</pre>";
+        die();
+
         if ($infosEpisodes !== null) {
             $this->view->render(['template' => 'detailofepisodeandpagination', 'episode' => $infosEpisodes, 'nbEpisodes' => $nbEpisodes, 'nbTotalPages' => $nbTotalPages, 'pagination' => $pagination]);
         } elseif ($infosEpisodes === null) {

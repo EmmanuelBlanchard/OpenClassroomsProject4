@@ -60,24 +60,20 @@ class PostManager
     
     public function getInfosEpisodes()
     {
-        // $sql = 'SELECT * FROM `Episodes` ORDER BY `episode_date` DESC;';
         // On prépare la requête
         $request = $this->database->prepare('SELECT * FROM `Episodes` ORDER BY `episode_date` DESC;');
-
         // On exécute
         $request->execute();
-
         // On récupère les valeurs dans un tableau associatif
         return $request->fetchAll();
-
     }
 
     public function getPostNbEpisodes()
     {
-        // On détermine le nombre total d'epsiodes
+        // On détermine le nombre total d'episodes
         // On prépare la requête
         $request = $this->database->prepare('SELECT COUNT(*) AS nb_episodes FROM `Episodes`;');
-        // On prépare la requête
+        // On exécute
         $request->execute();
         // On récupère le nombre d'episodes
         $request->fetch();

@@ -92,7 +92,7 @@ class Router
             } else {
                 echo "l\'id du post n\'est pas trouvable <a href=http://localhost:8000/?action=home>Aller Ici</a>";
             }
-        } elseif ($action === "pagepagination") {
+        } elseif ($action === "page") {
             // On détermine sur quelle page on se trouve
             if(isset($this->get['page']) && !empty($this->get['page'])){
                 $currentPage = (int) strip_tags($this->get['page']);
