@@ -79,21 +79,14 @@ class PostManager
 
     public function getPostNbEpisodes()
     {
-        // On détermine le nombre total d'articles
-        //$sql = 'SELECT COUNT(*) AS nb_articles FROM `articles`;';
+        // On détermine le nombre total d'epsiodes
         // On prépare la requête
-        //$query = $db->prepare($sql);
         $request = $this->database->prepare('SELECT COUNT(*) AS nb_episodes FROM `Episodes`;');
-
-        // On exécute
-        //$query->execute();
+        // On prépare la requête
         $request->execute();
-
-        // On récupère le nombre d'articles
-        //$result = $query->fetch();
+        // On récupère le nombre d'episodes
         $request->fetch();
-
-        //$nbArticles = (int) $result['nb_articles'];
+        // On récupère le nombre d'episodes
         $nbEpisodes = (int) $request['nb_episodes'];
 
         return $nbEpisodes;
@@ -101,13 +94,10 @@ class PostManager
 
     public function getPostNbPages(int $nbEpisodes)
     {
-        // On détermine le nombre d'articles par page
-        //$parPage = 10;
+        // On détermine le nombre d'episodes par page
         $perPage = 10;
 
         // On calcule le nombre de pages total
-        //$pages = ceil($nbArticles / $parPage);
-
         $pages = ceil($nbEpisodes / $perPage);
 
         return $pages;
