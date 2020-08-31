@@ -59,7 +59,7 @@ class PostManager
     }
     
     //Essai pour la pagination
-    public function getPostPagination()
+    public function getInfosEpisodes()
     {
         // $sql = 'SELECT * FROM `articles` ORDER BY `created_at` DESC;';
         // $sql = 'SELECT * FROM `Episodes` ORDER BY `episode_date` DESC;';
@@ -111,6 +111,40 @@ class PostManager
         $pages = ceil($nbEpisodes / $perPage);
 
         return $pages;
+    }
+
+    public function getPostPagination()
+    {
+        // Nous allons modifier la requête en utilisant l'instruction "LIMIT" de SQL comme ceci (par exemple pour la 1ère page)
+
+        // SELECT * FROM `articles` ORDER BY `created_at` DESC LIMIT 0, 10;
+
+        // SQL
+
+        // Il nous faut donc définir le numéro du 1er article (0 dans l'exemple) en plus du nombre d'articles par page (10 dans l'exemple) que nous avons déjà.
+
+        // Nous ferons donc le calcul suivant
+
+        // Calcul du 1er article de la page
+        $premier = ($currentPage * $parPage) - $parPage;
+
+        PHP
+
+        Nous exécuterons ensuite la requête comme ceci
+
+        $sql = 'SELECT * FROM `articles` ORDER BY `created_at` DESC LIMIT :premier, :parpage;';
+
+        // On prépare la requête
+        $query = $db->prepare($sql);
+
+        $query->bindValue(':premier', $premier, PDO::PARAM_INT);
+        $query->bindValue(':parpage', $parPage, PDO::PARAM_INT);
+
+        // On exécute
+        $query->execute();
+
+        // On récupère les valeurs dans un tableau associatif
+        $articles = $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }
