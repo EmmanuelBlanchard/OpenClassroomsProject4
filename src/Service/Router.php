@@ -60,12 +60,12 @@ class Router
             // route http://localhost:8000/?action=addCommente&id=5
             $this->commentController->addComment((int)$this->get['id'], $this->post);
         } elseif ($action === 'report') {
+            // route http://localhost:8000/?action=report&comment=1&id=1
             if (isset($this->get['commentid']) && isset($this->get['id'])) {
                 $this->commentController->report((int)$this->get['commentid'], (int)$this->get['id']);
             } else {
                 echo "Le commentaire n\'a pas pu etre identifié";
             }
-
         } elseif ($action === 'postfront') {
             // route http://localhost:8000/?action=postfront
             if (isset($this->get['id'])) 

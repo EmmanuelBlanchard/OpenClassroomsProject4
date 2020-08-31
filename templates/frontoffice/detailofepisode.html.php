@@ -12,14 +12,17 @@
     <h4 class="sectionH4TitleComments">Commentaires</h4>
     <?php foreach($data['allcomment'] as $post): ?>
     <article>
-        <h5>Commentaire de </h5>
-        <p class="pAuthorComments"><?=$post['author']?></p>
-        <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
-        <?=$post['comment']?>
-        
         <?php if ($post['report'] ===1): ?>
+            <h5>Commentaire de </h5>
+            <p class="pAuthorComments"><?=$post['author']?></p>
+            <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
             <p>Ce commentaire a déjà été signalé</p>
         <?php else: ?>
+            <h5>Commentaire de </h5>
+            <p class="pAuthorComments"><?=$post['author']?></p>
+            <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
+            <?=$post['comment']?>
+
             <div class="buttonReport">
                 <a href="index.php?action=report&commentid=<?=$post['id']?>&id=<?=$post['episode_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
             </div>
