@@ -94,8 +94,8 @@ class Router
             }
         } elseif ($action === "pagepagination") {
             // On détermine sur quelle page on se trouve
-            if(isset($_GET['page']) && !empty($_GET['page'])){
-                $currentPage = (int) strip_tags($_GET['page']);
+            if(isset($this->get['page']) && !empty($this->get['page'])){
+                $currentPage = (int) strip_tags($this->get['page']);
                 $this->postController->Pagination($currentPage);
             }else{
                 $currentPage = 1;
