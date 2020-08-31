@@ -58,4 +58,28 @@ class PostManager
 		return $request->fetch();
     }
     
+    //Essai pour la pagination
+    public function getPostPagination()
+    {
+        // $sql = 'SELECT * FROM `articles` ORDER BY `created_at` DESC;';
+
+        // $sql = 'SELECT * FROM `Episodes` ORDER BY `episode_date` DESC;';
+
+        // On prépare la requête
+        // $query = $db->prepare($sql);
+
+        $request = $this->database->prepare('SELECT * FROM `Episodes` ORDER BY `episode_date` DESC;');
+
+        // On exécute
+        //$query->execute();
+
+        $request->execute();
+
+        // On récupère les valeurs dans un tableau associatif
+        //$articles = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        $articles = $request->fetchAll();
+
+    }
+
 }

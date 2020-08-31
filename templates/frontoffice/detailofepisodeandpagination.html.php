@@ -49,6 +49,7 @@
 </section>
 
 
+
 <p id="pagination">
 				<?php
 
@@ -68,3 +69,4 @@
 				}
 				?>
 </p>
+

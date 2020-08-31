@@ -95,6 +95,10 @@ class PostController
 
 	}
 
+    public function Pagination()
+    {
+        
+    }
 
 
 }
