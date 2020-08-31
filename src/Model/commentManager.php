@@ -45,21 +45,21 @@ class CommentManager
     
     public function updateComment(int $commentId)
     {
-        $request = $this->database->prepare('UPDATE Comments SET comment= "Ce message a été supprimé par l\'administrateur", report= "2" WHERE id=:id');
+        $request = $this->database->prepare('UPDATE Comments SET comment="Ce message a été supprimé par l\'administrateur", report=2 WHERE id=:id');
         $request->execute(['id' => $commentId]);
         return $request;
     }
 
     public function validateComment(int $commentId)
     {
-        $request= $this->database->prepare('UPDATE Comments SET report= "2" WHERE id=:id');
+        $request= $this->database->prepare('UPDATE Comments SET report=2 WHERE id=:id');
         $request->execute(['id'=> $commentId]);
         return $request;
     }
 
     public function reportComment(int $commentId)
     {
-        $request = $this->database->prepare('UPDATE Comments SET report= "1" WHERE id=:id AND report= "0"');
+        $request = $this->database->prepare('UPDATE Comments SET report=1 WHERE id=:id');
         $request->execute(['id' => $commentId]);
         return $request;
 

@@ -77,7 +77,9 @@ class PostManager
         $request->execute();
         // On récupère le nombre d'episodes
         $request->fetch();
-        // On récupère le nombre d'episodes
+        
+        var_dump($request);
+        
         $nbEpisodes = (int) $request['nb_episodes'];
 
         return $nbEpisodes;

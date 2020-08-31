@@ -58,18 +58,12 @@ class Router
             $this->postController->displayListOfEpisodes();
         } elseif ($action === 'addComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=addCommente&id=5
-            if (!empty($this->post['author']) && !empty($this->post['comment'])) {
-                $this->commentController->addComment((int)$this->get['id'], (string)$this->post['author'], (string)$this->post['comment']);
-            } else {
-                echo "Erreur : tous les champs ne sont pas remplis !<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
-            }
+            $this->commentController->addComment((int)$this->get['id'], $this->post);
         } elseif ($action === 'report') {
-            if (isset($this->get['commentid']) && isset($this->get['id'])) 
-            {
+            if (isset($this->get['commentid']) && isset($this->get['id'])) {
                 $this->commentController->report((int)$this->get['commentid'], (int)$this->get['id']);
             } else {
                 echo "Le commentaire n\'a pas pu etre identifié";
-                //throw new Exception('<div class="exception">le commentaire n\'a pas pu etre identifié</div>');
             }
 
         } elseif ($action === 'postfront') {

@@ -21,12 +21,16 @@ class CommentController
         $this->view = $view;
     }
 
-    public function addComment(int $postId, string $comment, string $author): void
+    public function addComment(int $postId, array $data): void
     {
-        $this->postManager->getEpisode($postId);
-        $this->commentManager->postComment($postId, $comment, $author);
-
+        if (!empty($data['author']) && !empty($data['comment'])) {
+            $this->commentManager->postComment($postId, $data['comment'], $data['author']);
+        } else {
+            echo "Erreur : tous les champs ne sont pas remplis !<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
+        }
+        
         header('Location: index.php?action=detailofepisode&id='.$postId);
+        exit();
     }
 
     public function report(int $commentId, int $postId): void
@@ -34,6 +38,7 @@ class CommentController
         $this->commentManager->reportComment($commentId);
 
          header('Location: index.php?action=detailofepisode&id='.$postId);
+         exit();
     }
 
 }
