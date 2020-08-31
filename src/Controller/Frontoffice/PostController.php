@@ -95,9 +95,19 @@ class PostController
 
 	}
 
-    public function Pagination()
+    public function Pagination(int $currentPage, int $perPage)
     {
-        
+        $infosEpisodes = $this->postManager->getInfosEpisodes();
+        $nbEpisodes = $this->postManager->getPostNbEpisodes();
+        $nbTotalPages = $this->postManager->getPostNbPages($nbEpisodes);
+        $pagination = $this->postManager->getPostPagination($currentPage, $perPage);
+
+        if ($infosEpisodes !== null) {
+            $this->view->render(['template' => 'detailofepisodeandpagination', 'episode' => $infosEpisodes, 'nbEpisodes' => $nbEpisodes, 'nbTotalPages' => $nbTotalPages, 'pagination' => $pagination]);
+        } elseif ($infosEpisodes === null) {
+            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
+        }
+
     }
 
 
