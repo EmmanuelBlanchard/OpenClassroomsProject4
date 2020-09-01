@@ -11,29 +11,12 @@
 <section class="sectionDisplayComments">
     <h4 class="sectionH4TitleComments">Commentaires</h4>
     <?php foreach($data['allcomment'] as $post): ?>
-    <article>
-    <?php
-        $post['report'] ===1;
-        //var_dump($post['report']); => string(1) "1"  => transformer en nombre avec (int) ?? 
-
-            if( (int)$post['report'] ===1) {
-                echo '<p>Ce commentaire a déjà été signalé</p>';
-            }elseif($post['report'] !==1){
-                echo '<div class="buttonReport">
-                <a href="index.php?action=report&commentid=<?=$post[\'id\']?>&id=<?=$post[\'episode_id\']?>" class="linkToTheReportOfThePostComment">Signaler</a>
-            </div>';
-            }else{
-                echo '<div class="buttonReport">
-                <a href="index.php?action=report&commentid=<?=$post[\'id\']?>&id=<?=$post[\'episode_id\']?>" class="linkToTheReportOfThePostComment">Signaler</a>
-            </div>';
-            }
-        ?>
-        <!-- le if ($post['report']===1) ne marche pas --> 
-        <?php if ( (int)$post['report']===1):?>
+    <article>        
+        <?php if ((int)$post['report']===1): ?>
             <h5>Commentaire de </h5>
             <p class="pAuthorComments"><?=$post['author']?></p>
             <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
-            <p>Ce commentaire a déjà été signalé</p>
+            <p>Ce commentaire a été signalé</p>
         <?php else: ?>
             <h5>Commentaire de </h5>
             <p class="pAuthorComments"><?=$post['author']?></p>

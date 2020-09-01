@@ -213,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `Comments` (
   `comment` text NOT NULL,
   `comment_date` datetime NOT NULL,
   `episode_id` int(11) NOT NULL,
-  `report` INT(3) NOT NULL DEFAULT '0',
+  `report` int(3) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_episodes_id` FOREIGN KEY (`episode_id`) REFERENCES `Episodes`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET='utf8mb4';
