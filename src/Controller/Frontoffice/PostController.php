@@ -24,11 +24,6 @@ class PostController
     public function displayHomeWithTheLastThreeEpisodes(): void
     {
         $data = $this->postManager->showLastThreeEpisodes();
-        /*
-        echo"<pre>";
-        print_r($data);
-        echo"</pre>";
-        die();*/
 
         if ($data !== null) {
             $this->view->render(['template' => 'home', 'allposts' => $data]);
@@ -51,7 +46,6 @@ class PostController
     public function displayDetailOfEpisode(int $postId): void
     {
         $data_episode = $this->postManager->getEpisode($postId);
-        // $commentaires= $this->commentManager->findAllEpisode($id);
         $data_comments = $this->commentManager->getComments($postId);
 
         //echo"<pre>";

@@ -60,7 +60,7 @@ class Router
             // route http://localhost:8000/?action=addCommente&id=5
             $this->commentController->addComment((int)$this->get['id'], $this->post);
         } elseif ($action === 'report') {
-            // route http://localhost:8000/?action=report&comment=1&id=1
+            // route http://localhost:8000/?action=report&commentid=1&id=1
             if (isset($this->get['commentid']) && isset($this->get['id'])) {
                 $this->commentController->report((int)$this->get['commentid'], (int)$this->get['id']);
             } else {
@@ -82,12 +82,11 @@ class Router
                     $start = ($page-1)*$limit;
                     $PostAndComments = $this->postController->Post((int)$this->get['id'], $start, $limit, $page);
                 }
-
             } else {
                 echo "l\'id du post n\'est pas trouvable <a href=http://localhost:8000/?action=home>Aller Ici</a>";
             }
         } elseif ($action === "page") {
-            // On détermine sur quelle page on se trouve
+            // route http://localhost:8000/?action=page
             if(isset($this->get['page']) && !empty($this->get['page'])){
                 $currentPage = (int) strip_tags($this->get['page']);
                 $this->postController->Pagination($currentPage);
@@ -95,7 +94,6 @@ class Router
                 $currentPage = 1;
                 $this->postController->Pagination($currentPage);
             }
-
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }
