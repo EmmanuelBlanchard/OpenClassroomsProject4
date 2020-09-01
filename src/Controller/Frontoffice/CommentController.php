@@ -37,8 +37,8 @@ class CommentController
     {
         $this->commentManager->reportComment($commentId);
 
-         header('Location: index.php?action=detailofepisode&id='.$postId);
-         exit();
+        header('Location: index.php?action=detailofepisode&commentid=' .$commentId . '&id=' .$postId);
+        exit();
     }
 
 }
