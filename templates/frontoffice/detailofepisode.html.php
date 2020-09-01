@@ -21,8 +21,7 @@
             <h5>Commentaire de </h5>
             <p class="pAuthorComments"><?=$post['author']?></p>
             <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
-            <?=$post['comment']?>
-
+            <p><?=$post['comment']?><p>
             <div class="buttonReport">
                 <a href="index.php?action=report&commentid=<?=$post['id']?>&id=<?=$post['episode_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
             </div>
