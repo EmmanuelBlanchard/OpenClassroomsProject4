@@ -26,7 +26,8 @@ class CommentController
         if (!empty($data['author']) && !empty($data['comment'])) {
             $this->commentManager->postComment($postId, $data['comment'], $data['author']);
         } else {
-            echo "Erreur : tous les champs ne sont pas remplis !<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
+            header('Location: index.php?action=error&id='.$postId);
+            exit();
         }
         
         header('Location: index.php?action=detailofepisode&id='.$postId);
@@ -41,4 +42,17 @@ class CommentController
         exit();
     }
 
+    // Essai en cas d'erreur, route vers la page d'erreur
+    public function Error(int $postId): void
+    {
+        $data_episode = $this->postManager->getEpisode($postId);
+        $data_comments = $this->commentManager->getComments($postId);
+
+        if ($data_episode !== null) {
+            $this->view->render(['template' => 'error', 'episode' => $data_episode, 'allcomment' => $data_comments]);
+        } elseif ($data_episode === null) {
+            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
+        }
+
+    }
 }

@@ -11,22 +11,21 @@
 <section class="sectionDisplayComments">
     <h4 class="sectionH4TitleComments">Commentaires</h4>
     <?php foreach($data['allcomment'] as $post): ?>
-    <article>
-        <h5>Commentaire de </h5>
-        <p class="pAuthorComments"><?=$post['author']?></p>
-        <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
-        <?=$post['comment']?>
-        
-        <!-- if $post['report'] === '1' {
-            <p>Ce commentaire a déjà été signalé</p>
-        } else {
-            <p><a href="index.php?action=report&commentid= $post['id'] &id= $post['episode_id'] " class="linkToTheReportOfThePostComment">Signaler</a></p>
-        }
-        -->
-
-        <div class="buttonReport">
-            <a href="index.php?action=report&amp;commentid=<?=$post['id']?>&amp;id=<?=$post['episode_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
-        </div>
+    <article>        
+        <?php if ((int)$post['report']===1): ?>
+            <h5>Commentaire de </h5>
+            <p class="pAuthorComments"><?=$post['author']?></p>
+            <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
+            <p>Ce commentaire a été signalé</p>
+        <?php else: ?>
+            <h5>Commentaire de </h5>
+            <p class="pAuthorComments"><?=$post['author']?></p>
+            <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
+            <p><?=$post['comment']?><p>
+            <div class="buttonReport">
+                <a href="index.php?action=report&amp;commentid=<?=$post['id']?>&amp;id=<?=$post['episode_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
+            </div>
+        <?php endif ?>
     </article>
     <?php endforeach; ?>
 </section>

@@ -59,6 +59,9 @@ class Router
         } elseif ($action === 'addComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=addCommente&id=5
             $this->commentController->addComment((int)$this->get['id'], $this->post);
+        } elseif ($action === 'error' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=error&id=5
+            $this->commentController->error((int)$this->get['id']);
         } elseif ($action === 'report') {
             // route http://localhost:8000/?action=report&commentid=1&id=1
             if (isset($this->get['commentid']) && isset($this->get['id'])) {

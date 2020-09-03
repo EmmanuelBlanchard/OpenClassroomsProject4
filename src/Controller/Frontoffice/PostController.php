@@ -60,7 +60,7 @@ class PostController
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
     }
-
+    
     public function Post(int $postId, int $start, int $limit, int $page) //getcomment for one post
 	{
         $post = $this->postManager->getPost($postId);
