@@ -113,4 +113,22 @@ class PostManager
         return $episodes;
     }
 
+    /*
+    <?php
+    $nombreDeMessagesParPage = 20;
+    
+    $retour = $bdd->query('SELECT COUNT(*) AS nb_messages FROM livre');
+    $donnees = $retour->fetch();
+    $totalDesMessages = $donnees['nb_messages'];
+    
+    $nombreDePages  = ceil($totalDesMessages / $nombreDeMessagesParPage);
+    
+    echo 'Page : ';
+    for ($page_actuelle = 1 ; $page_actuelle <= $nombreDePages ; $page_actuelle++)
+    {
+        echo '<a href="livre.php?page=' . $page_actuelle . '">' . $page_actuelle . '</a> ';
+    }
+    ?>
+    */
+
 }

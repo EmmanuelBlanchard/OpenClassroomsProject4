@@ -23,7 +23,7 @@
             <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
             <p><?=$post['comment']?><p>
             <div class="buttonReport">
-                <a href="index.php?action=report&commentid=<?=$post['id']?>&id=<?=$post['episode_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
+                <a href="index.php?action=report&amp;commentid=<?=$post['id']?>&amp;id=<?=$post['episode_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
             </div>
         <?php endif ?>
     </article>
@@ -32,7 +32,7 @@
 
 <section class="sectionPostComment">
     <h4 class="sectionH4TitlePostComment"> Publier un commentaire</h4>
-        <form class="commentForm" method="post" action="index.php?action=addComment&id=<?=$data['episode']['id']?>">
+        <form class="commentForm" method="post" action="index.php?action=addComment&amp;id=<?=$data['episode']['id']?>">
             <p class="commentFormComment">
                 <label for="comment">Commentaire <span>(obligatoire)</span> </label>
                 <textarea name="comment" id="comment" rows="10" cols="50" required></textarea>
