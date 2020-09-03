@@ -24,7 +24,7 @@ class CommentController
     public function addComment(int $postId, array $data): void
     {
         if (!empty($data['author']) && !empty($data['comment'])) {
-            $this->commentManager->postComment($postId, $data['comment'], $data['author']);
+            $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['author']));
         } else {
             header('Location: index.php?action=error&id='.$postId);
             exit();
