@@ -53,6 +53,9 @@ class Router
         } elseif ($action === 'detailofepisode' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=detailofepisode&id=5
             $this->postController->displayDetailOfEpisode((int)$this->get['id']);
+        } elseif ($action === 'test' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=test&id=5
+            $this->postController->Pagination((int)$this->get['id']);
         } elseif ($action === 'listofepisodes') {
             // route http://localhost:8000/?action=listofepisodes
             $this->postController->displayListOfEpisodes();

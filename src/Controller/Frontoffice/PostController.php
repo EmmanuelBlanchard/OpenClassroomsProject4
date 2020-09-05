@@ -89,21 +89,30 @@ class PostController
 
 	}
 
-    public function Pagination(int $currentPage)
+    public function Pagination(int $postId)
     {
+        $data_episode = $this->postManager->getEpisode($postId);
+        $data_comments = $this->commentManager->getComments($postId);
+
+        $currentPage = $postId;
+
         $infosEpisodes = $this->postManager->getInfosEpisodes();
         $nbEpisodes = $this->postManager->getPostNbEpisodes();
-        $nbTotalPages = $this->postManager->getPostNbPages($nbEpisodes);
+        //$nbTotalPages = $this->postManager->getPostNbPages($nbEpisodes);
+        $nbPages = $this->postManager->getPostNbPages2();
         $pagination = $this->postManager->getPostPagination($currentPage);
 
-        echo"<pre>";
+        //echo"<pre>";
         //print_r($infosEpisodes);
-        print_r($nbEpisodes);
-        echo"</pre>";
-        die();
+        //print_r('Nombre d\'episodes : ' .$nbEpisodes);
+        //print_r('Nombre de pages : ' .$nbTotalPages);
+        //print_r('Nombre de pages : ' .$nbPages);
+        //print_r('Pagination : ' .$pagination);
+        //echo"</pre>";
+        //die();
 
         if ($infosEpisodes !== null) {
-            $this->view->render(['template' => 'detailofepisodeandpagination', 'episode' => $infosEpisodes, 'nbEpisodes' => $nbEpisodes, 'nbTotalPages' => $nbTotalPages, 'pagination' => $pagination]);
+            $this->view->render(['template' => 'detailofepisodeandpagination', 'episode' => $data_episode, 'allcomment' => $data_comments, 'nbEpisodes' => $nbEpisodes, 'nbPages' => $nbPages, 'pagination' => $pagination]);
         } elseif ($infosEpisodes === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }

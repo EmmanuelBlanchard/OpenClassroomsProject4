@@ -47,73 +47,7 @@
         </form>
 </section>
 
-<!-- Essai Pagination -->
-<p id="pagination">
-				<?php
-
-				echo 'Page : ';
-                // Undefined variable: totalpagecomments
-				for ($i = 1 ; $i <= $data['totalpagecomments'] /*$totalpagecomments*/ ; $i++)
-				{
-					if ($i == $data['page'] /*$page*/)
-					{
-						echo '<strong class="brown">' . $i . '<strong></a> ';
-					}
-					else
-					{
-						echo '<a href="index.php?action=postfront&page=' . $i . '&id='.htmlspecialchars($data['episode']['id']/*$post['id']*/).'">' . $i . '</a> ';
-					}
-
-				}
-				?>
-</p>
-
-<!-- Essai Cours , si peux etre utile et etre utiliser -->
-<?php
-$coordonnees = array (
-    'prenom' => 'François',
-    'nom' => 'Dupont',
-    'adresse' => '3 Rue du Paradis',
-    'ville' => 'Marseille');
-
-if (array_key_exists('nom', $coordonnees))
-{
-    echo 'La clé "nom" se trouve dans les coordonnées !';
-}
-
-if (array_key_exists('pays', $coordonnees))
-{
-    echo 'La clé "pays" se trouve dans les coordonnées !';
-}
-
-?>
-
-<?php
-$fruits = array ('Banane', 'Pomme', 'Poire', 'Cerise', 'Fraise', 'Framboise');
-
-if (in_array('Myrtille', $fruits))
-{
-    echo 'La valeur "Myrtille" se trouve dans les fruits !';
-}
-
-if (in_array('Cerise', $fruits))
-{
-    echo 'La valeur "Cerise" se trouve dans les fruits !';
-}
-?>
-
-<?php
-$fruits = array ('Banane', 'Pomme', 'Poire', 'Cerise', 'Fraise', 'Framboise');
-
-$position = array_search('Fraise', $fruits);
-echo '"Fraise" se trouve en position ' . $position . '<br />';
-
-$position = array_search('Banane', $fruits);
-echo '"Banane" se trouve en position ' . $position;
-?>
-
-<!-- Essai pagination -->
-
+<!-- Essai pagination   Undefined variable: currentPage  -->
 <nav>
     <ul class="pagination">
         <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
@@ -132,4 +66,3 @@ echo '"Banane" se trouve en position ' . $position;
         </li>
     </ul>
 </nav>
-
