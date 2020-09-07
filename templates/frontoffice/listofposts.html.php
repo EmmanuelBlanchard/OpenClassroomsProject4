@@ -8,7 +8,7 @@
         <p class="pTitleIntroductionToTheEpisode">Introduction</p>
         <p class="pIntroductionToTheEpisode"><?=$post['introduction']?></p>
         <p class="pCreatedAt">Publié <?=$post['post_date_fr']?> </p>
-        <a href="index.php?action=detailofepisode&amp;id=<?=$post['id']?>" class="linkReadTheEntireEpisode">Lire l'épisode en entier</a>
+        <a href="index.php?action=detailofpost&amp;id=<?=$post['id']?>" class="linkReadTheEntireEpisode">Lire l'épisode en entier</a>
     </article>
     
 </section>
