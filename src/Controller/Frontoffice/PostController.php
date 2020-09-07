@@ -47,11 +47,14 @@ class PostController
     {
         $data_post = $this->postManager->getPost($postId);
         $data_comments = $this->commentManager->getComments($postId);
-        $previousPost = $this->postManager->previousPost();
+        $previousPost = $this->postManager->previousPost($postId);
         $nextPost = $this->postManager->nextPost();
+        
         //echo"<pre>";
         //print_r($data_post);
         //print_r($data_comments);
+        //print_r($previousPost);
+        //print_r($nextPost);
         //echo"</pre>";
         //die();
 

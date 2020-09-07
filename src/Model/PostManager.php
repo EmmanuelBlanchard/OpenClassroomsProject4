@@ -158,26 +158,26 @@ class PostManager
         return $posts;
     }
     
-    public function previousPost(): ?int
+    public function previousPost($chapter): ?int
     {
-        return 1;
+        //return 1;
+        $request = $this->database->prepare('SELECT MAX(chapter) FROM `Posts` WHERE chapter < chapter=:chapter');
+        $request->execute(['chapter' => $chapter]);
+        return $request->fetch();
         /*
-        $request = $this->database->prepare('SELECT MAX(chapter) FROM `Posts` WHERE chapter < 5');
         $request->execute();
         $result = $request->fetch();
-        return $result;
-        */
+        return $result;*/
+        
     }
 
     public function nextPost(): ?int
     {
-        return 3;
-        /*
+        //return 3;
         $request = $this->database->prepare('SELECT MAX(chapter) FROM `Posts` WHERE chapter < 5');
         $request->execute();
         $result = $request->fetch();
         return $result;
-        */
     }
 
 }
