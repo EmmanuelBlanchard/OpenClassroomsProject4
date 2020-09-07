@@ -45,7 +45,7 @@ class PostManager
         return $request->fetch();
     }
 
-    //Essai pour la pagination
+    // Essai pour la pagination
     public function getPost2(int $postId): ?array
 	{   /*
         $request = $this->database->prepare('SELECT id, title, chapter, author, content, DATE_FORMAT(post_date, "%d/%m/%Y") post_date_fr FROM posts WHERE id=:id');*/
@@ -115,7 +115,7 @@ class PostManager
         return $pages;
     }
 
-    public function getPostPagination(int $currentPage)
+    public function getPostPagination(int $currentPage): ? array
     {
         // On détermine le nombre de posts par page
          $perPage = 10;
@@ -139,5 +139,28 @@ class PostManager
         $posts = $request->fetchAll(\PDO::FETCH_ASSOC);
         return $posts;
     }
+
+    public function getPaginationList(): ? array
+    {
+        // On détermine le nombre de posts par page
+        $perPage = 10;
+
+        // Page actuelle par defaut => 1
+        $currentPage = 1;
+
+        // Calcul du 1er post de la page
+         $first = ($currentPage * $perPage) - $perPage;
+
+        $request = $this->database->prepare('SELECT * FROM `Posts` ORDER BY `post_date` DESC LIMIT :first, :perpage;');
+
+        $request->bindValue(':first', $first, \PDO::PARAM_INT);
+        $request->bindValue(':perpage', $perPage, \PDO::PARAM_INT);
+        // On exécute
+        $request->execute();
+        // On récupère les valeurs dans un tableau associatif
+        $posts = $request->fetchAll(\PDO::FETCH_ASSOC);
+        return $posts;
+    }
+    
 
 }
