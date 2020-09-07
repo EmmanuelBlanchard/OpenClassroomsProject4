@@ -118,7 +118,7 @@ class PostController
 
     }
 
-    public function paginationListeofPosts(): void
+    public function paginationListOfPosts(): void
     {
         $data = $this->postManager->showAllPosts();
 

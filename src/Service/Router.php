@@ -55,7 +55,7 @@ class Router
             $this->postController->displayDetailOfPost((int)$this->get['id']);
         } elseif ($action === 'test') {
             // route http://localhost:8000/?action=test&id=5
-            $this->postController->paginationListeofPosts((int)$this->get['id']);
+            $this->postController->paginationListOfPosts((int)$this->get['id']);
         } elseif ($action === 'test' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=test&id=5
             $this->postController->paginationDetailOfPost((int)$this->get['id']);
