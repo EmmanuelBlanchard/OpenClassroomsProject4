@@ -122,21 +122,15 @@ class PostController
     {
         $data = $this->postManager->showAllPosts();
 
-        if ($data !== null) {
-            $this->view->render(['template' => 'listofposts', 'allposts' => $data]);
-        } elseif ($data === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
-        }
-
         $nbPages = $this->postManager->getPostNbPages2();
         $pagination = $this->postManager->getPaginationList();
 
-        //echo"<pre>";
+        echo"<pre>";
         //print_r('Nombre de pages : ' .$nbTotalPages);
-        //print_r('Nombre de pages : ' .$nbPages);
+        print_r('Nombre de pages : ' .$nbPages);
         //print_r('Pagination : ' .$pagination);
-        //echo"</pre>";
-        //die();
+        echo"</pre>";
+        die();
 
         if ($data !== null) {
             $this->view->render(['template' => 'listofpostsandpagination', 'allposts' => $data, 'nbPages' => $nbPages, 'pagination' => $pagination]);
