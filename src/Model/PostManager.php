@@ -106,7 +106,7 @@ class PostManager
         
         $nbPosts = (int) $result['nb_posts'];
 
-        // On détermine le nombre d'episodes par page
+        // On détermine le nombre de posts par page
         $perPage = 10;
 
         // On calcule le nombre de pages total
@@ -117,10 +117,10 @@ class PostManager
 
     public function getPostPagination(int $currentPage)
     {
-        // On détermine le nombre d'episodes par page
+        // On détermine le nombre de posts par page
          $perPage = 10;
 
-        // Calcul du 1er episode de la page
+        // Calcul du 1er post de la page
          $first = ($currentPage * $perPage) - $perPage;
 
         // $request = $this->database->prepare('SELECT * FROM `Episodes` ORDER BY `episode_date` DESC LIMIT :first, :perpage;');
