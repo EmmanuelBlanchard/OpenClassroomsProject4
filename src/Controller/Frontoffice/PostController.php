@@ -94,13 +94,14 @@ class PostController
         $data_post = $this->postManager->getPost($postId);
         $data_comments = $this->commentManager->getComments($postId);
 
-        $currentPage = $postId;
+        //$currentPage = $postId;
 
         $infosPosts = $this->postManager->getInfosEpisodes();
         $nbPosts = $this->postManager->getPostNbPosts();
         //$nbTotalPages = $this->postManager->getPostNbPages($nbPosts);
         $nbPages = $this->postManager->getPostNbPages2();
-        $pagination = $this->postManager->getPostPagination($currentPage);
+        //$pagination = $this->postManager->getPostPagination($currentPage);
+        $pagination = $this->postManager->getPostPagination($postId);
 
         //echo"<pre>";
         //print_r($infosEpisodes);
