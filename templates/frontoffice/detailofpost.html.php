@@ -38,7 +38,7 @@
                 <textarea name="comment" id="comment" rows="10" cols="50" required></textarea>
             </p>
             <p class="commentFormPseudo">
-                <label for="pseudo">Nom <span>(obligatoire)</span> </label>
+                <label for="pseudo">Pseudo <span>(obligatoire)</span> </label>
                 <input id="pseudo" name="pseudo" type="text" value="" size="30" maxlength="245" required>
             </p>
             <p>
