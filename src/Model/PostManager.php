@@ -141,18 +141,14 @@ class PostManager
     }
 
     public function getPaginationList(): ? array
-    {
-        // On détermine le nombre de posts par page
+    {   // On détermine le nombre de posts par page
         $perPage = 10;
-
         // Page actuelle par defaut => 1
         $currentPage = 1;
-
         // Calcul du 1er post de la page
-         $first = ($currentPage * $perPage) - $perPage;
+        $first = ($currentPage * $perPage) - $perPage;
 
         $request = $this->database->prepare('SELECT * FROM `Posts` ORDER BY `post_date` DESC LIMIT :first, :perpage;');
-
         $request->bindValue(':first', $first, \PDO::PARAM_INT);
         $request->bindValue(':perpage', $perPage, \PDO::PARAM_INT);
         // On exécute
@@ -162,5 +158,26 @@ class PostManager
         return $posts;
     }
     
+    public function previousPost(): ?int
+    {
+        return 1;
+        /*
+        $request = $this->database->prepare('SELECT MAX(chapter) FROM `Posts` WHERE chapter < 5');
+        $request->execute();
+        $result = $request->fetch();
+        return $result;
+        */
+    }
+
+    public function nextPost(): ?int
+    {
+        return 3;
+        /*
+        $request = $this->database->prepare('SELECT MAX(chapter) FROM `Posts` WHERE chapter < 5');
+        $request->execute();
+        $result = $request->fetch();
+        return $result;
+        */
+    }
 
 }

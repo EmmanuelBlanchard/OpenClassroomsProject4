@@ -13,7 +13,7 @@
     
 </section>
 
-<!-- Essai pagination   Undefined variable: currentPage  -->
+<!-- Essai pagination => Undefined variable: currentPage  -->
 <nav>
     <ul class="pagination">
         <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->

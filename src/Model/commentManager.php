@@ -75,7 +75,7 @@ class CommentManager
         return $request;
     }
 
-    //Essai pour la pagination
+    // Essai pour la pagination
     public function getCommentsP($postId, $start, $limit)
 	{   /*
 		$request = $this->database->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, "%d/%m/%Y %Hh%i:%ss") comment_date_fr, alert FROM comments WHERE post_id= ? ORDER BY comment_date DESC LIMIT '.$start.','.$limit);
@@ -89,7 +89,7 @@ class CommentManager
         return $request->fetchAll();
     }
     
-    //Essai pour la pagination
+    // Essai pour la pagination
     public function getPagination($postId): ?array
 	{
 		$request = $this->database->prepare('SELECT COUNT(*) totalc FROM Comments WHERE post_id=:post_id');

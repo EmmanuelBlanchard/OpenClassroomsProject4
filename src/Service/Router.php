@@ -54,10 +54,10 @@ class Router
             // route http://localhost:8000/?action=detailofpost&id=5
             $this->postController->displayDetailOfPost((int)$this->get['id']);
         } elseif ($action === 'testpagination') {
-            // route http://localhost:8000/?action=test&id=5
+            // route http://localhost:8000/?action=testpagination
             $this->postController->paginationListOfPosts();
         } elseif ($action === 'testpaginationid' && isset($this->get['id'])) {
-            // route http://localhost:8000/?action=test&id=5
+            // route http://localhost:8000/?action=testpaginationid&id=5
             $this->postController->paginationDetailOfPost((int)$this->get['id']);
         } elseif ($action === 'listofposts') {
             // route http://localhost:8000/?action=listofposts

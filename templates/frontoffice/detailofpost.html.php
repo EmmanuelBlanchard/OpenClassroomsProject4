@@ -6,6 +6,10 @@
         <?=$data['post']['content']?>
         <p class="pCreatedAt">Publié <?=$data['post']['post_date_fr']?></p>
     </article>
+
+    <a href="index.php?action=detailofpost&amp;id=<?=$data['previouspost']?>" class="linkPreviousPost">Épisode Précèdent</a>
+    <a href="index.php?action=detailofpost&amp;id=<?=$data['nextpost']?>" class="linkNextPost">Épisode Suivant</a>
+
 </section>
 
 <section class="sectionDisplayComments">

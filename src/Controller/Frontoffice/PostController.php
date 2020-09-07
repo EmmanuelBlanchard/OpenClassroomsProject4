@@ -47,7 +47,8 @@ class PostController
     {
         $data_post = $this->postManager->getPost($postId);
         $data_comments = $this->commentManager->getComments($postId);
-
+        $previousPost = $this->postManager->previousPost();
+        $nextPost = $this->postManager->nextPost();
         //echo"<pre>";
         //print_r($data_post);
         //print_r($data_comments);
@@ -55,7 +56,7 @@ class PostController
         //die();
 
         if ($data_post !== null) {
-            $this->view->render(['template' => 'detailofpost', 'post' => $data_post, 'allcomment' => $data_comments]);
+            $this->view->render(['template' => 'detailofpost', 'post' => $data_post, 'allcomment' => $data_comments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);
         } elseif ($data_post === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
@@ -125,15 +126,14 @@ class PostController
         $nbPages = $this->postManager->getPostNbPages2();
         $pagination = $this->postManager->getPaginationList();
 
-        echo"<pre>";
-        //print_r('Nombre de pages : ' .$nbTotalPages);
-        print_r('Nombre de pages : ' .$nbPages);
+        //echo"<pre>";
+        //print_r('Nombre de pages : ' .$nbPages);
         //print_r('Pagination : ' .$pagination);
-        echo"</pre>";
-        die();
+        //echo"</pre>";
+        //die();
 
         if ($data !== null) {
-            $this->view->render(['template' => 'listofpostsandpagination', 'allposts' => $data, 'nbPages' => $nbPages, 'pagination' => $pagination]);
+            $this->view->render(['template' => 'listofpostsandpagination', 'allposts' => $data, 'pagination' => $pagination]);
         } elseif ($data === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
