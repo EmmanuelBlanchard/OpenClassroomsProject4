@@ -152,7 +152,7 @@ p {
 .sectionDisplayComments p {
     font-family: 'ralewayregular','open_sansregular', sans-serif;
 }
-.pAuthorComments {
+.pPseudoComments {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 11px;

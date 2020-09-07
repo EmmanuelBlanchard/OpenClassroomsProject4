@@ -49,16 +49,16 @@ class Router
         // Déterminer sur quelle route nous sommes // Attention algorithme naïf
         if ($action === 'home') {
             // route http://localhost:8000/?action=home
-            $this->postController->displayHomeWithTheLastThreeEpisodes();
-        } elseif ($action === 'detailofepisode' && isset($this->get['id'])) {
-            // route http://localhost:8000/?action=detailofepisode&id=5
-            $this->postController->displayDetailOfEpisode((int)$this->get['id']);
+            $this->postController->displayHomeWithTheLastThreePosts();
+        } elseif ($action === 'detailofpost' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=detailofpost&id=5
+            $this->postController->displayDetailOfPost((int)$this->get['id']);
         } elseif ($action === 'test' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=test&id=5
             $this->postController->Pagination((int)$this->get['id']);
-        } elseif ($action === 'listofepisodes') {
-            // route http://localhost:8000/?action=listofepisodes
-            $this->postController->displayListOfEpisodes();
+        } elseif ($action === 'listofposts') {
+            // route http://localhost:8000/?action=listofposts
+            $this->postController->displayListOfPosts();
         } elseif ($action === 'addComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=addCommente&id=5
             $this->commentController->addComment((int)$this->get['id'], $this->post);

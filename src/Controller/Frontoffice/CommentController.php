@@ -30,7 +30,7 @@ class CommentController
             exit();
         }
         
-        header('Location: index.php?action=detailofepisode&id='.$postId);
+        header('Location: index.php?action=detailofpost&id='.$postId);
         exit();
     }
 
@@ -38,19 +38,19 @@ class CommentController
     {
         $this->commentManager->reportComment($commentId);
 
-        header('Location: index.php?action=detailofepisode&commentid=' .$commentId . '&id=' .$postId);
+        header('Location: index.php?action=detailofpost&commentid=' .$commentId . '&id=' .$postId);
         exit();
     }
 
     // Essai en cas d'erreur, route vers la page d'erreur
     public function Error(int $postId): void
     {
-        $data_episode = $this->postManager->getEpisode($postId);
+        $data_post = $this->postManager->getPost($postId);
         $data_comments = $this->commentManager->getComments($postId);
 
-        if ($data_episode !== null) {
-            $this->view->render(['template' => 'error', 'episode' => $data_episode, 'allcomment' => $data_comments]);
-        } elseif ($data_episode === null) {
+        if ($data_post !== null) {
+            $this->view->render(['template' => 'error', 'post' => $data_post, 'allcomment' => $data_comments]);
+        } elseif ($data_post === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
 

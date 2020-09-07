@@ -20,26 +20,26 @@ class CommentManager
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
         
-        $request = $this->database->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, episode_id, report FROM Comments WHERE episode_id=:episode_id ORDER BY comment_date DESC');
-        $request->execute(['episode_id' => $postId]);
+        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC');
+        $request->execute(['post_id' => $postId]);
         return $request->fetchAll();
     }
 
     public function showAllComment(int $postId): ?array
     {
-        $request = $this->database->prepare('SELECT id, author, comment, comment_date, episode_id FROM Comments WHERE episode_id=:episode_id ORDER BY comment_date DESC');
-        $request->execute(['episode_id' => $postId]);
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC');
+        $request->execute(['post_id' => $postId]);
         return $request->fetch();
     }
 
-    public function postComment(int $postId, string $comment, string $author): bool
+    public function postComment(int $postId, string $comment, string $pseudo): bool
     {
-        $request = $this->database->prepare('INSERT INTO Comments (author, comment, comment_date, episode_id) VALUES
-        (:author, :comment, NOW(), :episode_id)');
+        $request = $this->database->prepare('INSERT INTO Comments (pseudo, comment, comment_date, post_id) VALUES
+        (:pseudo, :comment, NOW(), :post_id)');
         return $request->execute([
-            'author' => $author,
+            'pseudo' => $pseudo,
             'comment' => $comment,
-            'episode_id' => $postId
+            'post_id' => $postId
             ]);
     }
     
@@ -70,7 +70,7 @@ class CommentManager
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
         
-        $request = $this->database->prepare('SELECT id, author, comment, DATE_FORMAT(comment_created_the, \'%e %M %Y à %H:%i\') AS date_comment_created_the, episode_id FROM Comments WHERE report= "1"');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_created_the, \'%e %M %Y à %H:%i\') AS date_comment_created_the, episode_id FROM Comments WHERE report= "1"');
         $request->execute();
         return $request;
     }
@@ -84,16 +84,16 @@ class CommentManager
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
 
-		$request = $this->database->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, episode_id, report FROM Comments WHERE episode_id=:episode_id ORDER BY comment_date DESC LIMIT '.$start.','.$limit );
-        $request->execute(['episode_id' => $postId]);
+		$request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC LIMIT '.$start.','.$limit );
+        $request->execute(['post_id' => $postId]);
         return $request->fetchAll();
     }
     
     //Essai pour la pagination
     public function getPagination($postId): ?array
 	{
-		$request = $this->database->prepare('SELECT COUNT(*) totalc FROM Comments WHERE episode_id=:episode_id');
-		$request->execute(['episode_id' => $postId]);
+		$request = $this->database->prepare('SELECT COUNT(*) totalc FROM Comments WHERE post_id=:post_id');
+		$request->execute(['post_id' => $postId]);
         $totalcomment = $request->fetch();
         return $totalcomment;
 	}
