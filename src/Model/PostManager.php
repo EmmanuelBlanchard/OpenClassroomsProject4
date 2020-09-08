@@ -180,11 +180,24 @@ class PostManager
         //$request->fetch();
         //return $request;
 
+        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
+        //$request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
+        //$request->execute();
+        //$request->fetch();
+        //return $request;
+
+        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
+        //$request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
+        //$request->execute();
+        //$result = (int) $request;
+        //return $result;
+        // Object of class PDOStatement could not be converted to int
+
         $request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
-        $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
-        $request->execute();
-        $request->fetch();
-        return $request;
+        //$request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
+        $request->execute(['chapter' => $chapter]);
+        $result = $request['id'];
+        return $result;
 
     }
 
@@ -195,8 +208,9 @@ class PostManager
         //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MIN(`chapter`) FROM `Posts` WHERE `chapter` > 2)');
         $request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MIN(`chapter`) FROM `Posts` WHERE `chapter` > :chapter)');
         $request->execute(['chapter' => $chapter]);
-        $request->fetch();
-        return $request;
+        $result = $request['id'];
+        return $result;
+        // Object of class PDOStatement could not be converted to int
     }
 
 }
