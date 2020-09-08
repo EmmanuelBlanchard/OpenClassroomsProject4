@@ -214,8 +214,14 @@ class PostManager
         //return $result;
         // Object of class PDOStatement could not be converted to int
 
+        //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MIN(chapter) FROM Posts WHERE chapter > :chapter)');
+        //return $request->execute(['chapter' => $chapter]);
+
         $request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MIN(chapter) FROM Posts WHERE chapter > :chapter)');
-        return $request->execute(['chapter' => $chapter]);
+        $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
+        return $request->execute();
+
+        
     }
 
 }

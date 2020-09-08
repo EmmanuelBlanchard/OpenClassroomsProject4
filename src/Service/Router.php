@@ -68,13 +68,9 @@ class Router
         } elseif ($action === 'error' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=error&id=5
             $this->commentController->error((int)$this->get['id']);
-        } elseif ($action === 'report') {
+        } elseif ($action === 'report' && isset($this->get['commentid'], $this->get['id'])) {
             // route http://localhost:8000/?action=report&commentid=1&id=1
-            if (isset($this->get['commentid']) && isset($this->get['id'])) {
-                $this->commentController->report((int)$this->get['commentid'], (int)$this->get['id']);
-            } else {
-                echo "Le commentaire n\'a pas pu etre identifié";
-            }
+            $this->commentController->report((int)$this->get['commentid'], (int)$this->get['id']);
         } elseif ($action === 'postfront') {
             // route http://localhost:8000/?action=postfront
             if (isset($this->get['id'])) 
