@@ -158,7 +158,7 @@ class PostManager
         return $posts;
     }
     
-    public function previousPost($chapter): ?int
+    public function previousPost($chapter): ?bool
     {
         //return 1;
         //$request = $this->database->prepare('SELECT MAX(chapter) FROM `Posts` WHERE chapter < 2');
@@ -193,24 +193,29 @@ class PostManager
         //return $result;
         // Object of class PDOStatement could not be converted to int
 
-        $request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
-        //$request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
-        $request->execute(['chapter' => $chapter]);
-        $result = $request['id'];
-        return $result;
+        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
+        //$request->execute(['chapter' => $chapter]);
+        //$result = $request['id'];
+        //return $result;
 
+        $request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
+        return $request->execute(['chapter' => $chapter]);
     }
 
-    public function nextPost($chapter): ?int
+    public function nextPost($chapter): ?bool
     {
         //return 3;
         //$request = $this->database->prepare('SELECT MIN(chapter) FROM `Posts` WHERE chapter > 2');
         //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MIN(`chapter`) FROM `Posts` WHERE `chapter` > 2)');
-        $request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MIN(`chapter`) FROM `Posts` WHERE `chapter` > :chapter)');
-        $request->execute(['chapter' => $chapter]);
-        $result = $request['id'];
-        return $result;
+        
+        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MIN(`chapter`) FROM `Posts` WHERE `chapter` > :chapter)');
+        //$request->execute(['chapter' => $chapter]);
+        //$result = $request['id'];
+        //return $result;
         // Object of class PDOStatement could not be converted to int
+
+        $request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MIN(chapter) FROM Posts WHERE chapter > :chapter)');
+        return $request->execute(['chapter' => $chapter]);
     }
 
 }
