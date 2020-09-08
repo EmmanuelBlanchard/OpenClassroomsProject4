@@ -202,7 +202,7 @@ class PostManager
         return $request->execute(['chapter' => $chapter]);
     }
 
-    public function nextPost($chapter): ?bool
+    public function nextPost($chapter): ?int
     {
         //return 3;
         //$request = $this->database->prepare('SELECT MIN(chapter) FROM `Posts` WHERE chapter > 2');
@@ -217,9 +217,16 @@ class PostManager
         //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MIN(chapter) FROM Posts WHERE chapter > :chapter)');
         //return $request->execute(['chapter' => $chapter]);
 
+        //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MIN(chapter) FROM Posts WHERE chapter > :chapter)');
+        //$request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
+        //return $request->execute();
+
         $request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MIN(chapter) FROM Posts WHERE chapter > :chapter)');
         $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
-        return $request->execute();
+        $request->execute();
+        $result = (int) $request;
+        return $result;
+        // Object of class PDOStatement could not be converted to int
 
         
     }
