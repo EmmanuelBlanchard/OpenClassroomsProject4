@@ -50,13 +50,13 @@ class PostController
         $previousPost = $this->postManager->previousPost($postId);
         $nextPost = $this->postManager->nextPost($postId);
         
-        //echo"<pre>";
+        echo"<pre>";
         //print_r($data_post);
         //print_r($data_comments);
         //print_r($previousPost);
-        //print_r($nextPost);
-        //echo"</pre>";
-        //die();
+        print_r($nextPost);
+        echo"</pre>";
+        die();
 
         if ($data_post !== null) {
             $this->view->render(['template' => 'detailofpost', 'post' => $data_post, 'allcomment' => $data_comments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);
