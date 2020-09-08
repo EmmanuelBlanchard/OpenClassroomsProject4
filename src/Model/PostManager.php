@@ -161,23 +161,42 @@ class PostManager
     public function previousPost($chapter): ?int
     {
         //return 1;
-        $request = $this->database->prepare('SELECT MAX(chapter) FROM `Posts` WHERE chapter < chapter=:chapter');
-        $request->execute(['chapter' => $chapter]);
-        return $request->fetch();
-        /*
-        $request->execute();
-        $result = $request->fetch();
-        return $result;*/
+        //$request = $this->database->prepare('SELECT MAX(chapter) FROM `Posts` WHERE chapter < 2');
+
+        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < 2)');
         
+        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
+        //$request->execute(['chapter' => $chapter]);
+        //$request->fetch();
+        //return $request;
+
+        //$request->execute();
+        //$result = $request->fetch();
+        //return $result;*/
+
+        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
+        //$request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
+        //$request->execute(['chapter' => $chapter]);
+        //$request->fetch();
+        //return $request;
+
+        $request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
+        $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
+        $request->execute();
+        $request->fetch();
+        return $request;
+
     }
 
-    public function nextPost(): ?int
+    public function nextPost($chapter): ?int
     {
         //return 3;
-        $request = $this->database->prepare('SELECT MAX(chapter) FROM `Posts` WHERE chapter < 5');
-        $request->execute();
-        $result = $request->fetch();
-        return $result;
+        //$request = $this->database->prepare('SELECT MIN(chapter) FROM `Posts` WHERE chapter > 2');
+        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MIN(`chapter`) FROM `Posts` WHERE `chapter` > 2)');
+        $request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MIN(`chapter`) FROM `Posts` WHERE `chapter` > :chapter)');
+        $request->execute(['chapter' => $chapter]);
+        $request->fetch();
+        return $request;
     }
 
 }
