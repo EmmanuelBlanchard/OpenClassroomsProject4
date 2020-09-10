@@ -45,14 +45,16 @@ class PostController
         // Fusionner la fonction public function paginationListOfPosts(): void 
         $data = $this->postManager->showAllPosts();
 
-        $nbPages = $this->postManager->getPostNbPages2();
-        $pagination = $this->postManager->getPaginationList();
+        $nbTotalPosts = $this->postManager->getPostNbPosts();
+        $nbPostsPerPage = 5;
+        $nbTotalPages = $this->postManager->getPostNbPages($nbTotalPosts, $nbPostsPerPage);
+        $listPostPagination = $this->postManager->getListPostPagination();
 
-        //echo"<pre>";
-        //print_r('Nombre de pages : ' .$nbPages);
-        //print_r('Pagination : ' .$pagination);
-        //echo"</pre>";
-        //die();
+        echo"<pre>";
+        //print_r('Nombre de pages : ' .$nbTotalPages);
+        print_r('Pagination : ' .$listPostPagination);
+        echo"</pre>";
+        die();
 
     }
     
@@ -66,7 +68,13 @@ class PostController
         $totalComments = $this->commentManager->getPostNbComments($postId);
         $totalPageComments = ceil($totalComments / $limit);
 
-        //echo"<pre>";
+        $nbTotalPosts = $this->postManager->getPostNbPosts();
+        $nbPostsPerPage = 5;
+        $nbTotalPages = $this->postManager->getPostNbPages($nbTotalPosts, $nbPostsPerPage);
+        
+        $detailPostPagination = $this->postManager->getDetailPostPagination($postId, $nbPostsPerPage);
+
+        echo"<pre>";
         //print_r($dataPost);
         //print_r($dataComments);
         //print_r($previousPost);
@@ -74,22 +82,12 @@ class PostController
         //print_r($totalComments);
         //print_r($limit);
         //print_r($totalPageComments);
-        //echo"</pre>";
-        //die();
-
-        $nbPosts = $this->postManager->getPostNbPosts();
-        //$nbTotalPages = $this->postManager->getPostNbPages($nbPosts);
-        $nbPages = $this->postManager->getPostNbPages2();
-        //$pagination = $this->postManager->getPostPagination($currentPage);
-        $pagination = $this->postManager->getPostPagination($postId);
-
-        //echo"<pre>";
-        //print_r('Nombre d\'episodes : ' .$nbPosts);
+        //print_r('Nombre d\'episodes : ' .$nbTotalPosts);
         //print_r('Nombre de pages : ' .$nbTotalPages);
-        //print_r('Nombre de pages : ' .$nbPages);
-        //print_r('Pagination : ' .$pagination);
-        //echo"</pre>";
-        //die();
+
+        print_r('Pagination : ' .$detailPostPagination);
+        echo"</pre>";
+        die();
 
         if ($dataPost !== null) {
             $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);

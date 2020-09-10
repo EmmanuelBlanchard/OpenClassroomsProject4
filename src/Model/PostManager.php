@@ -45,13 +45,6 @@ class PostManager
 		return $request->fetch();
     }
     
-    public function getInfosEpisodes(): ?array
-    {
-        $request = $this->database->prepare('SELECT * FROM `Posts` ORDER BY `post_date` DESC;');
-        $request->execute();
-        return $request->fetchAll();
-    }
-
     public function getPostNbPosts(): int
     {
         $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_posts FROM `Posts`;');
@@ -61,32 +54,17 @@ class PostManager
         return $nbTotalPosts;
     }
 
-    public function getPostNbPages(int $nbTotalPosts): float
+    public function getPostNbPages(int $nbTotalPosts,int $nbPostsPerPage): float
     {
-        $nbPostsPerPage = 10;
         $nbTotalPages = ceil($nbTotalPosts / $nbPostsPerPage);
         return $nbTotalPages;
     }
 
-    public function getPostNbPages2(): float
-    {
-        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_posts FROM `Posts`;');
-        $request->execute();
-        $result = $request->fetch();        
-        $nbTotalPosts = (int)$result['nb_total_posts'];
-
-        $nbPostsPerPage = 10;
-        $nbTotalPages = ceil($nbTotalPosts / $nbPostsPerPage);
-
-        return $nbTotalPages;
-    }
-
-    public function getPostPagination(int $currentPage): ?array
+    public function getDetailPostPagination(int $currentPage, int $nbPostsPerPage): ?array
     {   
-        $nbPostsPerPage = 10;
         $firstPostPage = ($currentPage * $nbPostsPerPage) - $nbPostsPerPage;
 
-        $request = $this->database->prepare('SELECT * FROM `Posts` ORDER BY `post_date` DESC LIMIT :firstPostPage, :nbPostsPerPage;');
+        $request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT :firstPostPage, :nbPostsPerPage;');
 
         $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
         $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
@@ -95,7 +73,7 @@ class PostManager
         return $posts;
     }
 
-    public function getPaginationList(): ?array
+    public function getListPostPagination(): ?array
     {   $nbPostsPerPage = 10;
         // Page actuelle par defaut => 1
         $currentPage = 1;
