@@ -65,7 +65,6 @@ class PostManager
         $firstPostPage = ($currentPage * $nbPostsPerPage) - $nbPostsPerPage;
 
         $request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT :firstPostPage, :nbPostsPerPage;');
-
         $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
         $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
         $request->execute();
@@ -73,18 +72,19 @@ class PostManager
         return $posts;
     }
 
-    public function getListPostPagination(): ?array
-    {   $nbPostsPerPage = 10;
-        // Page actuelle par defaut => 1
-        $currentPage = 1;
+    public function getListPostPagination(int $currentPage, int $nbPostsPerPage): ?array
+    {
         $firstPostPage = ($currentPage * $nbPostsPerPage) - $nbPostsPerPage;
 
-        $request = $this->database->prepare('SELECT * FROM `Posts` ORDER BY `post_date` DESC LIMIT :firstPostPage, :nbPostsPerPage;');
-        $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
-        $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
-        $request->execute();
-        $posts = $request->fetchAll(\PDO::FETCH_ASSOC);
-        return $posts;
+        $request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT :firstPostPage, :nbPostsPerPage;');
+        $request->execute(['firstPostPage' => $firstPostPage, 'nbPostsPerPage' => $nbPostsPerPage]);
+        // => SQLSTATE[42000]: Syntax error or access violation: 1064 Erreur de syntaxe près de ''30', '5'' à la ligne 1
+        //$request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
+        //$request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
+        //$request->execute();
+        //$posts = $request->fetchAll(\PDO::FETCH_ASSOC);
+        //return $posts;
+        return $request->fetchAll();
     }
     
     public function previousPost($chapter): ?int

@@ -32,29 +32,28 @@ class PostController
         }
     }
 
-    public function displayListOfPosts(): void
+    public function displayListOfPosts($currentPage): void
     {
         $data = $this->postManager->showAllPosts();
-
-        if ($data !== null) {
-            $this->view->render(['template' => 'listofposts', 'allposts' => $data]);
-        } elseif ($data === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
-        }
-
-        // Fusionner la fonction public function paginationListOfPosts(): void 
-        $data = $this->postManager->showAllPosts();
-
         $nbTotalPosts = $this->postManager->getPostNbPosts();
         $nbPostsPerPage = 5;
         $nbTotalPages = $this->postManager->getPostNbPages($nbTotalPosts, $nbPostsPerPage);
-        $listPostPagination = $this->postManager->getListPostPagination();
+        $listPostPagination = $this->postManager->getListPostPagination($currentPage, $nbPostsPerPage);
 
-        echo"<pre>";
-        //print_r('Nombre de pages : ' .$nbTotalPages);
-        print_r('Pagination : ' .$listPostPagination);
-        echo"</pre>";
-        die();
+        //echo"<pre>";
+        //print_r('PageCourante : ' .$currentPage);
+        //print_r(' Nombre total de posts : ' .$nbTotalPosts);
+        //print_r(' Nombre de posts par page : ' .$nbPostsPerPage);
+        //print_r(' Nombre de pages : ' .$nbTotalPages);
+        //print_r(' Pagination : ' .$listPostPagination);
+        //echo"</pre>";
+        //die();
+
+        if ($data !== null) {
+            $this->view->render(['template' => 'listofposts', 'allposts' => $data, 'listpostpagination'=> $listPostPagination]);
+        } elseif ($data === null) {
+            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
+        }
 
     }
     
@@ -74,7 +73,7 @@ class PostController
         
         $detailPostPagination = $this->postManager->getDetailPostPagination($postId, $nbPostsPerPage);
 
-        echo"<pre>";
+        //echo"<pre>";
         //print_r($dataPost);
         //print_r($dataComments);
         //print_r($previousPost);
@@ -85,9 +84,9 @@ class PostController
         //print_r('Nombre d\'episodes : ' .$nbTotalPosts);
         //print_r('Nombre de pages : ' .$nbTotalPages);
 
-        print_r('Pagination : ' .$detailPostPagination);
-        echo"</pre>";
-        die();
+        //print_r('Pagination : ' .$detailPostPagination);
+        //echo"</pre>";
+        //die();
 
         if ($dataPost !== null) {
             $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);
