@@ -52,13 +52,18 @@ class Router
             $this->postController->displayHomeWithTheLastThreePosts();
         } elseif ($action === 'detailOfPost' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=detailOfPost&id=5
-            $this->postController->displayDetailOfPost((int)$this->get['id']);
-        } elseif ($action === 'testPagination') {
-            // route http://localhost:8000/?action=testPagination
-            $this->postController->paginationListOfPosts();
-        } elseif ($action === 'testPaginationId' && isset($this->get['id'])) {
-            // route http://localhost:8000/?action=testPaginationId&id=5
-            $this->postController->paginationDetailOfPost((int)$this->get['id']);
+            if(isset($this->get['page']) && intval($this->get['page']))
+            {
+                    $page = intval($this->get['page']);
+                    $limit = 10;
+                    $start = ($this->get['page']-1)*$limit;
+                    $this->postController->displayDetailOfPost((int)$this->get['id'], $start, $limit, $page);
+            } else {
+                    $page = 1;
+                    $limit = 10;
+                    $start = ($page-1)*$limit;
+                    $this->postController->displayDetailOfPost((int)$this->get['id'], $start, $limit, $page);
+            }
         } elseif ($action === 'listOfPosts') {
             // route http://localhost:8000/?action=listOfPosts
             $this->postController->displayListOfPosts();
@@ -70,35 +75,7 @@ class Router
             $this->commentController->report((int)$this->get['commentid'], (int)$this->get['id']);
         } elseif ($action === 'error' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=error&id=5
-            $this->commentController->error((int)$this->get['id']);
-        } elseif ($action === 'postfront') {
-            // route http://localhost:8000/?action=postfront
-            if (isset($this->get['id'])) 
-            {
-                if(isset($this->get['page']) && intval($this->get['page']))
-                {
-                    $page = intval($this->get['page']);
-                    $limit = 10;
-                    $start = ($this->get['page']-1)*$limit;
-                    $postAndComments = $this->postController->Post((int)$this->get['id'], $start, $limit, $page);
-                } else {
-                    $page = 1;
-                    $limit = 10;
-                    $start = ($page-1)*$limit;
-                    $postAndComments = $this->postController->Post((int)$this->get['id'], $start, $limit, $page);
-                }
-            } else {
-                echo "l\'id du post n\'est pas trouvable <a href=http://localhost:8000/?action=home>Aller Ici</a>";
-            }
-        } elseif ($action === "page") {
-            // route http://localhost:8000/?action=page
-            if(isset($this->get['page']) && !empty($this->get['page'])){
-                $currentPage = (int) strip_tags($this->get['page']);
-                $this->postController->paginationDetailOfPost($currentPage);
-            }else{
-                $currentPage = 1;
-                $this->postController->paginationDetailOfPost($currentPage);
-            }
+            $this->commentController->error((int)$this->get['id']);            
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }

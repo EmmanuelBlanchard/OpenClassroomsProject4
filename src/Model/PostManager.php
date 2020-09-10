@@ -40,9 +40,9 @@ class PostManager
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
 
-        $request = $this->database->prepare('SELECT id, title, content, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts WHERE id=:id');
-        $request->execute(['id' => $postId]);
-        return $request->fetch();
+        $request = $this->database->prepare('SELECT id, chapter, title, content, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts WHERE id=:id');
+		$request->execute(['id' => $postId]);
+		return $request->fetch();
     }
 
     public function getPost2(int $postId): ?array
@@ -80,10 +80,10 @@ class PostManager
 
     public function getPostNbPages2(): ?float
     {
-        $request = $this->database->prepare('SELECT COUNT(*) AS nb_posts FROM `Posts`;');
+        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_posts FROM `Posts`;');
         $request->execute();
         $result = $request->fetch();        
-        $nbTotalPosts = (int)$result['nb_posts'];
+        $nbTotalPosts = (int)$result['nb_total_posts'];
 
         $nbPostsPerPage = 10;
         $nbTotalPages = ceil($nbTotalPosts / $nbPostsPerPage);

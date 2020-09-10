@@ -41,9 +41,27 @@ class PostController
         } elseif ($data === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
+
+        // Fusionner la fonction public function paginationListOfPosts(): void 
+        $data = $this->postManager->showAllPosts();
+
+        $nbPages = $this->postManager->getPostNbPages2();
+        $pagination = $this->postManager->getPaginationList();
+
+        //echo"<pre>";
+        //print_r('Nombre de pages : ' .$nbPages);
+        //print_r('Pagination : ' .$pagination);
+        //echo"</pre>";
+        //die();
+
+        if ($data !== null) {
+            $this->view->render(['template' => 'listofpostsandpagination', 'allposts' => $data, 'pagination' => $pagination]);
+        } elseif ($data === null) {
+            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
+        }
     }
     
-    public function displayDetailOfPost(int $postId): void
+    public function displayDetailOfPost(int $postId, int $start, int $limit, int $page): void
     {
         $dataPost = $this->postManager->getPost($postId);
         $dataComments = $this->commentManager->getComments($postId);
@@ -63,11 +81,9 @@ class PostController
         } elseif ($dataPost === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
-    }
-    
-    public function post(int $postId, int $start, int $limit, int $page) //getcomment for one post
-	{
-        $post = $this->postManager->getPost2($postId);
+
+
+        $post = $this->postManager->getPost($postId);
 		$getComment = $this->commentManager->getCommentsP($postId, $start, $limit); 
 		$totalComments = $this->commentManager->getPagination($postId);
 		$total = $totalComments['totalc']; //Pagination
@@ -86,17 +102,10 @@ class PostController
         //die();
 
         if ($post !== null) {
-            $this->view->render(['template' => 'detailofpostandpagination', 'post' => $post, 'allcomment' => $getComment, 'totalcomment' => $totalComments, 'total' => $total, 'totalpagecomments' => $totalPageComments, 'page' => $page]);
+            $this->view->render(['template' => 'detailofpostandpagination', 'post' => $dataPost, 'allcomment' => $getComment, 'totalcomment' => $totalComments, 'total' => $total, 'totalpagecomments' => $totalPageComments, 'page' => $page]);
         } elseif ($post === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
-
-	}
-
-    public function paginationDetailOfPost(int $postId): void
-    {
-        $dataPost = $this->postManager->getPost($postId);
-        $dataComments = $this->commentManager->getComments($postId);
 
         $infosPosts = $this->postManager->getInfosEpisodes();
         $nbPosts = $this->postManager->getPostNbPosts();
@@ -121,27 +130,5 @@ class PostController
         }
 
     }
-
-    public function paginationListOfPosts(): void
-    {
-        $data = $this->postManager->showAllPosts();
-
-        $nbPages = $this->postManager->getPostNbPages2();
-        $pagination = $this->postManager->getPaginationList();
-
-        //echo"<pre>";
-        //print_r('Nombre de pages : ' .$nbPages);
-        //print_r('Pagination : ' .$pagination);
-        //echo"</pre>";
-        //die();
-
-        if ($data !== null) {
-            $this->view->render(['template' => 'listofpostsandpagination', 'allposts' => $data, 'pagination' => $pagination]);
-        } elseif ($data === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
-        }
-
-    }
-
-
+    
 }
