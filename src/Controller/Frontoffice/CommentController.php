@@ -45,12 +45,12 @@ class CommentController
     // Essai en cas d'erreur, route vers la page d'erreur
     public function Error(int $postId): void
     {
-        $data_post = $this->postManager->getPost($postId);
-        $data_comments = $this->commentManager->getComments($postId);
+        $dataPost = $this->postManager->getPost($postId);
+        $dataComments = $this->commentManager->getComments($postId);
 
-        if ($data_post !== null) {
-            $this->view->render(['template' => 'error', 'post' => $data_post, 'allcomment' => $data_comments]);
-        } elseif ($data_post === null) {
+        if ($dataPost !== null) {
+            $this->view->render(['template' => 'error', 'post' => $dataPost, 'allcomment' => $dataComments]);
+        } elseif ($dataPost === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
 

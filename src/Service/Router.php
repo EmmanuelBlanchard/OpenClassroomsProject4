@@ -50,17 +50,17 @@ class Router
         if ($action === 'home') {
             // route http://localhost:8000/?action=home
             $this->postController->displayHomeWithTheLastThreePosts();
-        } elseif ($action === 'detailofpost' && isset($this->get['id'])) {
-            // route http://localhost:8000/?action=detailofpost&id=5
+        } elseif ($action === 'detailOfPost' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=detailOfPost&id=5
             $this->postController->displayDetailOfPost((int)$this->get['id']);
-        } elseif ($action === 'testpagination') {
+        } elseif ($action === 'testPagination') {
             // route http://localhost:8000/?action=testpagination
             $this->postController->paginationListOfPosts();
-        } elseif ($action === 'testpaginationid' && isset($this->get['id'])) {
-            // route http://localhost:8000/?action=testpaginationid&id=5
+        } elseif ($action === 'testPaginationId' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=testPaginationId&id=5
             $this->postController->paginationDetailOfPost((int)$this->get['id']);
-        } elseif ($action === 'listofposts') {
-            // route http://localhost:8000/?action=listofposts
+        } elseif ($action === 'listOfPosts') {
+            // route http://localhost:8000/?action=listOfPosts
             $this->postController->displayListOfPosts();
         } elseif ($action === 'addComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=addCommente&id=5
@@ -80,12 +80,12 @@ class Router
                     $page = intval($this->get['page']);
                     $limit = 10;
                     $start = ($this->get['page']-1)*$limit;
-                    $PostAndComments = $this->postController->Post((int)$this->get['id'], $start, $limit, $page);
+                    $postAndComments = $this->postController->Post((int)$this->get['id'], $start, $limit, $page);
                 } else {
                     $page = 1;
                     $limit = 10;
                     $start = ($page-1)*$limit;
-                    $PostAndComments = $this->postController->Post((int)$this->get['id'], $start, $limit, $page);
+                    $postAndComments = $this->postController->Post((int)$this->get['id'], $start, $limit, $page);
                 }
             } else {
                 echo "l\'id du post n\'est pas trouvable <a href=http://localhost:8000/?action=home>Aller Ici</a>";

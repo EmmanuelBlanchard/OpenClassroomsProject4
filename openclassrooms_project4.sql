@@ -33,7 +33,7 @@ USE `openclassrooms_project4`;
 DROP TABLE IF EXISTS `Posts`;
 CREATE TABLE IF NOT EXISTS `Posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `chapter` int(50) NOT NULL,
+  `chapter` SMALLINT(1) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
   `introduction` text NOT NULL,
   `content` text NOT NULL,

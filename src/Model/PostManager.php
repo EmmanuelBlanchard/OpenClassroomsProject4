@@ -45,7 +45,6 @@ class PostManager
         return $request->fetch();
     }
 
-    // Essai pour la pagination
     public function getPost2(int $postId): ?array
 	{   /*
         $request = $this->database->prepare('SELECT id, title, chapter, author, content, DATE_FORMAT(post_date, "%d/%m/%Y") post_date_fr FROM posts WHERE id=:id');*/
@@ -58,7 +57,7 @@ class PostManager
 		return $request->fetch();
     }
     
-    public function getInfosEpisodes(): ? array
+    public function getInfosEpisodes(): ?array
     {
         // On prépare la requête
         $request = $this->database->prepare('SELECT * FROM `Posts` ORDER BY `post_date` DESC;');
@@ -68,7 +67,7 @@ class PostManager
         return $request->fetchAll();
     }
 
-    public function getPostNbPosts(): ? int
+    public function getPostNbPosts(): ?int
     {
         // On détermine le nombre total de posts
         // On prépare la requête
@@ -78,13 +77,13 @@ class PostManager
         // On récupère le nombre de posts
         $result = $request->fetch();
         
-        $nbPosts = (int) $result['nb_posts'];
+        $nbPosts = (int)$result['nb_posts'];
 
         return $nbPosts;
         
     }
 
-    public function getPostNbPages(int $nbPosts)
+    public function getPostNbPages(int $nbPosts): ?float
     {
         // On détermine le nombre de posts par page
         $perPage = 10;
@@ -95,7 +94,7 @@ class PostManager
         return $pages;
     }
 
-    public function getPostNbPages2()
+    public function getPostNbPages2(): ?float
     {
         // On prépare la requête qui détermine le nombre total de posts
         $request = $this->database->prepare('SELECT COUNT(*) AS nb_posts FROM `Posts`;');
@@ -104,7 +103,7 @@ class PostManager
         // On récupère le nombre de posts
         $result = $request->fetch();
         
-        $nbPosts = (int) $result['nb_posts'];
+        $nbPosts = (int)$result['nb_posts'];
 
         // On détermine le nombre de posts par page
         $perPage = 10;
@@ -115,7 +114,7 @@ class PostManager
         return $pages;
     }
 
-    public function getPostPagination(int $currentPage): ? array
+    public function getPostPagination(int $currentPage): ?array
     {
         // On détermine le nombre de posts par page
          $perPage = 10;
@@ -123,24 +122,16 @@ class PostManager
         // Calcul du 1er post de la page
          $first = ($currentPage * $perPage) - $perPage;
 
-        // $request = $this->database->prepare('SELECT * FROM `Episodes` ORDER BY `episode_date` DESC LIMIT :first, :perpage;');
-        // $request->execute(['first' => $first, 'perpage' => $perPage]);
-        // $episodes = $request->fetchAll();
-        // return $episodes;
-
-
         $request = $this->database->prepare('SELECT * FROM `Posts` ORDER BY `post_date` DESC LIMIT :first, :perpage;');
 
         $request->bindValue(':first', $first, \PDO::PARAM_INT);
         $request->bindValue(':perpage', $perPage, \PDO::PARAM_INT);
-        // On exécute
         $request->execute();
-        // On récupère les valeurs dans un tableau associatif
         $posts = $request->fetchAll(\PDO::FETCH_ASSOC);
         return $posts;
     }
 
-    public function getPaginationList(): ? array
+    public function getPaginationList(): ?array
     {   // On détermine le nombre de posts par page
         $perPage = 10;
         // Page actuelle par defaut => 1
@@ -151,88 +142,25 @@ class PostManager
         $request = $this->database->prepare('SELECT * FROM `Posts` ORDER BY `post_date` DESC LIMIT :first, :perpage;');
         $request->bindValue(':first', $first, \PDO::PARAM_INT);
         $request->bindValue(':perpage', $perPage, \PDO::PARAM_INT);
-        // On exécute
         $request->execute();
-        // On récupère les valeurs dans un tableau associatif
         $posts = $request->fetchAll(\PDO::FETCH_ASSOC);
         return $posts;
     }
     
-    public function previousPost($chapter): ?bool
+    public function previousPost($chapter): ?int
     {
-        //return 1;
-        //$request = $this->database->prepare('SELECT MAX(chapter) FROM `Posts` WHERE chapter < 2');
-
-        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < 2)');
-        
-        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
-        //$request->execute(['chapter' => $chapter]);
-        //$request->fetch();
-        //return $request;
-
-        //$request->execute();
-        //$result = $request->fetch();
-        //return $result;*/
-
-        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
-        //$request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
-        //$request->execute(['chapter' => $chapter]);
-        //$request->fetch();
-        //return $request;
-
-        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
-        //$request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
-        //$request->execute();
-        //$request->fetch();
-        //return $request;
-
-        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
-        //$request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
-        //$request->execute();
-        //$result = (int) $request;
-        //return $result;
-        // Object of class PDOStatement could not be converted to int
-
-        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MAX(`chapter`) FROM `Posts` WHERE `chapter` < :chapter)');
-        //$request->execute(['chapter' => $chapter]);
-        //$result = $request['id'];
-        //return $result;
-
         $request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
-        return $request->execute(['chapter' => $chapter]);
+        $request->execute(['chapter' => $chapter]);
+        $result = $request->fetch();
+        return $result === false ? null : (int)$result['id'];
     }
 
-    public function nextPost($chapter): ?bool
+    public function nextPost($chapter): ?int
     {
-        //return 3;
-        //$request = $this->database->prepare('SELECT MIN(chapter) FROM `Posts` WHERE chapter > 2');
-        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MIN(`chapter`) FROM `Posts` WHERE `chapter` > 2)');
-        
-        //$request = $this->database->prepare('SELECT `id` FROM `Posts` WHERE `chapter` = (SELECT MIN(`chapter`) FROM `Posts` WHERE `chapter` > :chapter)');
-        //$request->execute(['chapter' => $chapter]);
-        //$result = $request['id'];
-        //return $result;
-        // Object of class PDOStatement could not be converted to int
-
-        //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MIN(chapter) FROM Posts WHERE chapter > :chapter)');
-        //return $request->execute(['chapter' => $chapter]);
-
-        //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MIN(chapter) FROM Posts WHERE chapter > :chapter)');
-        //$request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
-        //return $request->execute();
-
-        //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MIN(chapter) FROM Posts WHERE chapter > :chapter)');
-        //$request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
-        //$request->execute();
-        //$result = (int) $request;
-        //return $result;
-        // Object of class PDOStatement could not be converted to int
-
         $request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MIN(chapter) FROM Posts WHERE chapter > :chapter)');
-        $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
-        $request->execute();
-        return $request->fetch();
-        
+        $request->execute(['chapter' => $chapter]);
+        $result = $request->fetch();
+        return $result === false ? null : (int)$result['id'];
     }
 
 }

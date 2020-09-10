@@ -43,21 +43,21 @@ class CommentManager
             ]);
     }
     
-    public function updateComment(int $commentId)
+    public function updateComment(int $commentId): bool
     {
         $request = $this->database->prepare('UPDATE Comments SET comment="Ce message a été supprimé par l\'administrateur", report=2 WHERE id=:id');
         $request->execute(['id' => $commentId]);
         return $request;
     }
 
-    public function validateComment(int $commentId)
+    public function validateComment(int $commentId): bool
     {
         $request= $this->database->prepare('UPDATE Comments SET report=2 WHERE id=:id');
         $request->execute(['id'=> $commentId]);
         return $request;
     }
 
-    public function reportComment(int $commentId)
+    public function reportComment(int $commentId): bool
     {
         $request = $this->database->prepare('UPDATE Comments SET report=1 WHERE id=:id');
         $request->execute(['id' => $commentId]);
@@ -65,7 +65,7 @@ class CommentManager
 
     }
 
-    public function reportList()
+    public function reportList(): bool
     {
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
@@ -75,8 +75,7 @@ class CommentManager
         return $request;
     }
 
-    // Essai pour la pagination
-    public function getCommentsP($postId, $start, $limit)
+    public function getCommentsP($postId, $start, $limit): ?array
 	{   /*
 		$request = $this->database->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, "%d/%m/%Y %Hh%i:%ss") comment_date_fr, alert FROM comments WHERE post_id= ? ORDER BY comment_date DESC LIMIT '.$start.','.$limit);
         $request->execute(array($postId)); */
@@ -89,13 +88,12 @@ class CommentManager
         return $request->fetchAll();
     }
     
-    // Essai pour la pagination
     public function getPagination($postId): ?array
 	{
 		$request = $this->database->prepare('SELECT COUNT(*) totalc FROM Comments WHERE post_id=:post_id');
 		$request->execute(['post_id' => $postId]);
-        $totalcomment = $request->fetch();
-        return $totalcomment;
+        $totalComment = $request->fetch();
+        return $totalComment;
 	}
 
 }
