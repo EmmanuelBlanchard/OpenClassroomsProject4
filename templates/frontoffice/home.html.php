@@ -7,7 +7,7 @@
         <h3>Épisode <?=$post['title']?></h3>
         <p><?=$post['introduction']?></p>
         <p class="pCreatedAt">Publié <?=$post['post_date_fr']?> </p>
-        <a href="index.php?action=detailofpost&amp;id=<?=$post['id']?>" class="linkToTheRestOfThePost">Lire la suite</a>
+        <a href="index.php?action=detailOfPost&amp;id=<?=$post['id']?>" class="linkToTheRestOfThePost">Lire la suite</a>
     </article>
     
 </section>

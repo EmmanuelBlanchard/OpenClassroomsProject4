@@ -80,12 +80,12 @@ class Router
                     $page = intval($this->get['page']);
                     $limit = 10;
                     $start = ($this->get['page']-1)*$limit;
-                    $postAndComments = $this->postController->post((int)$this->get['id'], $start, $limit, $page);
+                    $postAndComments = $this->postController->Post((int)$this->get['id'], $start, $limit, $page);
                 } else {
                     $page = 1;
                     $limit = 10;
                     $start = ($page-1)*$limit;
-                    $postAndComments = $this->postController->post((int)$this->get['id'], $start, $limit, $page);
+                    $postAndComments = $this->postController->Post((int)$this->get['id'], $start, $limit, $page);
                 }
             } else {
                 echo "l\'id du post n\'est pas trouvable <a href=http://localhost:8000/?action=home>Aller Ici</a>";
