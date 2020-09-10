@@ -55,7 +55,7 @@ class PostController
         //die();
 
         if ($data !== null) {
-            $this->view->render(['template' => 'listofpostsandpagination', 'allposts' => $data, 'pagination' => $pagination]);
+            $this->view->render(['template' => 'listofposts', 'allposts' => $data, 'pagination' => $pagination]);
         } elseif ($data === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
@@ -102,7 +102,7 @@ class PostController
         //die();
 
         if ($post !== null) {
-            $this->view->render(['template' => 'detailofpostandpagination', 'post' => $dataPost, 'allcomment' => $getComment, 'totalcomment' => $totalComments, 'total' => $total, 'totalpagecomments' => $totalPageComments, 'page' => $page]);
+            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $getComment, 'totalcomment' => $totalComments, 'total' => $total, 'totalpagecomments' => $totalPageComments, 'page' => $page]);
         } elseif ($post === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
@@ -124,7 +124,7 @@ class PostController
         //die();
 
         if ($infosPosts !== null) {
-            $this->view->render(['template' => 'detailofpostandpagination', 'post' => $dataPost, 'allcomment' => $dataComments, 'nbPosts' => $nbPosts, 'nbPages' => $nbPages, 'pagination' => $pagination]);
+            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'nbPosts' => $nbPosts, 'nbPages' => $nbPages, 'pagination' => $pagination]);
         } elseif ($infosPosts === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
