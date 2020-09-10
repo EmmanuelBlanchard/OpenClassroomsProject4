@@ -65,7 +65,7 @@ class PostController
         }
     }
     
-    public function Post(int $postId, int $start, int $limit, int $page) //getcomment for one post
+    public function post(int $postId, int $start, int $limit, int $page) //getcomment for one post
 	{
         $post = $this->postManager->getPost2($postId);
 		$getComment = $this->commentManager->getCommentsP($postId, $start, $limit); 
