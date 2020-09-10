@@ -44,16 +44,6 @@ class PostManager
 		$request->execute(['id' => $postId]);
 		return $request->fetch();
     }
-
-    public function getPost2(int $postId): ?array
-	{
-        $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
-        $request->execute();
-
-        $request = $this->database->prepare('SELECT id, chapter, title, content, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts WHERE id=:id');
-		$request->execute(['id' => $postId]);
-		return $request->fetch();
-    }
     
     public function getInfosEpisodes(): ?array
     {
@@ -62,7 +52,7 @@ class PostManager
         return $request->fetchAll();
     }
 
-    public function getPostNbPosts(): ?int
+    public function getPostNbPosts(): int
     {
         $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_posts FROM `Posts`;');
         $request->execute();
@@ -71,14 +61,14 @@ class PostManager
         return $nbTotalPosts;
     }
 
-    public function getPostNbPages(int $nbTotalPosts): ?float
+    public function getPostNbPages(int $nbTotalPosts): float
     {
         $nbPostsPerPage = 10;
         $nbTotalPages = ceil($nbTotalPosts / $nbPostsPerPage);
         return $nbTotalPages;
     }
 
-    public function getPostNbPages2(): ?float
+    public function getPostNbPages2(): float
     {
         $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_posts FROM `Posts`;');
         $request->execute();

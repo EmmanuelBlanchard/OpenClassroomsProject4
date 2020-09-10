@@ -55,12 +55,12 @@ class Router
             if(isset($this->get['page']) && intval($this->get['page']))
             {
                     $page = intval($this->get['page']);
-                    $limit = 10;
+                    $limit = 5;
                     $start = ($this->get['page']-1)*$limit;
                     $this->postController->displayDetailOfPost((int)$this->get['id'], $start, $limit, $page);
             } else {
                     $page = 1;
-                    $limit = 10;
+                    $limit = 5;
                     $start = ($page-1)*$limit;
                     $this->postController->displayDetailOfPost((int)$this->get['id'], $start, $limit, $page);
             }
@@ -75,7 +75,7 @@ class Router
             $this->commentController->report((int)$this->get['commentid'], (int)$this->get['id']);
         } elseif ($action === 'error' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=error&id=5
-            $this->commentController->error((int)$this->get['id']);            
+            $this->commentController->error((int)$this->get['id']);     
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }

@@ -15,14 +15,24 @@ class CommentManager
         $this->database = $database->getPdo();
     }
     
-    public function getComments(int $postId): ?array
+    public function getComments(int $postId, $start, $limit): ?array
     {
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
         
-        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC LIMIT '.$start.','.$limit );
         $request->execute(['post_id' => $postId]);
         return $request->fetchAll();
+    }
+    
+    public function getPostNbComments(int $postId): ?int
+    {
+        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_comments FROM Comments WHERE post_id=:post_id');
+        $request->execute(['post_id' => $postId]);
+        $result = $request->fetch();
+        //return $result === false ? null : (int)$result['nb_total_comments'];
+        $nbTotalComments = (int)$result['nb_total_comments'];
+        return $nbTotalComments;        
     }
 
     public function showAllComment(int $postId): ?array
@@ -62,7 +72,6 @@ class CommentManager
         $request = $this->database->prepare('UPDATE Comments SET report=1 WHERE id=:id');
         $request->execute(['id' => $commentId]);
         return $request;
-
     }
 
     public function reportList(): bool
@@ -74,26 +83,5 @@ class CommentManager
         $request->execute();
         return $request;
     }
-
-    public function getCommentsP($postId, $start, $limit): ?array
-	{   /*
-		$request = $this->database->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, "%d/%m/%Y %Hh%i:%ss") comment_date_fr, alert FROM comments WHERE post_id= ? ORDER BY comment_date DESC LIMIT '.$start.','.$limit);
-        $request->execute(array($postId)); */
-        
-        $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
-        $request->execute();
-
-		$request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC LIMIT '.$start.','.$limit );
-        $request->execute(['post_id' => $postId]);
-        return $request->fetchAll();
-    }
-    
-    public function getPagination($postId): ?array
-	{
-		$request = $this->database->prepare('SELECT COUNT(*) totalc FROM Comments WHERE post_id=:post_id');
-		$request->execute(['post_id' => $postId]);
-        $totalComment = $request->fetch();
-        return $totalComment;
-	}
 
 }

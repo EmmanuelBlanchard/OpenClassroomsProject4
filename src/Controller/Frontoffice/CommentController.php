@@ -46,7 +46,7 @@ class CommentController
     public function Error(int $postId): void
     {
         $dataPost = $this->postManager->getPost($postId);
-        $dataComments = $this->commentManager->getComments($postId);
+        $dataComments = $this->commentManager->getComments($postId, 0, 10);
 
         if ($dataPost !== null) {
             $this->view->render(['template' => 'error', 'post' => $dataPost, 'allcomment' => $dataComments]);
