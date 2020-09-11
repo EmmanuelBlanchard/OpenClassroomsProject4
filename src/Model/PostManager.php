@@ -103,4 +103,18 @@ class PostManager
         return $result === false ? null : (int)$result['id'];
     }
 
+    public function previousPage(): ?int
+    {
+        return 1;
+    }
+    
+    public function nextPage(): ?int
+    {
+        return 3;
+    }
+    
+
+
+
+
 }

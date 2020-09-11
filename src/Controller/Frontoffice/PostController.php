@@ -32,13 +32,20 @@ class PostController
         }
     }
 
-    public function displayListOfPosts($currentPage): void
+    public function displayListOfPosts(): void
     {
         $data = $this->postManager->showAllPosts();
+
+        //$previousPage = $this->postManager->previousPage($currentPage);
+        //$nextPage = $this->postManager->nextPage($currentPage);
+        $previousPage = $this->postManager->previousPage();
+        $nextPage = $this->postManager->nextPage();
+
         $nbTotalPosts = $this->postManager->getPostNbPosts();
         $nbPostsPerPage = 5;
         $nbTotalPages = $this->postManager->getPostNbPages($nbTotalPosts, $nbPostsPerPage);
-        $listPostPagination = $this->postManager->getListPostPagination($currentPage, $nbPostsPerPage);
+        
+        //$listPostPagination = $this->postManager->getListPostPagination($currentPage, $nbPostsPerPage);
 
         //echo"<pre>";
         //print_r('PageCourante : ' .$currentPage);
@@ -50,7 +57,7 @@ class PostController
         //die();
 
         if ($data !== null) {
-            $this->view->render(['template' => 'listofposts', 'allposts' => $data, 'listpostpagination'=> $listPostPagination]);
+            $this->view->render(['template' => 'listofposts', 'allposts' => $data, 'previouspage' => $previousPage, 'nextpage'=> $nextPage]);
         } elseif ($data === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }

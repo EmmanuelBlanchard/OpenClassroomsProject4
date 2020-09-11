@@ -68,10 +68,10 @@ class Router
             // route http://localhost:8000/?action=listOfPosts
             if(isset($this->get['page']) ) {
                 $currentPage = (int)$this->get['page'];
-                $this->postController->displayListOfPosts($currentPage);
+                $this->postController->displayListOfPosts();
             } else {
                 $currentPage = 1;
-                $this->postController->displayListOfPosts($currentPage);
+                $this->postController->displayListOfPosts();
             }
         } elseif ($action === 'addComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=addCommente&id=5
