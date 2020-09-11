@@ -117,9 +117,5 @@ class PostManager
         //return $currentPage++;
         return (int)$currentPage = $currentPage+1;
     }
-    
-
-
-
 
 }

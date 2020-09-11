@@ -43,9 +43,16 @@ class PostController
         } elseif ($currentPage === 0) {
             $currentPage = (int)$nbTotalPages;
         }
-        
+
         $previousPage = $this->postManager->previousPage($currentPage);
         $nextPage = $this->postManager->nextPage($currentPage);
+        
+        //echo"<pre>";
+        //print_r('PageCourante : ' .$currentPage);
+        //print_r(' Numero page Précédente : ' .$previousPage);
+        //print_r(' Numero page Suivante : ' .$nextPage);
+        //echo"</pre>";
+        //die();
         
         $dataAllPostsPagination = $this->postManager->getListPostsPagination($currentPage, $nbPostsPerPage);
 
