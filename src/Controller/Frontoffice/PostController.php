@@ -50,9 +50,7 @@ class PostController
         //print_r(' Nombre total de posts : ' .$nbTotalPosts);
         //print_r(' Nombre de posts par page : ' .$nbPostsPerPage);
         //print_r(' Nombre de pages : ' .$nbTotalPages);
-        
         //print_r(' Pagination : ' .$dataAllPostsPagination); // Array to string conversion
-
         //print_r('Numero page Précédente : ' .$previousPage);
         //print_r(' Numero page Suivante : ' .$nextPage);
         // http://localhost:8000/index.php?action=listOfPosts&page=2
@@ -68,8 +66,11 @@ class PostController
 
     }
     
-    public function displayDetailOfPost(int $postId, int $start, int $limit, int $page): void
+    public function displayDetailOfPost(int $postId, int $page): void
     {
+        $limit = 5;
+        $start = ($this->get['page']-1)*$limit;
+
         $dataPost = $this->postManager->getPost($postId);
         $dataComments = $this->commentManager->getComments($postId, $start, $limit); 
         $previousPost = $this->postManager->previousPost($postId);

@@ -55,14 +55,10 @@ class Router
             if(isset($this->get['page']) && intval($this->get['page']))
             {
                     $page = intval($this->get['page']);
-                    $limit = 5;
-                    $start = ($this->get['page']-1)*$limit;
-                    $this->postController->displayDetailOfPost((int)$this->get['id'], $start, $limit, $page);
+                    $this->postController->displayDetailOfPost((int)$this->get['id'], $page);
             } else {
                     $page = 1;
-                    $limit = 5;
-                    $start = ($page-1)*$limit;
-                    $this->postController->displayDetailOfPost((int)$this->get['id'], $start, $limit, $page);
+                    $this->postController->displayDetailOfPost((int)$this->get['id'], $page);
             }
         } elseif ($action === 'listOfPosts') {
             // route http://localhost:8000/?action=listOfPosts
