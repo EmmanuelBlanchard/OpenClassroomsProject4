@@ -246,6 +246,10 @@ input:focus, textarea:focus {
     margin-left: 72.5%;
 }
 
+.divLinkPage {
+    display: flex;
+}
+
 .linkPreviousPost, .linkNextPost, .linkpreviouspage, .linknextpage {
     display: inline-flex;
     text-align: center;

@@ -15,5 +15,8 @@
 
 <?php endforeach; ?>
 
+<div class="divLinkPage">
     <a href="index.php?action=listOfPosts&amp;page=<?=$data['previouspage']?>" class="linkpreviouspage">Page Précèdente</a>
     <a href="index.php?action=listOfPosts&amp;page=<?=$data['nextpage']?>" class="linknextpage">Page Suivante</a>
+</div>
+    
