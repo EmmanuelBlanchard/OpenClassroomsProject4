@@ -40,6 +40,8 @@ class PostController
         // Si la page actuelle est à 8 donc superieur à 7 alors $currentPage à 1, mettre $this->get['page']=1;
         if($currentPage > $nbTotalPages) {
             $currentPage = 1;
+        } elseif ($currentPage === 0) {
+            $currentPage = (int)$nbTotalPages;
         }
         
         $previousPage = $this->postManager->previousPage($currentPage);
