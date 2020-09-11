@@ -62,7 +62,7 @@ class Router
             }
         } elseif ($action === 'listOfPosts') {
             // route http://localhost:8000/?action=listOfPosts
-            if(isset($this->get['page']) ) {
+            if(isset($this->get['page'])) {
                 $currentPage = (int)$this->get['page'];
                 $this->postController->displayListOfPosts($currentPage);
             } else {

@@ -34,14 +34,16 @@ class PostController
 
     public function displayListOfPosts($currentPage): void
     {
-        //$previousPage = $this->postManager->previousPage($currentPage);
-        //$nextPage = $this->postManager->nextPage($currentPage);
-        $previousPage = $this->postManager->previousPage();
-        $nextPage = $this->postManager->nextPage();
-
         $nbTotalPosts = $this->postManager->getPostNbPosts();
         $nbPostsPerPage = 5;
         $nbTotalPages = $this->postManager->getPostNbPages($nbTotalPosts, $nbPostsPerPage);
+        // Si la page actuelle est à 8 donc superieur à 7 alors $currentPage à 1, mettre $this->get['page']=1;
+        if($currentPage > $nbTotalPages) {
+            $currentPage = 1;
+        }
+        
+        $previousPage = $this->postManager->previousPage($currentPage);
+        $nextPage = $this->postManager->nextPage($currentPage);
         
         $dataAllPostsPagination = $this->postManager->getListPostsPagination($currentPage, $nbPostsPerPage);
 
@@ -69,7 +71,7 @@ class PostController
     public function displayDetailOfPost(int $postId, int $page): void
     {
         $limit = 5;
-        $start = ($this->get['page']-1)*$limit;
+        $start = ($page-1)*$limit;
 
         $dataPost = $this->postManager->getPost($postId);
         $dataComments = $this->commentManager->getComments($postId, $start, $limit); 

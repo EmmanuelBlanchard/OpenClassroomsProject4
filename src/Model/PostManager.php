@@ -54,7 +54,7 @@ class PostManager
         return $nbTotalPosts;
     }
 
-    public function getPostNbPages(int $nbTotalPosts,int $nbPostsPerPage): float
+    public function getPostNbPages(int $nbTotalPosts, int $nbPostsPerPage): float
     {
         $nbTotalPages = ceil($nbTotalPosts / $nbPostsPerPage);
         return $nbTotalPages;
@@ -104,14 +104,18 @@ class PostManager
         return $result === false ? null : (int)$result['id'];
     }
 
-    public function previousPage(): ?int
+    public function previousPage($currentPage): ?int
     {
-        return 1;
+        //return 1;
+        //return $currentPage--;
+        return (int)$currentPage = $currentPage-1;
     }
     
-    public function nextPage(): ?int
+    public function nextPage($currentPage): ?int
     {
-        return 3;
+        //return 3;
+        //return $currentPage++;
+        return (int)$currentPage = $currentPage+1;
     }
     
 
