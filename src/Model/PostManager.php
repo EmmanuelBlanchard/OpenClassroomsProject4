@@ -76,14 +76,15 @@ class PostManager
     {
         $firstPostPage = ($currentPage * $nbPostsPerPage) - $nbPostsPerPage;
 
-        $request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT :firstPostPage, :nbPostsPerPage;');
-        $request->execute(['firstPostPage' => $firstPostPage, 'nbPostsPerPage' => $nbPostsPerPage]);
-        // => SQLSTATE[42000]: Syntax error or access violation: 1064 Erreur de syntaxe près de ''30', '5'' à la ligne 1
-        //$request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
-        //$request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
-        //$request->execute();
-        //$posts = $request->fetchAll(\PDO::FETCH_ASSOC);
-        //return $posts;
+        $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
+        $request->execute();
+
+        //$request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts ORDER BY post_date DESC LIMIT :firstPostPage, :nbPostsPerPage;');
+        // SQLSTATE[42000]: Syntax error or access violation: 1064 Erreur de syntaxe près de ''5', '5'' à la ligne 1
+        //$request->execute(['firstPostPage' => $firstPostPage, 'nbPostsPerPage' => $nbPostsPerPage]);
+        
+        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts ORDER BY post_date DESC LIMIT '.$firstPostPage.','.$nbPostsPerPage);
+        $request->execute();
         return $request->fetchAll();
     }
     

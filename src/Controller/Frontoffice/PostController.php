@@ -32,7 +32,7 @@ class PostController
         }
     }
 
-    public function displayListOfPosts(): void
+    public function displayListOfPosts($currentPage): void
     {
         $data = $this->postManager->showAllPosts();
 
@@ -45,16 +45,21 @@ class PostController
         $nbPostsPerPage = 5;
         $nbTotalPages = $this->postManager->getPostNbPages($nbTotalPosts, $nbPostsPerPage);
         
-        //$listPostPagination = $this->postManager->getListPostPagination($currentPage, $nbPostsPerPage);
+        $listPostPagination = $this->postManager->getListPostPagination($currentPage, $nbPostsPerPage);
 
-        //echo"<pre>";
+        echo"<pre>";
         //print_r('PageCourante : ' .$currentPage);
         //print_r(' Nombre total de posts : ' .$nbTotalPosts);
         //print_r(' Nombre de posts par page : ' .$nbPostsPerPage);
         //print_r(' Nombre de pages : ' .$nbTotalPages);
-        //print_r(' Pagination : ' .$listPostPagination);
-        //echo"</pre>";
-        //die();
+        print_r(' Pagination : ' .$listPostPagination);
+
+        //print_r('Numero page Précédente : ' .$previousPage);
+        //print_r(' Numero page Suivante : ' .$nextPage);
+        // http://localhost:8000/index.php?action=listOfPosts&page=2
+        // Display => Numero page Précédente : 1 Numero page Suivante : 3
+        echo"</pre>";
+        die();
 
         if ($data !== null) {
             $this->view->render(['template' => 'listofposts', 'allposts' => $data, 'previouspage' => $previousPage, 'nextpage'=> $nextPage]);

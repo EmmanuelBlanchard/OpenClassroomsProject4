@@ -250,7 +250,7 @@ input:focus, textarea:focus {
     display: flex;
 }
 
-.linkPreviousPost, .linkNextPost, .linkpreviouspage, .linknextpage {
+.linkPreviousPost, .linkNextPost, .linkPreviousPage, .linkNextPage {
     display: inline-flex;
     text-align: center;
     transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
@@ -264,7 +264,7 @@ input:focus, textarea:focus {
     margin-top: 2.5%;
     margin-left: 17.5%;
 }
-.linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover, .linkPreviousPost:hover, .linkNextPost:hover, .linkpreviouspage:hover, .linknextpage:hover {
+.linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover, .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover {
     transition: border 2.5s ease, background-color 2.5s ease, color 2.0s ease;
     border: outset #e2e2e2;
     color: #FFF;
