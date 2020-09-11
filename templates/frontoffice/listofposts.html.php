@@ -1,8 +1,8 @@
 <section>
     <h2>Liste des épisodes</h2>
-
-    <?php foreach($data['allposts'] as $post): ?>
-
+    
+    <?php foreach($data['allpostspagination'] as $post): ?>
+    
     <article>
         <h3>Épisode <?=$post['title']?></h3>
         <p class="pTitleIntroductionToTheEpisode">Introduction</p>
