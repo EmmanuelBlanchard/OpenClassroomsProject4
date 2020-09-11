@@ -13,7 +13,7 @@
     
 </section>
 
-    <a href="index.php?action=listOfPosts&amp;page=<?=$data['previouspage']?>" class="linkPreviousPage">Page Précèdente</a>
-    <a href="index.php?action=listOfPosts&amp;page=<?=$data['nextpage']?>" class="linkNextPage">Page Suivante</a>
-
 <?php endforeach; ?>
+
+    <a href="index.php?action=listOfPosts&amp;page=<?=$data['previouspage']?>" class="linkpreviouspage">Page Précèdente</a>
+    <a href="index.php?action=listOfPosts&amp;page=<?=$data['nextpage']?>" class="linknextpage">Page Suivante</a>
