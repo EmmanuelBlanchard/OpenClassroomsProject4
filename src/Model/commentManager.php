@@ -24,6 +24,27 @@ class CommentManager
         $request->execute(['post_id' => $postId]);
         return $request->fetchAll();
     }
+
+    public function previousComments(int $postId, $start, $limit): ?array
+    {
+        $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
+        $request->execute();
+        
+        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC LIMIT '.$start.','.$limit );
+        $request->execute(['post_id' => $postId]);
+        return $request->fetchAll();
+    }
+    
+    public function nextComments(int $postId, $start, $limit): ?array
+    {
+        $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
+        $request->execute();
+        
+        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC LIMIT '.$start.','.$limit );
+        $request->execute(['post_id' => $postId]);
+        return $request->fetchAll();
+    }
+    
     
     public function getPostNbComments(int $postId): ?int
     {
