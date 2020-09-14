@@ -40,10 +40,9 @@ class PostController
         // Si la page actuelle est à 8 donc superieur à 7 alors $currentPage à 1, mettre $this->get['page']=1;
         if($currentPage > $nbTotalPages) {
             $currentPage = 1;
-        } elseif ($currentPage === 0) {
-            $currentPage = (int)$nbTotalPages;
+            header('Location: index.php?action=listOfPosts&id='.$currentPage);
         }
-
+        
         $previousPage = $this->postManager->previousPage($currentPage);
         $nextPage = $this->postManager->nextPage($currentPage);
         
@@ -86,14 +85,7 @@ class PostController
         $dataComments = $this->commentManager->getComments($postId, $start, $limit); 
         $previousPost = $this->postManager->previousPost($postId);
         $nextPost = $this->postManager->nextPost($postId);
-        
-        // Essai affiche 5 commentaires d'un post
-        $limitComments = 5;
-        $startComments = ($page-1)*$limitComments;
-
-        $previousComments = $this->commentManager->previousComments($postId, $startComments, $limitComments);
-        $nextComments = $this->commentManager->nextComments($postId, $startComments, $limitComments);
-        
+                
         $totalComments = $this->commentManager->getPostNbComments($postId);
         $totalPageComments = ceil($totalComments / $limit);
 
@@ -119,7 +111,7 @@ class PostController
         //die();
 
         if ($dataPost !== null) {
-            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'datapostpagination' => $dataPostPagination, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost, 'previouscomments' => $previousComments, 'nextcomments'=> $nextComments]);
+            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'datapostpagination' => $dataPostPagination, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);
         } elseif ($dataPost === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }

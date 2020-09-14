@@ -6,10 +6,13 @@
         <?=$data['post']['content']?>
         <p class="pCreatedAt">Publié <?=$data['post']['post_date_fr']?></p>
     </article>
-
-    <a href="index.php?action=detailOfPost&amp;id=<?=$data['previouspost']?>" class="linkPreviousPost">Épisode précèdent</a>
-    <a href="index.php?action=detailOfPost&amp;id=<?=$data['nextpost']?>" class="linkNextPost">Épisode suivant</a>
-
+    
+    <?php if ($data['previouspost'] !== null): ?>
+        <a href="index.php?action=detailOfPost&amp;id=<?=$data['previouspost']?>" class="linkPreviousPost">Épisode précèdent</a>
+    <?php endif ?>
+    <?php if ($data['nextpost'] !== null): ?>
+        <a href="index.php?action=detailOfPost&amp;id=<?=$data['nextpost']?>" class="linkNextPost">Épisode suivant</a>
+    <?php endif ?>
 </section>
 
 <section class="sectionDisplayComments">
@@ -31,8 +34,7 @@
             </div>
         <?php endif ?>
 
-        <a href="index.php?action=detailOfPost&amp;id=<?=$data['previouscomments']?>" class="linkPreviousComment">Commentaires précédents</a>
-        <a href="index.php?action=detailOfPost&amp;id=<?=$data['nextcomments']?>" class="linkNextComment">Commentaires suivants</a>
+        
 
     </article>
     <?php endforeach; ?>

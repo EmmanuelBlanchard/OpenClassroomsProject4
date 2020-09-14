@@ -16,7 +16,11 @@
 <?php endforeach; ?>
 
 <div class="divLinkPage">
-    <a href="index.php?action=listOfPosts&page=<?=$data['previouspage']?>" class="linkPreviousPage">Page Précèdente</a>
-    <a href="index.php?action=listOfPosts&page=<?=$data['nextpage']?>" class="linkNextPage">Page Suivante</a>
+    <?php if ($data['previouspage'] !== null): ?>
+        <a href="index.php?action=listOfPosts&page=<?=$data['previouspage']?>" class="linkPreviousPage">Page Précèdente</a>
+    <?php endif?>
+    <?php if ($data['nextpage'] !== null): ?>
+        <a href="index.php?action=listOfPosts&page=<?=$data['nextpage']?>" class="linkNextPage">Page Suivante</a>
+    <?php endif?>
 </div>
     
