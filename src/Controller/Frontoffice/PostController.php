@@ -68,9 +68,8 @@ class PostController
         //echo"</pre>";
         //die();
 
-        var_dump($dataAllPostsPagination);
-
-        var_dump($previousPage,$nextPage);
+        //var_dump($dataAllPostsPagination);
+        //var_dump($previousPage,$nextPage);
 
         if ($dataAllPostsPagination !== null) {
             $this->view->render(['template' => 'listofposts', 'allpostspagination' => $dataAllPostsPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage]);
@@ -112,9 +111,8 @@ class PostController
         //echo"</pre>";
         //die();
         
-        var_dump($dataPostPagination);
-
-        var_dump($previousPost,$nextPost);
+        //var_dump($dataPostPagination);
+        //var_dump($previousPost,$nextPost);
 
         if ($dataPost !== null) {
             $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'datapostpagination' => $dataPostPagination, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);

@@ -23,14 +23,13 @@ class CommentController
 
     public function addComment(int $postId, array $data): void
     {
-        if (!empty($data['author']) && !empty($data['comment'])) {
-            $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['author']));
+        if (!empty($data['pseudo']) && !empty($data['comment'])) {
+            $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));
         } else {
             header('Location: index.php?action=error&id='.$postId);
             exit();
         }
-        
-        header('Location: index.php?action=detailofpost&id='.$postId);
+        header('Location: index.php?action=detailOfPost&id='.$postId);
         exit();
     }
 
