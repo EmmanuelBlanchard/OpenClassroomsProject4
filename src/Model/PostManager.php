@@ -122,7 +122,8 @@ class PostManager
         }
         return $currentPage = $currentPage-1;
 
-        // Creer un champ page dans table Posts ? Chercher la requete qui convient 
+        // Creer un champ page dans table Posts ? Chercher la requete qui convient qui retourne si false ? null sinon (int)$result['page']  (int)$result['id']?
+        // Pour ne pas avoir page 8 et l'onglet Page precedente
         //$request = $this->database->prepare('SELECT page FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
         //$request->execute(['page' => $currentPage]);
         //$result = $request->fetch();
@@ -138,6 +139,13 @@ class PostManager
         }
         //return (int)$currentPage = $currentPage+1;
         return $currentPage = $currentPage+1;
+
+        // Creer un champ page dans table Posts ? Chercher la requete qui convient qui retourne si false ? null sinon (int)$result['page']  (int)$result['id']?
+        // Pour ne pas avoir page 8 et l'onglet Page suivante
+        //$request = $this->database->prepare('SELECT page FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
+        //$request->execute(['page' => $currentPage]);
+        //$result = $request->fetch();
+        //return $result === false ? null : (int)$result['page'];
     }
 
 }
