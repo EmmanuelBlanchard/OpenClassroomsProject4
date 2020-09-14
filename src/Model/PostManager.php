@@ -63,12 +63,17 @@ class PostManager
     public function getDetailPostPagination(int $currentPage, int $nbPostsPerPage): ?array
     {   
         $firstPostPage = ($currentPage * $nbPostsPerPage) - $nbPostsPerPage;
-
-        // Provisoire puisque ne marche pas avec bindValue
+        // Requete provisoire puisque l'autre requete ne marche pas avec bindValue
         $request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT '.$firstPostPage.','.$nbPostsPerPage);
         $request->execute();
         return $request->fetchAll();
 
+        //echo"<pre>";
+        //print_r($firstPostPage); // Display 0
+        //print_r($nbPostsPerPage); // Display 5
+        //echo"</pre>";
+        //die();
+        
         //$request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT :$firstPostPage, :$nbPostsPerPage');
         // SQLSTATE[42000]: Syntax error or access violation: 1064 Erreur de syntaxe près de ':$firstPostPage, :$nbPostsPerPage' à la ligne 1
         //$request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
