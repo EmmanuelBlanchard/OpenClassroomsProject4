@@ -87,7 +87,13 @@ class PostManager
         // SQLSTATE[42000]: Syntax error or access violation: 1064 Erreur de syntaxe près de ''5', '5'' à la ligne 1
         //$request->execute(['firstPostPage' => $firstPostPage, 'nbPostsPerPage' => $nbPostsPerPage]);
         
-        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts ORDER BY post_date ASC LIMIT '.$firstPostPage.','.$nbPostsPerPage);
+        //$request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts ORDER BY post_date ASC LIMIT '.$firstPostPage.','.$nbPostsPerPage);
+        //$request->execute();
+        //return $request->fetchAll();
+
+        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts ORDER BY post_date ASC LIMIT :firstPostPage, :nbPostsPerPage;');
+        $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
+        $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
         $request->execute();
         return $request->fetchAll();
     }
@@ -112,14 +118,22 @@ class PostManager
     {
         //return 1;
         //return $currentPage--;
-        return (int)$currentPage = $currentPage-1;
+        if ($currentPage === 0) {
+            $currentPage = null;
+        }
+        //return (int)$currentPage = $currentPage-1;
+        return $currentPage = $currentPage-1;
     }
     
     public function nextPage($currentPage): ?int
     {
         //return 3;
         //return $currentPage++;
-        return (int)$currentPage = $currentPage+1;
+        if ($currentPage === 0) {
+            $currentPage = null;
+        }
+        //return (int)$currentPage = $currentPage+1;
+        return $currentPage = $currentPage+1;
     }
 
 }

@@ -67,6 +67,7 @@ class PostController
         // Display => Numero page Précédente : 1 Numero page Suivante : 3
         //echo"</pre>";
         //die();
+        var_dump($previousPage,$nextPage);
 
         if ($dataAllPostsPagination !== null) {
             $this->view->render(['template' => 'listofposts', 'allpostspagination' => $dataAllPostsPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage]);
@@ -109,6 +110,8 @@ class PostController
         //print_r('Pagination : ' .$detailPostPagination);
         //echo"</pre>";
         //die();
+
+        var_dump($previousPost,$nextPost);
 
         if ($dataPost !== null) {
             $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'datapostpagination' => $dataPostPagination, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);
