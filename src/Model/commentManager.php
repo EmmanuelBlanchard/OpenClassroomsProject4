@@ -20,11 +20,6 @@ class CommentManager
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
         
-        //$request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC LIMIT '.$start.','.$limit );
-        //$request->execute(['post_id' => $postId]);
-        //return $request->fetchAll();
-        
-        // Essai avec bindValue 
         $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC LIMIT :start, :limit');
         $request->bindValue(':post_id', $postId, \PDO::PARAM_INT);
         $request->bindValue(':start', $start, \PDO::PARAM_INT);
