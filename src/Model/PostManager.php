@@ -64,12 +64,16 @@ class PostManager
     {   
         $firstPostPage = ($currentPage * $nbPostsPerPage) - $nbPostsPerPage;
 
-        $request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT :firstPostPage, :nbPostsPerPage;');
-        $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
-        $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
+        //$request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT :firstPostPage, :nbPostsPerPage;');
+        //$request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
+        //$request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
+        //$request->execute();
+        //$posts = $request->fetchAll(\PDO::FETCH_ASSOC);
+        //return $posts;
+
+        $request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT '.$firstPostPage.','.$nbPostsPerPage);
         $request->execute();
-        $posts = $request->fetchAll(\PDO::FETCH_ASSOC);
-        return $posts;
+        return $request->fetchAll();
     }
 
     public function getListPostsPagination(int $currentPage, int $nbPostsPerPage): ?array
