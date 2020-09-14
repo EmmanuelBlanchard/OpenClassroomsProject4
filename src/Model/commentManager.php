@@ -67,12 +67,13 @@ class CommentManager
         return $request;
     }
 
-    public function reportComment(int $commentId): bool
+    public function reportComment(int $commentId): void
     {
         $request = $this->database->prepare('UPDATE Comments SET report=1 WHERE id=:id');
         $request->execute(['id' => $commentId]);
         // Return value of App\Model\CommentManager::reportComment() must be of the type bool, object returned
-        return $request;
+        //var_dump($request);
+        //return $request;
     }
 
     public function reportList(): bool
