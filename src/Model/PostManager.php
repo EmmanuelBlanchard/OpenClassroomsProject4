@@ -116,22 +116,17 @@ class PostManager
     {
         //return 1;
         //return $currentPage--;
-        /*
+        
         if ($currentPage === 0) {
             $currentPage = null;
         }
-        return $currentPage = $currentPage-1;*/
+        return $currentPage = $currentPage-1;
 
-        //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
-        //$request->execute(['chapter' => $chapter]);
+        // Creer un champ page dans table Posts ? Chercher la requete qui convient 
+        //$request = $this->database->prepare('SELECT page FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
+        //$request->execute(['page' => $currentPage]);
         //$result = $request->fetch();
-        //return $result === false ? null : (int)$result['id'];
-
-        // Creer un champ page dans table Posts ? 
-        $request = $this->database->prepare('SELECT page FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
-        $request->execute(['page' => $currentPage]);
-        $result = $request->fetch();
-        return $result === false ? null : (int)$result['page'];
+        //return $result === false ? null : (int)$result['page'];
     }
     
     public function nextPage($currentPage): ?int
