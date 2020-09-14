@@ -92,7 +92,7 @@ class PostController
         $startComments = ($page-1)*$limitComments;
 
         $previousComments = $this->commentManager->previousComments($postId, $startComments, $limitComments);
-        $nextComments = $this->commentManager->previousComments($postId, $startComments, $limitComments);
+        $nextComments = $this->commentManager->nextComments($postId, $startComments, $limitComments);
         
         $totalComments = $this->commentManager->getPostNbComments($postId);
         $totalPageComments = ceil($totalComments / $limit);
