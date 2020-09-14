@@ -34,17 +34,6 @@ class CommentController
         exit();
     }
 
-    public function previousComments(int $postId, int $start, int $limit): void
-    {
-        $previousComments = $this->commentManager-> previousComments($postId, $start, $limit);
-        
-    }
-
-    public function nextComments(int $postId, int $start, int $limit): void
-    {
-        $nextComments = $this->commentManager-> nextComments($postId, $start, $limit);
-    }
-
     public function report(int $commentId, int $postId): void
     {
         $this->commentManager->reportComment($commentId);
