@@ -37,6 +37,7 @@ class CommentController
     public function previousComments(int $postId, int $start, int $limit): void
     {
         $previousComments = $this->commentManager-> previousComments($postId, $start, $limit);
+        
     }
 
     public function nextComments(int $postId, int $start, int $limit): void

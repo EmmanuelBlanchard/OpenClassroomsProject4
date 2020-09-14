@@ -7,8 +7,8 @@
         <p class="pCreatedAt">Publié <?=$data['post']['post_date_fr']?></p>
     </article>
 
-    <a href="index.php?action=detailOfPost&amp;id=<?=$data['previouspost']?>" class="linkPreviousPost">Épisode Précèdent</a>
-    <a href="index.php?action=detailOfPost&amp;id=<?=$data['nextpost']?>" class="linkNextPost">Épisode Suivant</a>
+    <a href="index.php?action=detailOfPost&amp;id=<?=$data['previouspost']?>" class="linkPreviousPost">Épisode précèdent</a>
+    <a href="index.php?action=detailOfPost&amp;id=<?=$data['nextpost']?>" class="linkNextPost">Épisode suivant</a>
 
 </section>
 
@@ -31,8 +31,8 @@
             </div>
         <?php endif ?>
 
-        <a href="index.php?action=detailOfPost&amp;id=<?=$data['previouscomment']?>" class="linkPreviousComment">Commentaires précédents</a>
-        <a href="index.php?action=detailOfPost&amp;id=<?=$data['nextcomment']?>" class="linkNextComment">Commentaires suivants</a>
+        <a href="index.php?action=detailOfPost&amp;id=<?=$data['previouscomments']?>" class="linkPreviousComment">Commentaires précédents</a>
+        <a href="index.php?action=detailOfPost&amp;id=<?=$data['nextcomments']?>" class="linkNextComment">Commentaires suivants</a>
 
         <a href="index.php?action=previousComments&amp;commentid=<?=$data['previouscomments']?>" class="linkPreviousComments">Commentaires précédents</a>
         <a href="index.php?action=nextComments&amp;commentid=<?=$data['nextcomments']?>" class="linkNextComments">Commentaires suivants</a>

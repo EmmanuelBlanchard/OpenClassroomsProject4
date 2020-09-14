@@ -15,7 +15,7 @@ class CommentManager
         $this->database = $database->getPdo();
     }
     
-    public function getComments(int $postId, $start, $limit): ?array
+    public function getComments(int $postId, int $start, int $limit): ?array
     {
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
@@ -25,7 +25,7 @@ class CommentManager
         return $request->fetchAll();
     }
 
-    public function previousComments(int $postId, $start, $limit): ?array
+    public function previousComments(int $postId, int $start, int $limit): ?array
     {
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
@@ -35,7 +35,7 @@ class CommentManager
         return $request->fetchAll();
     }
     
-    public function nextComments(int $postId, $start, $limit): ?array
+    public function nextComments(int $postId, int $start, int $limit): ?array
     {
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();

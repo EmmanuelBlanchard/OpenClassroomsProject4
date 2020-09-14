@@ -87,6 +87,10 @@ class PostController
         $previousPost = $this->postManager->previousPost($postId);
         $nextPost = $this->postManager->nextPost($postId);
         
+        // Essai affiche 5 commentaires d'un post
+        $previousComments = $this->commentManager->previousComments($postId, $startComment, $limitComments);
+        $nextComments = $this->commentManager->previousComments($postId, $startComment, $limitComments);
+        
         $totalComments = $this->commentManager->getPostNbComments($postId);
         $totalPageComments = ceil($totalComments / $limit);
 
@@ -112,7 +116,7 @@ class PostController
         //die();
 
         if ($dataPost !== null) {
-            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'datapostpagination' => $dataPostPagination, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);
+            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'datapostpagination' => $dataPostPagination, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost, 'previouscomments' => $previousComments, 'nextcomments'=> $nextComments]);
         } elseif ($dataPost === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
