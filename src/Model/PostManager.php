@@ -71,7 +71,14 @@ class PostManager
         //$posts = $request->fetchAll(\PDO::FETCH_ASSOC);
         //return $posts;
 
-        $request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT '.$firstPostPage.','.$nbPostsPerPage);
+        //$request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT '.$firstPostPage.','.$nbPostsPerPage);
+        //$request->execute();
+        //return $request->fetchAll();
+
+        $request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT :$firstPostPage, :$nbPostsPerPage');
+        // SQLSTATE[42000]: Syntax error or access violation: 1064 Erreur de syntaxe près de ':$firstPostPage, :$nbPostsPerPage' à la ligne 1
+        $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
+        $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
         $request->execute();
         return $request->fetchAll();
     }
@@ -83,7 +90,7 @@ class PostManager
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
 
-        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts ORDER BY post_date ASC LIMIT :firstPostPage, :nbPostsPerPage;');
+        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts ORDER BY post_date ASC LIMIT :firstPostPage, :nbPostsPerPage');
         $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
         $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
         $request->execute();

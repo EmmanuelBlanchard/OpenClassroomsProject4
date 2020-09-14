@@ -67,6 +67,9 @@ class PostController
         // Display => Numero page Précédente : 1 Numero page Suivante : 3
         //echo"</pre>";
         //die();
+
+        var_dump($dataAllPostsPagination);
+
         var_dump($previousPage,$nextPage);
 
         if ($dataAllPostsPagination !== null) {
@@ -106,10 +109,10 @@ class PostController
         //print_r($totalPageComments);
         //print_r('Nombre d\'episodes : ' .$nbTotalPosts);
         //print_r('Nombre de pages : ' .$nbTotalPages);
-
-        //print_r('Pagination : ' .$detailPostPagination);
         //echo"</pre>";
         //die();
+        
+        var_dump($dataPostPagination);
 
         var_dump($previousPost,$nextPost);
 
