@@ -30,6 +30,10 @@
                 <a href="index.php?action=report&amp;commentid=<?=$post['id']?>&amp;id=<?=$post['post_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
             </div>
         <?php endif ?>
+
+        <a href="index.php?action=detailOfPost&amp;id=<?=$data['previouscomment']?>" class="linkPreviousComment">Commentaires précédents</a>
+        <a href="index.php?action=detailOfPost&amp;id=<?=$data['nextcomment']?>" class="linkNextComment">Commentaires suivants</a>
+
     </article>
     <?php endforeach; ?>
 </section>

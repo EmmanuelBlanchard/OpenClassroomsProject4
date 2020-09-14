@@ -94,7 +94,7 @@ class PostController
         $nbPostsPerPage = 5;
         $nbTotalPages = $this->postManager->getPostNbPages($nbTotalPosts, $nbPostsPerPage);
         
-        $detailPostPagination = $this->postManager->getDetailPostPagination($postId, $nbPostsPerPage);
+        $dataPostPagination = $this->postManager->getDetailPostPagination($postId, $nbPostsPerPage);
 
         //echo"<pre>";
         //print_r($dataPost);
@@ -112,7 +112,7 @@ class PostController
         //die();
 
         if ($dataPost !== null) {
-            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);
+            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'datapostpagination' => $dataPostPagination, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);
         } elseif ($dataPost === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
