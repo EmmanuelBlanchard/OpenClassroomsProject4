@@ -34,9 +34,6 @@
         <a href="index.php?action=detailOfPost&amp;id=<?=$data['previouscomments']?>" class="linkPreviousComment">Commentaires précédents</a>
         <a href="index.php?action=detailOfPost&amp;id=<?=$data['nextcomments']?>" class="linkNextComment">Commentaires suivants</a>
 
-        <a href="index.php?action=previousComments&amp;commentid=<?=$data['previouscomments']?>" class="linkPreviousComments">Commentaires précédents</a>
-        <a href="index.php?action=nextComments&amp;commentid=<?=$data['nextcomments']?>" class="linkNextComments">Commentaires suivants</a>
-
     </article>
     <?php endforeach; ?>
 </section>
