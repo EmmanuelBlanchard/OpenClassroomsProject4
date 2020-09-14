@@ -88,8 +88,11 @@ class PostController
         $nextPost = $this->postManager->nextPost($postId);
         
         // Essai affiche 5 commentaires d'un post
-        $previousComments = $this->commentManager->previousComments($postId, $startComment, $limitComments);
-        $nextComments = $this->commentManager->previousComments($postId, $startComment, $limitComments);
+        $limitComments = 5;
+        $startComments = ($page-1)*$limitComments;
+
+        $previousComments = $this->commentManager->previousComments($postId, $startComments, $limitComments);
+        $nextComments = $this->commentManager->previousComments($postId, $startComments, $limitComments);
         
         $totalComments = $this->commentManager->getPostNbComments($postId);
         $totalPageComments = ceil($totalComments / $limit);
