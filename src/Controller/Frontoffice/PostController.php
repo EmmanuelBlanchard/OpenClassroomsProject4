@@ -37,8 +37,13 @@ class PostController
         $nbTotalPosts = $this->postManager->getPostNbPosts();
         $nbPostsPerPage = 5;
         $nbTotalPages = $this->postManager->getPostNbPages($nbTotalPosts, $nbPostsPerPage);
-
+        /*
         if($currentPage > $nbTotalPages) {
+            $currentPage = 1;
+            header('Location: index.php?action=listOfPosts&id='.$currentPage);
+        }
+        */
+        if($currentPage === $nbTotalPages) {
             $currentPage = 1;
             header('Location: index.php?action=listOfPosts&id='.$currentPage);
         }
@@ -46,19 +51,9 @@ class PostController
         $previousPage = $this->postManager->previousPage($currentPage);
         $nextPage = $this->postManager->nextPage($currentPage);
         
-        //echo"<pre>";
-        //print_r('PageCourante : ' .$currentPage);
-        //print_r(' Numero page Précédente : ' .$previousPage);
-        //print_r(' Numero page Suivante : ' .$nextPage);
-        //echo"</pre>";
-        //die();
-        
         $dataAllPostsPagination = $this->postManager->getListPostsPagination($currentPage, $nbPostsPerPage);
 
         //echo"<pre>";
-        //print_r('PageCourante : ' .$currentPage);
-        //print_r(' Nombre total de posts : ' .$nbTotalPosts);
-        //print_r(' Nombre de posts par page : ' .$nbPostsPerPage);
         //print_r(' Nombre de pages : ' .$nbTotalPages);
         //print_r(' Pagination : ' .$dataAllPostsPagination); // Array to string conversion
         //print_r('Numero page Précédente : ' .$previousPage);
@@ -81,16 +76,19 @@ class PostController
     
     public function displayDetailOfPost(int $postId, int $page): void
     {
+        // Utiliser $req->bindValue(':limitation', $nbByPage, \PDO::PARAM_INT); pour le limit du sql
+        // Revoir l'algo sur le calcul des pages
         $limit = 5;
         $start = ($page-1)*$limit;
 
         $dataPost = $this->postManager->getPost($postId);
-        $dataComments = $this->commentManager->getComments($postId, $start, $limit); 
+        $dataComments = $this->commentManager->getComments($postId, $start, $limit);
+
         $previousPost = $this->postManager->previousPost($postId);
         $nextPost = $this->postManager->nextPost($postId);
-                
-        $totalComments = $this->commentManager->getPostNbComments($postId);
-        $totalPageComments = ceil($totalComments / $limit);
+
+        //$totalComments = $this->commentManager->getPostNbComments($postId);
+        //$totalPageComments = ceil($totalComments / $limit);
 
         $nbTotalPosts = $this->postManager->getPostNbPosts();
         $nbPostsPerPage = 5;
@@ -99,14 +97,6 @@ class PostController
         $dataPostPagination = $this->postManager->getDetailPostPagination($postId, $nbPostsPerPage);
 
         //echo"<pre>";
-        //print_r($dataPost);
-        //print_r($dataComments);
-        //print_r($previousPost);
-        //print_r($nextPost);
-        //print_r($totalComments);
-        //print_r($limit);
-        //print_r($totalPageComments);
-        //print_r('Nombre d\'episodes : ' .$nbTotalPosts);
         //print_r('Nombre de pages : ' .$nbTotalPages);
         //echo"</pre>";
         //die();

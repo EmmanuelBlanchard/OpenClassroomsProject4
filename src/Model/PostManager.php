@@ -92,6 +92,10 @@ class PostManager
         $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts ORDER BY post_date ASC LIMIT :firstPostPage, :nbPostsPerPage');
         $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
         $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
+        // http://localhost:8000/index.php?action=listOfPosts puis bouton page precedente =>
+        // http://localhost:8000/index.php?action=listOfPosts&page=0 =>
+        // SQLSTATE[42000]: Syntax error or access violation: 1064 Erreur de syntaxe près de '-5, 5' à la ligne 1
+        // 
         $request->execute();
         return $request->fetchAll();
     }
@@ -115,19 +119,33 @@ class PostManager
     public function previousPage($currentPage): ?int
     {
         //return 1;
-        //return $currentPage--;
         
-        if ($currentPage === 0) {
-            $currentPage = null;
-        }
-        return $currentPage = $currentPage-1;
+        // Creer un champ page dans table Posts ? 
+        // Chercher la requete qui convient : qui retourne si false ? null sinon (int)$result['page']  (int)$result['id'] ?
+        // Pour ne pas avoir page 8 et l'onglet Page suivante
+        // Pour ne pas avoir page 0 et l'onglet Page precedente
+        // Reflexion ?  page (['chapter' => $currentPage])
 
-        // Creer un champ page dans table Posts ? Chercher la requete qui convient qui retourne si false ? null sinon (int)$result['page']  (int)$result['id']?
-        // Pour ne pas avoir page 8 et l'onglet Page precedente
-        //$request = $this->database->prepare('SELECT page FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
-        //$request->execute(['page' => $currentPage]);
+        $start = 0; // +5 a chaque page ?
+        $limit = 5; // cinq posts sur tous les pages
+        
+        //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = :chapter ORDER BY post_date ASC LIMIT :start, :limit');
+        //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = :chapter ORDER BY post_date ASC LIMIT :start, :limit');
+        //$request = $this->database->prepare('SELECT id FROM Posts WHERE page = :page ORDER BY post_date ASC LIMIT :start, :limit');
+
+        $request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
+        $request->execute(['chapter' => $currentPage]);
+        $result = $request->fetch();
+        return $result === false ? null : (int)$result['id'];
+
+        //$request->bindValue(':start', $start, \PDO::PARAM_INT);
+        //$request->bindValue(':limit', $limit, \PDO::PARAM_INT);
+        //$request->bindValue(':page', $currentPage, \PDO::PARAM_INT);
+        //$request->bindValue(':chapter', $currentPage, \PDO::PARAM_INT);
+        //$request->execute();
         //$result = $request->fetch();
-        //return $result === false ? null : (int)$result['page'];
+        //$result = $request->fetchAll(); // Recuperation des cinq id ?
+        //return $result === false ? null : (int)$result['id'];
     }
     
     public function nextPage($currentPage): ?int
