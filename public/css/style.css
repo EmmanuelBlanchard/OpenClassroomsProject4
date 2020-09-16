@@ -248,10 +248,7 @@ input:focus, textarea:focus {
 .divLinkPage {
     display: flex;
 }
-.linkPreviousPage, .linkNextPage {
-    width: 14rem;
-}
-.linkPreviousPost, .linkNextPost, .linkPreviousPage, .linkNextPage {
+.linkPreviousPost, .linkNextPost {
     display: inline-flex;
     text-align: center;
     transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
@@ -264,6 +261,18 @@ input:focus, textarea:focus {
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
     margin-top: 2.5%;
     margin-left: 17.5%;
+}
+.linkPreviousPage, .linkNextPage {
+    display: inline-flex;
+    transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
+    background-color: #FFF;
+    color: #013E70;
+    border: inset #013E70;
+    border-radius: 2em;
+    padding: 10px 10px;
+    font-weight: 600;
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+    margin-top: 2.5%;
 }
 .linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover, .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover {
     transition: border 2.5s ease, background-color 2.5s ease, color 2.0s ease;
