@@ -116,7 +116,7 @@ class PostManager
         return $currentPage = $currentPage+1;
         */
 
-        $request = $this->database->prepare('SELECT page FROM Posts WHERE page = (SELECT MIN(page) FROM Posts WHERE page < :page)');
+        $request = $this->database->prepare('SELECT page FROM Posts WHERE page = (SELECT MIN(page) FROM Posts WHERE page > :page)');
         //$request = $this->database->prepare('SELECT page FROM Posts WHERE page = :page ORDER BY post_date');
         $request->execute(['page' => $currentPage]);
         $result = $request->fetch();
