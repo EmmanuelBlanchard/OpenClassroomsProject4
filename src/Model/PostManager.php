@@ -86,11 +86,11 @@ class PostManager
         $start = 0; // +5 a chaque page ?
         $limit = 5; // cinq posts sur tous les pages
         //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = :chapter ORDER BY post_date ASC LIMIT :start, :limit');
-        //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = :chapter ORDER BY post_date ASC LIMIT :start, :limit');
         //$request = $this->database->prepare('SELECT id FROM Posts WHERE page = :page ORDER BY post_date ASC LIMIT :start, :limit');
 
-        $request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
-        $request->execute(['chapter' => $currentPage]);
+        //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
+        $request = $this->database->prepare('SELECT id FROM Posts WHERE page = :page ORDER BY post_date');
+        $request->execute(['page' => $currentPage]);
         $result = $request->fetch();
         return $result === false ? null : (int)$result['id'];
 
