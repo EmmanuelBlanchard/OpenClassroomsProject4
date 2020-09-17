@@ -34,32 +34,33 @@ class PostController
 
     public function displayListOfPosts($currentPage): void
     {
-        $nbTotalPosts = $this->postManager->getPostNbPosts();
+        // Utiliser $req->bindValue(':limitation', $nbByPage, \PDO::PARAM_INT); pour le limit du sql
+        // Revoir l'algo sur le calcul des pages
         $nbPostsPerPage = 5;
-        $nbTotalPages = $this->postManager->getPostNbPages($nbTotalPosts, $nbPostsPerPage);
-        /*
-        if($currentPage > $nbTotalPages) {
-            $currentPage = 1;
-            header('Location: index.php?action=listOfPosts&id='.$currentPage);
+        $nbTotalPosts = $this->postManager->getNbPosts();
+        $nbTotalPages = $this->postManager->getNbPages($nbTotalPosts, $nbPostsPerPage);
+        //var_dump("Page actuelle : " .$currentPage);
+        //var_dump("Nombre total de pages : " .$nbTotalPages);
+        if($currentPage>$nbTotalPages) {
+            $currentPage=$nbTotalPages;
+            
+            //echo"<pre>";
+            //print_r('Page actuelle (Dans le if currentPage> nbTotalPages) : ' .$currentPage);
+            //echo"</pre>";
+            //die();
+            
+            //header('Location: index.php?action=listOfPosts&id='.$currentPage);
+            //exit;
         }
-        */
-        if($currentPage === $nbTotalPages) {
-            $currentPage = 1;
-            header('Location: index.php?action=listOfPosts&id='.$currentPage);
-        }
-        
+
+        $dataAllPostsPagination = $this->postManager->getListPostsPagination($currentPage, $nbPostsPerPage);
         $previousPage = $this->postManager->previousPage($currentPage);
         $nextPage = $this->postManager->nextPage($currentPage);
-        
-        $dataAllPostsPagination = $this->postManager->getListPostsPagination($currentPage, $nbPostsPerPage);
-
         //echo"<pre>";
         //print_r(' Nombre de pages : ' .$nbTotalPages);
         //print_r(' Pagination : ' .$dataAllPostsPagination); // Array to string conversion
         //print_r('Numero page Précédente : ' .$previousPage);
         //print_r(' Numero page Suivante : ' .$nextPage);
-        // http://localhost:8000/index.php?action=listOfPosts&page=2
-        // Display => Numero page Précédente : 1 Numero page Suivante : 3
         //echo"</pre>";
         //die();
 
@@ -76,8 +77,6 @@ class PostController
     
     public function displayDetailOfPost(int $postId, int $page): void
     {
-        // Utiliser $req->bindValue(':limitation', $nbByPage, \PDO::PARAM_INT); pour le limit du sql
-        // Revoir l'algo sur le calcul des pages
         $limit = 5;
         $start = ($page-1)*$limit;
 
@@ -90,9 +89,9 @@ class PostController
         //$totalComments = $this->commentManager->getPostNbComments($postId);
         //$totalPageComments = ceil($totalComments / $limit);
 
-        $nbTotalPosts = $this->postManager->getPostNbPosts();
+        $nbTotalPosts = $this->postManager->getNbPosts();
         $nbPostsPerPage = 5;
-        $nbTotalPages = $this->postManager->getPostNbPages($nbTotalPosts, $nbPostsPerPage);
+        $nbTotalPages = $this->postManager->getNbPages($nbTotalPosts, $nbPostsPerPage);
         
         $dataPostPagination = $this->postManager->getDetailPostPagination($postId, $nbPostsPerPage);
 

@@ -62,11 +62,12 @@ class Router
             }
         } elseif ($action === 'listOfPosts') {
             // route http://localhost:8000/?action=listOfPosts
-            if(isset($this->get['page'])) {
-                $currentPage = (int)$this->get['page'];
+            if(isset($this->get['page']) && intval($this->get['page']))
+            {
+                $currentPage = intval($this->get['page']);
                 $this->postController->displayListOfPosts($currentPage);
             } else {
-                $currentPage = 1;
+                $currentPage=1;
                 $this->postController->displayListOfPosts($currentPage);
             }
         } elseif ($action === 'addComment' && isset($this->get['id'])) {
