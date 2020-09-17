@@ -81,25 +81,28 @@ class PostManager
         // Chercher la requete qui convient
         // Ne pas avoir page 8 et l'onglet Page suivante
         // Ne pas avoir page 0 et l'onglet Page precedente
+        
+        /*
         if ($currentPage === 0 && $currentPage === 8) {
             $currentPage = null;
         }
+        */
         // Reflexion
         //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = :chapter ORDER BY post_date ASC LIMIT :start, :limit');
         //$request = $this->database->prepare('SELECT id FROM Posts WHERE page = :page ORDER BY post_date ASC LIMIT :start, :limit');
         //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
-        $request = $this->database->prepare('SELECT page FROM Posts WHERE page = :page ORDER BY post_date');
+        
+        $request = $this->database->prepare('SELECT page FROM Posts WHERE page = (SELECT MAX(page) FROM Posts WHERE page < :page)');
+        //$request = $this->database->prepare('SELECT page FROM Posts WHERE page = :page ORDER BY post_date');
         $request->execute(['page' => $currentPage]);
         $result = $request->fetch();
-        return $result === false ? null : (int)$result['page']-1;
+        return $result === false ? null : (int)$result['page'];
 
         //$request->bindValue(':start', $start, \PDO::PARAM_INT);
         //$request->bindValue(':limit', $limit, \PDO::PARAM_INT);
         //$request->bindValue(':page', $currentPage, \PDO::PARAM_INT);
-        //$request->bindValue(':chapter', $currentPage, \PDO::PARAM_INT);
         //$request->execute();
         //$result = $request->fetch();
-        //$result = $request->fetchAll(); // Recuperation des cinq id ?
         //return $result === false ? null : (int)$result['id'];
     }
     
@@ -113,10 +116,11 @@ class PostManager
         return $currentPage = $currentPage+1;
         */
 
-        $request = $this->database->prepare('SELECT page FROM Posts WHERE page = :page ORDER BY post_date');
+        $request = $this->database->prepare('SELECT page FROM Posts WHERE page = (SELECT MIN(page) FROM Posts WHERE page < :page)');
+        //$request = $this->database->prepare('SELECT page FROM Posts WHERE page = :page ORDER BY post_date');
         $request->execute(['page' => $currentPage]);
         $result = $request->fetch();
-        return $result === false ? null : (int)$result['page']+1;
+        return $result === false ? null : (int)$result['page'];
     }
 
     public function getDetailPostPagination(int $currentPage, int $nbPostsPerPage): ?array
