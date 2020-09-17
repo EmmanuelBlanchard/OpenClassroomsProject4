@@ -78,14 +78,15 @@ class PostManager
     public function previousPage($currentPage): ?int
     {
         //return 1;
-        // Creer un champ page dans la table Posts ? 
-        // Chercher la requete qui convient : qui retourne si false ? null sinon (int)$result['page']  (int)$result['id'] ?
-        // Pour ne pas avoir page 8 et l'onglet Page suivante
-        // Pour ne pas avoir page 0 et l'onglet Page precedente
-        // Reflexion, page (['chapter' => $currentPage])
+        // Chercher la requete qui convient
+        // Ne pas avoir page 8 et l'onglet Page suivante
+        // Ne pas avoir page 0 et l'onglet Page precedente
+        if ($currentPage === 0 && $currentPage === 8) {
+            $currentPage = null;
+        }
+        // Reflexion
         //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = :chapter ORDER BY post_date ASC LIMIT :start, :limit');
         //$request = $this->database->prepare('SELECT id FROM Posts WHERE page = :page ORDER BY post_date ASC LIMIT :start, :limit');
-
         //$request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
         $request = $this->database->prepare('SELECT page FROM Posts WHERE page = :page ORDER BY post_date');
         $request->execute(['page' => $currentPage]);
@@ -116,14 +117,6 @@ class PostManager
         $request->execute(['page' => $currentPage]);
         $result = $request->fetch();
         return $result === false ? null : (int)$result['page']+1;
-
-        // Creer un champ page dans table Posts ? Chercher la requete qui convient qui retourne si false ? null sinon (int)$result['page']  (int)$result['id']?
-        // Pour ne pas avoir page 8 et l'onglet Page suivante
-        // Recuperer les informations des cinqs id choisis pour la page
-        //$request = $this->database->prepare('SELECT page FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
-        //$request->execute(['page' => $currentPage]);
-        //$result = $request->fetch();
-        //return $result === false ? null : (int)$result['page'];
     }
 
     public function getDetailPostPagination(int $currentPage, int $nbPostsPerPage): ?array
