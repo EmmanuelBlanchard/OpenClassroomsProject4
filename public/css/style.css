@@ -220,6 +220,12 @@ input:focus, textarea:focus {
     display:inline-flex;
     width: 100%;
 }
+.loginFormPseudo label, .loginFormPassword label {
+    color:#025AA0;
+}
+.loginFormPseudo span, .loginFormPassword span {
+    color: #0265b3;
+}
 .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin {
     width: 8rem;
     text-align: center;
