@@ -79,6 +79,9 @@ class Router
         } elseif ($action === 'error' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=error&id=5
             $this->commentController->error((int)$this->get['id']);     
+        } elseif ($action === 'login') {
+            // route http://localhost:8000/?action=login
+            $this->postController->displayLogin();   
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }
