@@ -635,7 +635,7 @@ footer p {
         border-radius: 20px;
         background-color: #f5f5f5;
     }
-    section h2, .sectionH4TitleComments {
+    section h2, .sectionH4TitleComments,.pControlPanelPage {
         color: #025AA0;
     }
 }

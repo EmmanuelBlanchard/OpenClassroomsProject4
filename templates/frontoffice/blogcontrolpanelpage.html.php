@@ -2,6 +2,8 @@
 
     <h2>Panneau de configuration du blog</h2>
 
+    <p class="pControlPanelPage"> Bienvenue dans le panneau de configuration du blog ! </p>
+
     <!-- balise Article ? -->
     <article>
         <!-- Faire lien en forme d'onglet et creer, affecter les actions correspondantes -->
