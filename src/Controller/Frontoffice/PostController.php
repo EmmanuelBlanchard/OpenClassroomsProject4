@@ -113,7 +113,8 @@ class PostController
 
     public function displayLogin(): void
     {
-        var_dump("Accès à la page de connexion");
+        //var_dump("Accès à la page de connexion");
+        $this->view->render(['template' => 'adminloginpage',]);
     }
     
 }

@@ -178,7 +178,7 @@ p {
 form {
     box-sizing: border-box;
 }
-form p, form input, form textarea, form .inputTypeSubmitPublishComment {
+form p, form input, form textarea, form .inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin {
     font-family: 'ralewayregular','open_sansregular', sans-serif;
 }
 form p {
@@ -220,7 +220,7 @@ input:focus, textarea:focus {
     display:inline-flex;
     width: 100%;
 }
-.linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment {
+.linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin {
     width: 8rem;
     text-align: center;
     transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
@@ -238,7 +238,7 @@ input:focus, textarea:focus {
 .linkReadTheEntireEpisode {
     width: 12rem;
 }
-.inputTypeSubmitPublishComment {
+.inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin {
     cursor: pointer;
 }
 /* Voir a divers pixels et adapter valeurs */
@@ -274,7 +274,7 @@ input:focus, textarea:focus {
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
     margin-top: 2.5%;
 }
-.linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover, .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover {
+.linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover, .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover, .inputTypeSubmitValidateLogin:hover {
     transition: border 2.5s ease, background-color 2.5s ease, color 2.0s ease;
     border: outset #e2e2e2;
     color: #FFF;
