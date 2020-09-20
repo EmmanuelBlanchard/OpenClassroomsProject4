@@ -119,14 +119,14 @@ class PostController
 
     public function displayLoginAdmin(array $data): void
     {
-        if (!empty($data['pseudo']) && !empty($data['comment'])) {
+        if (!empty($data['pseudo']) && !empty($data['password']) && $data['pseudo'] == "JeanForteroche" && $data['password'] == "motdepasse" ) {
             $this->postManager->postLogin(htmlspecialchars($data['pseudo']), htmlspecialchars($data['password']));
             // Verification valeur pseudo et password
         } else {
             header('Location: index.php?action=error');
             exit();
         }
-        // Redirection vers page d'administration , a creer | pour l instant vers la page home
+        // Redirection vers page d'administration à creer | pour l instant vers la page home
         header('Location: index.php?action=home');
         exit();
     }

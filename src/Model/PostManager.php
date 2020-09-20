@@ -120,6 +120,7 @@ class PostManager
 
     public function postLogin(): ?int
     {
+        var_dump("Accès à la page de connexion");
         return 1;
     }
 }
