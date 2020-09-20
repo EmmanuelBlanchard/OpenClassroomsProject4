@@ -195,7 +195,7 @@ span {
 textarea {
     width: 100%;
 }
-input[type="text"], textarea {
+input[type="text"],input[type="password"], textarea {
     transition: border 3s ease, background-color 3s ease, color 3s ease;
     border: inset #e2e2e2;
     background-color: #FFF;
