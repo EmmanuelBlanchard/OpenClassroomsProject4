@@ -116,5 +116,19 @@ class PostController
         //var_dump("Accès à la page de connexion");
         $this->view->render(['template' => 'adminloginpage',]);
     }
+
+    public function displayLoginAdmin(array $data): void
+    {
+        if (!empty($data['pseudo']) && !empty($data['comment'])) {
+            $this->postManager->postLogin(htmlspecialchars($data['pseudo']), htmlspecialchars($data['password']));
+            // Verification valeur pseudo et password
+        } else {
+            header('Location: index.php?action=error');
+            exit();
+        }
+        // Redirection vers page d'administration , a creer | pour l instant vers la page home
+        header('Location: index.php?action=home');
+        exit();
+    }
     
 }

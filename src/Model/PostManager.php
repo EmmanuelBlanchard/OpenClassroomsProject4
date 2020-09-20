@@ -118,4 +118,8 @@ class PostManager
         return $result === false ? null : (int)$result['id'];
     }
 
+    public function postLogin(): ?int
+    {
+        return 1;
+    }
 }
