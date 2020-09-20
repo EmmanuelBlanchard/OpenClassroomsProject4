@@ -127,8 +127,16 @@ class PostController
             exit();
         }
         // Redirection vers page d'administration à creer | pour l instant vers la page home
-        header('Location: index.php?action=home');
+        //header('Location: index.php?action=home');
+        header('Location: index.php?action=blogControlPanel'); 
         exit();
+    }
+
+    public function displayAdmin(): void
+    {
+        var_dump("Bienvenue à la page d'administration du blog ! ");
+        $this->view->render(['template' => 'blogcontrolpanelpage',]);
+
     }
     
 }

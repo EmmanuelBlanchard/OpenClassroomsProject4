@@ -1,0 +1,23 @@
+<section>
+
+    <h2>Panneau de configuration du blog</h2>
+
+    <!-- balise Article ? -->
+    <article>
+        <!-- Faire lien en forme d'onglet et creer, affecter les actions correspondantes -->
+        <a href="index.php?action=home" class="homeTab">Accueil</a>
+
+        <a href="index.php?action=home" class="myProfileTab">Mon profil</a>
+
+        <a href="index.php?action=home" class="episodeListTab">Liste des épisodes</a>
+
+        <a href="index.php?action=home" class="createAnEpisodeTab">Création d'un épisode</a>
+
+        <a href="index.php?action=home" class="commentsTab">Commentaires</a>
+
+        <a href="index.php?action=home" class="logoutTab">Se déconnecter</a>
+    
+    </article>
+
+
+</section>

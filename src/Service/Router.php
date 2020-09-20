@@ -85,6 +85,9 @@ class Router
         } elseif ($action === 'accessToTheAdminLoginPage') {
             // route http://localhost:8000/?action=accessToTheAdminLoginPage
             $this->postController->displayLoginAdmin($this->post);
+        } elseif ($action === 'blogControlPanel') {
+            // route http://localhost:8000/?action=blogControlPanel
+            $this->postController->displayAdmin();
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }

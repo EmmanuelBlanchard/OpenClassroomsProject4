@@ -226,7 +226,8 @@ input:focus, textarea:focus {
 .loginFormPseudo span, .loginFormPassword span {
     color: #0265b3;
 }
-.linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin {
+.linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin,
+ .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
     width: 8rem;
     text-align: center;
     transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
@@ -247,7 +248,7 @@ input:focus, textarea:focus {
 .inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin {
     cursor: pointer;
 }
-/* Voir a divers pixels et adapter valeurs */
+/* Voir a divers pixels et adapter valeurs, pas la bonne methode enlever et voir avec flexbox */
 .linkToTheReportOfThePostComment {
     margin-left: 72.5%;
 }
@@ -280,7 +281,10 @@ input:focus, textarea:focus {
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
     margin-top: 2.5%;
 }
-.linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover, .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover, .inputTypeSubmitValidateLogin:hover {
+
+.linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover,
+ .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover, .inputTypeSubmitValidateLogin:hover, .homeTab:hover,
+  .myProfileTab:hover, .episodeListTab:hover, .createAnEpisodeTab:hover, .commentsTab:hover, .logoutTab:hover {
     transition: border 2.5s ease, background-color 2.5s ease, color 2.0s ease;
     border: outset #e2e2e2;
     color: #FFF;
