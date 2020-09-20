@@ -110,5 +110,10 @@ class PostController
         }
 
     }
+
+    public function displayLogin(): void
+    {
+        var_dump("Accès à la page de connexion");
+    }
     
 }
