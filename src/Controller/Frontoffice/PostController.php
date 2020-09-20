@@ -113,7 +113,6 @@ class PostController
 
     public function displayLogin(): void
     {
-        //var_dump("Accès à la page de connexion");
         $this->view->render(['template' => 'adminloginpage',]);
     }
 
@@ -121,22 +120,20 @@ class PostController
     {
         if (!empty($data['pseudo']) && !empty($data['password']) && $data['pseudo'] == "JeanForteroche" && $data['password'] == "motdepasse" ) {
             $this->postManager->postLogin(htmlspecialchars($data['pseudo']), htmlspecialchars($data['password']));
-            // Verification valeur pseudo et password
+            // Verification de la valeur pseudo et du password
+            // Hachage et salage du mot de passe puis comparaison
         } else {
             header('Location: index.php?action=error');
             exit();
         }
-        // Redirection vers page d'administration à creer | pour l instant vers la page home
-        //header('Location: index.php?action=home');
+        // Redirection vers page d'administration
         header('Location: index.php?action=blogControlPanel'); 
         exit();
     }
 
     public function displayAdmin(): void
     {
-        var_dump("Bienvenue à la page d'administration du blog ! ");
         $this->view->render(['template' => 'blogcontrolpanelpage',]);
-
     }
     
 }

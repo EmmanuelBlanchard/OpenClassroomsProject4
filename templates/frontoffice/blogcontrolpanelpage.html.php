@@ -7,7 +7,7 @@
     <!-- balise Article ? -->
     <article>
         <!-- Faire lien en forme d'onglet et creer, affecter les actions correspondantes -->
-        <a href="index.php?action=home" class="homeTab">Accueil</a>
+        <a href="index.php?action=blogControlPanel" class="homeTab">Accueil</a>
 
         <a href="index.php?action=home" class="myProfileTab">Mon profil</a>
 
