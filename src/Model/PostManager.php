@@ -54,12 +54,6 @@ class PostManager
         return $nbTotalPosts;
     }
 
-    public function getNbPages(int $nbTotalPosts, int $nbPostsPerPage): int
-    {
-        $nbTotalPages = ceil($nbTotalPosts / $nbPostsPerPage);
-        return (int)$nbTotalPages;
-    }
-
     public function getListPostsPagination(int $currentPage, int $nbPostsPerPage): ?array
     {
         // Essai
@@ -89,17 +83,6 @@ class PostManager
         $request->execute(['page' => $currentPage]);
         $result = $request->fetch();
         return $result === false ? null : (int)$result['page'];
-    }
-
-    public function getDetailPostPagination(int $currentPage, int $nbPostsPerPage): ?array
-    {   
-        $firstPostPage=($currentPage-1)*$nbPostsPerPage;
-        //$firstPostPage = ($currentPage * $nbPostsPerPage) - $nbPostsPerPage;
-        $request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date DESC LIMIT :firstPostPage, :nbPostsPerPage');
-        $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
-        $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
-        $request->execute();
-        return $request->fetchAll();
     }
 
     public function previousPost($chapter): ?int
