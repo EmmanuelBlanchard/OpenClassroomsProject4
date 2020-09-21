@@ -223,8 +223,20 @@ input:focus, textarea:focus {
 .loginFormPseudo label, .loginFormPassword label {
     color:#025AA0;
 }
-.loginFormPseudo span, .loginFormPassword span {
+.loginFormPseudo span, .loginFormPassword span, .aNewPassword, .aNewPassword span {
     color: #0265b3;
+}
+.checkbocRemenberLogin {
+    display: inline-flex;
+}
+form input[type="checkbox"] {
+    padding: 15px;
+}
+label[for=remenberLogin] {
+    color: rgba(0, 0, 0, 0.92);
+}
+.aNewPassword {
+    text-decoration: underline;
 }
 .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin,
  .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
