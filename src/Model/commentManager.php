@@ -15,15 +15,13 @@ class CommentManager
         $this->database = $database->getPdo();
     }
     
-    public function getComments(int $postId, int $start, int $limit): ?array
+    public function getComments(int $postId): ?array
     {
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
         
-        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC LIMIT :start, :limit');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC');
         $request->bindValue(':post_id', $postId, \PDO::PARAM_INT);
-        $request->bindValue(':start', $start, \PDO::PARAM_INT);
-        $request->bindValue(':limit', $limit, \PDO::PARAM_INT);
         $request->execute();
         return $request->fetchAll();
     }

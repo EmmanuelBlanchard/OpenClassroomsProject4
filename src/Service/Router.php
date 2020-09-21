@@ -52,24 +52,11 @@ class Router
             $this->postController->displayHomeWithTheLastThreePosts();
         } elseif ($action === 'detailOfPost' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=detailOfPost&id=5
-            if(isset($this->get['page']) && intval($this->get['page']))
-            {
-                    $page = intval($this->get['page']);
-                    $this->postController->displayDetailOfPost((int)$this->get['id'], $page);
-            } else {
-                    $page = 1;
-                    $this->postController->displayDetailOfPost((int)$this->get['id'], $page);
-            }
+            $this->postController->displayDetailOfPost((int)$this->get['id']);
         } elseif ($action === 'listOfPosts') {
             // route http://localhost:8000/?action=listOfPosts
-            if(isset($this->get['page']) && intval($this->get['page']))
-            {
-                $currentPage = intval($this->get['page']);
-                $this->postController->displayListOfPosts($currentPage);
-            } else {
-                $currentPage=1;
-                $this->postController->displayListOfPosts($currentPage);
-            }
+            $currentPage = isset($this->get['page']) ? (int) $this->get['page'] : 1;
+            $this->postController->displayListOfPosts($currentPage);
         } elseif ($action === 'addComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=addCommente&id=5
             $this->commentController->addComment((int)$this->get['id'], $this->post);

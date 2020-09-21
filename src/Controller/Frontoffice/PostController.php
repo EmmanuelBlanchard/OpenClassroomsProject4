@@ -34,23 +34,14 @@ class PostController
 
     public function displayListOfPosts($currentPage): void
     {
-        // Utiliser $req->bindValue(':limitation', $nbByPage, \PDO::PARAM_INT); pour le limit du sql
-        // Revoir l'algo sur le calcul des pages
         $nbPostsPerPage = 5;
         $nbTotalPosts = $this->postManager->getNbPosts();
-        $nbTotalPages = $this->postManager->getNbPages($nbTotalPosts, $nbPostsPerPage);
-        //var_dump("Page actuelle : " .$currentPage);
-        //var_dump("Nombre total de pages : " .$nbTotalPages);
+        $nbTotalPages = ceil($nbTotalPosts / $nbPostsPerPage);
+        
         if($currentPage>$nbTotalPages) {
             $currentPage=$nbTotalPages;
-            
-            //echo"<pre>";
-            //print_r('Page actuelle (Dans le if currentPage> nbTotalPages) : ' .$currentPage);
-            //echo"</pre>";
-            //die();
-            
-            //header('Location: index.php?action=listOfPosts&id='.$currentPage);
-            //exit;
+        } elseif ($currentPage<=0) {
+            $currentPage=1;
         }
 
         $dataAllPostsPagination = $this->postManager->getListPostsPagination($currentPage, $nbPostsPerPage);
@@ -58,13 +49,10 @@ class PostController
         $nextPage = $this->postManager->nextPage($currentPage);
         //echo"<pre>";
         //print_r(' Nombre de pages : ' .$nbTotalPages);
-        //print_r(' Pagination : ' .$dataAllPostsPagination); // Array to string conversion
         //print_r('Numero page Précédente : ' .$previousPage);
         //print_r(' Numero page Suivante : ' .$nextPage);
         //echo"</pre>";
         //die();
-
-        //var_dump($dataAllPostsPagination);
         //var_dump($previousPage,$nextPage);
 
         if ($dataAllPostsPagination !== null) {
@@ -75,36 +63,16 @@ class PostController
 
     }
     
-    public function displayDetailOfPost(int $postId, int $page): void
+    public function displayDetailOfPost(int $postId): void
     {
-        $limit = 5;
-        $start = ($page-1)*$limit;
-
         $dataPost = $this->postManager->getPost($postId);
-        $dataComments = $this->commentManager->getComments($postId, $start, $limit);
+        $dataComments = $this->commentManager->getComments($postId);
 
         $previousPost = $this->postManager->previousPost($postId);
         $nextPost = $this->postManager->nextPost($postId);
 
-        //$totalComments = $this->commentManager->getPostNbComments($postId);
-        //$totalPageComments = ceil($totalComments / $limit);
-
-        $nbTotalPosts = $this->postManager->getNbPosts();
-        $nbPostsPerPage = 5;
-        $nbTotalPages = $this->postManager->getNbPages($nbTotalPosts, $nbPostsPerPage);
-        
-        $dataPostPagination = $this->postManager->getDetailPostPagination($postId, $nbPostsPerPage);
-
-        //echo"<pre>";
-        //print_r('Nombre de pages : ' .$nbTotalPages);
-        //echo"</pre>";
-        //die();
-        
-        //var_dump($dataPostPagination);
-        //var_dump($previousPost,$nextPost);
-
         if ($dataPost !== null) {
-            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'datapostpagination' => $dataPostPagination, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);
+            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);
         } elseif ($dataPost === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
