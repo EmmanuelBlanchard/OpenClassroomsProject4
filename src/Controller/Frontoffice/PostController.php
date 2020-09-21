@@ -133,7 +133,15 @@ class PostController
 
     public function displayAdmin(): void
     {
-        $this->view->render(['template' => 'blogcontrolpanelpage',]);
+        $this->view->render(['template' => 'blogcontrolpanelpage']);
     }
     
+    public function displayAdminSetNewPassword(): void
+    {
+        $this->view->render(['template' => 'adminsetnewpassword']);
+    }
+
+
+
+
 }
