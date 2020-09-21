@@ -220,7 +220,7 @@ input:focus, textarea:focus {
     display:inline-flex;
     width: 100%;
 }
-.loginFormPseudo label, .loginFormPassword label {
+.loginFormPseudo label, .loginFormPassword label, label[for=email] {
     color:#025AA0;
 }
 .loginFormPseudo span, .loginFormPassword span, .aNewPassword, .aNewPassword span {
