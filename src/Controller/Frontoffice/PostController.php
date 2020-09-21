@@ -141,7 +141,4 @@ class PostController
         $this->view->render(['template' => 'adminsetnewpassword']);
     }
 
-
-
-
 }

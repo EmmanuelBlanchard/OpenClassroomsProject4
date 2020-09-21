@@ -88,7 +88,7 @@ class Router
         } elseif ($action === 'blogControlPanel') {
             // route http://localhost:8000/?action=blogControlPanel
             $this->postController->displayAdmin();
-        } elseif ($action === 'action=setNewPassword') {
+        } elseif ($action === 'setNewPassword') {
             // route http://localhost:8000/?action=setNewPassword
             $this->postController->displayAdminSetNewPassword();
         } else {
