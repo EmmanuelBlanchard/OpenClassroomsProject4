@@ -178,7 +178,7 @@ p {
 form {
     box-sizing: border-box;
 }
-form p, form input, form textarea, form .inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin {
+form p, form input, form textarea, form .inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword {
     font-family: 'ralewayregular','open_sansregular', sans-serif;
 }
 form p {
@@ -238,7 +238,7 @@ label[for=remenberLogin] {
 .aNewPassword {
     text-decoration: underline;
 }
-.linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin,
+.linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword ,
  .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
     width: 8rem;
     text-align: center;
@@ -257,7 +257,7 @@ label[for=remenberLogin] {
 .linkReadTheEntireEpisode {
     width: 12rem;
 }
-.inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin {
+.inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword {
     cursor: pointer;
 }
 /* Voir a divers pixels et adapter valeurs, pas la bonne methode enlever et voir avec flexbox */
@@ -295,7 +295,7 @@ label[for=remenberLogin] {
 }
 
 .linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover,
- .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover, .inputTypeSubmitValidateLogin:hover, .homeTab:hover,
+ .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover, .inputTypeSubmitValidateLogin:hover, .inputTypeSubmitRenewPassword:hover, .homeTab:hover,
   .myProfileTab:hover, .episodeListTab:hover, .createAnEpisodeTab:hover, .commentsTab:hover, .logoutTab:hover {
     transition: border 2.5s ease, background-color 2.5s ease, color 2.0s ease;
     border: outset #e2e2e2;
