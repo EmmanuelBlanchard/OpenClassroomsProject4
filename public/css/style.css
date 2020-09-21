@@ -254,6 +254,9 @@ label[for=remenberLogin] {
     margin-bottom: 4%;
     align-self: flex-start;
 }
+.inputTypeSubmitRenewPassword {
+    width: auto;
+}
 .linkReadTheEntireEpisode {
     width: 12rem;
 }
