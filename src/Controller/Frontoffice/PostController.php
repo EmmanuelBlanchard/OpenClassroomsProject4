@@ -120,8 +120,17 @@ class PostController
     {
         if (!empty($data['pseudo']) && !empty($data['password']) && $data['pseudo'] == "JeanForteroche" && $data['password'] == "motdepasse" ) {
             $this->postManager->postLogin(htmlspecialchars($data['pseudo']), htmlspecialchars($data['password']));
+            
+            // Creation du champ password_hash dans la DB ?
+            // https://www.php.net/manual/fr/faq.passwords.php
+            // https://www.php.net/manual/fr/function.password-hash.php
+            // https://www.php.net/manual/fr/function.password-verify.php
+            // https://www.php.net/manual/fr/book.password.php
+            
             // Verification de la valeur pseudo et du password
             // Hachage et salage du mot de passe puis comparaison
+            // password_hash ( string $password , int $algo [, array $options ] ) : string
+
         } else {
             header('Location: index.php?action=error');
             exit();
