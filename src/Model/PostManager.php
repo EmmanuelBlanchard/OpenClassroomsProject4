@@ -56,7 +56,6 @@ class PostManager
 
     public function getListPostsPagination(int $currentPage, int $nbPostsPerPage): ?array
     {
-        // Essai
         $firstPostPage=($currentPage-1)*$nbPostsPerPage;
         //$firstPostPage = ($currentPage * $nbPostsPerPage) - $nbPostsPerPage;
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
@@ -69,22 +68,6 @@ class PostManager
         return $request->fetchAll();
     }
     
-    public function previousPage($currentPage): ?int
-    {
-        $request = $this->database->prepare('SELECT page FROM Posts WHERE page = (SELECT MAX(page) FROM Posts WHERE page < :page)');
-        $request->execute(['page' => $currentPage]);
-        $result = $request->fetch();
-        return $result === false ? null : (int)$result['page'];
-    }
-    
-    public function nextPage($currentPage): ?int
-    {
-        $request = $this->database->prepare('SELECT page FROM Posts WHERE page = (SELECT MIN(page) FROM Posts WHERE page > :page)');
-        $request->execute(['page' => $currentPage]);
-        $result = $request->fetch();
-        return $result === false ? null : (int)$result['page'];
-    }
-
     public function previousPost($chapter): ?int
     {
         $request = $this->database->prepare('SELECT id FROM Posts WHERE chapter = (SELECT MAX(chapter) FROM Posts WHERE chapter < :chapter)');
@@ -107,3 +90,4 @@ class PostManager
         return 1;
     }
 }
+

@@ -44,16 +44,10 @@ class PostController
             $currentPage=1;
         }
 
+        $previousPage = $currentPage<=1 ? null : ($currentPage-1);
+        $nextPage = $currentPage>=$nbTotalPages ? null : ($currentPage+1);
+
         $dataAllPostsPagination = $this->postManager->getListPostsPagination($currentPage, $nbPostsPerPage);
-        $previousPage = $this->postManager->previousPage($currentPage);
-        $nextPage = $this->postManager->nextPage($currentPage);
-        //echo"<pre>";
-        //print_r(' Nombre de pages : ' .$nbTotalPages);
-        //print_r('Numero page Précédente : ' .$previousPage);
-        //print_r(' Numero page Suivante : ' .$nextPage);
-        //echo"</pre>";
-        //die();
-        //var_dump($previousPage,$nextPage);
 
         if ($dataAllPostsPagination !== null) {
             $this->view->render(['template' => 'listofposts', 'allpostspagination' => $dataAllPostsPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage]);
