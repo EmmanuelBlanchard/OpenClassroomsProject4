@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace  App\Service;
 
+use App\Controller\Backoffice\AdminController;
 use App\Controller\Frontoffice\PostController;
 use App\Controller\Frontoffice\CommentController;
+use App\Model\AdminManager;
 use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Service\Database;
@@ -15,9 +17,11 @@ use App\View\View;
 class Router
 {
     private Database $database;
+    private AdminManager $adminManager;
     private PostManager $postManager;
     private CommentManager $commentManager;
     private View $view;
+    private AdminController $adminController;
     private PostController $postController;
     private CommentController $commentController;
     private array $get;
@@ -27,14 +31,16 @@ class Router
     {
         // Dépendances
         $this->database = new Database();
+        $this->adminManager = new AdminManager($this->database);
         $this->postManager = new PostManager($this->database);
         $this->commentManager = new CommentManager($this->database);
         $this->view = new View();
 
         // Injection des dépendances
+        $this->adminController = new AdminController($this->adminManager, $this->view);
         $this->postController = new PostController($this->postManager, $this->commentManager, $this->view);
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
-
+        
         // En attendant de mettre en place la classe App\Service\Http\Request
         $this->get = $_GET;
         $this->post = $_POST;
@@ -68,16 +74,16 @@ class Router
             $this->commentController->error((int)$this->get['id']);     
         } elseif ($action === 'login') {
             // route http://localhost:8000/?action=login
-            $this->postController->displayLogin();   
+            $this->adminController->displayLogin();   
         } elseif ($action === 'accessToTheAdminLoginPage') {
             // route http://localhost:8000/?action=accessToTheAdminLoginPage
-            $this->postController->displayLoginAdmin($this->post);
+            $this->adminController->displayLoginAdmin($this->post);
         } elseif ($action === 'blogControlPanel') {
             // route http://localhost:8000/?action=blogControlPanel
-            $this->postController->displayAdmin();
+            $this->adminController->displayAdmin();
         } elseif ($action === 'setNewPassword') {
             // route http://localhost:8000/?action=setNewPassword
-            $this->postController->displayAdminSetNewPassword();
+            $this->adminController->displayAdminSetNewPassword();
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }
