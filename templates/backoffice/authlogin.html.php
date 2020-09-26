@@ -3,9 +3,9 @@
     $emailErrorMsg = isset($this->email_err) ? $this->email_err : '';
 ?>
 <section>
-<div class="row">
-    <div class="col-md-8 mx-auto">
-        <div class="card card-body bg-light mt-5">
+<div class="">
+    <div class="">
+        <div class="">
 
             <!-- Error alert -->
             <?php if($emailError) : ?>
@@ -17,25 +17,25 @@
                 </div>
             <?php endif; ?>
 
-            <h2>Login</h2>
-            <p>Please fill in your credentials to log in</p>
+            <h2>Connexion</h2>
+            <p>Veuillez remplir vos identifiants pour vous connecter</p>
             <form action="index.php?action=doLogin" method="POST">
                 <div class="form-group">
                     <label for="email">Email: <sup>*</sup></label>
-                    <input type="text" name="email" class="form-control form-control-lg <?= ($emailError) ? 'is-invalid' : '' ?>">
+                    <input type="text" name="email" class=" <?= ($emailError) ? 'is-invalid' : '' ?>">
                 </div>         
 
                 <div class="form-group">
-                    <label for="name">Password: <sup>*</sup></label>
-                    <input type="password" name="password" class="form-control form-control-lg <?= ($emailError) ? 'is-invalid' : '' ?>">
+                    <label for="name">Mot de passe: <sup>*</sup></label>
+                    <input type="password" name="password" class=" <?= ($emailError) ? 'is-invalid' : '' ?>">
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <input type="submit" value="Login" class="btn btn-success btn-block">
+                        <input type="submit" value="Connexion" class="">
                     </div>
                     <div class="col">
-                        <a href="index.php?action=register" class="btn btn-light btn-block">No Account? Register</a>
+                        <a href="index.php?action=register" class="">Pas de compte ? S'inscrire</a>
                     </div>
                 </div>    
             </form>
