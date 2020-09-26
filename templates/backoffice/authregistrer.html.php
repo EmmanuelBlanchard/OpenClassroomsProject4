@@ -26,48 +26,48 @@
 <div class="row">
     <div class="col-md-8 mx-auto">
         <div class="card card-body bg-light mt-5">
-            <h2>Create An Account</h2>
-            <p>Please fill out this form to register with us</p>
+            <h2>Créer un compte</h2>
+            <p>Veuillez remplir ce formulaire pour vous inscrire</p>
             <form action="index.php?action=doRegister" method="POST" name="myForm">
 
                 <div class="form-group">
-                    <label for="name">Name: <sup>*</sup></label>
-                    <input type="text" name="firstname" class="form-control form-control-lg <?= $firstnameErr ?>"  value="<?= $firstnameData ?>">
+                    <label for="name">Prénom: <sup>*</sup></label>
+                    <input type="text" name="firstname" class=" <?= $firstnameErr ?>"  value="<?= $firstnameData ?>">
                     <span class="invalid-feedback"><?= $nameErrorMsg ?></span>
                 </div>
  
 
                 <div class="form-group">
-                    <label for="name">Last Name: <sup>*</sup></label>
-                    <input type="text" name="lastname" class="form-control form-control-lg <?= $lastNameErr ?>"  value="<?= $lastnameData ?>">
+                    <label for="name">Nom: <sup>*</sup></label>
+                    <input type="text" name="lastname" class=" <?= $lastNameErr ?>"  value="<?= $lastnameData ?>">
                     <span class="invalid-feedback"><?= $lastNameErrorMsg ?></span>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email: <sup>*</sup></label>
-                    <input type="text" name="email" class="form-control form-control-lg <?= $emailErr ?>" value="<?= $emailData ?>">
+                    <input type="text" name="email" class=" <?= $emailErr ?>" value="<?= $emailData ?>">
                     <span class="invalid-feedback"><?= $emailErrorMsg ?></span>
                 </div>        
                 
 
                 <div class="form-group">
-                    <label for="name">Password: <sup>*</sup></label>
-                    <input type="password" name="password" class="form-control form-control-lg <?= $passwordErr ?>" value="<?= $passwordData ?>">
+                    <label for="name">Mot de passe: <sup>*</sup></label>
+                    <input type="password" name="password" class=" <?= $passwordErr ?>" value="<?= $passwordData ?>">
                     <span class="invalid-feedback"><?= $passwordErrorMsg ?></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="confirm_password">Confirm Password: <sup>*</sup></label>
-                    <input type="password" name="confirm_password" class="form-control form-control-lg <?= $confirmPasswordErr ?>" value="<?= $confirmPasswordData ?>">
+                    <label for="confirm_password">Confirmer le mot de passe: <sup>*</sup></label>
+                    <input type="password" name="confirm_password" class=" <?= $confirmPasswordErr ?>" value="<?= $confirmPasswordData ?>">
                     <span class="invalid-feedback"><?= $confirmPasswordErrorMsg ?></span>
                 </div>  
 
                 <div class="row">
                     <div class="col">
-                    <input type="submit" value="Register" class="btn btn-success btn-block">
+                    <input type="submit" value="S'inscrire" class="">
                     </div>
                     <div class="col">
-                    <a href="index.php?action=login" class="btn btn-light btn-block">Have an account? Login</a>
+                    <a href="index.php?action=login" class="">Vous avez un compte ? Connexion</a>
                     </div>
                 </div>       
             </form>
