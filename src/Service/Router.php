@@ -74,7 +74,8 @@ class Router
             $this->commentController->error((int)$this->get['id']);     
         } elseif ($action === 'login') {
             // route http://localhost:8000/?action=login
-            $this->adminController->displayLogin();   
+            //$this->adminController->displayLogin();
+            $this->adminController->login();
         } elseif ($action === 'accessToTheAdminLoginPage') {
             // route http://localhost:8000/?action=accessToTheAdminLoginPage
             $this->adminController->displayLoginAdmin($this->post);
