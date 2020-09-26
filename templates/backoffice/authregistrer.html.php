@@ -23,9 +23,9 @@
 ?>
 
 <section>
-<div class="row">
-    <div class="col-md-8 mx-auto">
-        <div class="card card-body bg-light mt-5">
+<div class="">
+    <div class="">
+        <div class="">
             <h2>Créer un compte</h2>
             <p>Veuillez remplir ce formulaire pour vous inscrire</p>
             <form action="index.php?action=doRegister" method="POST" name="myForm">
@@ -37,33 +37,33 @@
                 </div>
  
 
-                <div class="form-group">
+                <div class="">
                     <label for="name">Nom: <sup>*</sup></label>
                     <input type="text" name="lastname" class=" <?= $lastNameErr ?>"  value="<?= $lastnameData ?>">
                     <span class="invalid-feedback"><?= $lastNameErrorMsg ?></span>
                 </div>
 
-                <div class="form-group">
+                <div class="">
                     <label for="email">Email: <sup>*</sup></label>
                     <input type="text" name="email" class=" <?= $emailErr ?>" value="<?= $emailData ?>">
                     <span class="invalid-feedback"><?= $emailErrorMsg ?></span>
                 </div>        
                 
 
-                <div class="form-group">
+                <div class="">
                     <label for="name">Mot de passe: <sup>*</sup></label>
                     <input type="password" name="password" class=" <?= $passwordErr ?>" value="<?= $passwordData ?>">
                     <span class="invalid-feedback"><?= $passwordErrorMsg ?></span>
                 </div>
 
-                <div class="form-group">
+                <div class="">
                     <label for="confirm_password">Confirmer le mot de passe: <sup>*</sup></label>
                     <input type="password" name="confirm_password" class=" <?= $confirmPasswordErr ?>" value="<?= $confirmPasswordData ?>">
                     <span class="invalid-feedback"><?= $confirmPasswordErrorMsg ?></span>
                 </div>  
 
-                <div class="row">
-                    <div class="col">
+                <div class="">
+                    <div class="">
                     <input type="submit" value="S'inscrire" class="">
                     </div>
                     <div class="col">
@@ -75,4 +75,4 @@
     </div>
 </div>
 </section>
-<div class="mb-5"></div>
+<div class=""></div>

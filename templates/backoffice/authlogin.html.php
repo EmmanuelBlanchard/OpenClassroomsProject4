@@ -20,21 +20,21 @@
             <h2>Connexion</h2>
             <p>Veuillez remplir vos identifiants pour vous connecter</p>
             <form action="index.php?action=doLogin" method="POST">
-                <div class="form-group">
+                <div class="">
                     <label for="email">Email: <sup>*</sup></label>
                     <input type="text" name="email" class=" <?= ($emailError) ? 'is-invalid' : '' ?>">
                 </div>         
 
-                <div class="form-group">
+                <div class="">
                     <label for="name">Mot de passe: <sup>*</sup></label>
                     <input type="password" name="password" class=" <?= ($emailError) ? 'is-invalid' : '' ?>">
                 </div>
 
-                <div class="row">
-                    <div class="col">
+                <div class="">
+                    <div class="">
                         <input type="submit" value="Connexion" class="">
                     </div>
-                    <div class="col">
+                    <div class="">
                         <a href="index.php?action=register" class="">Pas de compte ? S'inscrire</a>
                     </div>
                 </div>    

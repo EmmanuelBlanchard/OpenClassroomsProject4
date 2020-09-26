@@ -82,7 +82,6 @@ class AdminController
             $this->view->error = $error;
             $this->view->formData = $user;
 
-            //$this->view->render('auth/register');
             $this->view->renderBack(['template' => 'authregistrer']);
         } else {
             MessageController::add('Vous êtes inscrit et vous pouvez maintenant vous connecter');
