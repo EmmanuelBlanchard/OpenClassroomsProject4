@@ -76,6 +76,9 @@ class Router
             // route http://localhost:8000/?action=login
             //$this->adminController->displayLogin();
             $this->adminController->login();
+        } elseif ($action === 'register') {
+            // route http://localhost:8000/?action=register
+            $this->adminController->registrer();
         } elseif ($action === 'accessToTheAdminLoginPage') {
             // route http://localhost:8000/?action=accessToTheAdminLoginPage
             $this->adminController->displayLoginAdmin($this->post);
