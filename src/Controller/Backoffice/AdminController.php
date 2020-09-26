@@ -139,7 +139,7 @@ class AdminController
         $this->login();
     }
 
-    public function logout() 
+    public function logout(): void
     {
         // Remove userEntry from Session
         Session::remove('user');
@@ -164,6 +164,10 @@ class AdminController
         $this->view->renderBack(['template' => 'authregistrer']);
     }
 
+    public function authcomments():void
+    {
+        $this->view->renderBack(['template' => 'authcommentspage']);
+    }
 
     public function displayLoginAdmin(array $data): void
     {

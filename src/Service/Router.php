@@ -82,6 +82,9 @@ class Router
         } elseif ($action === 'logout') {
             // route http://localhost:8000/?action=logout
             $this->adminController->logout();
+        } elseif ($action === 'authcomments') {
+            // route http://localhost:8000/?action=authcomments
+            $this->adminController->authcomments();
         } elseif ($action === 'accessToTheAdminLoginPage') {
             // route http://localhost:8000/?action=accessToTheAdminLoginPage
             $this->adminController->displayLoginAdmin($this->post);
