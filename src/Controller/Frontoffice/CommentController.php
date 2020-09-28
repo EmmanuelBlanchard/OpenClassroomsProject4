@@ -48,7 +48,7 @@ class CommentController
         $dataComments = $this->commentManager->getComments($postId, 0, 10);
 
         if ($dataPost !== null) {
-            $this->view->render(['template' => 'error', 'post' => $dataPost, 'allcomment' => $dataComments]);
+            $this->view->render(['template' => 'error', 'post' => $dataPost, 'allcomment' => $dataComments], 'frontoffice');
         } elseif ($dataPost === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }

@@ -26,7 +26,7 @@ class PostController
         $data = $this->postManager->showLastThreePosts();
 
         if ($data !== null) {
-            $this->view->render(['template' => 'home', 'allposts' => $data]);
+            $this->view->render(['template' => 'home', 'allposts' => $data], 'frontoffice');
         } elseif ($data === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
@@ -50,7 +50,7 @@ class PostController
         $dataAllPostsPagination = $this->postManager->getListPostsPagination($currentPage, $nbPostsPerPage);
 
         if ($dataAllPostsPagination !== null) {
-            $this->view->render(['template' => 'listofposts', 'allpostspagination' => $dataAllPostsPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage]);
+            $this->view->render(['template' => 'listofposts', 'allpostspagination' => $dataAllPostsPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage], 'frontoffice');
         } elseif ($dataAllPostsPagination === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }
@@ -66,7 +66,7 @@ class PostController
         $nextPost = $this->postManager->nextPost($postId);
 
         if ($dataPost !== null) {
-            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost]);
+            $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost], 'frontoffice');
         } elseif ($dataPost === null) {
             echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
         }

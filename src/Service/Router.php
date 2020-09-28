@@ -74,14 +74,8 @@ class Router
             $this->commentController->error((int)$this->get['id']);     
         } elseif ($action === 'login') {
             // route http://localhost:8000/?action=login
-            //$this->adminController->displayLogin();
-            $this->adminController->login();
-        } elseif ($action === 'register') {
-            // route http://localhost:8000/?action=register
-            $this->adminController->registrer();
-        } elseif ($action === 'logout') {
-            // route http://localhost:8000/?action=logout
-            $this->adminController->logout();
+            $this->adminController->displayLogin();
+            //$this->adminController->login();
         } elseif ($action === 'authcomments') {
             // route http://localhost:8000/?action=authcomments
             $this->adminController->authcomments();
@@ -91,9 +85,6 @@ class Router
         } elseif ($action === 'blogControlPanel') {
             // route http://localhost:8000/?action=blogControlPanel
             $this->adminController->displayAdmin();
-        } elseif ($action === 'setNewPassword') {
-            // route http://localhost:8000/?action=setNewPassword
-            $this->adminController->displayAdminSetNewPassword();
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }
