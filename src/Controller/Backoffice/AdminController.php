@@ -51,12 +51,12 @@ class AdminController
     
     public function displayAdmin(): void
     {
-        $this->view->renderBack(['template' => 'blogcontrolpanelpage']);
+        $this->view->render(['template' => 'blogcontrolpanelpage'], 'backoffice');
     }
     
     public function authcomments():void
     {
-        $this->view->renderBack(['template' => 'authcommentspage']);
+        $this->view->render(['template' => 'authcommentspage'], 'backoffice');
     }
 
 }

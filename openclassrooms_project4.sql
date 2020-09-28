@@ -260,34 +260,6 @@ INSERT INTO `Comments` (`id`, `pseudo`, `comment`, `comment_date`, `post_id`, `r
 
 -- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `Users`;
-CREATE TABLE `Users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(32) NOT NULL,
-  `lastname` varchar(32) NOT NULL,
-  `email` varchar(32) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `login_attempts` int(11) NOT NULL,
-  `permission_id` tinyint(1) NOT NULL DEFAULT '2',
-  `file_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET='utf8mb4';
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `Users` (`id`, `firstname`, `lastname`, `email`, `password`, `login_attempts`, `permission_id`, `file_id`) VALUES
-(1, 'Admin', 'Admin', 'admin@admin.fr', '$2y$10$Ab803qnTSQ5BseYhbrR.4e6rhlx8ejJgyzrwBhYEXU6VPdW6W3gce', 0, 1, 180),
-(2, 'Dan', 'Thomas', 'dan@user.fr', '$2y$10$EFj/tjID42zIH6u4n/0RwO32uNekYKBaddH.3nw42.Eh8Y871YWle', 4, 1, NULL),
-(3, 'Pete', 'Dubois', 'pete@user.fr', '$2y$10$nUHvr/wdNblqYRjUK27.FOKnEP4DG7qcEQb5sSltiSIh0R1O2Teiu', 0, 1, NULL),
-(4, 'Isabelle', 'Robert', 'isabelle@user.fr', '$2y$10$h8snIfPClSfrOBnjd86g5eUflP1jtH9IYhE2W3zdGur1ODUQltnOG', 0, 3, NULL),
-(5, 'Nicolas', 'Martin', 'nicolas@user.fr', '$2y$10$BwEhyRWZwdCHxtoKBN.1G.T2lYijxqWG0rcpG2aAc8MSGY649Sn8S', 0, 1, NULL),
-(6, 'Jerome', 'Bernard', 'jerome@user.fr', '$2y$10$G/7tj7tV0D2KiZ1jmWYREeLhjP9fS3aNX7yfXjgPWPIUD5UZ0D21S', 0, 2, NULL);
-
--- --------------------------------------------------------
-
-
 --
 -- Table structure for table `Users`
 --
@@ -295,9 +267,8 @@ INSERT INTO `Users` (`id`, `firstname`, `lastname`, `email`, `password`, `login_
 DROP TABLE IF EXISTS `Users`;
 CREATE TABLE IF NOT EXISTS `Users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `pseudo` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET='utf8mb4';
 
@@ -305,9 +276,8 @@ CREATE TABLE IF NOT EXISTS `Users` (
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`id`, `first_name`, `last_name`, `email`) VALUES
-(1, 'Jean', 'Forteroche', 'jean.forteroche@gmail.com'),
-(2, 'Forteroche', 'Jean', 'forteroche.jean@hotmail.fr');
+INSERT INTO `Users` (`id`, `pseudo`, `password`) VALUES
+(1, 'JeanForteroche', 'motdepasse');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
