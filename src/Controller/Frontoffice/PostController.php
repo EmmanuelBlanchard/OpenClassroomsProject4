@@ -23,12 +23,14 @@ class PostController
 
     public function displayHomeWithTheLastThreePosts(): void
     {
-        $data = $this->postManager->showLastThreePosts();
+        //$data = $this->postManager->showLastThreePosts();
+
+        $data = null;
 
         if ($data !== null) {
             $this->view->render(['template' => 'home', 'allposts' => $data], 'frontoffice');
         } elseif ($data === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
+            $this->view->render(['template' => 'home', 'allposts' => $data], 'frontoffice');
         }
     }
 
