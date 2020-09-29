@@ -30,7 +30,12 @@ class PostController
         if ($data !== null) {
             $this->view->render(['template' => 'home', 'allposts' => $data], 'frontoffice');
         } elseif ($data === null) {
-            $this->view->render(['template' => 'home', 'allposts' => $data], 'frontoffice');
+            //$this->view->render(['template' => 'home', 'allposts' => $data], 'frontoffice');
+            header('Location: index.php?action=home');
+            exit();
+            // La page n’est pas redirigée correctement
+            //Firefox a détecté que le serveur redirige la demande pour cette adresse d’une manière qui n’aboutira pas.
+            //La cause de ce problème peut être la désactivation ou le refus des cookies.
         }
     }
 
