@@ -1,4 +1,21 @@
-<section>
+<section class="sectionControlPanelMyProfile">
+
+    <article>
+
+    <a href="index.php?action=blogControlPanel" class="homeTab">Accueil</a>
+
+    <a href="index.php?action=blogControlPanelMyProfile" class="myProfileTab">Mon profil</a>
+
+    <a href="index.php?action=blogControlPanelListOfEpisodes" class="episodeListTab">Liste des épisodes</a>
+
+    <a href="index.php?action=blogControlPanelCreateOfEpisode" class="createAnEpisodeTab">Création d'un épisode</a>
+
+    <a href="index.php?action=blogControlPanelComments" class="commentsTab">Commentaires</a>
+
+    <a href="index.php?action=logout" class="logoutTab">Se déconnecter</a>
+
+    </article>
+
     <p class="pControlPanelPage">Mon Profil</p>
 
     <form method="post" action="index.php?action=newpassword">

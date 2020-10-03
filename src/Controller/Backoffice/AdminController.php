@@ -40,6 +40,16 @@ class AdminController
         $this->view->render(['template' => 'blogcontrolpanelmyprofilepage'], 'backoffice');
     }
 
+    public function blogControlPanelListOfEpisodes():void
+    {
+        $this->view->render(['template' => 'blogcontrolpanellistofepisodespage'], 'backoffice');
+    }
+
+    public function blogControlPanelCreateOfEpisode():void
+    {
+        $this->view->render(['template' => 'blogcontrolpanelcreateofepisodepage'], 'backoffice');
+    }
+
     public function blogControlPanelComments():void
     {
         $this->view->render(['template' => 'blogcontrolpanelcommentspage'], 'backoffice');

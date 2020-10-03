@@ -18,9 +18,9 @@
 
         <a href="index.php?action=blogControlPanelMyProfile" class="myProfileTab">Mon profil</a>
 
-        <a href="index.php?action=home" class="episodeListTab">Liste des épisodes</a>
+        <a href="index.php?action=blogControlPanelListOfEpisodes" class="episodeListTab">Liste des épisodes</a>
 
-        <a href="index.php?action=home" class="createAnEpisodeTab">Création d'un épisode</a>
+        <a href="index.php?action=blogControlPanelCreateOfEpisode" class="createAnEpisodeTab">Création d'un épisode</a>
 
         <a href="index.php?action=blogControlPanelComments" class="commentsTab">Commentaires</a>
 

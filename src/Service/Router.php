@@ -81,6 +81,12 @@ class Router
         } elseif ($action === 'blogControlPanelMyProfile') {
             // route http://localhost:8000/?action=blogControlPanelMyProfile
             $this->adminController->blogControlPanelMyProfile();
+        } elseif ($action === 'blogControlPanelListOfEpisodes') {
+            // route http://localhost:8000/?action=blogControlPanelListOfEpisodes
+            $this->adminController->blogControlPanelListOfEpisodes();
+        } elseif ($action === 'blogControlPanelCreateOfEpisode') {
+            // route http://localhost:8000/?action=blogControlPanelCreateOfEpisode
+            $this->adminController->blogControlPanelCreateOfEpisode();
         } elseif ($action === 'blogControlPanelComments') {
             // route http://localhost:8000/?action=blogControlPanelComments
             $this->adminController->blogControlPanelComments();
