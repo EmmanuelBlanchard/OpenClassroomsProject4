@@ -18,17 +18,25 @@ class AdminController
         $this->view = $view;
     }
 
-    public function login(): void
+    public function login(array $data): void
     {
         //var_dump($_POST);
+        
         $this->view->render(['template' => 'adminloginpage'], 'backoffice');
+
+        if (!empty($data['pseudo']) && !empty($data['password']) && $data['pseudo'] === "JeanForteroche" && $data('password') === "motdepasse") {
+            header('Location: index.php?action=blogControlPanel');
+            exit();
+        } else {
+            header('Location: index.php?action=error');
+            exit();
+        }
     }
 
     public function displayLoginAdmin(array $data): void
     {
         if (!empty($data['pseudo']) && !empty($data['password']) && $data['pseudo'] == "JeanForteroche" && $data('password') == "motdepasse" ) {
             $this->adminManager->adminLogin(htmlspecialchars($data['pseudo']), htmlspecialchars($data['password']));
-
         } else {
             header('Location: index.php?action=error');
             exit();

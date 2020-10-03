@@ -74,7 +74,7 @@ class Router
             $this->commentController->error((int)$this->get['id']);     
         } elseif ($action === 'login') {
             // route http://localhost:8000/?action=login
-            $this->adminController->login();
+            $this->adminController->login($this->post);
         } elseif ($action === 'blogControlPanelComments') {
             // route http://localhost:8000/?action=authcomments
             $this->adminController->blogControlPanelComments();
