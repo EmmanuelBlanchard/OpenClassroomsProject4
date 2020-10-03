@@ -75,12 +75,12 @@ class Router
         } elseif ($action === 'login') {
             // route http://localhost:8000/?action=login
             $this->adminController->login($this->post);
+        } elseif ($action === 'blogControlPanel') {
+            // route http://localhost:8000/?action=blogControlPanel
+            $this->adminController->displayAdmin(); 
         } elseif ($action === 'blogControlPanelComments') {
             // route http://localhost:8000/?action=authcomments
             $this->adminController->blogControlPanelComments();
-        } elseif ($action === 'blogControlPanel') {
-            // route http://localhost:8000/?action=blogControlPanel
-            $this->adminController->displayAdmin();
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }
