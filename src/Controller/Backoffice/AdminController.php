@@ -35,6 +35,11 @@ class AdminController
         $this->view->render(['template' => 'blogcontrolpanelpage'], 'backoffice');
     }
     
+    public function blogControlPanelMyProfile():void
+    {
+        $this->view->render(['template' => 'blogcontrolpanelmyprofilepage'], 'backoffice');
+    }
+
     public function blogControlPanelComments():void
     {
         $this->view->render(['template' => 'blogcontrolpanelcommentspage'], 'backoffice');

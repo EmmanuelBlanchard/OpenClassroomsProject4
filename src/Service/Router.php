@@ -78,8 +78,11 @@ class Router
         } elseif ($action === 'blogControlPanel') {
             // route http://localhost:8000/?action=blogControlPanel
             $this->adminController->displayAdmin(); 
+        } elseif ($action === 'blogControlPanelMyProfile') {
+            // route http://localhost:8000/?action=blogControlPanelMyProfile
+            $this->adminController->blogControlPanelMyProfile();
         } elseif ($action === 'blogControlPanelComments') {
-            // route http://localhost:8000/?action=authcomments
+            // route http://localhost:8000/?action=blogControlPanelComments
             $this->adminController->blogControlPanelComments();
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";

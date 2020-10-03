@@ -4,12 +4,19 @@
 
     <p class="pControlPanelPage"> Bienvenue dans le panneau de configuration du blog ! </p>
 
-    <!-- balise Article ? -->
+    <p class="pControlPanelPage">Actuellement, votre profil est JeanForteroche</p>
+    <p class="pControlPanelPage">Vous avez créé *** nombres d'épisodes</p>
+    <p class="pControlPanelPage">Voici la liste des épisodes :</p>
+    <p class="pControlPanelPage">Il y a actuellement *** commentaires sur le site</p>
+    <p class="pControlPanelPage">Vous avez *** nombres de commentaires sur le site</p>
+    <p class="pControlPanelPage">Vous avez accueilli *** visiteurs depuis 1 mois</p>
+    <p class="pControlPanelPage">Vous avez accueilli *** visiteurs depuis 1 an</p>
+
     <article>
-        <!-- Faire lien en forme d'onglet et creer, affecter les actions correspondantes -->
+
         <a href="index.php?action=blogControlPanel" class="homeTab">Accueil</a>
 
-        <a href="index.php?action=home" class="myProfileTab">Mon profil</a>
+        <a href="index.php?action=blogControlPanelMyProfile" class="myProfileTab">Mon profil</a>
 
         <a href="index.php?action=home" class="episodeListTab">Liste des épisodes</a>
 

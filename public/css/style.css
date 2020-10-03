@@ -178,7 +178,8 @@ p {
 form {
     box-sizing: border-box;
 }
-form p, form input, form textarea, form .inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword {
+form p, form input, form textarea, form .inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin,
+ .inputTypeSubmitRenewPassword, .inputTypeSubmitChangePassword {
     font-family: 'ralewayregular','open_sansregular', sans-serif;
 }
 form p {
@@ -220,10 +221,10 @@ input:focus, textarea:focus {
     display:inline-flex;
     width: 100%;
 }
-.loginFormPseudo label, .loginFormPassword label, label[for=email] {
+.loginFormPseudo label, .loginFormEmail label, .loginFormPassword label,.loginFormNewPassword label, .loginFormNewPassword2 label, label[for=email] {
     color:#025AA0;
 }
-.loginFormPseudo span, .loginFormPassword span, .aNewPassword, .aNewPassword span {
+.loginFormPseudo span, .loginFormEmail span, .loginFormPassword span, .loginFormNewPassword span, .loginFormNewPassword2 span, .aNewPassword, .aNewPassword span {
     color: #0265b3;
 }
 .checkbocRemenberLogin {
@@ -239,7 +240,7 @@ label[for=remenberLogin] {
     text-decoration: underline;
 }
 .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword ,
- .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
+ .inputTypeSubmitChangePassword, .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
     width: 8rem;
     text-align: center;
     transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
@@ -254,13 +255,13 @@ label[for=remenberLogin] {
     margin-bottom: 4%;
     align-self: flex-start;
 }
-.inputTypeSubmitRenewPassword {
+.inputTypeSubmitRenewPassword, .inputTypeSubmitChangePassword {
     width: auto;
 }
 .linkReadTheEntireEpisode {
     width: 12rem;
 }
-.inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword {
+.inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword, .inputTypeSubmitChangePassword {
     cursor: pointer;
 }
 /* Voir a divers pixels et adapter valeurs, pas la bonne methode enlever et voir avec flexbox */
@@ -298,8 +299,8 @@ label[for=remenberLogin] {
 }
 
 .linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover,
- .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover, .inputTypeSubmitValidateLogin:hover, .inputTypeSubmitRenewPassword:hover, .homeTab:hover,
-  .myProfileTab:hover, .episodeListTab:hover, .createAnEpisodeTab:hover, .commentsTab:hover, .logoutTab:hover {
+ .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover, .inputTypeSubmitValidateLogin:hover, .inputTypeSubmitRenewPassword:hover,
+  .inputTypeSubmitChangePassword:hover, .homeTab:hover, .myProfileTab:hover, .episodeListTab:hover, .createAnEpisodeTab:hover, .commentsTab:hover, .logoutTab:hover {
     transition: border 2.5s ease, background-color 2.5s ease, color 2.0s ease;
     border: outset #e2e2e2;
     color: #FFF;
