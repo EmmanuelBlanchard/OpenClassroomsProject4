@@ -15,7 +15,7 @@
 
         <a href="index.php?action=home" class="createAnEpisodeTab">Création d'un épisode</a>
 
-        <a href="index.php?action=authcomments" class="commentsTab">Commentaires</a>
+        <a href="index.php?action=blogControlPanelComments" class="commentsTab">Commentaires</a>
 
         <a href="index.php?action=logout" class="logoutTab">Se déconnecter</a>
     
