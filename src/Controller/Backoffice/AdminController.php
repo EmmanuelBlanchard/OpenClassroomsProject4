@@ -29,19 +29,6 @@ class AdminController
         }
 
     }
-
-    public function displayLoginAdmin(array $data): void
-    {
-        if (!empty($data['pseudo']) && !empty($data['password']) && $data['pseudo'] == "JeanForteroche" && $data['password'] == "motdepasse" ) {
-            $this->adminManager->adminLogin(htmlspecialchars($data['pseudo']), htmlspecialchars($data['password']));
-        } else {
-            header('Location: index.php?action=error');
-            exit();
-        }
-        // Redirection vers page d'administration
-        header('Location: index.php?action=blogControlPanel'); 
-        exit();
-    }
     
     public function displayAdmin(): void
     {
