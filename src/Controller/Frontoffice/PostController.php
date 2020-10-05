@@ -23,8 +23,8 @@ class PostController
 
     public function displayHomeWithTheLastThreePosts(): void
     {
+
         $data = $this->postManager->showLastThreePosts();
-        //$data = null;
         $this->view->render(['template' => 'home', 'allposts' => $data], 'frontoffice');
     }
 

@@ -56,14 +56,16 @@ class AdminController
     public function blogControlPanelCreateOfEpisode():void
     {
         // Si $_POST n'est pas vide et verification valeurs titre et contenu 
-        
+
 
         $this->view->render(['template' => 'blogcontrolpanelcreateofepisodepage'], 'backoffice');
     }
 
     public function blogControlPanelComments():void
     {
-        $this->view->render(['template' => 'blogcontrolpanelcommentspage'], 'backoffice');
+        $dataComments = $this->adminManager->showAllComments();
+
+        $this->view->render(['template' => 'blogcontrolpanelcommentspage', 'allcomment' => $dataComments], 'backoffice');
     }
 
 }

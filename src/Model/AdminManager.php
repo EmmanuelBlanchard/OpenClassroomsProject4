@@ -58,4 +58,11 @@ class AdminManager
         $request->execute(['post_id' => $postId]);
         return $request->fetch();
     }
+
+    public function showAllComments(): ?array
+    {
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM Comments ORDER BY comment_date DESC');
+        $request->execute();
+        return $request->fetchAll();
+    }
 }

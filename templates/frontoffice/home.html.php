@@ -1,15 +1,11 @@
-<?php if ($data === null): ?>
+<?php if ($data['allposts'] === null): ?>
     <section>
         <p> Il n'y a pas d'épisode </p>
-        <a href="index.php?action=error">Page erreur</a>
-        <a href="index.php?action=home">Accueil</a>
     </section>
-<?php elseif ($data !== null): ?>
+<?php elseif ($data['allposts'] !== null): ?>
     <section>
         <h2>Liste des trois derniers épisodes</h2>
 
-        <!-- Si $data === null =>  Whoops \ Exception \ ErrorException (E_WARNING)
-Invalid argument supplied for foreach() --> 
         <?php foreach($data['allposts'] as $post): ?>
 
         <article>

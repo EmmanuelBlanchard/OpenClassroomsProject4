@@ -20,60 +20,26 @@
 
     <p class="commentsTitle"> Commentaires</p>
     
-    <table>
-        <caption>Commentaires</caption>
-        <tr>
-            <th scope="col">Auteur</th>
-            <th scope="col">Commentaire</th>
-            <th scope="col">En réponse à</th>
-            <th scope="col">Envoyé le </th>
-        </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-    </table>
-
     <?php foreach($data['allcomment'] as $post): ?>
         <table>
-        <thead>
-            <tr>
-                <th scope="col">Auteur</th>
-                <th scope="col">Commentaire</th>
-                <th scope="col">En réponse à</th>
-                <th scope="col">Envoyé le </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><?=$post['pseudo']?></td>
-                
-                <td><?=$post['comment']?></td>
-
-                <td> <!--Trouver la requete qui recupere le commentaire qui est repondu --> </td>
-
-                <td><?=$post['comment_date_fr']?></td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-            <td>Pied de tableau 1</td>
-            </tr>
-        </tfoot>
+            <thead>
+                <tr>
+                    <th scope="col">Auteur</th>
+                    <th scope="col">Commentaire</th>
+                    <th scope="col">Envoyé le </th>
+                    <th scope="col">Approuver </th>
+                    <th scope="col">Supprimer </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><?=$post['pseudo']?></td>
+                    <td><?=$post['comment']?></td>
+                    <td><?=$post['comment_date']?></td>
+                    <td>Ajouter un bouton Approuvé Pas approuvé puis message affichant</td>
+                    <td>Ajouter un bouton Supprimé puis supprime le contenu de la base de donnees </td>
+                </tr>
+            </tbody>
         </table>
     <?php endforeach; ?>
 

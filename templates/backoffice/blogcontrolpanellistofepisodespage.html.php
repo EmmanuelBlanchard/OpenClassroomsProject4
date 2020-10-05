@@ -22,47 +22,23 @@
 
     <?php foreach($data['allposts'] as $post): ?>
         
-        <!-- Tableau utilisant thead, tfoot, et tbody -->
         <table>
-        <thead>
-            <tr>
-            <th>Titre</th>
-            <th>Date</th>
-            <th>Commentaires</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="tdNumberEpisode"><?=$post['title']?> <?=$post['chapter']?></td>
-                <td class="tdDate"><?=$post['post_date_fr']?></td>
-                <td class="tdComment">fghtyikiozedzere</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-            <td>Pied de tableau 1</td>
-            </tr>
-        </tfoot>
-        </table>
-    <?php endforeach; ?>
-
-    <?php foreach($data['allcomment'] as $post): ?>
-        <table>
-        <thead>
-            <tr>
-                <th>Commentaires</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><?=$post['comment']?></td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-            <td>Pied de tableau 1</td>
-            </tr>
-        </tfoot>
+            <thead>
+                <tr>
+                <th>Titre</th>
+                <th>Numéro de l'épisode</th>
+                <th>Date</th>
+                <th>Introduction</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tdTitleEpisode"><?=$post['title']?></td>
+                    <td class="tdNumberEpisode"><?=$post['chapter']?></td>
+                    <td class="tdDate"><?=$post['post_date_fr']?></td>
+                    <td class="tdComment"><?=$post['introduction']?></td>
+                </tr>
+            </tbody>
         </table>
     <?php endforeach; ?>
 
