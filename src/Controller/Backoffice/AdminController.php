@@ -42,7 +42,7 @@ class AdminController
 
     public function blogControlPanelListOfEpisodes():void
     {
-        $data = $this->postManager->showLastThreePosts();
+        $data = $this->adminManager->showAllPosts();
         
         $this->view->render(['template' => 'blogcontrolpanellistofepisodespage', 'allposts' => $data], 'backoffice');
     }
