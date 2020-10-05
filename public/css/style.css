@@ -236,12 +236,12 @@ input:focus, textarea:focus {
     width: 100%;
 }
 .loginFormPseudo label, .loginFormEmail label, .loginFormPassword label,.loginFormNewPassword label, .loginFormNewPassword2 label, label[for=email], th, td,
- .loginFormTitle label, .loginFormContent label{
-    color:#025AA0;
+ .loginFormTitle label, .loginFormContent label {
+    color:#f5f5f5;
 }
 .loginFormPseudo span, .loginFormEmail span, .loginFormPassword span, .loginFormNewPassword span, .loginFormNewPassword2 span, .aNewPassword, .aNewPassword span,
  .loginFormTitle span, .loginFormContent span {
-    color: #0265b3;
+    color:#ebebeb;
 }
 .checkbocRemenberLogin {
     display: inline-flex;
@@ -688,6 +688,16 @@ footer p {
     section h2, .sectionH4TitleComments,.pControlPanelPage {
         color: #025AA0;
     }
+    .loginFormPseudo label, .loginFormEmail label, .loginFormPassword label,.loginFormNewPassword label, .loginFormNewPassword2 label, label[for=email], th, td,
+     .loginFormTitle label, .loginFormContent label {
+        color:#025AA0;
+    }
+    .loginFormPseudo span, .loginFormEmail span, .loginFormPassword span, .loginFormNewPassword span, .loginFormNewPassword2 span, .aNewPassword, .aNewPassword span,
+    .loginFormTitle span, .loginFormContent span {
+        color: #0265b3;
+    }
+    
+
 }
 /* Tablet menu IPAD - 768px*1024px and DPR=2 */
 @media all and (min-width: 1024px) and (min-resolution: 2dppx) {
