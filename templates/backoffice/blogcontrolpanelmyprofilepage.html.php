@@ -1,9 +1,5 @@
 <section class="sectionControlPanelMyProfile">
     
-    <h2>Panneau de configuration du blog</h2>
-    
-    <p class="myProfileTitle">Mon Profil</p>
-
     <article>
 
     <a href="index.php?action=blogControlPanel" class="homeTab">Accueil</a>
@@ -19,6 +15,10 @@
     <a href="index.php?action=logout" class="logoutTab">Se déconnecter</a>
 
     </article>
+
+    <h2>Panneau de configuration du blog</h2>
+    
+    <p class="myProfileTitle">Mon Profil</p>
 
     <form method="post" action="index.php?action=newpassword">
         <p class="loginFormPseudo">

@@ -110,6 +110,19 @@ main {
 section h2 {
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
 }
+
+/* Reflexion mettre la balise article en premier a gauche
+Proprietes de la balise <main> differentes en backoffice que le frontoffice ....
+=>  flex-diretion: row et nowrap pour normalement 
+balise article puis balise <h2> et <p> et <form> .
+balise article en infos en colonne 
+balise main changer mettre flex-direction row avec 
+balise article et section en flex-direction column les deux dans la meme taille ??
+Pas le cas actuellement .. */
+.sectionControlPanel, .sectionControlPanelMyProfile, .sectionControlPanelListOfEpisodes, .sectionControlPanelCreateOfEpisode, .sectionControlPanelComments {
+    display: flex;
+    flex-direction: column;
+}
 article {
     display: flex;
     flex-direction: column;

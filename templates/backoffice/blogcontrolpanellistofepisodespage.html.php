@@ -1,9 +1,5 @@
 <section class="sectionControlPanelListOfEpisodes">
 
-    <h2>Panneau de configuration du blog</h2>
-
-    <p class="episodeListTitle"> Liste des épisodes</p>
-
     <article>
 
     <a href="index.php?action=blogControlPanel" class="homeTab">Accueil</a>
@@ -19,7 +15,11 @@
     <a href="index.php?action=logout" class="logoutTab">Se déconnecter</a>
 
     </article>
-    
+
+    <h2>Panneau de configuration du blog</h2>
+
+    <p class="episodeListTitle"> Liste des épisodes</p>
+
     <!-- Tableau utilisant thead, tfoot, et tbody -->
     <table>
     <thead>

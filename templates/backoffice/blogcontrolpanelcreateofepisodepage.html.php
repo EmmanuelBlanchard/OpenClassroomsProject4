@@ -1,9 +1,5 @@
 <section class="sectionControlPanelCreateOfEpisode">
 
-    <h2>Panneau de configuration du blog</h2>
-
-    <p class="createAnEpisodeTitle"> Création d'un épisode</p>
-
     <article>
 
     <a href="index.php?action=blogControlPanel" class="homeTab">Accueil</a>
@@ -20,6 +16,10 @@
 
     </article>
 
+    <h2>Panneau de configuration du blog</h2>
+
+    <p class="createAnEpisodeTitle"> Création d'un épisode</p>
+
     <form method="post" action="index.php?action=">
         <p class="loginFormTitle">
             <label for="title">Titre <span>(obligatoire)</span> </label>
@@ -30,15 +30,11 @@
             <textarea id="content" name="content"  value="" size="30" maxlength="245"> 
             </textarea>
         </p>
-        <p>
-            <input type="submit" class="inputTypeSubmitSaveDraft" value="Enregistrer le brouillon" />
-        </p>
-        <p>
-            <input type="submit" class="inputTypeSubmitPreview" value="Prévisualiser" />
-        </p>
-        <p>
-            <input type="submit" class="inputTypeSubmitPublish" value="Publier" />
-        </p>
+        
+        <input type="submit" class="inputTypeSubmitSaveDraft" value="Enregistrer le brouillon" />
+        <input type="submit" class="inputTypeSubmitPreview" value="Prévisualiser" />
+        <input type="submit" class="inputTypeSubmitPublish" value="Publier" />
+        
     </form>
 
 </section>

@@ -1,9 +1,5 @@
 <section class="sectionControlPanelComments">
 
-    <h2>Panneau de configuration du blog</h2>
-
-    <p class="commentsTitle"> Commentaires</p>
-    
     <article>
 
     <a href="index.php?action=blogControlPanel" class="homeTab">Accueil</a>
@@ -20,6 +16,10 @@
 
     </article>
 
+    <h2>Panneau de configuration du blog</h2>
+
+    <p class="commentsTitle"> Commentaires</p>
+    
     <table>
         <caption>Commentaires</caption>
         <tr>
