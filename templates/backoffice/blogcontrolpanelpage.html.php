@@ -2,6 +2,8 @@
 
     <h2>Panneau de configuration du blog</h2>
 
+    <p class="homeTitle">Accueil</p>
+    
     <p class="pControlPanelPage"> Bienvenue dans le panneau de configuration du blog ! </p>
 
     <p class="pControlPanelPage">Actuellement, votre profil est JeanForteroche</p>

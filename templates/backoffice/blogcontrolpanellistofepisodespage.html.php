@@ -2,8 +2,7 @@
 
     <h2>Panneau de configuration du blog</h2>
 
-    <!-- Styliser comme un onglet --> 
-    <p class="pControlPanelPage"> Liste des épisodes</p>
+    <p class="episodeListTitle"> Liste des épisodes</p>
 
     <article>
 

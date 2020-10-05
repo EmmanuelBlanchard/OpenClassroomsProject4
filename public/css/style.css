@@ -259,6 +259,21 @@ label[for=remenberLogin] {
     margin-bottom: 4%;
     align-self: flex-start;
 }
+.homeTitle, .myProfileTitle, .episodeListTitle, .createAnEpisodeTitle, .commentsTitle, .logoutTitle {
+    width: auto;
+    text-align: center;
+    transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
+    background-color: #025AA0;
+    color: #FFF;
+    border: inset #013E70;
+    border-radius: 2em;
+    padding: 10px 10px;
+    font-weight: 600;
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+    margin-left: 4.5%;
+    margin-bottom: 4%;
+    align-self: flex-start;
+}
 .inputTypeSubmitRenewPassword, .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft, .inputTypeSubmitPreview, .inputTypeSubmitPublish {
     width: auto;
 }
