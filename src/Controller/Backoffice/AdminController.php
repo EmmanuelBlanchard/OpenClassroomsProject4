@@ -44,11 +44,20 @@ class AdminController
     {
         $data = $this->adminManager->showAllPosts();
         
+        // Blocage pour l'affichage des commentaires par episode 
+        // Si affiche tous les episodes mais avoir tous les commentaires d'un episode de chaque ?
+        //$dataComments = $this->adminManager->getComments($postId);
+
+        //var_dump($data);
+
         $this->view->render(['template' => 'blogcontrolpanellistofepisodespage', 'allposts' => $data], 'backoffice');
     }
 
     public function blogControlPanelCreateOfEpisode():void
     {
+        // Si $_POST n'est pas vide et verification valeurs titre et contenu 
+        
+
         $this->view->render(['template' => 'blogcontrolpanelcreateofepisodepage'], 'backoffice');
     }
 
