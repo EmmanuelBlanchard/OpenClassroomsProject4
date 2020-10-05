@@ -1,5 +1,10 @@
 <section class="sectionControlPanelCreateOfEpisode">
 
+    <h2>Panneau de configuration du blog</h2>
+
+    <!-- Styliser comme un onglet --> 
+    <p class="pControlPanelPage"> Création d'un épisode</p>
+
     <article>
 
     <a href="index.php?action=blogControlPanel" class="homeTab">Accueil</a>
@@ -15,8 +20,6 @@
     <a href="index.php?action=logout" class="logoutTab">Se déconnecter</a>
 
     </article>
-
-    <p class="pControlPanelPage"> Création d'un épisode</p>
 
     <form method="post" action="index.php?action=">
         <p class="loginFormTitle">

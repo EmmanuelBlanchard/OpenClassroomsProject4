@@ -1,6 +1,9 @@
+<section class="sectionControlPanelComments">
 
-<section>
-    <h2>Commentaires</h2>
+    <h2>Panneau de configuration du blog</h2>
+
+    <!-- Styliser comme un onglet --> 
+    <p class="pControlPanelPage"> Commentaires</p>
     
     <table>
         <caption>Commentaires</caption>

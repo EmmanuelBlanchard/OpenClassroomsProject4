@@ -1,4 +1,4 @@
-<section>
+<section class="sectionAdminLogin">
     <h2>Accès à la page d'administration</h2>
 
     <form method="post" action="index.php?action=login">

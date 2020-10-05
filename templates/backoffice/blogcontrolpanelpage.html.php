@@ -1,4 +1,4 @@
-<section>
+<section class="sectionControlPanel">
 
     <h2>Panneau de configuration du blog</h2>
 
@@ -27,6 +27,5 @@
         <a href="index.php?action=logout" class="logoutTab">Se déconnecter</a>
     
     </article>
-
 
 </section>

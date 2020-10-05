@@ -27,7 +27,7 @@ class AdminController
         } else {
             $this->view->render(['template' => 'adminloginpage'], 'backoffice');
         }
-
+        
     }
     
     public function displayAdmin(): void

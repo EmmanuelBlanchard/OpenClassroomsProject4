@@ -1,4 +1,9 @@
 <section class="sectionControlPanelMyProfile">
+    
+    <h2>Panneau de configuration du blog</h2>
+
+    <!-- Styliser comme un onglet comme class="homeTab" mais couleur inverse fond bleu titre en blanc --> 
+    <p class="pControlPanelPage">Mon Profil</p>
 
     <article>
 
@@ -15,8 +20,6 @@
     <a href="index.php?action=logout" class="logoutTab">Se déconnecter</a>
 
     </article>
-
-    <p class="pControlPanelPage">Mon Profil</p>
 
     <form method="post" action="index.php?action=newpassword">
         <p class="loginFormPseudo">
