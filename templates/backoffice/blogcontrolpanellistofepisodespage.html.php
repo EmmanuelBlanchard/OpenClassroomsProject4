@@ -26,22 +26,41 @@
         <table>
         <thead>
             <tr>
-            <th><?=$post['title']?></th>
-            <th><?=$post['post_date_fr']?></th>
+            <th>Titre</th>
+            <th>Date</th>
             <th>Commentaires</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="tdNumberEpisode"><?=$post['chapter']?></td>
-                <td class="tdDate">Le 30/06/2020 à 8h00</td>
+                <td class="tdNumberEpisode"><?=$post['title']?> <?=$post['chapter']?></td>
+                <td class="tdDate"><?=$post['post_date_fr']?></td>
                 <td class="tdComment">fghtyikiozedzere</td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
             <td>Pied de tableau 1</td>
-            <td>Pied de tableau 2</td>
+            </tr>
+        </tfoot>
+        </table>
+    <?php endforeach; ?>
+
+    <?php foreach($data['allcomment'] as $post): ?>
+        <table>
+        <thead>
+            <tr>
+                <th>Commentaires</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?=$post['comment']?></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+            <td>Pied de tableau 1</td>
             </tr>
         </tfoot>
         </table>

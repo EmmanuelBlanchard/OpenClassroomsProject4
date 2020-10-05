@@ -47,4 +47,34 @@
             <td>1</td>
         </tr>
     </table>
+
+    <?php foreach($data['allcomment'] as $post): ?>
+        <table>
+        <thead>
+            <tr>
+                <th scope="col">Auteur</th>
+                <th scope="col">Commentaire</th>
+                <th scope="col">En réponse à</th>
+                <th scope="col">Envoyé le </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?=$post['pseudo']?></td>
+                
+                <td><?=$post['comment']?></td>
+
+                <td> <!--Trouver la requete qui recupere le commentaire qui est repondu --> </td>
+
+                <td><?=$post['comment_date_fr']?></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+            <td>Pied de tableau 1</td>
+            </tr>
+        </tfoot>
+        </table>
+    <?php endforeach; ?>
+
 </section>
