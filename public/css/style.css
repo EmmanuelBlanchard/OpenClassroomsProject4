@@ -275,17 +275,13 @@ label[for=remenberLogin] {
 .homeTitle, .myProfileTitle, .episodeListTitle, .createAnEpisodeTitle, .commentsTitle, .logoutTitle {
     width: auto;
     text-align: center;
-    transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
-    background-color: #025AA0;
-    color: #FFF;
+    background-color: #FFF;
+    color: #013E70;
     border: inset #013E70;
     border-radius: 2em;
     padding: 10px 10px;
     font-weight: 600;
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
-    margin-left: 4.5%;
-    margin-bottom: 4%;
-    align-self: flex-start;
 }
 .inputTypeSubmitRenewPassword, .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft, .inputTypeSubmitPreview, .inputTypeSubmitPublish {
     width: auto;
@@ -696,8 +692,12 @@ footer p {
     .loginFormTitle span, .loginFormContent span {
         color: #0265b3;
     }
+    .homeTitle, .myProfileTitle, .episodeListTitle, .createAnEpisodeTitle, .commentsTitle, .logoutTitle {
+        background-color: #025AA0;
+        color: #FFF;
+        border: inset #013E70;        
+    }
     
-
 }
 /* Tablet menu IPAD - 768px*1024px and DPR=2 */
 @media all and (min-width: 1024px) and (min-resolution: 2dppx) {
