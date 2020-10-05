@@ -42,7 +42,9 @@ class AdminController
 
     public function blogControlPanelListOfEpisodes():void
     {
-        $this->view->render(['template' => 'blogcontrolpanellistofepisodespage'], 'backoffice');
+        $data = $this->postManager->showLastThreePosts();
+        
+        $this->view->render(['template' => 'blogcontrolpanellistofepisodespage', 'allposts' => $data], 'backoffice');
     }
 
     public function blogControlPanelCreateOfEpisode():void
