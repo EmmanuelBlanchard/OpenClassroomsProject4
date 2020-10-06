@@ -24,23 +24,54 @@
             </ul>
         </nav>
 
-        <!-- Page Header -->
-        <header>
-                <h1>"Billet Simple pour l'Alaska" <br> roman en ligne par Jean Forteroche </h1>
-                <div class="classImg">
-                    <img id="imgHeader" src="./images/image-1920-1080.jpg" alt="Longue route avec rangée d'arbres et au fond, vue de la montagne enneignée" />
-                </div>
-        </header>
+        <div id="adminmenuwrap">
+            <ul id="adminmenu">
+                <li id="menu-dashboard" class="menu-top has-submenu has-current-submenu">
+                    <a>
+                        <div class="menu-name">Tableau de bord</div>
+                    </a>
+                    <ul class="submenu submenu-wrap">
+                        <li class="first-item current">
+                            <a class="first-item current" href="">Accueil</a> 
+                        </li>
+                    </ul>
+                </li>
+                <li class="not-current-submenu menu-separator" aria-hidden="true">
+                    <div class="separator">
+                    </div>
+                </li>
 
+                <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" id="menu-posts">
+                    <a href="index.php?action=blogControlPanelMyProfile" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">        
+                        <div class="menu-name">Mon profil</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?action=blogControlPanelListOfEpisodes">
+                        <div>Liste des épisodes</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?action=blogControlPanelCreateOfEpisode">
+                        <div>Création d'un épisode</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?action=blogControlPanelComments">
+                        <div>Commentaires</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?action=logout">
+                        <div>Se déconnecter</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
         <main>
             <?=$content?>
         </main>
-        
-        <footer class="footer text-center">
-            <h3>Copyright Emmanuel Blanchard</h3>
-            <p>Projet 4 d'Openclassrooms</p>
-            <p>Les textes sont issus du roman "De Québec à Victoria" de 
-                Adolphe-Basile Routhier</p>
-        </footer>     
+          
     </body>
 </html>

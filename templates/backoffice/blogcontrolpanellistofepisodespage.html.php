@@ -1,27 +1,7 @@
 <section class="sectionControlPanelListOfEpisodes">
-
-    <article>
-
-    <a href="index.php?action=blogControlPanel" class="homeTab">Accueil</a>
-
-    <a href="index.php?action=blogControlPanelMyProfile" class="myProfileTab">Mon profil</a>
-
-    <a href="index.php?action=blogControlPanelListOfEpisodes" class="episodeListTab">Liste des épisodes</a>
-
-    <a href="index.php?action=blogControlPanelCreateOfEpisode" class="createAnEpisodeTab">Création d'un épisode</a>
-
-    <a href="index.php?action=blogControlPanelComments" class="commentsTab">Commentaires</a>
-
-    <a href="index.php?action=logout" class="logoutTab">Se déconnecter</a>
-
-    </article>
-
     <h2>Panneau de configuration du blog</h2>
-
-    <p class="episodeListTitle"> Liste des épisodes</p>
-
+    <p class="episodeListTitle">Liste des épisodes</p>
     <?php foreach($data['allposts'] as $post): ?>
-        
         <table>
             <thead>
                 <tr>
@@ -41,5 +21,4 @@
             </tbody>
         </table>
     <?php endforeach; ?>
-
 </section>
