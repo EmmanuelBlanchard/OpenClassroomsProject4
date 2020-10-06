@@ -2,7 +2,7 @@
     <section>
         <p class="pError"> Erreur : l'affichage de la liste des épisodes n'est pas possible </p>
     </section>
-<?php elseif ($data['allpostpagination'] !== null): ?>
+<?php elseif ($data['allpostspagination'] !== null): ?>
     <section>
         <h2>Liste des épisodes</h2>
         
@@ -26,4 +26,4 @@
             <a href="index.php?action=listOfPosts&page=<?=$data['nextpage']?>" class="linkNextPage">Page suivante</a>
         <?php endif?>
     </div>
-<?php endif?>
+<?php endif; ?>

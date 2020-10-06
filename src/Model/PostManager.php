@@ -83,10 +83,5 @@ class PostManager
         return $result === false ? null : (int)$result['id'];
     }
 
-    public function postLogin(): ?int
-    {
-        var_dump("Accès à la page de connexion");
-        return 1;
-    }
 }
 
