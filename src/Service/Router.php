@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace  App\Service;
 
 use App\Controller\Backoffice\AdminController;
-use App\Controller\Frontoffice\PostController;
 use App\Controller\Frontoffice\CommentController;
+use App\Controller\Frontoffice\PostController;
 use App\Model\AdminManager;
 use App\Model\CommentManager;
 use App\Model\PostManager;
@@ -71,13 +71,13 @@ class Router
             $this->commentController->report((int)$this->get['commentid'], (int)$this->get['id']);
         } elseif ($action === 'error' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=error&id=5
-            $this->commentController->error((int)$this->get['id']);     
+            $this->commentController->error((int)$this->get['id']);
         } elseif ($action === 'login') {
             // route http://localhost:8000/?action=login
             $this->adminController->login($this->post);
         } elseif ($action === 'blogControlPanel') {
             // route http://localhost:8000/?action=blogControlPanel
-            $this->adminController->blogControlPanel(); 
+            $this->adminController->blogControlPanel();
         } elseif ($action === 'blogControlPanelMyProfile') {
             // route http://localhost:8000/?action=blogControlPanelMyProfile
             $this->adminController->blogControlPanelMyProfile();

@@ -7,22 +7,27 @@ namespace App\Service;
 use App\Controller\Backoffice\AdminController;
 
 // Class permettant de gérer la variable super globale $_SESSION
-class Session {
-
-    static public function start() {
+class Session
+{
+    public static function start(): void
+    {
         session_start();
     }
 
-    static public function set($key, $value) {
+    public static function set($key, $value): void
+    {
         $_SESSION[$key] = $value;
     }
 
-    static public function get($key) {
-        if (isset($_SESSION[$key]))
+    public static function get($key)
+    {
+        if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
+        }
     }
 
-    static public function remove($key) {
+    public static function remove($key): void
+    {
         unset($_SESSION[$key]);
     }
 }

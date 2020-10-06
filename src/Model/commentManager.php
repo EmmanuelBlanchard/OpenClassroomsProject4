@@ -34,7 +34,7 @@ class CommentManager
         // Ne fonctionne pas avec la ligne ci dessous
         //return $result === false ? null : (int)$result['nb_total_comments'];
         $nbTotalComments = (int)$result['nb_total_comments'];
-        return $nbTotalComments;        
+        return $nbTotalComments;
     }
 
     public function showAllComment(int $postId): ?array
@@ -84,5 +84,4 @@ class CommentManager
         $request->execute();
         return $request;
     }
-
 }

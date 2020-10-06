@@ -9,7 +9,7 @@ class Database
 {
     private $database;
 
-    public function __construct() 
+    public function __construct()
     {
         $this->database = new \PDO('mysql:host=localhost;dbname=openclassrooms_project4;port=3306;charset=utf8mb4', 'root', 'vFaGsjLk8WpkQtxYJ8XZXAf690shjBzW', [
             \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,

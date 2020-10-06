@@ -58,5 +58,4 @@ class PostController
 
         $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost], 'frontoffice');
     }
-
 }

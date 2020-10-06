@@ -24,9 +24,8 @@ class AdminController
         if (!empty($data['pseudo']) && !empty($data['password']) && $data['pseudo'] === "JeanForteroche" && $data['password'] === "motdepasse") {
             header('Location: index.php?action=blogControlPanel');
             exit();
-        } else {
-            $this->view->render(['template' => 'adminloginpage'], 'backoffice');
         }
+        $this->view->render(['template' => 'adminloginpage'], 'backoffice');
     }
     
     public function blogControlPanel(): void
@@ -48,7 +47,7 @@ class AdminController
 
     public function blogControlPanelCreateOfEpisode():void
     {
-        // Si $_POST n'est pas vide et verification valeurs titre et contenu 
+        // Si $_POST n'est pas vide et verification valeurs titre et contenu
 
 
         $this->view->render(['template' => 'blogcontrolpanelcreateofepisodepage'], 'backoffice');
@@ -60,5 +59,4 @@ class AdminController
 
         $this->view->render(['template' => 'blogcontrolpanelcommentspage', 'allcomment' => $dataComments], 'backoffice');
     }
-
 }

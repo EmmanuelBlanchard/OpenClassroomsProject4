@@ -41,8 +41,8 @@ class PostManager
         $request->execute();
 
         $request = $this->database->prepare('SELECT id, chapter, title, content, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts WHERE id=:id');
-		$request->execute(['id' => $postId]);
-		return $request->fetch();
+        $request->execute(['id' => $postId]);
+        return $request->fetch();
     }
     
     public function getNbPosts(): int
@@ -82,6 +82,4 @@ class PostManager
         $result = $request->fetch();
         return $result === false ? null : (int)$result['id'];
     }
-
 }
-
