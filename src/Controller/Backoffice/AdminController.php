@@ -27,10 +27,9 @@ class AdminController
         } else {
             $this->view->render(['template' => 'adminloginpage'], 'backoffice');
         }
-        
     }
     
-    public function displayAdmin(): void
+    public function blogControlPanel(): void
     {
         $this->view->render(['template' => 'blogcontrolpanelpage'], 'backoffice');
     }
@@ -44,12 +43,6 @@ class AdminController
     {
         $data = $this->adminManager->showAllPosts();
         
-        // Blocage pour l'affichage des commentaires par episode 
-        // Si affiche tous les episodes mais avoir tous les commentaires d'un episode de chaque ?
-        //$dataComments = $this->adminManager->getComments($postId);
-
-        //var_dump($data);
-
         $this->view->render(['template' => 'blogcontrolpanellistofepisodespage', 'allposts' => $data], 'backoffice');
     }
 
@@ -63,7 +56,7 @@ class AdminController
 
     public function blogControlPanelComments():void
     {
-        $dataComments = $this->adminManager->showAllComments();
+        $dataComments = $this->adminManager->showAllComment();
 
         $this->view->render(['template' => 'blogcontrolpanelcommentspage', 'allcomment' => $dataComments], 'backoffice');
     }

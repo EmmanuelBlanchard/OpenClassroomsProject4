@@ -57,7 +57,6 @@ class PostManager
     public function getListPostsPagination(int $currentPage, int $nbPostsPerPage): ?array
     {
         $firstPostPage=($currentPage-1)*$nbPostsPerPage;
-        //$firstPostPage = ($currentPage * $nbPostsPerPage) - $nbPostsPerPage;
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
 

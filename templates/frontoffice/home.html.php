@@ -1,6 +1,6 @@
 <?php if ($data['allposts'] === null): ?>
     <section>
-        <p> Il n'y a pas d'épisode </p>
+        <p class="pError"> Erreur : l'affichage de la liste des trois derniers épisodes n'est pas possible. </p>
     </section>
 <?php elseif ($data['allposts'] !== null): ?>
     <section>

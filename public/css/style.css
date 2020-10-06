@@ -681,7 +681,7 @@ footer p {
         border-radius: 20px;
         background-color: #f5f5f5;
     }
-    section h2, .sectionH4TitleComments,.pControlPanelPage {
+    section h2, .sectionH4TitleComments,.pControlPanelPage, .pError {
         color: #025AA0;
     }
     .loginFormPseudo label, .loginFormEmail label, .loginFormPassword label,.loginFormNewPassword label, .loginFormNewPassword2 label, label[for=email], th, td,
@@ -697,7 +697,9 @@ footer p {
         color: #FFF;
         border: inset #013E70;        
     }
-    
+    footer p {
+        color: rgb(255, 255, 255);
+    }
 }
 /* Tablet menu IPAD - 768px*1024px and DPR=2 */
 @media all and (min-width: 1024px) and (min-resolution: 2dppx) {

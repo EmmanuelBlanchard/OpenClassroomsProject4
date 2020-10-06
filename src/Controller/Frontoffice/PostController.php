@@ -23,8 +23,8 @@ class PostController
 
     public function displayHomeWithTheLastThreePosts(): void
     {
-
         $data = $this->postManager->showLastThreePosts();
+
         $this->view->render(['template' => 'home', 'allposts' => $data], 'frontoffice');
     }
 
@@ -34,7 +34,7 @@ class PostController
         $nbTotalPosts = $this->postManager->getNbPosts();
         $nbTotalPages = ceil($nbTotalPosts / $nbPostsPerPage);
         
-        if($currentPage>$nbTotalPages) {
+        if ($currentPage>$nbTotalPages) {
             $currentPage=$nbTotalPages;
         } elseif ($currentPage<=0) {
             $currentPage=1;
@@ -45,12 +45,9 @@ class PostController
 
         $dataAllPostsPagination = $this->postManager->getListPostsPagination($currentPage, $nbPostsPerPage);
 
-        if ($dataAllPostsPagination !== null) {
-            $this->view->render(['template' => 'listofposts', 'allpostspagination' => $dataAllPostsPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage], 'frontoffice');
-        } elseif ($dataAllPostsPagination === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
-        }
+        $dataAllPostsPagination= null;
 
+        $this->view->render(['template' => 'listofposts', 'allpostspagination' => $dataAllPostsPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage], 'frontoffice');
     }
     
     public function displayDetailOfPost(int $postId): void
