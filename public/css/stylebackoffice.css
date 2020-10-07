@@ -3,6 +3,10 @@ body, html {
 	margin: 0;
 	padding: 0;
 }
+html.toolbar {
+	padding-top: 32px;
+	box-sizing: border-box;
+}
 body {
 	background: #f1f1f1;
 	color: #444;
@@ -566,4 +570,3 @@ th.sortable a span, th.sorted a span {
 .alternate, .striped > tbody > :nth-child(2n+1), ul.striped > :nth-child(2n+1) {
 	background-color: #f9f9f9;
 }
-
