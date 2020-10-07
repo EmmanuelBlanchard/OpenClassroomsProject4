@@ -75,6 +75,9 @@ class Router
         } elseif ($action === 'login') {
             // route http://localhost:8000/?action=login
             $this->adminController->login($this->post);
+        } elseif ($action === 'logout') {
+            // route http://localhost:8000/?action=blogControlPanel
+            $this->adminController->logout();
         } elseif ($action === 'blogControlPanel') {
             // route http://localhost:8000/?action=blogControlPanel
             $this->adminController->blogControlPanel();

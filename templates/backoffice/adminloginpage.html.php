@@ -16,4 +16,6 @@
         </p>
     </form>
 
+    <a class="linkAdminLoginPageToHome" href="index.php?action=home">Retour vers le Blog de Jean Forteroche</a>
+
 </section>

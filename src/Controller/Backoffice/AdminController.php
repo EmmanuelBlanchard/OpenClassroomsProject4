@@ -28,6 +28,13 @@ class AdminController
         $this->view->render(['template' => 'adminloginpage'], 'backoffice');
     }
     
+    public function logout(): void
+    {
+        // Ajouter deconnexion données de session
+
+        $this->view->render(['template' => 'adminloginpage'], 'backoffice');
+    }
+
     public function blogControlPanel(): void
     {
         $this->view->render(['template' => 'blogcontrolpanelpage'], 'backoffice');

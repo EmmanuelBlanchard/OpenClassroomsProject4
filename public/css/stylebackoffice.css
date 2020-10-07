@@ -1,0 +1,132 @@
+body, html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: #f1f1f1;
+	color: #444;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+	font-size: 13px;
+	line-height: 1.4em;
+	min-width: 600px;
+}
+a, div {
+	outline: 0;
+}
+a {
+	color: #0073aa;
+	transition-property: border,background,color;
+	transition-duration: .05s;
+	transition-timing-function: ease-in-out;
+}
+ul {
+	list-style: none;
+}
+#wrap {
+	height: auto;
+	min-height: 100%;
+	width: 100%;
+	position: relative;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+.screen-reader-shortcut {
+	position: absolute;
+	top: -1000em;
+}
+#adminmenuback {
+	position: fixed;
+	top: 0;
+	bottom: -120px;
+	z-index: 1;
+}
+#adminmenu, #adminmenu .submenu, #adminmenuback, #adminmenuwrap {
+	width: 160px;
+	background-color: #23282d;
+}
+.sticky-menu #adminmenuwrap {
+	position: fixed;
+}
+#adminmenuwrap {
+	position: relative;
+	float: left;
+	z-index: 9990;
+}
+#adminmenu {
+	clear: left;
+	margin: 12px 0;
+	padding: 0;
+	list-style: none;
+}
+#adminmenu li.menu-top {
+	border: none;
+	min-height: 34px;
+	position: relative;
+}
+#adminmenu li {
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+}
+#adminmenu .has-current-submenu .submenu .submenu-head, #adminmenu .menu-arrow, #adminmenu .menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.has-current-submenu a.has-current-submenu, .folded #adminmenu li.current.menu-top, .folded #adminmenu li.has-current-submenu {
+	background: #0073aa;
+	color: #fff;
+}
+#adminmenu * {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#adminmenu li.menu-separator {
+	height: 5px;
+	padding: 0;
+	margin: 0 0 6px 0;
+	cursor: inherit;
+}
+#adminmenu li.menu-top {
+	border: none;
+	min-height: 34px;
+	position: relative;
+}
+
+#adminmenu .submenu-head, #adminmenu a.menu-top {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.3;
+}
+#adminmenu div.menu-image {
+	float: left;
+	width: 36px;
+	height: 34px;
+	margin: 0;
+	text-align: center;
+}
+#adminmenu div.menu-name {
+	padding: 8px 0;
+}
+
+ul#adminmenu a.has-current-submenu::after, ul#adminmenu > li.current > a.current::after {
+	right: 0;
+	border: solid 8px transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-right-color: #f1f1f1;
+	top: 50%;
+	margin-top: -8px;
+}
+#adminmenu a {
+	display: block;
+	line-height: 1.3;
+	padding: 2px 5px;
+	color: #eee;
+}
+#adminmenu a, #catlist a, #taglist a {
+	text-decoration: none;
+}
+ul#adminmenu a.has-current-submenu {
+	position: relative;
+}
