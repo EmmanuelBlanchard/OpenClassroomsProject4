@@ -14,7 +14,7 @@
             <input type="submit" id="search-submit" class="button" value="Rechercher des épisodes">
         </p>
         <h2 class="screen-reader-text">Liste des épisodes</h2>
-        <?php foreach($data['allposts'] as $post): ?>
+        
             <table class="list-table widefat fixed striped table-view-list posts">
                 <thead>
                     <tr>
@@ -39,33 +39,34 @@
                     </tr>
                 </thead>
 
-                <tbody id="the-list">
-                    <tr>
-                        <td class="title column-title has-row-actions column-primary page-title" data-colname="Titre">
-                            <strong>
-                                <a class="row-title" href="" aria-label=""><?=$post['title']?></a>
-                            </strong>
-                        </td>
-                        <td class="chapter column-chapter" data-colname="Numéro de l'épisode">
-                            <?=$post['chapter']?>
-                        </td>
-                        <td class="date column-date" data-colname="Date">
-                            Publié
-                            <br>
-                            <?=$post['post_date_fr']?>
-                        </td>
-                        <td class="introduction column-introduction" data-colname="Introduction">
-                            <?=$post['introduction']?>
-                        </td>
-                        <td class="edit column-edit" data-colname="Éditer">
-                            Ajouter le $post['edit']
-                        </td>
-                        <td class="delete column-delete" data-colname="Supprimer">
-                            Ajouter le $post['delete']
-                        </td>
-                    </tr>
-                </tbody>
+                <?php foreach($data['allposts'] as $post): ?>
+                    <tbody id="the-list">
+                        <tr>
+                            <td class="title column-title has-row-actions column-primary page-title" data-colname="Titre">
+                                <strong>
+                                    <a class="row-title" href="" aria-label=""><?=$post['title']?></a>
+                                </strong>
+                            </td>
+                            <td class="chapter column-chapter" data-colname="Numéro de l'épisode">
+                                <?=$post['chapter']?>
+                            </td>
+                            <td class="date column-date" data-colname="Date">
+                                Publié
+                                <br>
+                                <?=$post['post_date_fr']?>
+                            </td>
+                            <td class="introduction column-introduction" data-colname="Introduction">
+                                <?=$post['introduction']?>
+                            </td>
+                            <td class="edit column-edit" data-colname="Éditer">
+                                Ajouter le $post['edit']
+                            </td>
+                            <td class="delete column-delete" data-colname="Supprimer">
+                                Ajouter le $post['delete']
+                            </td>
+                        </tr>
+                    </tbody>
+                <?php endforeach; ?>
             </table>
-        <?php endforeach; ?>
     </form>
 </div>
