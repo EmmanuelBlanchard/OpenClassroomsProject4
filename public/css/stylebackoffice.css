@@ -129,7 +129,7 @@ ul#adminmenu a.has-current-submenu {
 	position: relative;
 }
 /* Content */
-#content, #footer {
+#content {
 	margin-left: 160px;
 }
 #content {
@@ -311,3 +311,259 @@ h2, h3 {
 	clear: both;
 	position: relative;
 }
+.wrap h1.heading-inline {
+	display: inline-block;
+	margin-right: 5px;
+}
+.postbox .inside h2, .wrap [class$="icon32"] + h2, .wrap h1, .wrap > h2:first-child {
+	font-size: 23px;
+	font-weight: 400;
+	margin: 0;
+	padding: 9px 0 4px 0;
+	line-height: 1.3;
+}
+.wrap .heading-inline + .page-title-action {
+	margin-left: 0;
+}
+.wrap .add-new-h2, .wrap .add-new-h2:active, .wrap .page-title-action, .wrap .page-title-action:active {
+	margin-left: 4px;
+	padding: 4px 8px;
+	position: relative;
+	top: -3px;
+	text-decoration: none;
+	border: 1px solid #0071a1;
+	border-radius: 2px;
+	text-shadow: none;
+	font-weight: 600;
+	font-size: 13px;
+	line-height: normal;
+	color: #0071a1;
+	background: #f3f5f6;
+	cursor: pointer;
+}
+.header-end {
+	visibility: hidden;
+	margin: -2px 0 0;
+}
+hr {
+	border: 0;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #fafafa;
+}
+.screen-reader-text, .screen-reader-text span, .ui-helper-hidden-accessible {
+	border: 0;
+	clip: rect(1px,1px,1px,1px);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+}
+.subsubsub {
+	list-style: none;
+	margin: 8px 0 0;
+	padding: 0;
+	font-size: 13px;
+	float: left;
+	color: #666;
+}
+.subsubsub li {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+.ac_match, .subsubsub a.current {
+	color: #000;
+}
+.subsubsub a {
+	line-height: 2;
+	padding: .2em;
+	text-decoration: none;
+}
+p.search-box {
+	float: right;
+	margin: 0;
+}
+.screen-reader-text, .screen-reader-text span, .ui-helper-hidden-accessible {
+	border: 0;
+	clip: rect(1px,1px,1px,1px);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.search-box input[name="s"], .tablenav .search-plugins input[name="s"], .tagsdiv .newtag {
+	float: left;
+	margin: 0 4px 0 0;
+}
+input[type="search"] {
+	-webkit-appearance: textfield;
+}
+input[type="date"], input[type="datetime-local"], input[type="datetime"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"] {
+	padding: 0 8px;
+	line-height: 2;
+	min-height: 30px;
+}
+input[type="color"], input[type="date"], input[type="datetime-local"], input[type="datetime"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], select, textarea {
+	box-shadow: 0 0 0 transparent;
+	border-radius: 4px;
+	border: 1px solid #7e8993;
+	background-color: #fff;
+	color: #32373c;
+}
+input, textarea {
+	font-size: 14px;
+}
+button, input, select, textarea {
+	box-sizing: border-box;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+p .button {
+	vertical-align: baseline;
+}
+.button, .button-secondary {
+	color: #0071a1;
+	border-color: #0071a1;
+	background: #f3f5f6;
+	vertical-align: top;
+}
+
+.button, .button-primary, .button-secondary {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 13px;
+	line-height: 2.15384615;
+	min-height: 30px;
+	margin: 0;
+	padding: 0 10px;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	-webkit-appearance: none;
+	border-radius: 3px;
+	white-space: nowrap;
+	box-sizing: border-box;
+}
+
+td {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+}
+table.fixed {
+	table-layout: fixed;
+}
+.comment-ays, .feature-filter, .imgedit-group, .popular-tags, .stuffbox, .widgets-holder-wrap, .editor-container, p.popular-tags, table.widefat {
+	background: #fff;
+}
+#menu-management .menu-edit, #menu-settings-column .accordion-container, .comment-ays, .feature-filter, .imgedit-group, .manage-menus, .menu-item-handle, .popular-tags, .stuffbox, .widget-inside, .widget-top, .widgets-holder-wrap, .editor-container, p.popular-tags, table.widefat {
+	border: 1px solid #ccd0d4;
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+.widefat {
+	border-spacing: 0;
+	width: 100%;
+	clear: both;
+	margin: 0;
+}
+.widefat * {
+	word-wrap: break-word;
+}
+.widefat tfoot td.check-column, .widefat thead td.check-column {
+	padding-top: 4px;
+	vertical-align: middle;
+}
+.updates-table tbody td.check-column, .widefat tbody th.check-column, .widefat tfoot td.check-column, .widefat thead td.check-column {
+	padding: 11px 0 0 3px;
+}
+.widefat .check-column {
+	width: 2.2em;
+	padding: 6px 0 25px;
+	vertical-align: top;
+}
+.widefat tfoot tr td, .widefat tfoot tr th, .widefat thead tr td, .widefat thead tr th {
+	color: #32373c;
+}
+.widefat tfoot td, .widefat th, .widefat thead td {
+	font-weight: 400;
+}
+#nav-menu-footer, #nav-menu-header, #your-profile #rich_editing, .checkbox, .control-section .accordion-section-title, .menu-item-handle, .postbox .hndle, .side-info, .sidebar-name, .stuffbox .hndle, .widefat tfoot td, .widefat tfoot th, .widefat thead td, .widefat thead th, .widget .widget-top {
+	line-height: 1.4em;
+}
+.widefat tfoot td, .widefat th, .widefat thead td {
+	text-align: left;
+	line-height: 1.3em;
+	font-size: 14px;
+}
+.widefat thead td, .widefat thead th {
+	border-bottom: 1px solid #ccd0d4;
+}
+.widefat td, .widefat th {
+	padding: 8px 10px;
+}
+
+.widefat td, .widefat th {
+	color: #555;
+}
+.widefat td, .widefat td ol, .widefat td p, .widefat td ul {
+	font-size: 13px;
+	line-height: 1.5em;
+}
+.widefat td {
+	vertical-align: top;
+}
+th.sortable a, th.sorted a {
+	display: block;
+	overflow: hidden;
+	padding: 8px;
+}
+.list-table a {
+	transition: none;
+}
+.widefat a, .widefat button.button-link {
+	text-decoration: none;
+}
+th.sortable a span, th.sorted a span {
+	float: left;
+	cursor: pointer;
+}
+.sorting-indicator {
+	display: block;
+	visibility: hidden;
+	width: 10px;
+	height: 4px;
+	margin-top: 8px;
+	margin-left: 7px;
+}
+.fixed .column-author, .fixed .column-format, .fixed .column-links, .fixed .column-parent, .fixed .column-posts {
+	width: 10%;
+}
+.fixed .column-categories, .fixed .column-rel, .fixed .column-response, .fixed .column-role, .fixed .column-tags {
+	width: 15%;
+}
+.fixed .column-comments {
+	width: 5.5em;
+	padding: 8px 0;
+	text-align: left;
+}
+.fixed .column-date {
+	width: 14%;
+}
+.alternate, .striped > tbody > :nth-child(2n+1), ul.striped > :nth-child(2n+1) {
+	background-color: #f9f9f9;
+}
+
