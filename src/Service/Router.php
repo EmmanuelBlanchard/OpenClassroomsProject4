@@ -87,6 +87,18 @@ class Router
         } elseif ($action === 'blogControlPanelListOfEpisodes') {
             // route http://localhost:8000/?action=blogControlPanelListOfEpisodes
             $this->adminController->blogControlPanelListOfEpisodes();
+        } elseif ($action === 'postNew') {
+            // route http://localhost:8000/?action=postNew
+            $this->adminController->postNew($this->post);
+        } elseif ($action === 'postEdit' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=postEdit&id=5
+            $this->adminController->postEdit((int)$this->get['id']);
+        } elseif ($action === 'postTrash' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=postTrash&id=5
+            $this->adminController->postTrash((int)$this->get['id']);
+        } elseif ($action === 'postDelete' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=postDelete&id=5
+            $this->adminController->postDelete((int)$this->get['id']);
         } elseif ($action === 'blogControlPanelCreateOfEpisode') {
             // route http://localhost:8000/?action=blogControlPanelCreateOfEpisode
             $this->adminController->blogControlPanelCreateOfEpisode();

@@ -26,11 +26,16 @@
                                 <div class="menu-image"></div>
                                 <div class="menu-name">Tableau de bord</div>
                             </a>
+                            <a class="first-item has-submenu has-current-submenu menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last">
+                                <div class="menu-image"></div>
+                                <div class="menu-name">Accueil</div>
+                            </a>
+                            <!--
                             <ul class="submenu submenu-wrap">
                                 <li class="first-item current">
                                     <a class="first-item current" href="">Accueil</a> 
                                 </li>
-                            </ul>
+                            </ul>-->
                         </li>
                         <li class="not-current-submenu menu-separator" aria-hidden="true">
                             <div class="separator">

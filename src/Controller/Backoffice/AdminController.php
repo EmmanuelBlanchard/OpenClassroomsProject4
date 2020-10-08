@@ -52,11 +52,39 @@ class AdminController
         $this->view->render(['template' => 'blogcontrolpanellistofepisodespage', 'allposts' => $data], 'backoffice');
     }
 
+    public function postNew(array $data): void
+    {
+        if (!empty($data['chapter']) && !empty($data['title']) && !empty($data['date']) && !empty($data['content']) && !empty($data['introduction']) && !empty($data['author']) ) {
+            $this->adminManager->postNew(htmlspecialchars($data['chapter']), htmlspecialchars($data['title']), htmlspecialchars($data['date']), htmlspecialchars($data['content']), htmlspecialchars($data['introduction']), htmlspecialchars($data['author']));
+        }
+
+        header('Location: index.php?action=blogControlPanelCreateOfEpisode');
+        exit();
+    }
+
+    public function postEdit(int $postId): void
+    {
+        $data = $this->adminManager->postEdit($postId);
+
+        $this->view->render(['template' => 'blogcontrolpanelpostedit', 'allposts' => $data], 'backoffice');
+    }
+
+    public function postTrash(int $postId): void
+    {
+        $data = $this->adminManager->postTrash($postId);
+
+        $this->view->render(['template' => 'blogcontrolpanellistofepisodespage', 'allposts' => $data], 'backoffice');
+    }
+
+    public function postDelete(int $postId): void
+    {
+        $data = $this->adminManager->postDelete($postId);
+
+        $this->view->render(['template' => 'blogcontrolpanellistofepisodespage', 'allposts' => $data], 'backoffice');
+    }
+
     public function blogControlPanelCreateOfEpisode():void
     {
-        // Si $_POST n'est pas vide et verification valeurs titre et contenu
-
-
         $this->view->render(['template' => 'blogcontrolpanelcreateofepisodepage'], 'backoffice');
     }
 

@@ -1,14 +1,15 @@
 <div class="wrap">
-    <h1 class="heading-inline">Création d'un épisode</h1>
+    <h1 class="heading-inline">Éditer l'épisode</h1>
 
-    <form method="post" action="index.php?action=postNew">
+    <form method="post" action="index.php?action=postEdit">
+    
         <p>
             <label for="title">Titre <span>(obligatoire)</span> </label>
             <input id="title" name="title" type="text" value="" size="30" maxlength="245" required>
         </p>
         <p>
-            <label for="chapter">Numéro de l'épisode <span>(obligatoire)</span> </label>
-            <input id="chapter" name="chapter" type="number" value="" size="30" maxlength="245" required>
+            <label for="post-number">Numéro de l'épisode <span>(obligatoire)</span> </label>
+            <input id="post-number" name="post-number" type="number" value="" size="30" maxlength="245" required>
         </p>
         <p>
             <label for="date">Date <span>(obligatoire)</span> </label>
@@ -24,17 +25,10 @@
             <textarea id="introduction" name="introduction"  value="" size="30" maxlength="245"> 
             </textarea>
         </p>
-        <p>
-            <label for="author">Auteur <span>(obligatoire)</span> </label>
-            <input id="author" name="author" type="text" value="" size="30" maxlength="40" required>
-        </p>
-
-        <input type="submit" class="button" value="Enregistrer le brouillon" />
-        <input type="submit" class="button" value="Prévisualiser" />
-        <input type="submit" class="button" value="Publier" />
 
         <input type="submit" class="button" value="Valider" />
         
     </form>
 
 </div>
+

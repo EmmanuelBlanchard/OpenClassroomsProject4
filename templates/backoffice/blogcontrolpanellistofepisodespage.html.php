@@ -31,7 +31,7 @@
                             <a href="index.php?action="><span>Introduction</span><span class="sorting-indicator"></span></a>
                         </th>
                         <th id="edit" class="manage-column column-edit">
-                            <a href="index.php?action="><span>Éditer</span><span class="sorting-indicator"></span></a>
+                            <a href="index.php?action=postEdit"><span>Éditer</span><span class="sorting-indicator"></span></a>
                         </th>
                         <th id="delete" class="manage-column column-delete">
                             <a href="index.php?action="><span>Supprimer</span><span class="sorting-indicator"></span></a>
@@ -59,10 +59,15 @@
                                 <?=$post['introduction']?>
                             </td>
                             <td class="edit column-edit" data-colname="Éditer">
-                                Ajouter le $post['edit']
+                                <!-- /post.php?post=383&action=edit -->
+                                <strong>
+                                    <a class="row-title" href="index.php?action=postEdit" aria-label="Modifier">Editer</a>
+                                </strong>
                             </td>
                             <td class="delete column-delete" data-colname="Supprimer">
-                                Ajouter le $post['delete']
+                                <strong>
+                                    <a class="row-title" href="index.php?action=postDelete" aria-label="Supprimer">Supprimer</a>
+                                </strong>
                             </td>
                         </tr>
                     </tbody>
