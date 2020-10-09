@@ -54,7 +54,7 @@ class AdminController
 
     public function postNew(array $data): void
     {
-        if (!empty($data['chapter']) && !empty($data['title']) && !empty($data['date']) && !empty($data['content']) && !empty($data['introduction']) && !empty($data['author']) ) {
+        if (!empty($data['chapter']) && !empty($data['title']) && !empty($data['date']) && !empty($data['content']) && !empty($data['introduction']) && !empty($data['author'])) {
             $this->adminManager->postNew(htmlspecialchars($data['chapter']), htmlspecialchars($data['title']), htmlspecialchars($data['date']), htmlspecialchars($data['content']), htmlspecialchars($data['introduction']), htmlspecialchars($data['author']));
         }
 

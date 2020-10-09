@@ -40,8 +40,16 @@ class AdminManager
         Introduction du test de l'épisode 37 dans le champ author
         0000-00-00 00:00:00 dans le champ post_date
          */
-        $request = $request =$this->database->prepare('INSERT INTO Posts (chapter, title, introduction, content, author, post_date) VALUES (:chapter, :title, :introduction, :content, :author, :post_date)');
-        return $request->execute([
+        $request = $this->database->prepare('INSERT INTO Posts (id, chapter, title, introduction, content, author, post_date) VALUES (NULL, :chapter, :title, :introduction, :content, :author, :post_date)');
+        $request->bindValue('chapter', $chapter, \PDO::PARAM_INT);
+        $request->bindValue('title', $title, \PDO::PARAM_STR);
+        $request->bindValue('introduction', $introduction, \PDO::PARAM_STR);
+        $request->bindValue('content', $content, \PDO::PARAM_STR);
+        $request->bindValue('author', $author, \PDO::PARAM_STR);
+        $request->bindValue('post_date', $date, \PDO::PARAM_STR);
+        //$request->bindValue('post_date', $date("Y-m-d H:i:s", strtotime($date)), \PDO::PARAM_STR);
+        return $request->execute();
+        /*return $request->execute([
             'chapter' => $chapter,
             'title' => $title,
             'introduction' => $introduction,
@@ -49,6 +57,7 @@ class AdminManager
             'author' => $author,
             'post_date' => $date
             ]);
+            */
     }
 
     // Reflexion avoir l'id du post cliqué et ensuite le modifier avec UPDATE ?
@@ -81,11 +90,4 @@ class AdminManager
         $request->execute(['id' => $postId]);
         return $request->fetch();
     }
-
-
-
-
-
-
-
 }
