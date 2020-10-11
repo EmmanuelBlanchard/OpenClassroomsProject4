@@ -1,3 +1,13 @@
+<?php
+    if(!isset($_SESSION)) 
+    {
+        // On demarre la session
+        session_start();/*
+        echo "<pre>";
+        print_r($_SESSION);
+        echo "</pre>";*/
+    } 
+?>
 <!DOCTYPE html>
 <html lang="fr" class="toolbar">
     <head>
@@ -22,48 +32,59 @@
                 <div id="adminmenuwrap">
                     <ul id="adminmenu">
                         <li id="menu-dashboard" class="menu-top has-submenu has-current-submenu">
-                            <a class="first-item has-submenu has-current-submenu menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last">
+                            <a href="index.php?action=blogControlPanel" class="first-item has-submenu has-current-submenu menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last">
                                 <div class="menu-image"></div>
                                 <div class="menu-name">Tableau de bord</div>
                             </a>
-                            <a class="first-item has-submenu has-current-submenu menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last">
+                            <a href="index.php?action=blogControlPanel" class="first-item has-submenu has-current-submenu menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last">
                                 <div class="menu-image"></div>
                                 <div class="menu-name">Accueil</div>
                             </a>
-                            <!--
-                            <ul class="submenu submenu-wrap">
-                                <li class="first-item current">
-                                    <a class="first-item current" href="">Accueil</a> 
-                                </li>
-                            </ul>-->
                         </li>
                         <li class="not-current-submenu menu-separator" aria-hidden="true">
                             <div class="separator">
                             </div>
                         </li>
-
                         <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" id="menu-posts">
                             <a href="index.php?action=blogControlPanelMyProfile" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">        
                                 <div class="menu-image"></div>
                                 <div class="menu-name">Mon profil</div>
                             </a>
                         </li>
+                        <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" id="menu-posts">
+                            <a href="index.php?action=myProfile" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">        
+                                <div class="menu-image"></div>
+                                <div class="menu-name">Mon profil</div>
+                            </a>
+                        </li>
                         <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
-                            <a href="index.php?action=blogControlPanelListOfEpisodes" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
+                            <a href="index.php?action=readEpisodes" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
                                 <div class="menu-image"></div>    
                                 <div class="menu-name">Liste des épisodes</div>
                             </a>
                         </li>
                         <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
-                            <a href="index.php?action=blogControlPanelCreateOfEpisode" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
+                            <a href="index.php?action=addEpisode" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
                                 <div class="menu-image"></div>
-                                <div class="menu-name">Création d'un épisode</div>
+                                <div class="menu-name">Ajout d'un épisode</div>
                             </a>
                         </li>
                         <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
                             <a href="index.php?action=blogControlPanelComments" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
                                 <div class="menu-image"></div>       
                                 <div class="menu-name">Commentaires</div>
+                            </a>
+                        </li>
+                        <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
+                            <a href="index.php?action=blogControlPanelComments" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
+                                <div class="menu-image"></div>       
+                                <div class="menu-name">ESSAI Commentaires</div>
+                            </a>
+                        </li>
+                        <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
+                            <a href="index.php?action=blogControlPanelComments" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
+                                <div class="menu-image"></div>       
+                                <div class="menu-name">ESSAI 2 Commentaires</div>
                             </a>
                         </li>
                         <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
@@ -75,7 +96,7 @@
                     </ul>
                 </div>
             </div>
-            <div id="content">
+            <div id="contentofdiv">
                 <div id="adminbar" class="nojq">
                     <div id="toolbar" class="quicklinks" role="navigation" aria-lablel="Barre d'outils">
                         <ul id="admin-bar-root-default" class="ab-top-menu">

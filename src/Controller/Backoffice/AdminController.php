@@ -7,6 +7,11 @@ namespace App\Controller\Backoffice;
 use App\Model\AdminManager;
 use App\View\View;
 
+if (!isset($_SESSION)) {
+    // On demarre la session
+    session_start();
+}
+
 class AdminController
 {
     private AdminManager $adminManager;
@@ -52,37 +57,6 @@ class AdminController
         $this->view->render(['template' => 'blogcontrolpanellistofepisodespage', 'allposts' => $data], 'backoffice');
     }
 
-    public function postNew(array $data): void
-    {
-        if (!empty($data['chapter']) && !empty($data['title']) && !empty($data['date']) && !empty($data['content']) && !empty($data['introduction']) && !empty($data['author'])) {
-            $this->adminManager->postNew(htmlspecialchars($data['chapter']), htmlspecialchars($data['title']), htmlspecialchars($data['date']), htmlspecialchars($data['content']), htmlspecialchars($data['introduction']), htmlspecialchars($data['author']));
-        }
-
-        header('Location: index.php?action=blogControlPanelCreateOfEpisode');
-        exit();
-    }
-
-    public function postEdit(int $postId): void
-    {
-        $data = $this->adminManager->postEdit($postId);
-
-        $this->view->render(['template' => 'blogcontrolpanelpostedit', 'allposts' => $data], 'backoffice');
-    }
-
-    public function postTrash(int $postId): void
-    {
-        $data = $this->adminManager->postTrash($postId);
-
-        $this->view->render(['template' => 'blogcontrolpanellistofepisodespage', 'allposts' => $data], 'backoffice');
-    }
-
-    public function postDelete(int $postId): void
-    {
-        $data = $this->adminManager->postDelete($postId);
-
-        $this->view->render(['template' => 'blogcontrolpanellistofepisodespage', 'allposts' => $data], 'backoffice');
-    }
-
     public function blogControlPanelCreateOfEpisode():void
     {
         $this->view->render(['template' => 'blogcontrolpanelcreateofepisodepage'], 'backoffice');
@@ -93,5 +67,155 @@ class AdminController
         $dataComments = $this->adminManager->showAllComment();
 
         $this->view->render(['template' => 'blogcontrolpanelcommentspage', 'allcomment' => $dataComments], 'backoffice');
+    }
+
+    public function myProfile():void
+    {
+        $this->view->render(['template' => 'myprofile'], 'backoffice');
+    }
+
+    public function readEpisodes():void
+    {   // Affichage Liste des épisodes par id DESC => 3,2,1
+        $data = $this->adminManager->showAllPostsByIdDesc();
+        // Affichage Liste des épisodes par id ASC => 1,2,3
+        //$data = $this->adminManager->showAllPostsById();
+        // Affichage Liste des épisodes par post_date
+        //$data = $this->adminManager->showAllPost();
+
+        $this->view->render(['template' => 'readepisodes', 'allpost' => $data], 'backoffice');
+    }
+    // Reflexion suppresion de l'input date
+    // puisqu'il y a un probleme d'insertion dans la base de données
+    // recupere type date or insertion dans la base de donnees => format datetime
+    // provisoire, suppression de l input type="date" et mettre NOW() ? dans VALUES ?
+    public function detailEpisode(int $postId): void
+    {
+        if (isset($postId) && !empty($postId)) {
+            // On nettoie l'id envoyé
+            //$id = strip_tags($_GET['id']);
+            $dataPost = $this->adminManager->showOnePost($postId);
+            // On verifie si le post existe
+            if (!$dataPost) {
+                $_SESSION['erreur'] = "Cet id n'existe pas";
+                $this->database = null;
+                header('Location: index.php?action=readEpisodes');
+                exit();
+            }
+            $this->view->render(['template' => 'detailepisode', 'post' => $dataPost], 'backoffice');
+        } else {
+            $_SESSION['erreur'] = "URL invalide";
+            $this->database = null;
+            header('Location: index.php?action=readEpisodes');
+            exit();
+        }
+    }
+
+    public function addEpisode(array $data): void
+    {
+        if ($data) {
+            if (isset($data['chapter']) && !empty($data['chapter'])
+             && isset($data['title']) && !empty($data['title'])
+             && isset($data['introduction']) && !empty($data['introduction'])
+             && isset($data['content']) && !empty($data['content'])
+             && isset($data['author']) && !empty($data['author'])) {
+                // On nettoie les données envoyées
+                $chapter = strip_tags($data['chapter']);
+                $title = strip_tags($data['title']);
+                $introduction = strip_tags($data['introduction']);
+                $content = strip_tags($data['content']);
+                $author = strip_tags($data['author']);
+                $this->adminManager->newPost($chapter, $title, $introduction, $content, $author);
+                $_SESSION['message'] = "Épisode ajouté";
+                $this->database = null;
+                header('Location: index.php?action=readEpisodes');
+                exit();
+            }
+            $_SESSION['erreur'] = "Le formulaire est incomplet";
+            $this->database = null;
+            $this->view->render(['template' => 'addepisode'], 'backoffice');
+            
+            $_SESSION['erreur'] = "Le formulaire est incomplet";
+            $this->database = null;
+            $this->view->render(['template' => 'addepisode'], 'backoffice');
+        }
+        $this->view->render(['template' => 'addepisode'], 'backoffice');
+    }
+
+    public function editEpisode(int $postId, array $data): void
+    {
+        if (isset($postId) && !empty($postId)) {
+            // On nettoie l'id envoyé
+            //$id = strip_tags($_GET['id']);
+            $dataPost = $this->adminManager->showOnePost($postId);
+            // On verifie si le post existe
+            if (!$dataPost) {
+                $_SESSION['erreur'] = "Cet id n'existe pas";
+                $this->database = null;
+                header('Location: index.php?action=tryListOfEpisodes');
+                exit();
+            }
+            $this->view->render(['template' => 'tryupdateanepisode', 'post' => $dataPost], 'backoffice');
+        } else {
+            $_SESSION['erreur'] = "URL invalide";
+            $this->database = null;
+            header('Location: index.php?action=tryListOfEpisodes');
+            exit();
+        }
+
+        if ($data) {
+            if (isset($data['id']) && !empty($data['id'])
+             && isset($data['chapter']) && !empty($data['chapter'])
+             && isset($data['title']) && !empty($data['title'])
+             && isset($data['introduction']) && !empty($data['introduction'])
+             && isset($data['content']) && !empty($data['content'])
+             && isset($data['author']) && !empty($data['author'])) {
+                // On nettoie les données envoyées
+                $id = strip_tags($data['id']);
+                $chapter = strip_tags($data['chapter']);
+                $title = strip_tags($data['title']);
+                $introduction = strip_tags($data['introduction']);
+                $content = strip_tags($data['content']);
+                $author = strip_tags($data['author']);
+                $this->adminManager->editPost($id, $chapter, $title, $introduction, $content, $author);
+                $_SESSION['message'] = "Épisode modifié";
+                $this->database = null;
+                header('Location: index.php?action=readEpisodes');
+                exit();
+            }
+            $_SESSION['erreur'] = "Le formulaire est incomplet";
+            $this->database = null;
+            $this->view->render(['template' => 'editepisode'], 'backoffice');
+            
+            $_SESSION['erreur'] = "Le formulaire est incomplet";
+            $this->database = null;
+            $this->view->render(['template' => 'editepisode'], 'backoffice');
+        }
+        $this->view->render(['template' => 'editepisode'], 'backoffice');
+    }
+
+    public function deleteEpisode(int $postId): void
+    {
+        if (isset($postId) && !empty($postId)) {
+            // On nettoie l'id envoyé
+            //$id = strip_tags($_GET['id']);
+            $dataPost = $this->adminManager->showOnePost($postId);
+            // On verifie si le post existe
+            if (!$dataPost) {
+                $_SESSION['erreur'] = "Cet id n'existe pas";
+                $this->database = null;
+                header('Location: index.php?action=readEpisodes');
+                exit();
+            }
+            $dataPost = $this->adminManager->deletePost($postId);
+            $_SESSION['message'] = "Épisode supprimé";
+            $this->database = null;
+            header('Location: index.php?action=readEpisodes');
+            exit();
+            //$this->view->render(['template' => 'readEpisodes', 'post' => $dataPost], 'backoffice');
+        }
+        $_SESSION['erreur'] = "URL invalide";
+        $this->database = null;
+        header('Location: index.php?action=readEpisodes');
+        exit();
     }
 }

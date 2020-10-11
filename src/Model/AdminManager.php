@@ -6,6 +6,11 @@ namespace App\Model;
 
 use App\Service\Database;
 
+if (!isset($_SESSION)) {
+    // On demarre la session
+    session_start();
+}
+
 class AdminManager
 {
     private $database;
@@ -31,24 +36,58 @@ class AdminManager
         $request->execute();
         return $request->fetchAll();
     }
-    
-    public function postNew(string $chapter, string $title, string $introduction, string $content, string $author, string $date): bool
+    // ESSAI
+    public function showAllPost()
     {
-        /* Probleme si je mets int $chapter, avertissement trouve string au lieu de int */
-        /* Probleme dans la base de données, donnée pas inscrit dans les bons champs ...
-        2020-10-06 dans le champ introduction
-        Introduction du test de l'épisode 37 dans le champ author
-        0000-00-00 00:00:00 dans le champ post_date
-         */
-        $request = $this->database->prepare('INSERT INTO Posts (id, chapter, title, introduction, content, author, post_date) VALUES (NULL, :chapter, :title, :introduction, :content, :author, :post_date)');
+        $request = $this->database->prepare('SELECT * FROM Posts ORDER BY post_date');
+        $request->execute();
+        // On stocke le resultat dans un tableau associatif
+        return $request->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function showAllPostsById()
+    {
+        $request = $this->database->prepare('SELECT * FROM Posts ORDER BY id');
+        $request->execute();
+        // On stocke le resultat dans un tableau associatif
+        return $request->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function showAllPostsByIdDesc()
+    {
+        $request = $this->database->prepare('SELECT * FROM Posts ORDER BY id DESC');
+        $request->execute();
+        // On stocke le resultat dans un tableau associatif
+        return $request->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function showOnePost(int $postId)
+    {   // Que mettre comme proprietes typées ?
+        //  : ?array pour recuperer les données dans un tableau
+        // Mais si l'id est inconnu, exemple 99 problème: non affichage du message erreur "Cet id n'existe pas" Alors qu'avec
+        //  : ? bool , affichage du message erreur, si id inconnu ex 99 mais la recuperation des données ne marche pas ...
+        $request = $this->database->prepare('SELECT id, chapter, title, introduction, content, author, post_date FROM Posts WHERE id=:id');
+        //$request->execute(['id' => $postId]);
+        //return $request->fetch();
+        $request->bindValue(':id', $postId, \PDO::PARAM_INT);
+        $request->execute();
+        return $request->fetch();
+    }
+
+    public function newPost(string $chapter, string $title, string $introduction, string $content, string $author): void
+    {
+        $request = $this->database->prepare('INSERT INTO `Posts` (chapter, title, introduction, content, author, post_date) VALUES (:chapter, :title, :introduction, :content, :author, NOW())');
         $request->bindValue('chapter', $chapter, \PDO::PARAM_INT);
         $request->bindValue('title', $title, \PDO::PARAM_STR);
         $request->bindValue('introduction', $introduction, \PDO::PARAM_STR);
         $request->bindValue('content', $content, \PDO::PARAM_STR);
         $request->bindValue('author', $author, \PDO::PARAM_STR);
-        $request->bindValue('post_date', $date, \PDO::PARAM_STR);
+        $request->execute();
+        
+        // Chercher, trouver comment envoyer la date au format datetime de mysql
+        // dans le formulaire avec un input type date et recupere la variable $date dans la fonction ??
         //$request->bindValue('post_date', $date("Y-m-d H:i:s", strtotime($date)), \PDO::PARAM_STR);
-        return $request->execute();
+        // return $request->execute();
         /*return $request->execute([
             'chapter' => $chapter,
             'title' => $title,
@@ -57,37 +96,25 @@ class AdminManager
             'author' => $author,
             'post_date' => $date
             ]);
-            */
+        */
+    }
+    
+    public function editPost(string $id, string $chapter, string $title, string $introduction, string $content, string $author): void
+    {
+        $request = $this->database->prepare('UPDATE `Posts` SET `chapter`=:chapter, `title`=:title, `introduction`=:introduction, `content`=:content, `author`=:author WHERE `id`=:id');
+        $request->bindValue('id', $id, \PDO::PARAM_INT);
+        $request->bindValue('chapter', $chapter, \PDO::PARAM_INT);
+        $request->bindValue('title', $title, \PDO::PARAM_STR);
+        $request->bindValue('introduction', $introduction, \PDO::PARAM_STR);
+        $request->bindValue('content', $content, \PDO::PARAM_STR);
+        $request->bindValue('author', $author, \PDO::PARAM_STR);
+        $request->execute();
     }
 
-    // Reflexion avoir l'id du post cliqué et ensuite le modifier avec UPDATE ?
-    public function postEdit(int $postId): ?array
+    public function deletePost(int $postId): void
     {
-        $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
+        $request = $this->database->prepare('DELETE FROM `Posts` WHERE `id`=:id');
+        $request->bindValue(':id', $postId, \PDO::PARAM_INT);
         $request->execute();
-
-        $request = $this->database->prepare('SELECT id, chapter, title, content, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts WHERE id=:id');
-        $request->execute(['id' => $postId]);
-        return $request->fetch();
-    }
-
-    public function postTrash(int $postId): ?array
-    {
-        $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
-        $request->execute();
-
-        $request = $this->database->prepare('SELECT id, chapter, title, content, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts WHERE id=:id');
-        $request->execute(['id' => $postId]);
-        return $request->fetch();
-    }
-
-    public function postDelete(int $postId): ?array
-    {
-        $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
-        $request->execute();
-
-        $request = $this->database->prepare('SELECT id, chapter, title, content, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM Posts WHERE id=:id');
-        $request->execute(['id' => $postId]);
-        return $request->fetch();
     }
 }

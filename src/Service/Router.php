@@ -87,24 +87,30 @@ class Router
         } elseif ($action === 'blogControlPanelListOfEpisodes') {
             // route http://localhost:8000/?action=blogControlPanelListOfEpisodes
             $this->adminController->blogControlPanelListOfEpisodes();
-        } elseif ($action === 'postNew') {
-            // route http://localhost:8000/?action=postNew
-            $this->adminController->postNew($this->post);
-        } elseif ($action === 'postEdit' && isset($this->get['id'])) {
-            // route http://localhost:8000/?action=postEdit&id=5
-            $this->adminController->postEdit((int)$this->get['id']);
-        } elseif ($action === 'postTrash' && isset($this->get['id'])) {
-            // route http://localhost:8000/?action=postTrash&id=5
-            $this->adminController->postTrash((int)$this->get['id']);
-        } elseif ($action === 'postDelete' && isset($this->get['id'])) {
-            // route http://localhost:8000/?action=postDelete&id=5
-            $this->adminController->postDelete((int)$this->get['id']);
         } elseif ($action === 'blogControlPanelCreateOfEpisode') {
             // route http://localhost:8000/?action=blogControlPanelCreateOfEpisode
             $this->adminController->blogControlPanelCreateOfEpisode();
         } elseif ($action === 'blogControlPanelComments') {
             // route http://localhost:8000/?action=blogControlPanelComments
             $this->adminController->blogControlPanelComments();
+        } elseif ($action === 'myProfile') {
+            // route http://localhost:8000/?action=myProfile
+            $this->adminController->myProfile();
+        } elseif ($action === 'readEpisodes') {
+            // route http://localhost:8000/?action=readEpisodes
+            $this->adminController->readEpisodes();
+        } elseif ($action === 'detailEpisode' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=detailEpisode&id=5
+            $this->adminController->detailEpisode((int)$this->get['id']);
+        } elseif ($action === 'addEpisode') {
+            // route http://localhost:8000/?action=addEpisode
+            $this->adminController->addEpisode($this->post);
+        } elseif ($action === 'editEpisode' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=editEpisode&id=5
+            $this->adminController->editEpisode((int)$this->get['id'], $this->post);
+        } elseif ($action === 'deleteEpisode') {
+            // route http://localhost:8000/?action=deleteEpisode&id=5
+            $this->adminController->deleteEpisode((int)$this->get['id'], $this->post);
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }

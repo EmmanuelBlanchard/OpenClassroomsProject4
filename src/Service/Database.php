@@ -26,4 +26,9 @@ class Database
     {
         return $this->database;
     }
+
+    public function closePdo(): void
+    {
+        $this->database = null;
+    }
 }

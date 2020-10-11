@@ -44,7 +44,7 @@ ul {
 	bottom: -120px;
 	z-index: 1;
 }
-#adminmenu, #adminmenu .submenu, #adminmenuback, #adminmenuwrap {
+#adminmenu, #adminmenuback, #adminmenuwrap {
 	width: 160px;
 	background-color: #23282d;
 }
@@ -72,7 +72,7 @@ ul {
 	padding: 0;
 	cursor: pointer;
 }
-#adminmenu .has-current-submenu .submenu .submenu-head, #adminmenu .menu-arrow, #adminmenu .menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.has-current-submenu a.has-current-submenu, .folded #adminmenu li.current.menu-top, .folded #adminmenu li.has-current-submenu {
+#adminmenu .has-current-submenu, #adminmenu .menu-arrow, #adminmenu .menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.has-current-submenu a.has-current-submenu, .folded #adminmenu li.current.menu-top, .folded #adminmenu li.has-current-submenu {
 	background: #0073aa;
 	color: #fff;
 }
@@ -93,7 +93,7 @@ ul {
 	min-height: 34px;
 	position: relative;
 }
-#adminmenu .submenu-head, #adminmenu a.menu-top {
+#adminmenu a.menu-top {
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 1.3;
@@ -133,10 +133,11 @@ ul#adminmenu a.has-current-submenu {
 	position: relative;
 }
 /* Content */
-#content {
+/* changement en #contentofdiv pour par associer a #content de l'id de textarea */
+#contentofdiv {
 	margin-left: 160px;
 }
-#content {
+#contentofdiv {
 	height: 100%;
 	padding-left: 20px;
 }
@@ -569,4 +570,315 @@ th.sortable a span, th.sorted a span {
 }
 .alternate, .striped > tbody > :nth-child(2n+1), ul.striped > :nth-child(2n+1) {
 	background-color: #f9f9f9;
+}
+
+/* Inspiration bootstrap */
+html {
+	font-family: sans-serif;
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+}
+body {
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+}
+:root {
+	--blue: #007bff;
+	--indigo: #6610f2;
+	--purple: #6f42c1;
+	--pink: #e83e8c;
+	--red: #dc3545;
+	--orange: #fd7e14;
+	--yellow: #ffc107;
+	--green: #28a745;
+	--teal: #20c997;
+	--cyan: #17a2b8;
+	--white: #fff;
+	--gray: #6c757d;
+	--gray-dark: #343a40;
+	--primary: #007bff;
+	--secondary: #6c757d;
+	--success: #28a745;
+	--info: #17a2b8;
+	--warning: #ffc107;
+	--danger: #dc3545;
+	--light: #f8f9fa;
+	--dark: #343a40;
+	--breakpoint-xs: 0;
+	--breakpoint-sm: 576px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 992px;
+	--breakpoint-xl: 1200px;
+	--font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+	--font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+/* _reboot.scss:35 */
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+	display: block;
+}
+/* _reboot.scss :92 */
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+	margin-bottom: .5rem;
+}
+/* _reboot.scss:187 */
+a {
+	color: #007bff;
+	text-decoration: none;
+	background-color: transparent;
+}
+/* _reboot.scss:269 */
+table {
+	border-collapse: collapse;
+}
+/* _reboot.scss:292 */
+label {
+	display: inline-block;
+	margin-bottom: .5rem;
+}
+/* _reboot.scss:326 */
+button, input {
+	overflow: visible;
+}
+/* _reboot.scss:331 */
+button, select {
+	text-transform: none;
+}
+/* _reboot.scss:389 */
+textarea {
+	overflow: auto;
+	resize: vertical;
+}
+/* bootstrap.css:40 */
+*, ::after, ::before {
+	box-sizing: border-box;
+}
+/* bootstrap.css:236 */
+button, input, optgroup, select, textarea {
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+/* bootstrap.css:272 */
+[type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled), button:not(:disabled) {
+	cursor: pointer;
+}
+/* bootstrap.css:357 */
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	margin-bottom: .5rem;
+	font-weight: 500;
+	line-height: 1.2;
+}
+/* bootstrap:1668 */
+.table td, .table th {
+	padding: .75rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6;
+}
+/* _type.scss:16 */
+.h1, h1 {
+	font-size: 2.5rem;
+}
+/* _type.scss:17 */
+.h2, h2 {
+	font-size: 2rem;
+}
+/* _type.scss:18 */
+.h3, h3 {
+	font-size: 1.75rem;
+}
+
+/* _grid.scss:7 */
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+/* _grid.scss:49 */
+.row {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -15px;
+}
+/* _grid.framework.scss:8 */
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+	position: relative;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+/* _grid.framework.scss:54 */
+.col-12 {
+	-ms-flex: 0 0 100%;
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+/* _tables.scss:5 */
+.table {
+	width: 100%;
+	margin-bottom: 1rem;
+	color: #212529;
+}
+.table {
+	color: #212529;
+}
+.table thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6;
+}
+/* _forms.scss:7 */
+.form-control {
+	display: block;
+	width: 100%;
+	height: calc(1.5em + .75rem + 2px);
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+/* _forms.scss:14 */
+.form-control:focus {
+	color: #495057;
+	background-color: #fff;
+	border-color: #80bdff;
+	outline: 0;
+	box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+/* _forms.scss:176 */
+textarea.form-control {
+	height: auto;
+}
+
+
+
+
+
+
+
+
+
+/* _forms.scss:185 */
+.form-group {
+	margin-bottom: 1rem;
+}
+/* Alert */
+/* _alert.scss:5 */
+.alert {
+	position: relative;
+	padding: .75rem 1.25rem;
+	margin-bottom: 1rem;
+	border: 1px solid transparent;
+	border-radius: .25rem;
+}
+/* _alert.scss:48 */
+.alert-danger {
+	color: #721c24;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+}
+.alert-success {
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+}
+/* _buttons.scss:7 */
+.btn {
+	display: inline-block;
+	font-weight: 400;
+	color: #212529;
+	text-align: center;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: transparent;
+	border: 1px solid transparent;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: .25rem;
+	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn.focus, .btn:focus {
+	outline: 0;
+	box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+.btn:not(:disabled):not(.disabled) {
+	cursor: pointer;
+}
+/* _buttons.scss:18 */
+.btn-primary.focus, .btn-primary:focus {
+	color: #fff;
+	background-color: #0069d9;
+	border-color: #0062cc;
+	box-shadow: 0 0 0 .2rem rgba(38,143,255,.5);
+}
+/* _buttons.scss:43 */
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+	color: #fff;
+	background-color: #0062cc;
+	border-color: #005cbf;
+}
+/* _buttons.scss:53 */
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+	box-shadow: 0 0 0 .2rem rgba(38,143,255,.5);
+}
+/* _buttons.scss:66 */
+.btn-primary {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+}
+/* _hover.scss:13 */
+a:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}
+.btn:hover {
+	color: #212529;
+	text-decoration: none;
+}
+.btn-primary:hover {
+	color: #fff;
+	background-color: #0069d9;
+	border-color: #0062cc;
+}
+
+/* _grid.scss:20 */
+@media all and (min-width: 576px) {
+	.container, .container-sm {
+		max-width: 540px;
+	}
+}
+@media all and (min-width: 768px) {
+	.container, .container-md, .container-sm {
+		max-width: 720px;
+	}
+}
+@media all and (min-width: 992px) {
+	.container, .container-lg, .container-md, .container-sm {
+		max-width: 960px;
+	}
+}
+@media all and (min-width: 1200px) {
+	.container, .container-lg, .container-md, .container-sm, .container-xl {
+		max-width: 1140px;
+	}
 }
