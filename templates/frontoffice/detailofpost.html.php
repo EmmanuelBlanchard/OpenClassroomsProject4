@@ -34,6 +34,15 @@
                     <p class="pPseudoComments"><?=$post['pseudo']?></p>
                     <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
                     <p>Ce commentaire a été signalé</p>
+                <?php elseif ((int)$post['report']===2): ?>
+                    <h5>Commentaire de </h5>
+                    <p class="pPseudoComments"><?=$post['pseudo']?></p>
+                    <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
+                    <p>Ce commentaire a été approuvé</p>
+                    <p><?=$post['comment']?> <br> Ce commentaire a été approuvé <p>
+                    <div class="buttonReport">
+                        <a href="index.php?action=report&amp;commentid=<?=$post['id']?>&amp;id=<?=$post['post_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
+                    </div>
                 <?php else: ?>
                     <h5>Commentaire de </h5>
                     <p class="pPseudoComments"><?=$post['pseudo']?></p>

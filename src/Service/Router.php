@@ -111,6 +111,18 @@ class Router
         } elseif ($action === 'deleteEpisode') {
             // route http://localhost:8000/?action=deleteEpisode&id=5
             $this->adminController->deleteEpisode((int)$this->get['id'], $this->post);
+        } elseif ($action === 'readComments') {
+            // route http://localhost:8000/?action=readComments
+            $this->adminController->readComments();
+        } elseif ($action === 'approveComment' && isset($this->get['id'])) {
+            // route http://localhost:8000/?action=approveComment&id=5
+            $this->adminController->approveComment((int)$this->get['id']);
+        } elseif ($action === 'addComment') {
+            // route http://localhost:8000/?action=addComment
+            $this->adminController->addComment($this->post);
+        } elseif ($action === 'deleteComment') {
+            // route http://localhost:8000/?action=deleteComment&id=5
+            $this->adminController->deleteComment((int)$this->get['id'], $this->post);
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }

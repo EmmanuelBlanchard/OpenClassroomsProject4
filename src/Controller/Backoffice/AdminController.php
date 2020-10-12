@@ -69,12 +69,12 @@ class AdminController
         $this->view->render(['template' => 'blogcontrolpanelcommentspage', 'allcomment' => $dataComments], 'backoffice');
     }
 
-    public function myProfile():void
+    public function myProfile(): void
     {
         $this->view->render(['template' => 'myprofile'], 'backoffice');
     }
 
-    public function readEpisodes():void
+    public function readEpisodes(): void
     {   // Affichage Liste des épisodes par id DESC => 3,2,1
         $data = $this->adminManager->showAllPostsByIdDesc();
         // Affichage Liste des épisodes par id ASC => 1,2,3
@@ -133,10 +133,6 @@ class AdminController
             $_SESSION['erreur'] = "Le formulaire est incomplet";
             $this->database = null;
             $this->view->render(['template' => 'addepisode'], 'backoffice');
-            
-            $_SESSION['erreur'] = "Le formulaire est incomplet";
-            $this->database = null;
-            $this->view->render(['template' => 'addepisode'], 'backoffice');
         }
         $this->view->render(['template' => 'addepisode'], 'backoffice');
     }
@@ -151,14 +147,14 @@ class AdminController
             if (!$dataPost) {
                 $_SESSION['erreur'] = "Cet id n'existe pas";
                 $this->database = null;
-                header('Location: index.php?action=tryListOfEpisodes');
+                header('Location: index.php?action=readEpisodes');
                 exit();
             }
-            $this->view->render(['template' => 'tryupdateanepisode', 'post' => $dataPost], 'backoffice');
+            $this->view->render(['template' => 'editepisode', 'post' => $dataPost], 'backoffice');
         } else {
             $_SESSION['erreur'] = "URL invalide";
             $this->database = null;
-            header('Location: index.php?action=tryListOfEpisodes');
+            header('Location: index.php?action=readEpisodes');
             exit();
         }
 
@@ -206,16 +202,107 @@ class AdminController
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
-            $dataPost = $this->adminManager->deletePost($postId);
+            $this->adminManager->deletePost($postId);
             $_SESSION['message'] = "Épisode supprimé";
             $this->database = null;
             header('Location: index.php?action=readEpisodes');
             exit();
-            //$this->view->render(['template' => 'readEpisodes', 'post' => $dataPost], 'backoffice');
         }
         $_SESSION['erreur'] = "URL invalide";
         $this->database = null;
         header('Location: index.php?action=readEpisodes');
         exit();
     }
+
+    public function readComments(): void
+    {
+        $dataComments = $this->adminManager->showAllComment();
+        $this->view->render(['template' => 'readcomments', 'allcomment' => $dataComments], 'backoffice');
+    }
+    // A RESOUDRE
+    public function addComment(array $data): void
+    {
+        if ($data) {
+            if (isset($data['pseudo']) && !empty($data['pseudo'])
+             && isset($data['comment']) && !empty($data['comment'])
+             && isset($data['post_id']) && !empty($data['post_id'])
+             && isset($data['report']) && !empty($data['report'])) {
+                // On nettoie les données envoyées
+                $pseudo = strip_tags($data['pseudo']);
+                $comment = strip_tags($data['comment']);
+                $post_id = strip_tags($data['post_id']);
+                $report = strip_tags($data['report']);
+                $this->adminManager->newComment($pseudo, $comment, $post_id, $report);
+                $_SESSION['message'] = "Commentaire ajouté";
+                $this->database = null;
+                header('Location: index.php?action=readComments');
+                exit();
+            }
+            $_SESSION['erreur'] = "Le formulaire est incomplet";
+            $this->database = null;
+            $this->view->render(['template' => 'addcomment'], 'backoffice');
+        }
+        $this->view->render(['template' => 'addcomment'], 'backoffice');
+    }
+
+    public function approveComment($commentId): void
+    {
+        if (isset($commentId) && !empty($commentId)) {
+            // On nettoie l'id envoyé
+            //$id = strip_tags($_GET['id']);
+            $dataComment = $this->adminManager->showOneComment($commentId);
+            // On verifie si le commentaire existe
+            if (!$dataComment) {
+                $_SESSION['erreur'] = "Cet id n'existe pas";
+                $this->database = null;
+                header('Location: index.php?action=readComments');
+                exit();
+            }
+            $this->adminManager->approveComment($commentId);
+            $_SESSION['message'] = "Commentaire approuvé";
+            $this->database = null;
+            header('Location: index.php?action=readComments');
+            exit();
+        }
+        $_SESSION['erreur'] = "URL invalide";
+        $this->database = null;
+        header('Location: index.php?action=readComments');
+        exit();
+    }
+
+    public function deleteComment(int $commentId): void
+    {
+        if (isset($commentId) && !empty($commentId)) {
+            // On nettoie l'id envoyé
+            //$id = strip_tags($_GET['id']);
+            // Si commentaire avec id=20 , id = 20
+            $dataComment = $this->adminManager->getComments($commentId);
+            // Si commentaire avec id=20 , ligne ci dessous => id = 5
+            // Suppresion du comentaire avec l'id=5 et non voulu
+            //$dataComment = $this->adminManager->showOneComment($commentId);
+
+            // On verifie si le commentaire existe
+            if (!$dataComment) {
+                $_SESSION['erreur'] = "Cet id n'existe pas";
+                $this->database = null;
+                header('Location: index.php?action=readComments');
+                exit();
+            }
+            $dataComment = $this->adminManager->deleteComment($commentId);
+            $_SESSION['message'] = "Commentaire supprimé";
+            $this->database = null;
+            header('Location: index.php?action=readComments');
+            exit();
+            //$this->view->render(['template' => 'readComments', 'post' => $dataPost], 'backoffice');
+        }
+        $_SESSION['erreur'] = "URL invalide";
+        $this->database = null;
+        header('Location: index.php?action=readComments');
+        exit();
+    }
+
+    //echo '<pre>';
+    //var_dump($dataComment);
+    //printf($dataComment);
+    //echo '</pre>';
 }
