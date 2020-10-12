@@ -175,8 +175,8 @@ class AdminController
                 $this->adminManager->editPost($id, $chapter, $title, $introduction, $content, $author);
                 $_SESSION['message'] = "Épisode modifié";
                 $this->database = null;
-                header('Location: index.php?action=readEpisodes');
-                exit();
+                //header('Location: index.php?action=readEpisodes');
+                //exit();
             }
             $_SESSION['erreur'] = "Le formulaire est incomplet";
             $this->database = null;
