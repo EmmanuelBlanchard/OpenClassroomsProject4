@@ -251,21 +251,22 @@ class AdminController
             // On nettoie l'id envoyé
             //$id = strip_tags($_GET['id']);
             $dataComment = $this->adminManager->showOneComment($commentId);
+            //echo '<pre>';
+            //var_dump($dataComment);
+            //die();
+            //echo '</pre>';
             // On verifie si le commentaire existe
             if (!$dataComment) {
                 $_SESSION['erreur'] = "Cet id n'existe pas";
-                $this->database = null;
                 header('Location: index.php?action=readComments');
                 exit();
             }
             $this->adminManager->approveComment($commentId);
             $_SESSION['message'] = "Commentaire approuvé";
-            $this->database = null;
             header('Location: index.php?action=readComments');
             exit();
         }
         $_SESSION['erreur'] = "URL invalide";
-        $this->database = null;
         header('Location: index.php?action=readComments');
         exit();
     }
@@ -273,36 +274,26 @@ class AdminController
     public function deleteComment(int $commentId): void
     {
         if (isset($commentId) && !empty($commentId)) {
-            // On nettoie l'id envoyé
-            //$id = strip_tags($_GET['id']);
-            // Si commentaire avec id=20 , id = 20
-            $dataComment = $this->adminManager->getComments($commentId);
-            // Si commentaire avec id=20 , ligne ci dessous => id = 5
-            // Suppresion du comentaire avec l'id=5 et non voulu
-            //$dataComment = $this->adminManager->showOneComment($commentId);
-
+            $dataComment = $this->adminManager->showOneComment($commentId);
             // On verifie si le commentaire existe
             if (!$dataComment) {
                 $_SESSION['erreur'] = "Cet id n'existe pas";
-                $this->database = null;
                 header('Location: index.php?action=readComments');
                 exit();
             }
             $dataComment = $this->adminManager->deleteComment($commentId);
             $_SESSION['message'] = "Commentaire supprimé";
-            $this->database = null;
             header('Location: index.php?action=readComments');
             exit();
-            //$this->view->render(['template' => 'readComments', 'post' => $dataPost], 'backoffice');
         }
         $_SESSION['erreur'] = "URL invalide";
-        $this->database = null;
         header('Location: index.php?action=readComments');
         exit();
     }
 
     //echo '<pre>';
-    //var_dump($dataComment);
-    //printf($dataComment);
+    //var_dump($);
+    //die();
+    //printf($);
     //echo '</pre>';
 }

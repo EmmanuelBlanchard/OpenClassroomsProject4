@@ -142,8 +142,10 @@ class AdminManager
 
     public function approveComment($commentId): void
     {
+        //var_dump('Salut');
+        //die();
         //$request = $this->database->prepare('UPDATE `Comments` SET `report`=:report WHERE `id`=:id');
-        $request= $this->database->prepare('UPDATE `Comments` SET `report`=2 WHERE `id`=:id');
+        $request= $this->database->prepare('UPDATE comments SET report=2 WHERE id=:id');
         $request->bindValue('id', $commentId, \PDO::PARAM_INT);
         //$request->bindValue('report', 2, \PDO::PARAM_INT);
         $request->execute();
@@ -156,16 +158,12 @@ class AdminManager
         $request->execute();
     }
 
-    //ESSAI RESOLUTION PROBLEME ID N EXISTE PAS QUAND CLIQUE BOUTON APPROUVER
-    //Resolution ? dans le template readcomments, mettre $post['post_id']
-    // <td><a class="btn btn-primary" href="index.php?action=approveComment&id= $post['post_id'] ">Approuver</a></td>
-    public function showOneComment(int $postId)
+    public function showOneComment(int $id): ?array
     {   // Que mettre comme proprietes typées ?
-        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC');
-        $request->bindValue(':post_id', $postId, \PDO::PARAM_INT);
+        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE id=:id ORDER BY comment_date DESC');
+        $request->bindValue(':id', $id, \PDO::PARAM_INT);
         $request->execute();
-        //return $request->fetchAll();
-        //ESSAI puisque fetchall pas bon
-        return $request->fetch();
+        return $request->fetchAll();
+        //return $request->fetch();
     }
 }
