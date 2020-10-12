@@ -99,14 +99,14 @@
                                 <a class="ab-item" aria-haspopup="true" href="index.php?home">Blog de Jean Forteroche</a>
                             </li>
                             <li id="admin-bar-comments">
-                                <a class="ab-item" aria-haspopup="true" href="index.php?action=editComments">
+                                <a class="ab-item" aria-haspopup="true" href="index.php?action=readComments">
                                     <span class="ab-icon"></span>
                                     <span class="ab-label awaiting-mod pending-count count-0" aria-hidden="true">0</span>
                                     <span class="screen-reader-text comments-in-moderation-text">0 commentaire en modération</span>
                                 </a>
                             </li>
                             <li id="admin-bar-new-content">
-                                <a class="ab-item" aria-haspopup="true" href="index.php?action=postNew">
+                                <a class="ab-item" aria-haspopup="true" href="index.php?action=addEpisode">
                                     <span class="ab-icon"></span>
                                     <span class="ab-label">Créer</span>
                                 </a>
