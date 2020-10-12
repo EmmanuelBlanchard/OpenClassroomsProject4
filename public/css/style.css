@@ -175,6 +175,13 @@ p {
 .pDateComments {
     color: #F5F5F5;
 }
+.pApproveComments {
+ /*color: #33ff8a;*/
+ color: #33ff36;
+}
+.pReportComments, .pApproveComments {
+    font-weight: 900;
+}
 /* Mise en forme de l'affichage de publication d'un commentaire */
 .sectionPostComment {
     display: flex;

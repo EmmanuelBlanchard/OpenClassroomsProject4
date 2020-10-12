@@ -37,7 +37,7 @@ class Router
         $this->view = new View();
 
         // Injection des dépendances
-        $this->adminController = new AdminController($this->adminManager, $this->view);
+        $this->adminController = new AdminController($this->adminManager, $this->postManager, $this->commentManager, $this->view);
         $this->postController = new PostController($this->postManager, $this->commentManager, $this->view);
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
         
@@ -81,18 +81,6 @@ class Router
         } elseif ($action === 'blogControlPanel') {
             // route http://localhost:8000/?action=blogControlPanel
             $this->adminController->blogControlPanel();
-        } elseif ($action === 'blogControlPanelMyProfile') {
-            // route http://localhost:8000/?action=blogControlPanelMyProfile
-            $this->adminController->blogControlPanelMyProfile();
-        } elseif ($action === 'blogControlPanelListOfEpisodes') {
-            // route http://localhost:8000/?action=blogControlPanelListOfEpisodes
-            $this->adminController->blogControlPanelListOfEpisodes();
-        } elseif ($action === 'blogControlPanelCreateOfEpisode') {
-            // route http://localhost:8000/?action=blogControlPanelCreateOfEpisode
-            $this->adminController->blogControlPanelCreateOfEpisode();
-        } elseif ($action === 'blogControlPanelComments') {
-            // route http://localhost:8000/?action=blogControlPanelComments
-            $this->adminController->blogControlPanelComments();
         } elseif ($action === 'myProfile') {
             // route http://localhost:8000/?action=myProfile
             $this->adminController->myProfile();

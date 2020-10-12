@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Controller\Backoffice;
 
 use App\Model\AdminManager;
+use App\Model\CommentManager;
+use App\Model\PostManager;
 use App\View\View;
 
 if (!isset($_SESSION)) {
@@ -15,11 +17,15 @@ if (!isset($_SESSION)) {
 class AdminController
 {
     private AdminManager $adminManager;
+    private PostManager $postManager;
+    private CommentManager $commentManager;
     private View $view;
 
-    public function __construct(AdminManager $adminManager, View $view)
+    public function __construct(AdminManager $adminManager, PostManager $postManager, CommentManager $commentManager, View $view)
     {
         $this->adminManager = $adminManager;
+        $this->postManager = $postManager;
+        $this->commentManager = $commentManager;
         $this->view = $view;
     }
 
@@ -45,30 +51,6 @@ class AdminController
         $this->view->render(['template' => 'blogcontrolpanelpage'], 'backoffice');
     }
     
-    public function blogControlPanelMyProfile():void
-    {
-        $this->view->render(['template' => 'blogcontrolpanelmyprofilepage'], 'backoffice');
-    }
-
-    public function blogControlPanelListOfEpisodes():void
-    {
-        $data = $this->adminManager->showAllPosts();
-        
-        $this->view->render(['template' => 'blogcontrolpanellistofepisodespage', 'allposts' => $data], 'backoffice');
-    }
-
-    public function blogControlPanelCreateOfEpisode():void
-    {
-        $this->view->render(['template' => 'blogcontrolpanelcreateofepisodepage'], 'backoffice');
-    }
-
-    public function blogControlPanelComments():void
-    {
-        $dataComments = $this->adminManager->showAllComment();
-
-        $this->view->render(['template' => 'blogcontrolpanelcommentspage', 'allcomment' => $dataComments], 'backoffice');
-    }
-
     public function myProfile(): void
     {
         $this->view->render(['template' => 'myprofile'], 'backoffice');
@@ -76,12 +58,11 @@ class AdminController
 
     public function readEpisodes(): void
     {   // Affichage Liste des épisodes par id DESC => 3,2,1
-        $data = $this->adminManager->showAllPostsByIdDesc();
+        $data = $this->postManager->showAllPostsByIdDesc();
         // Affichage Liste des épisodes par id ASC => 1,2,3
         //$data = $this->adminManager->showAllPostsById();
         // Affichage Liste des épisodes par post_date
         //$data = $this->adminManager->showAllPost();
-
         $this->view->render(['template' => 'readepisodes', 'allpost' => $data], 'backoffice');
     }
     // Reflexion suppresion de l'input date
@@ -91,20 +72,16 @@ class AdminController
     public function detailEpisode(int $postId): void
     {
         if (isset($postId) && !empty($postId)) {
-            // On nettoie l'id envoyé
-            //$id = strip_tags($_GET['id']);
-            $dataPost = $this->adminManager->showOnePost($postId);
+            $dataPost = $this->postManager->showOnePost($postId);
             // On verifie si le post existe
             if (!$dataPost) {
                 $_SESSION['erreur'] = "Cet id n'existe pas";
-                $this->database = null;
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
             $this->view->render(['template' => 'detailepisode', 'post' => $dataPost], 'backoffice');
         } else {
             $_SESSION['erreur'] = "URL invalide";
-            $this->database = null;
             header('Location: index.php?action=readEpisodes');
             exit();
         }
@@ -124,14 +101,12 @@ class AdminController
                 $introduction = strip_tags($data['introduction']);
                 $content = strip_tags($data['content']);
                 $author = strip_tags($data['author']);
-                $this->adminManager->newPost($chapter, $title, $introduction, $content, $author);
+                $this->postManager->newPost($chapter, $title, $introduction, $content, $author);
                 $_SESSION['message'] = "Épisode ajouté";
-                $this->database = null;
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
             $_SESSION['erreur'] = "Le formulaire est incomplet";
-            $this->database = null;
             $this->view->render(['template' => 'addepisode'], 'backoffice');
         }
         $this->view->render(['template' => 'addepisode'], 'backoffice');
@@ -142,18 +117,16 @@ class AdminController
         if (isset($postId) && !empty($postId)) {
             // On nettoie l'id envoyé
             //$id = strip_tags($_GET['id']);
-            $dataPost = $this->adminManager->showOnePost($postId);
+            $dataPost = $this->postManager->showOnePost($postId);
             // On verifie si le post existe
             if (!$dataPost) {
                 $_SESSION['erreur'] = "Cet id n'existe pas";
-                $this->database = null;
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
             $this->view->render(['template' => 'editepisode', 'post' => $dataPost], 'backoffice');
         } else {
             $_SESSION['erreur'] = "URL invalide";
-            $this->database = null;
             header('Location: index.php?action=readEpisodes');
             exit();
         }
@@ -172,18 +145,13 @@ class AdminController
                 $introduction = strip_tags($data['introduction']);
                 $content = strip_tags($data['content']);
                 $author = strip_tags($data['author']);
-                $this->adminManager->editPost($id, $chapter, $title, $introduction, $content, $author);
+                $this->postManager->editPost($id, $chapter, $title, $introduction, $content, $author);
                 $_SESSION['message'] = "Épisode modifié";
-                $this->database = null;
+                // Cannot modify header information - headers already sent by
                 //header('Location: index.php?action=readEpisodes');
                 //exit();
             }
             $_SESSION['erreur'] = "Le formulaire est incomplet";
-            $this->database = null;
-            $this->view->render(['template' => 'editepisode'], 'backoffice');
-            
-            $_SESSION['erreur'] = "Le formulaire est incomplet";
-            $this->database = null;
             $this->view->render(['template' => 'editepisode'], 'backoffice');
         }
         $this->view->render(['template' => 'editepisode'], 'backoffice');
@@ -192,34 +160,29 @@ class AdminController
     public function deleteEpisode(int $postId): void
     {
         if (isset($postId) && !empty($postId)) {
-            // On nettoie l'id envoyé
-            //$id = strip_tags($_GET['id']);
-            $dataPost = $this->adminManager->showOnePost($postId);
+            $dataPost = $this->postManager->showOnePost($postId);
             // On verifie si le post existe
             if (!$dataPost) {
                 $_SESSION['erreur'] = "Cet id n'existe pas";
-                $this->database = null;
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
-            $this->adminManager->deletePost($postId);
+            $this->postManager->deletePost($postId);
             $_SESSION['message'] = "Épisode supprimé";
-            $this->database = null;
             header('Location: index.php?action=readEpisodes');
             exit();
         }
         $_SESSION['erreur'] = "URL invalide";
-        $this->database = null;
         header('Location: index.php?action=readEpisodes');
         exit();
     }
 
     public function readComments(): void
     {
-        $dataComments = $this->adminManager->showAllComment();
+        $dataComments = $this->commentManager->showAllComment();
         $this->view->render(['template' => 'readcomments', 'allcomment' => $dataComments], 'backoffice');
     }
-    // A RESOUDRE
+    // A RESOUDRE, marque que le formulaire est incomplet malgré le remplissage de tous les champs
     public function addComment(array $data): void
     {
         if ($data) {
@@ -232,14 +195,12 @@ class AdminController
                 $comment = strip_tags($data['comment']);
                 $post_id = strip_tags($data['post_id']);
                 $report = strip_tags($data['report']);
-                $this->adminManager->newComment($pseudo, $comment, $post_id, $report);
+                $this->commentManager->newComment($pseudo, $comment, $post_id, $report);
                 $_SESSION['message'] = "Commentaire ajouté";
-                $this->database = null;
                 header('Location: index.php?action=readComments');
                 exit();
             }
             $_SESSION['erreur'] = "Le formulaire est incomplet";
-            $this->database = null;
             $this->view->render(['template' => 'addcomment'], 'backoffice');
         }
         $this->view->render(['template' => 'addcomment'], 'backoffice');
@@ -248,20 +209,14 @@ class AdminController
     public function approveComment($commentId): void
     {
         if (isset($commentId) && !empty($commentId)) {
-            // On nettoie l'id envoyé
-            //$id = strip_tags($_GET['id']);
-            $dataComment = $this->adminManager->showOneComment($commentId);
-            //echo '<pre>';
-            //var_dump($dataComment);
-            //die();
-            //echo '</pre>';
+            $dataComment = $this->commentManager->showOneComment($commentId);
             // On verifie si le commentaire existe
             if (!$dataComment) {
                 $_SESSION['erreur'] = "Cet id n'existe pas";
                 header('Location: index.php?action=readComments');
                 exit();
             }
-            $this->adminManager->approveComment($commentId);
+            $this->commentManager->approveComment($commentId);
             $_SESSION['message'] = "Commentaire approuvé";
             header('Location: index.php?action=readComments');
             exit();
@@ -274,14 +229,14 @@ class AdminController
     public function deleteComment(int $commentId): void
     {
         if (isset($commentId) && !empty($commentId)) {
-            $dataComment = $this->adminManager->showOneComment($commentId);
+            $dataComment = $this->commentManager->showOneComment($commentId);
             // On verifie si le commentaire existe
             if (!$dataComment) {
                 $_SESSION['erreur'] = "Cet id n'existe pas";
                 header('Location: index.php?action=readComments');
                 exit();
             }
-            $dataComment = $this->adminManager->deleteComment($commentId);
+            $dataComment = $this->commentManager->deleteComment($commentId);
             $_SESSION['message'] = "Commentaire supprimé";
             header('Location: index.php?action=readComments');
             exit();
@@ -290,10 +245,4 @@ class AdminController
         header('Location: index.php?action=readComments');
         exit();
     }
-
-    //echo '<pre>';
-    //var_dump($);
-    //die();
-    //printf($);
-    //echo '</pre>';
 }

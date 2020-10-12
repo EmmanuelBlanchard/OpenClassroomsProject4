@@ -33,12 +33,13 @@
                     <h5>Commentaire de </h5>
                     <p class="pPseudoComments"><?=$post['pseudo']?></p>
                     <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
-                    <p>Ce commentaire a été signalé</p>
+                    <p class="pReportComments">Ce commentaire a été signalé</p>
                 <?php elseif ((int)$post['report']===2): ?>
                     <h5>Commentaire de </h5>
                     <p class="pPseudoComments"><?=$post['pseudo']?></p>
                     <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
-                    <p><?=$post['comment']?> <br> Ce commentaire a été approuvé <p>
+                    <p><?=$post['comment']?><p>
+                    <p class="pApproveComments">Ce commentaire a été approuvé</p>
                 <?php else: ?>
                     <h5>Commentaire de </h5>
                     <p class="pPseudoComments"><?=$post['pseudo']?></p>

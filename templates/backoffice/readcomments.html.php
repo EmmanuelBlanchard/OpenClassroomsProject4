@@ -34,7 +34,7 @@
                     <th>Envoyé le</th>
                     <th>Approuver</th>
                     <th>Supprimer</th>
-                    <th>Actions</th>
+                    <th>Ajouter</th>
                 </thead>
                 <tbody>
                     <?php foreach($data['allcomment'] as $post): ?>
@@ -45,10 +45,7 @@
                             <td><?=$post['comment_date']?></td>
                             <td><a class="btn btn-primary" href="index.php?action=approveComment&id=<?=$post['id']?>">Approuver</a></td>
                             <td><a class="btn btn-primary" href="index.php?action=deleteComment&id=<?=$post['id']?>">Supprimer</a></td>
-                            <td><a class="btn btn-primary" href="index.php?action=addComment">Ajouter</a><hr>
-                            <a class="btn btn-primary" href="index.php?action=approveComment&id=<?=$post['id']?>">Approuver</a><hr>
-                            <a class="btn btn-primary" href="index.php?action=deleteComment&id=<?=$post['id']?>">Supprimer</a><hr>
-                            <a class="btn btn-primary" href="index.php?action=addComment">Ajouter</a>
+                            <td><a class="btn btn-primary" href="index.php?action=addComment">Ajouter</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
