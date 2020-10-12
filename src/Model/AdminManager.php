@@ -143,7 +143,7 @@ class AdminManager
     public function approveComment($commentId): void
     {
         //$request = $this->database->prepare('UPDATE `Comments` SET `report`=:report WHERE `id`=:id');
-        $request= $this->database->prepare('UPDATE `Comments` SET `report`=2 WHERE id=:id');
+        $request= $this->database->prepare('UPDATE `Comments` SET `report`=2 WHERE `id`=:id');
         $request->bindValue('id', $commentId, \PDO::PARAM_INT);
         //$request->bindValue('report', 2, \PDO::PARAM_INT);
         $request->execute();
