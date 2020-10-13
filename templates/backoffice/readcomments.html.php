@@ -26,9 +26,12 @@
                 } 
             ?>
             <h1>Liste des commentaires</h1>
+            <a class="btn btn-primary" href="index.php?action=reportedComments">Commentaires signalés</a>
+            <a class="btn btn-primary" href="index.php?action=approvedComments">Commentaires approuvés</a>
             <table class="table">
                 <thead>
                     <th>ID</th>
+                    <th>Episode</th>
                     <th>Auteur</th>
                     <th>Commentaire</th>
                     <th>Envoyé le</th>
@@ -40,6 +43,7 @@
                     <?php foreach($data['allcomment'] as $post): ?>
                         <tr>
                             <td><?=$post['id']?></td>
+                            <td><?=$post['post_id']?></td>
                             <td><?=$post['pseudo']?></td>
                             <td><?=$post['comment']?></td>
                             <td><?=$post['comment_date']?></td>

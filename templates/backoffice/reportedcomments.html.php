@@ -29,6 +29,7 @@
             <table class="table">
                 <thead>
                     <th>ID</th>
+                    <th>Episode</th>
                     <th>Pseudo</th>
                     <th>Commentaire</th>
                     <th>Envoyé le</th>
@@ -39,6 +40,7 @@
                     <?php foreach($data['allreportedcomment'] as $post): ?>
                         <tr>
                             <td><?=$post['id']?></td>
+                            <td><?=$post['post_id']?></td>
                             <td><?=$post['pseudo']?></td>
                             <td><?=$post['comment']?></td>
                             <td><?=$post['comment_date']?></td>

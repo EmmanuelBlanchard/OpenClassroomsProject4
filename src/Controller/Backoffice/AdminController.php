@@ -241,7 +241,7 @@ class AdminController
             }
             $this->commentManager->approveComment($commentId);
             $_SESSION['message'] = "Commentaire approuvé";
-            header('Location: index.php?action=readComments');
+            header('Location: index.php?action=reportedComments');
             exit();
         }
         $_SESSION['erreur'] = "URL invalide";
