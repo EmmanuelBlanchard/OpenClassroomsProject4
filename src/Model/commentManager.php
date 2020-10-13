@@ -55,6 +55,12 @@ class CommentManager
             ]);
     }
     
+    public function reportedComment(int $commentId): bool
+    {
+        $request = $this->database->prepare('UPDATE Comments SET reported=1 WHERE id=:id');
+        return $request->execute(['id' => $commentId]);
+    }
+
     /*************************************************************************/
 
     public function showAllComment(): ?array

@@ -33,6 +33,14 @@ class CommentController
         exit();
     }
     
+    public function reported(int $commentId, int $postId): void
+    {
+        $this->commentManager->reportedComment($commentId);
+
+        header('Location: index.php?action=detailOfPost&commentid=' .$commentId . '&id=' .$postId);
+        exit();
+    }
+
     // Essai en cas d'erreur, route vers la page d'erreur
     public function error(int $postId): void
     {
