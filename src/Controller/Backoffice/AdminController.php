@@ -182,6 +182,29 @@ class AdminController
         $dataComments = $this->commentManager->showAllComment();
         $this->view->render(['template' => 'readcomments', 'allcomment' => $dataComments], 'backoffice');
     }
+    
+    public function reportedComments(): void
+    {
+        //echo '<pre>';
+        //var_dump($report);
+        //die();
+        //echo '</pre>';
+        // int(1)
+        $dataReportedComments = $this->commentManager->showAllReportedComment();
+        
+        //echo '<pre>';
+        //var_dump($dataReportedComments);
+        //die();
+        //echo '</pre>';
+        $this->view->render(['template' => 'reportedcomments', 'allreportedcomment' => $dataReportedComments], 'backoffice');
+    }
+
+    public function approvedComments(): void
+    {
+        $dataApprovedComments = $this->commentManager->showAllApprovedComment();
+        $this->view->render(['template' => 'approvedcomments', 'allapprovedcomment' => $dataApprovedComments], 'backoffice');
+    }
+
     // A RESOUDRE, marque que le formulaire est incomplet malgré le remplissage de tous les champs
     public function addComment(array $data): void
     {
@@ -189,13 +212,13 @@ class AdminController
             if (isset($data['pseudo']) && !empty($data['pseudo'])
              && isset($data['comment']) && !empty($data['comment'])
              && isset($data['post_id']) && !empty($data['post_id'])
-             && isset($data['report']) && !empty($data['report'])) {
+             && isset($data['reported']) && !empty($data['reported'])) {
                 // On nettoie les données envoyées
                 $pseudo = strip_tags($data['pseudo']);
                 $comment = strip_tags($data['comment']);
                 $post_id = strip_tags($data['post_id']);
-                $report = strip_tags($data['report']);
-                $this->commentManager->newComment($pseudo, $comment, $post_id, $report);
+                $reported = strip_tags($data['reported']);
+                $this->commentManager->newComment($pseudo, $comment, $post_id, $reported);
                 $_SESSION['message'] = "Commentaire ajouté";
                 header('Location: index.php?action=readComments');
                 exit();

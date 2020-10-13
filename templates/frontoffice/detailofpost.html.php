@@ -29,12 +29,12 @@
             <h4 class="sectionH4TitleComments">Commentaires</h4>
             <?php foreach($data['allcomment'] as $post): ?>
             <article>        
-                <?php if ((int)$post['report']===1): ?>
+                <?php if ((int)$post['reported']===1): ?>
                     <h5>Commentaire de </h5>
                     <p class="pPseudoComments"><?=$post['pseudo']?></p>
                     <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
                     <p class="pReportComments">Ce commentaire a été signalé</p>
-                <?php elseif ((int)$post['report']===2): ?>
+                <?php elseif ((int)$post['approved']===1): ?>
                     <h5>Commentaire de </h5>
                     <p class="pPseudoComments"><?=$post['pseudo']?></p>
                     <p class="pDateComments"><?=$post['comment_date_fr']?> </p>

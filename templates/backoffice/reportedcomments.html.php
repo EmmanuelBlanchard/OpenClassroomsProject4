@@ -25,27 +25,26 @@
                         $_SESSION['message'] = "";
                 } 
             ?>
-            <h1>Liste des commentaires</h1>
+            <h1>Liste des commentaires signalés</h1>
             <table class="table">
                 <thead>
                     <th>ID</th>
-                    <th>Auteur</th>
+                    <th>Pseudo</th>
                     <th>Commentaire</th>
                     <th>Envoyé le</th>
-                    <th>Signalé</th>
-                    <th>Approuvé</th>
+                    <th>Approuver</th>
                     <th>Supprimer</th>
                 </thead>
                 <tbody>
-                    <?php foreach($data['allcomment'] as $post): ?>
+                    <?php foreach($data['allreportedcomment'] as $post): ?>
                         <tr>
                             <td><?=$post['id']?></td>
                             <td><?=$post['pseudo']?></td>
                             <td><?=$post['comment']?></td>
                             <td><?=$post['comment_date']?></td>
-                            <td><?php if ((int)$post['reported']===1): ?> Oui <?php else: ?> Non <?php endif; ?></td>
-                            <td><?php if ((int)$post['approved']===1): ?> Oui <?php else: ?> Non <?php endif; ?></td>
+                            <td><a class="btn btn-primary" href="index.php?action=approveComment&id=<?=$post['id']?>">Approuver</a></td>
                             <td><a class="btn btn-primary" href="index.php?action=deleteComment&id=<?=$post['id']?>">Supprimer</a></td>
+                            
                             </td>
                         </tr>
                     <?php endforeach; ?>

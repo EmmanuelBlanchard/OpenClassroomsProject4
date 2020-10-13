@@ -20,7 +20,7 @@ class CommentManager
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
         
-        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, reported, approved FROM Comments WHERE post_id=:post_id ORDER BY comment_date DESC');
         $request->bindValue(':post_id', $postId, \PDO::PARAM_INT);
         $request->execute();
         return $request->fetchAll();
@@ -55,73 +55,61 @@ class CommentManager
             ]);
     }
     
-    public function updateComment(int $commentId): bool
-    {
-        $request = $this->database->prepare('UPDATE Comments SET comment="Ce message a été supprimé par l\'administrateur", report=2 WHERE id=:id');
-        $request->execute(['id' => $commentId]);
-        return $request;
-    }
-
-    public function validateComment(int $commentId): bool
-    {
-        $request= $this->database->prepare('UPDATE Comments SET report=2 WHERE id=:id');
-        $request->execute(['id'=> $commentId]);
-        return $request;
-    }
-
-    public function reportComment(int $commentId): bool
-    {
-        $request = $this->database->prepare('UPDATE Comments SET report=1 WHERE id=:id');
-        return $request->execute(['id' => $commentId]);
-    }
-
-    public function reportList(): bool
-    {
-        $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
-        $request->execute();
-        
-        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_created_the, \'%e %M %Y à %H:%i\') AS date_comment_created_the, episode_id FROM Comments WHERE report= "1"');
-        $request->execute();
-        return $request;
-    }
-
     /*************************************************************************/
 
     public function showAllComment(): ?array
     {
-        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM Comments ORDER BY comment_date DESC');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id, reported, approved FROM Comments ORDER BY comment_date DESC');
         $request->execute();
         return $request->fetchAll();
     }
 
-    // Probleme si int post_id et report pour AdminController.php
-    public function newComment(string $pseudo, string $comment, string $post_id, string $report): void
+    public function showAllReportedComment()
     {
-        $request = $this->database->prepare('INSERT INTO `Comments` (pseudo, comment, post_id, report, post_date) VALUES (:pseudo, :comment, :post_id, :report, NOW())');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM Comments WHERE reported=1 ORDER BY comment_date DESC');
+        $request->execute();
+        return $request->fetchAll();
+    }
+
+    public function showAllApprovedComment()
+    {
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM Comments WHERE approved=1 ORDER BY comment_date DESC');
+        $request->execute();
+        return $request->fetchAll();
+    }
+
+    // Probleme si int post_id et reported pour AdminController.php
+    public function newComment(string $pseudo, string $comment, string $post_id, string $reported): void
+    {
+        $request = $this->database->prepare('INSERT INTO `Comments` (pseudo, comment, post_id, reported, post_date) VALUES (:pseudo, :comment, :post_id, :reported, NOW())');
         $request->bindValue('pseudo', $pseudo, \PDO::PARAM_STR);
         $request->bindValue('comment', $comment, \PDO::PARAM_STR);
         $request->bindValue('post_id', $post_id, \PDO::PARAM_INT);
-        $request->bindValue('report', $report, \PDO::PARAM_INT);
+        $request->bindValue('reported', $reported, \PDO::PARAM_INT);
         $request->execute();
     }
 
     public function approveComment($commentId): void
     {
-        $request= $this->database->prepare('UPDATE comments SET report=2 WHERE id=:id');
+        $request= $this->database->prepare('UPDATE comments SET reported=0 WHERE id=:id');
+        $request->bindValue('id', $commentId, \PDO::PARAM_INT);
+        $request->execute();
+
+        $request= $this->database->prepare('UPDATE comments SET approved=1 WHERE id=:id');
         $request->bindValue('id', $commentId, \PDO::PARAM_INT);
         $request->execute();
     }
 
     public function deleteComment(int $commentId): void
     {
-        $request = $this->database->prepare('DELETE FROM `Comments` WHERE `id`=:id');
+        $request = $this->database->prepare('DELETE FROM Comments WHERE id=:id');
         $request->bindValue(':id', $commentId, \PDO::PARAM_INT);
         $request->execute();
     }
 
     public function showOneComment(int $id): ?array
     {
-        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, report FROM Comments WHERE id=:id ORDER BY comment_date DESC');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, reported, approved FROM Comments WHERE id=:id ORDER BY comment_date DESC');
         $request->bindValue(':id', $id, \PDO::PARAM_INT);
         $request->execute();
         return $request->fetchAll();

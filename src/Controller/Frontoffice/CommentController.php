@@ -32,15 +32,7 @@ class CommentController
         header('Location: index.php?action=detailOfPost&id='.$postId);
         exit();
     }
-
-    public function report(int $commentId, int $postId): void
-    {
-        $this->commentManager->reportComment($commentId);
-
-        header('Location: index.php?action=detailOfPost&commentid=' .$commentId . '&id=' .$postId);
-        exit();
-    }
-
+    
     // Essai en cas d'erreur, route vers la page d'erreur
     public function error(int $postId): void
     {
