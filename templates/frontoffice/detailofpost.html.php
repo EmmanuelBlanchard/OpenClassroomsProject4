@@ -46,7 +46,7 @@
                     <p class="pDateComments"><?=$post['comment_date_fr']?> </p>
                     <p><?=$post['comment']?><p>
                     <div class="buttonReport">
-                        <a href="index.php?action=report&amp;commentid=<?=$post['id']?>&amp;id=<?=$post['post_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
+                        <a href="index.php?action=reported&amp;commentid=<?=$post['id']?>&amp;id=<?=$post['post_id']?>" class="linkToTheReportOfThePostComment">Signaler</a>
                     </div>
                 <?php endif; ?>
             </article>
