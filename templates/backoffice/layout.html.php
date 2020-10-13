@@ -70,13 +70,13 @@
                             </a>
                         </li>
                         <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
-                            <a href="index.php?action=" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
+                            <a href="index.php?action=reportedComments" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
                                 <div class="menu-image"></div>       
                                 <div class="menu-name">Commentaires signalés</div>
                             </a>
                         </li>
                         <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
-                            <a href="index.php?action=" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
+                            <a href="index.php?action=approvedComments" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
                                 <div class="menu-image"></div>       
                                 <div class="menu-name">Commentaires approuvés</div>
                             </a>
