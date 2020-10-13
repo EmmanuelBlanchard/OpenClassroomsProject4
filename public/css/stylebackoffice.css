@@ -764,15 +764,6 @@ button, input, optgroup, select, textarea {
 textarea.form-control {
 	height: auto;
 }
-
-
-
-
-
-
-
-
-
 /* _forms.scss:185 */
 .form-group {
 	margin-bottom: 1rem;
@@ -860,7 +851,6 @@ a:hover {
 	background-color: #0069d9;
 	border-color: #0062cc;
 }
-
 /* _grid.scss:20 */
 @media all and (min-width: 576px) {
 	.container, .container-sm {
