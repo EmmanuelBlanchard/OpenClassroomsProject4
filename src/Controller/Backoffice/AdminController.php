@@ -177,6 +177,11 @@ class AdminController
         exit();
     }
 
+    public function comments(): void
+    {
+        $this->view->render(['template' => 'comments'], 'backoffice');
+    }
+
     public function readComments(): void
     {
         $dataComments = $this->commentManager->showAllComment();
@@ -185,17 +190,7 @@ class AdminController
     
     public function reportedComments(): void
     {
-        //echo '<pre>';
-        //var_dump($report);
-        //die();
-        //echo '</pre>';
-        // int(1)
         $dataReportedComments = $this->commentManager->showAllReportedComment();
-        
-        //echo '<pre>';
-        //var_dump($dataReportedComments);
-        //die();
-        //echo '</pre>';
         $this->view->render(['template' => 'reportedcomments', 'allreportedcomment' => $dataReportedComments], 'backoffice');
     }
 

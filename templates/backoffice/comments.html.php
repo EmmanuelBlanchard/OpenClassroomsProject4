@@ -25,32 +25,24 @@
                         $_SESSION['message'] = "";
                 } 
             ?>
-            <h1>Liste des commentaires</h1>
+            <h1>Commentaires</h1>
+            
             <table class="table">
                 <thead>
-                    <th>ID</th>
-                    <th>Episode</th>
-                    <th>Auteur</th>
-                    <th>Commentaire</th>
-                    <th>Envoyé le</th>
-                    <th>Signalé</th>
-                    <th>Approuvé</th>
-                    <th>Supprimer</th>
+                    <th>Actions</th>
                 </thead>
                 <tbody>
-                    <?php foreach($data['allcomment'] as $post): ?>
                         <tr>
-                            <td><?=$post['id']?></td>
-                            <td><?=$post['post_id']?></td>
-                            <td><?=$post['pseudo']?></td>
-                            <td><?=$post['comment']?></td>
-                            <td><?=$post['comment_date']?></td>
-                            <td><?php if ((int)$post['reported']===1): ?> Oui <?php else: ?> Non <?php endif; ?></td>
-                            <td><?php if ((int)$post['approved']===1): ?> Oui <?php else: ?> Non <?php endif; ?></td>
-                            <td><a class="btn btn-primary" href="index.php?action=deleteComment&id=<?=$post['id']?>">Supprimer</a></td>
+                            <td>
+                                <a class="btn btn-primary" href="index.php?action=readComments">Liste des commentaires</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="index.php?action=reportedComments">Liste des commentaires signalés</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="index.php?action=approvedComments">Liste des Commentaires approuvés</a>
                             </td>
                         </tr>
-                    <?php endforeach; ?>
                 </tbody>
             </table>
                 <a class="btn btn-primary" href="index.php?action=blogControlPanel">Retour</a>
