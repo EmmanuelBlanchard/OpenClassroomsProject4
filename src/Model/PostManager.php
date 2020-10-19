@@ -6,6 +6,11 @@ namespace App\Model;
 
 use App\Service\Database;
 
+if (!isset($_SESSION)) {
+    // On demarre la session
+    session_start();
+}
+
 class PostManager
 {
     private $database;

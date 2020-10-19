@@ -352,6 +352,19 @@ footer p {
     text-align: center;
     font-family: 'merienda_oneregular', Arial, sans-serif, serif;
 }
+/* error message */
+/* _alert.scss:48 */
+.alert-danger {
+	color: #721c24;
+	background-color: #f8d7da;
+    border-color: #f5c6cb;
+    text-align: center;
+}
+.alert-success {
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+}
 /* Mobile menu */
 .menu {
     display: flex;

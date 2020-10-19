@@ -1,3 +1,10 @@
+<?php
+    if(!isset($_SESSION)) 
+    {
+        // On demarre la session
+        session_start();
+    } 
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>

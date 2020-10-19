@@ -8,6 +8,11 @@ use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\View\View;
 
+if (!isset($_SESSION)) {
+    // On demarre la session
+    session_start();
+}
+
 class PostController
 {
     private PostManager $postManager;
@@ -28,14 +33,17 @@ class PostController
         $this->view->render(['template' => 'home', 'allposts' => $data], 'frontoffice');
     }
 
-    public function displayListOfPosts($currentPage): void
+    public function displayListOfPosts(int $currentPage): void
     {
         $nbPostsPerPage = 5;
         $nbTotalPosts = $this->postManager->getNbPosts();
         $nbTotalPages = ceil($nbTotalPosts / $nbPostsPerPage);
         
         if ($currentPage>$nbTotalPages) {
-            $currentPage=$nbTotalPages;
+            $_SESSION['erreur'] = "Cette page n'existe pas";
+            $currentPage= $nbTotalPages;
+            header('Location: index.php?action=listOfPosts&page=' .$currentPage . '');
+            exit();
         } elseif ($currentPage<=0) {
             $currentPage=1;
         }
