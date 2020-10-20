@@ -45,8 +45,7 @@
                             <td><?=date("d/m/Y", strtotime($post['post_date']));?></td>
                             <td><?=$post['introduction']?></td>
                             <td><?=$post['author']?></td>
-                            <td><a class="btn btn-primary" href="index.php?action=addEpisode">Ajouter</a><hr>
-                            <a class="btn btn-primary" href="index.php?action=detailEpisode&id=<?=$post['id']?>">Voir</a><hr>
+                            <td><a class="btn btn-primary" href="index.php?action=detailEpisode&id=<?=$post['id']?>">Voir</a><hr>
                             <a class="btn btn-primary" href="index.php?action=editEpisode&id=<?=$post['id']?>">Modifier</a><hr>
                             <a class="btn btn-primary" href="index.php?action=deleteEpisode&id=<?=$post['id']?>">Supprimer</a>
                             </td>
