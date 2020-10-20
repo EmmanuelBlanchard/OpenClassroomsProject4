@@ -36,12 +36,12 @@
                     <input id="chapter" class="form-control" name="chapter" type="number" value="" size="30" maxlength="245">
                 </div>
                 <div class="form-group">
-                    <label for="content">Contenu de l'épisode <span>(obligatoire)</span> </label>
-                    <textarea class="form-control" id="content" name="content" value="" size="30" maxlength="2000"></textarea>
-                </div>
-                <div class="form-group">
                     <label for="introduction">Introduction de l'épisode <span>(obligatoire)</span> </label>
                     <textarea id="introduction" name="introduction" value="" size="30" maxlength="245" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="content">Contenu de l'épisode <span>(obligatoire)</span> </label>
+                    <textarea class="form-control" id="content" name="content" value="" size="30" maxlength="2000"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="author">Auteur <span>(obligatoire)</span> </label>
