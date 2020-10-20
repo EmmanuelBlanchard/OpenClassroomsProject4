@@ -41,12 +41,12 @@
                             <input id="chapter" class="form-control" name="chapter" type="number" value="<?=$data['post']['chapter']?>" size="30" maxlength="245">
                         </div>
                         <div class="form-group">
-                            <label for="content">Contenu de l'épisode <span>(obligatoire)</span> </label>
-                            <textarea class="form-control" id="content" name="content" size="30" maxlength="2000"><?=$data['post']['content']?></textarea>
-                        </div>
-                        <div class="form-group">
                             <label for="introduction">Introduction de l'épisode <span>(obligatoire)</span> </label>
                             <textarea id="introduction" name="introduction" size="30" maxlength="245" class="form-control"><?=$data['post']['introduction']?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Contenu de l'épisode <span>(obligatoire)</span> </label>
+                            <textarea class="form-control" id="content" name="content" size="30" maxlength="2000"><?=$data['post']['content']?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="author">Auteur <span>(obligatoire)</span> </label>
