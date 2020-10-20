@@ -44,6 +44,12 @@
                             </a>
                         </li>
                         <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
+                            <a href="index.php?action=addEpisode" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
+                                <div class="menu-image"></div>
+                                <div class="menu-name">Ajouter un épisode</div>
+                            </a>
+                        </li>
+                        <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
                             <a href="index.php?action=comments" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
                                 <div class="menu-image"></div>
                                 <div class="menu-name">Commentaires</div>
