@@ -22,7 +22,7 @@
         <!-- Appel de la feuille de style -->
         <link rel="stylesheet" type="text/css" href="css/stylebackoffice.css">
         <script src="js/tinymce.min.js"></script>
-        <script>tinymce.init({ selector:'textarea' });</script>
+        <script>tinymce.init({ selector:'textarea', language: 'fr_FR' });</script>
     </head>
 
     <body class="sticky-menu">
