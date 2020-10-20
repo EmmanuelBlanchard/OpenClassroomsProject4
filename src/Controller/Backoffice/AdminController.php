@@ -113,8 +113,6 @@ class AdminController
     public function editEpisode(int $postId, array $data): void
     {
         if (isset($postId) && !empty($postId)) {
-            // On nettoie l'id envoyé
-            //$id = strip_tags($_GET['id']);
             $dataPost = $this->postManager->showOnePost($postId);
             // On verifie si le post existe
             if (!$dataPost) {
@@ -145,6 +143,8 @@ class AdminController
                 $author = strip_tags($data['author']);
                 $this->postManager->editPost($id, $chapter, $title, $introduction, $content, $author);
                 $_SESSION['message'] = "Épisode modifié";
+                // Apres avoir modifié l'episode, redirection impossible
+                //vers la page Liste des episodes
                 // Cannot modify header information - headers already sent by
                 //header('Location: index.php?action=readEpisodes');
                 //exit();

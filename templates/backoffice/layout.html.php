@@ -21,6 +21,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Appel de la feuille de style -->
         <link rel="stylesheet" type="text/css" href="css/stylebackoffice.css">
+        <script src="js/tinymce.min.js"></script>
+        <script>tinymce.init({ selector:'textarea' });</script>
     </head>
 
     <body class="sticky-menu">
