@@ -59,16 +59,14 @@ class AdminController
     public function readEpisodes(): void
     {   // Affichage Liste des épisodes par id DESC => 3,2,1
         $data = $this->postManager->showAllPostsByIdDesc();
+
         // Affichage Liste des épisodes par id ASC => 1,2,3
         //$data = $this->adminManager->showAllPostsById();
         // Affichage Liste des épisodes par post_date
         //$data = $this->adminManager->showAllPost();
         $this->view->render(['template' => 'readepisodes', 'allpost' => $data], 'backoffice');
     }
-    // Reflexion suppresion de l'input date
-    // puisqu'il y a un probleme d'insertion dans la base de données
-    // recupere type date or insertion dans la base de donnees => format datetime
-    // provisoire, suppression de l input type="date" et mettre NOW() ? dans VALUES ?
+    
     public function detailEpisode(int $postId): void
     {
         if (isset($postId) && !empty($postId)) {
