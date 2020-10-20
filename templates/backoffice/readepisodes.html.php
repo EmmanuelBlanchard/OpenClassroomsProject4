@@ -43,7 +43,6 @@
                             <td><?=$post['chapter']?></td>
                             <td><?=$post['title']?></td>
                             <td><?=date("d/m/Y", strtotime($post['post_date']));?></td>
-                            <!-- date("d/m/Y", strtotime($str)); date("d-m-Y H:i:s", strtotime($str)); --> 
                             <td><?=$post['introduction']?></td>
                             <td><?=$post['author']?></td>
                             <td><a class="btn btn-primary" href="index.php?action=addEpisode">Ajouter</a><hr>

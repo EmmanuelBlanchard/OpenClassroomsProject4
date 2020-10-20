@@ -47,7 +47,7 @@
                             <td><?=$data['post']['id']?></td>
                             <td><?=$data['post']['chapter']?></td>
                             <td><?=$data['post']['title']?></td>
-                            <td><?=$data['post']['post_date']?></td>
+                            <td><?=date("d/m/Y", strtotime($data['post']['post_date']));?></td>
                             <td><?=$data['post']['introduction']?></td>
                             <td><?=$data['post']['content']?></td>
                             <td><?=$data['post']['author']?></td>
