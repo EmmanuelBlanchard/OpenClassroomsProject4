@@ -31,20 +31,6 @@
                 <div id="adminmenuback"></div>
                 <div id="adminmenuwrap">
                     <ul id="adminmenu">
-                        <li id="menu-dashboard" class="menu-top has-submenu has-current-submenu">
-                            <a href="index.php?action=blogControlPanel" class="first-item has-submenu has-current-submenu menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last">
-                                <div class="menu-image"></div>
-                                <div class="menu-name">Tableau de bord</div>
-                            </a>
-                            <a href="index.php?action=blogControlPanel" class="first-item has-submenu has-current-submenu menu-open menu-top menu-top-first menu-icon-dashboard menu-top-last">
-                                <div class="menu-image"></div>
-                                <div class="menu-name">Accueil</div>
-                            </a>
-                        </li>
-                        <li class="not-current-submenu menu-separator" aria-hidden="true">
-                            <div class="separator">
-                            </div>
-                        </li>
                         <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" id="menu-posts">
                             <a href="index.php?action=myProfile" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">        
                                 <div class="menu-image"></div>
