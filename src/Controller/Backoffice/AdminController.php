@@ -175,11 +175,6 @@ class AdminController
         exit();
     }
 
-    public function comments(): void
-    {
-        $this->view->render(['template' => 'comments'], 'backoffice');
-    }
-
     public function readComments(): void
     {
         $dataComments = $this->commentManager->showAllComment();
@@ -190,12 +185,6 @@ class AdminController
     {
         $dataReportedComments = $this->commentManager->showAllReportedComment();
         $this->view->render(['template' => 'reportedcomments', 'allreportedcomment' => $dataReportedComments], 'backoffice');
-    }
-
-    public function approvedComments(): void
-    {
-        $dataApprovedComments = $this->commentManager->showAllApprovedComment();
-        $this->view->render(['template' => 'approvedcomments', 'allapprovedcomment' => $dataApprovedComments], 'backoffice');
     }
 
     // A RESOUDRE, marque que le formulaire est incomplet malgré le remplissage de tous les champs

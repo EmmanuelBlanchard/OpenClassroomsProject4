@@ -99,18 +99,12 @@ class Router
         } elseif ($action === 'deleteEpisode') {
             // route http://localhost:8000/?action=deleteEpisode&id=5
             $this->adminController->deleteEpisode((int)$this->get['id'], $this->post);
-        } elseif ($action === 'comments') {
-            // route http://localhost:8000/?action=comments
-            $this->adminController->comments();
         } elseif ($action === 'readComments') {
             // route http://localhost:8000/?action=readComments
             $this->adminController->readComments();
         } elseif ($action === 'reportedComments') {
             // route http://localhost:8000/?action=reportedComments
             $this->adminController->reportedComments();
-        } elseif ($action === 'approvedComments') {
-            // route http://localhost:8000/?action=approvedComments
-            $this->adminController->approvedComments();
         } elseif ($action === 'approveComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=approveComment&id=5
             $this->adminController->approveComment((int)$this->get['id']);
