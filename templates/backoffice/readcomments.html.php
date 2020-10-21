@@ -44,7 +44,7 @@
                             <td><?=$post['post_id']?></td>
                             <td><?=$post['pseudo']?></td>
                             <td><?=$post['comment']?></td>
-                            <td><?=$post['comment_date']?></td>
+                            <td><?=date("d/m/Y", strtotime($post['comment_date']));?></td>
                             <td><?php if ((int)$post['reported']===1): ?> Oui <?php else: ?> Non <?php endif; ?></td>
                             <td><?php if ((int)$post['approved']===1): ?> Oui <?php else: ?> Non <?php endif; ?></td>
                             <td><a class="btn btn-primary" href="index.php?action=deleteComment&id=<?=$post['id']?>">Supprimer</a></td>
