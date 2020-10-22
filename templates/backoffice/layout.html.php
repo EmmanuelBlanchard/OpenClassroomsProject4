@@ -104,9 +104,11 @@
                             </button>
                         </div>
                     </div>
-
-                    <?=$content?>
                     
+                    <div class="container-fluid">
+                        <?=$content?>
+                    </div>
+
                 </main>
             </div>
         </div>
