@@ -9,7 +9,7 @@
     } 
 ?>
 <!DOCTYPE html>
-<html lang="fr" class="toolbar">
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -19,98 +19,104 @@
         <meta name="description" content="Jean Forteroche, acteur et écrivain, écrit actuellement 'Billet simple pour l'Alaska' "/>
         <!-- Balise meta viewport pour contrôler la mise en page sur les navigateurs mobiles -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!--  Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <!--  Custom styles for this template -->
+        <link href="dashboard.css" rel="stylesheet">
         <!-- Appel de la feuille de style -->
         <link rel="stylesheet" type="text/css" href="css/stylebackoffice.css">
+
         <script src="js/tinymce.min.js"></script>
         <script>tinymce.init({ selector:'textarea', language: 'fr_FR' });</script>
     </head>
 
-    <body class="sticky-menu">
-        <div id="wrap">
-            <div id="adminmenumain" role="navigation" aria-label="Menu Principal">
-                <a href="body-content" class="screen-reader-shortcut">Aller au contenu principal</a>
-                <a href="toolbar" class="screen-reader-shortcut">Aller à la barre d’outils</a>
-                <div id="adminmenuback"></div>
-                <div id="adminmenuwrap">
-                    <ul id="adminmenu">
-                        <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" id="menu-posts">
-                            <a href="index.php?action=myProfile" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">        
-                                <div class="menu-image"></div>
-                                <div class="menu-name">Mon profil</div>
-                            </a>
-                        </li>
-                        <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
-                            <a href="index.php?action=readEpisodes" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
-                                <div class="menu-image"></div>
-                                <div class="menu-name">Liste des épisodes</div>
-                            </a>
-                        </li>
-                        <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
-                            <a href="index.php?action=addEpisode" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
-                                <div class="menu-image"></div>
-                                <div class="menu-name">Ajouter un épisode</div>
-                            </a>
-                        </li>
-                        <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
-                            <a href="index.php?action=readComments" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
-                                <div class="menu-image"></div>
-                                <div class="menu-name">Commentaires</div>
-                            </a>
-                        </li>
-                        <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first">
-                            <a href="index.php?action=reportedComments" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
-                                <div class="menu-image"></div>
-                                <div class="menu-name">Commentaires signalés</div>
-                            </a>
-                        </li>
-                        <li class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" class="has-submenu not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" aria-haspopup="true">
-                            <a href="index.php?action=logout">
-                                <div class="menu-image"></div>
-                                <div class="menu-name">Se déconnecter</div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div id="contentofdiv">
-                <div id="adminbar" class="nojq">
-                    <div id="toolbar" class="quicklinks" role="navigation" aria-lablel="Barre d'outils">
-                        <ul id="admin-bar-root-default" class="ab-top-menu">
-                            <li id="admin-bar-menu-toogle" class="menu-pop"></li>
-                            <li id="admin-bar-site-name" class="menu-pop">
-                                <a class="ab-item" aria-haspopup="true" href="index.php?home">Blog de Jean Forteroche</a>
-                            </li>
-                            <li id="admin-bar-comments">
-                                <a class="ab-item" aria-haspopup="true" href="index.php?action=readComments">
-                                    <span class="ab-icon"></span>
-                                    <span class="ab-label awaiting-mod pending-count count-0" aria-hidden="true">0</span>
-                                    <span class="screen-reader-text comments-in-moderation-text">0 commentaire en modération</span>
-                                </a>
-                            </li>
-                            <li id="admin-bar-new-content">
-                                <a class="ab-item" aria-haspopup="true" href="index.php?action=addEpisode">
-                                    <span class="ab-icon"></span>
-                                    <span class="ab-label">Créer</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
-                            <li id="admin-bar-my-account" class="menupop with-avatar">
-                                <a class="ab-item" aria-haspopup="true" href="index.php?action=blogControlPanelMyProfile">Bonjour, <span class="display-name">Jean Forteroche</span><img alt="" src="https://secure.gravatar.com/avatar/378d2a95f9b1ebd180c282f01137bba8?s=26&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/378d2a95f9b1ebd180c282f01137bba8?s=52&amp;d=mm&amp;r=g 2x" class="avatar avatar-26 photo" loading="lazy" width="26" height="26"></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <a class="screen-reader-shortcut" href="index.php?action=logout">Se déconnecter</a>
-                </div>
-                <div id="body" role="main">
-                    <div id="body-content">
-                        <?=$content?>
-                    </div>
-                </div>
-            </div>
-            
+    <body>
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="index.php?home">Blog de Jean Forteroche</a>
+            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <input class="form-control form-control-dark w-100" type="text" placeholder="Rechercher" aria-label="Rechercher">
+            <ul class="navbar-nav px-3">
+                <li class="nav-item text-nowrap">
+                <a class="nav-link" href="index.php?action=logout">Se déconnecter</a>
+                </li>
+            </ul>
+        </nav>
 
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="sidebar-sticky pt-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.php?action=blogControlPanel">
+                                <span data-feather="home"></span>
+                                Tableau de bord <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?action=myProfile">
+                                <span data-feather=""></span>
+                                Mon profil
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?action=readEpisodes">
+                                <span data-feather=""></span>
+                                Liste des épisodes
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?action=addEpisode">
+                                <span data-feather=""></span>
+                                Ajouter un épisode
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?action=readComments">
+                                <span data-feather="message-square"></span>
+                                Commentaires
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?action=reportedComments">
+                                <span data-feather=""></span>
+                                Commentaires signalés
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Tableau de bord</h1>
+                        <div class="btn-toolbar mb-2 mb-md-0">
+                            <div class="btn-group mr-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                                <span data-feather="calendar"></span>
+                                This week
+                            </button>
+                        </div>
+                    </div>
+
+                    <?=$content?>
+                    
+                </main>
+            </div>
         </div>
         
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script src="dashboard.js"></script>
+
     </body>
+
 </html>
