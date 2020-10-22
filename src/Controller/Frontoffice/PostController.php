@@ -40,7 +40,7 @@ class PostController
         $nbTotalPages = ceil($nbTotalPosts / $nbPostsPerPage);
         
         if ($currentPage>$nbTotalPages) {
-            $_SESSION['erreur'] = "Cette page n'existe pas";
+            $_SESSION['erreur'] = "La page demandée n'existe pas ! Voici la dernière page du blog.";
             $currentPage= $nbTotalPages;
             header('Location: index.php?action=listOfPosts&page=' .$currentPage . '');
             exit();
