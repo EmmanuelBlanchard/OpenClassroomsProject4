@@ -46,10 +46,6 @@
                     <label for="content">Contenu de l'épisode <span>(obligatoire)</span> </label>
                     <textarea class="form-control" id="content" name="content" size="30" maxlength="2000"><?=$data['post']['content']?></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="author">Auteur <span>(obligatoire)</span> </label>
-                    <input id="author" name="author" class="form-control" type="text" value="<?=$data['post']['author']?>" size="30" maxlength="40">
-                </div>
                 <input type="hidden" name="id" value="<?=$data['post']['id']?>">
                 <a class="btn btn-primary" href="index.php?action=readEpisodes">Retour</a>
                 <button class="btn btn-primary">Envoyer</button>
