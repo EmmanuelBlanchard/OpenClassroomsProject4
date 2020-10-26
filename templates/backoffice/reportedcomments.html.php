@@ -38,13 +38,13 @@
         <tbody>
             <?php foreach($data['allreportedcomment'] as $post): ?>
                 <tr>
-                    <td><?=$post['id']?></td>
-                    <td><?=$post['post_id']?></td>
-                    <td><?=$post['pseudo']?></td>
-                    <td><?=$post['comment']?></td>
-                    <td><?=date("d/m/Y", strtotime($post['comment_date']));?></td>
-                    <td><a class="btn btn-primary" href="index.php?action=approveComment&id=<?=$post['id']?>">Approuver</a></td>
-                    <td><a class="btn btn-primary" href="index.php?action=deleteComment&id=<?=$post['id']?>">Supprimer</a></td>
+                    <td data-title="ID"><?=$post['id']?></td>
+                    <td data-title="Episode"><?=$post['post_id']?></td>
+                    <td data-title="Pseudo"><?=$post['pseudo']?></td>
+                    <td data-title="Commentaire"><?=$post['comment']?></td>
+                    <td data-title="Envoyé le"><?=date("d/m/Y", strtotime($post['comment_date']));?></td>
+                    <td data-title="Approuver"><a class="btn btn-primary" href="index.php?action=approveComment&id=<?=$post['id']?>">Approuver</a></td>
+                    <td data-title="Supprimer"><a class="btn btn-primary" href="index.php?action=deleteComment&id=<?=$post['id']?>">Supprimer</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
