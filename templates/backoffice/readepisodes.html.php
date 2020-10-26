@@ -38,13 +38,13 @@
         <tbody>
             <?php foreach($data['allpost'] as $post): ?>
                 <tr>
-                    <td><?=$post['id']?></td>
-                    <td><?=$post['chapter']?></td>
-                    <td><?=$post['title']?></td>
-                    <td><?=date("d/m/Y", strtotime($post['post_date']));?></td>
-                    <td><?=$post['introduction']?></td>
-                    <td><?=$post['author']?></td>
-                    <td><a class="btn btn-primary" href="index.php?action=detailEpisode&id=<?=$post['id']?>">Voir</a><hr>
+                    <td data-title="ID"><?=$post['id']?></td>
+                    <td data-title="Numero"><?=$post['chapter']?></td>
+                    <td data-title="Titre"><?=$post['title']?></td>
+                    <td data-title="Date"><?=date("d/m/Y", strtotime($post['post_date']));?></td>
+                    <td data-title="Introduction"><?=$post['introduction']?></td>
+                    <td data-title="Auteur"><?=$post['author']?></td>
+                    <td data-title="Actions"><a class="btn btn-primary" href="index.php?action=detailEpisode&id=<?=$post['id']?>">Voir</a><hr>
                     <a class="btn btn-primary" href="index.php?action=editEpisode&id=<?=$post['id']?>">Modifier</a><hr>
                     <a class="btn btn-primary" href="index.php?action=deleteEpisode&id=<?=$post['id']?>">Supprimer</a>
                     </td>
