@@ -120,7 +120,6 @@ class AdminController
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
-            $this->view->render(['template' => 'editepisode', 'post' => $dataPost], 'backoffice');
         } else {
             $_SESSION['erreur'] = "URL invalide";
             header('Location: index.php?action=readEpisodes');
@@ -143,16 +142,13 @@ class AdminController
                 $author = strip_tags($data['author']);
                 $this->postManager->editPost($id, $chapter, $title, $introduction, $content, $author);
                 $_SESSION['message'] = "Épisode modifié";
-                // Apres avoir modifié l'episode, redirection impossible
-                //vers la page Liste des episodes
-                // Cannot modify header information - headers already sent by
-                //header('Location: index.php?action=readEpisodes');
-                //exit();
+                header('Location: index.php?action=readEpisodes');
+                exit();
             }
             $_SESSION['erreur'] = "Le formulaire est incomplet";
             $this->view->render(['template' => 'editepisode'], 'backoffice');
         }
-        $this->view->render(['template' => 'editepisode'], 'backoffice');
+        $this->view->render(['template' => 'editepisode', 'post' => $dataPost], 'backoffice');
     }
 
     public function deleteEpisode(int $postId): void
