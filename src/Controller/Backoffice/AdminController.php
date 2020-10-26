@@ -103,15 +103,13 @@ class AdminController
             if (isset($data['chapter']) && !empty($data['chapter'])
              && isset($data['title']) && !empty($data['title'])
              && isset($data['introduction']) && !empty($data['introduction'])
-             && isset($data['content']) && !empty($data['content'])
-             && isset($data['author']) && !empty($data['author'])) {
+             && isset($data['content']) && !empty($data['content'])) {
                 // On nettoie les données envoyées
                 $chapter = strip_tags($data['chapter']);
                 $title = strip_tags($data['title']);
                 $introduction = strip_tags($data['introduction']);
                 $content = strip_tags($data['content']);
-                $author = strip_tags($data['author']);
-                $this->postManager->newPost($chapter, $title, $introduction, $content, $author);
+                $this->postManager->newPost($chapter, $title, $introduction, $content);
                 $_SESSION['message'] = "Épisode ajouté";
                 header('Location: index.php?action=readEpisodes');
                 exit();
@@ -143,16 +141,14 @@ class AdminController
              && isset($data['chapter']) && !empty($data['chapter'])
              && isset($data['title']) && !empty($data['title'])
              && isset($data['introduction']) && !empty($data['introduction'])
-             && isset($data['content']) && !empty($data['content'])
-             && isset($data['author']) && !empty($data['author'])) {
+             && isset($data['content']) && !empty($data['content'])) {
                 // On nettoie les données envoyées
                 $id = strip_tags($data['id']);
                 $chapter = strip_tags($data['chapter']);
                 $title = strip_tags($data['title']);
                 $introduction = strip_tags($data['introduction']);
                 $content = strip_tags($data['content']);
-                $author = strip_tags($data['author']);
-                $this->postManager->editPost($id, $chapter, $title, $introduction, $content, $author);
+                $this->postManager->editPost($id, $chapter, $title, $introduction, $content);
                 $_SESSION['message'] = "Épisode modifié";
                 header('Location: index.php?action=readEpisodes');
                 exit();
