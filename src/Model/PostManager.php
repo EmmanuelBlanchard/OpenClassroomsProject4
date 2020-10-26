@@ -59,6 +59,15 @@ class PostManager
         return $nbTotalPosts;
     }
 
+    public function getNbEpisodes():int
+    {
+        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_episodes FROM posts');
+        $request->execute();
+        $result = $request->fetch();
+        $nbTotalEpisodes = (int)$result['nb_total_episodes'];
+        return $nbTotalEpisodes;
+    }
+
     public function getListPostsPagination(int $currentPage, int $nbPostsPerPage): ?array
     {
         $firstPostPage=($currentPage-1)*$nbPostsPerPage;
@@ -68,6 +77,16 @@ class PostManager
         $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr FROM posts ORDER BY post_date ASC LIMIT :firstPostPage, :nbPostsPerPage');
         $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
         $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
+        $request->execute();
+        return $request->fetchAll();
+    }
+
+    public function getListEpisodesPagination(int $currentPage, int $nbEpisodesPerPage): ?array
+    {
+        $firstEpisodePage=($currentPage-1)*$nbEpisodesPerPage;
+        $request = $this->database->prepare('SELECT id, chapter, title, introduction, post_date FROM posts ORDER BY post_date ASC LIMIT :firstEpisodePage, :nbEpisodesPerPage');
+        $request->bindValue(':firstEpisodePage', $firstEpisodePage, \PDO::PARAM_INT);
+        $request->bindvalue(':nbEpisodesPerPage', $nbEpisodesPerPage, \PDO::PARAM_INT);
         $request->execute();
         return $request->fetchAll();
     }
@@ -94,7 +113,6 @@ class PostManager
     {
         $request = $this->database->prepare('SELECT * FROM posts ORDER BY post_date');
         $request->execute();
-        // On stocke le resultat dans un tableau associatif
         return $request->fetchAll(\PDO::FETCH_ASSOC);
     }
 
@@ -102,7 +120,6 @@ class PostManager
     {
         $request = $this->database->prepare('SELECT * FROM posts ORDER BY id');
         $request->execute();
-        // On stocke le resultat dans un tableau associatif
         return $request->fetchAll(\PDO::FETCH_ASSOC);
     }
 
@@ -110,7 +127,6 @@ class PostManager
     {
         $request = $this->database->prepare('SELECT * FROM posts ORDER BY id DESC');
         $request->execute();
-        // On stocke le resultat dans un tableau associatif
         return $request->fetchAll(\PDO::FETCH_ASSOC);
     }
 

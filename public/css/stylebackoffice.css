@@ -43,7 +43,7 @@ body {
 		height: auto ! important;
 	}
 
-	/* Essai responsive tables */
+	/* Try responsive table */
 	/* Force table to not be like tables anymore */
 	table, thead, tbody, th, td, tr { 
 		display: block;
@@ -215,4 +215,41 @@ body {
 .form-label-group input, .form-label-group label {
 	height: 3.125rem;
 	padding: .75rem;
+}
+
+/* ajout style css provisoire des boutons de pagination */
+.divLinkPage {
+    display: flex;
+}
+.linkPreviousPost, .linkNextPost {
+    display: inline-flex;
+    text-align: center;
+    transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
+    background-color: #FFF;
+    color: #013E70;
+    border: inset #013E70;
+    border-radius: 2em;
+    padding: 10px 10px;
+    font-weight: 600;
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+    margin-top: 2.5%;
+    margin-left: 17.5%;
+}
+.linkPreviousPage, .linkNextPage {
+    display: inline-flex;
+    transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
+    background-color: #FFF;
+    color: #013E70;
+    border: inset #013E70;
+    border-radius: 2em;
+    padding: 10px 10px;
+    font-weight: 600;
+    font-family: 'fondamentoregular', Arial, sans-serif, serif;
+    margin-top: 2.5%;
+}
+ .linkPreviousPage:hover, .linkNextPage:hover {
+    transition: border 2.5s ease, background-color 2.5s ease, color 2.0s ease;
+    border: outset #e2e2e2;
+    color: #FFF;
+    background: linear-gradient( #0267a0, #025aa0);
 }

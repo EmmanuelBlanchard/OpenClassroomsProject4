@@ -56,15 +56,27 @@ class AdminController
         $this->view->render(['template' => 'myprofile'], 'backoffice');
     }
 
-    public function readEpisodes(): void
-    {   // Affichage Liste des épisodes par id DESC => 3,2,1
-        $data = $this->postManager->showAllPostsByIdDesc();
+    public function readEpisodes(int $currentPage): void
+    {
+        $nbEpisodesPerPage = 5;
+        $nbTotalEpisodes = $this->postManager->getNbEpisodes();
+        $nbTotalPages = ceil($nbTotalEpisodes / $nbEpisodesPerPage);
+        
+        if ($currentPage>$nbTotalPages) {
+            $_SESSION['erreur'] = "La page demandée n'existe pas ! Voici la dernière page du blog.";
+            $currentPage= $nbTotalPages;
+            header('Location: index.php?action=readEpisodes&page=' .$currentPage . '');
+            exit();
+        } elseif ($currentPage<=0) {
+            $currentPage=1;
+        }
 
-        // Affichage Liste des épisodes par id ASC => 1,2,3
-        //$data = $this->adminManager->showAllPostsById();
-        // Affichage Liste des épisodes par post_date
-        //$data = $this->adminManager->showAllPost();
-        $this->view->render(['template' => 'readepisodes', 'allpost' => $data], 'backoffice');
+        $previousPage = $currentPage<=1 ? null : ($currentPage-1);
+        $nextPage = $currentPage>=$nbTotalPages ? null : ($currentPage+1);
+
+        $dataAllEpisodesPagination = $this->postManager->getListEpisodesPagination($currentPage, $nbEpisodesPerPage);
+
+        $this->view->render(['template' => 'readepisodes', 'allepisodespagination' => $dataAllEpisodesPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage], 'backoffice');
     }
     
     public function detailEpisode(int $postId): void
