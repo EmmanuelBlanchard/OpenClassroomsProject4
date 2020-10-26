@@ -43,14 +43,14 @@
                 </section>
             <?php elseif ($data['post'] !== null): ?>
                 <tr>
-                    <td><?=$data['post']['id']?></td>
-                    <td><?=$data['post']['chapter']?></td>
-                    <td><?=$data['post']['title']?></td>
-                    <td><?=date("d/m/Y", strtotime($data['post']['post_date']));?></td>
-                    <td><?=$data['post']['introduction']?></td>
-                    <td><?=$data['post']['content']?></td>
-                    <td><?=$data['post']['author']?></td>
-                    <td><a class="btn btn-primary" href="index.php?action=addEpisode">Ajouter</a><hr>
+                    <td data-title="ID"><?=$data['post']['id']?></td>
+                    <td data-title="Numero"><?=$data['post']['chapter']?></td>
+                    <td data-title="Titre"><?=$data['post']['title']?></td>
+                    <td data-title="Date"><?=date("d/m/Y", strtotime($data['post']['post_date']));?></td>
+                    <td data-title="Introduction"><?=$data['post']['introduction']?></td>
+                    <td data-title="Contenu"><?=$data['post']['content']?></td>
+                    <td data-title="Auteur"><?=$data['post']['author']?></td>
+                    <td data-title="Actions"><a class="btn btn-primary" href="index.php?action=addEpisode">Ajouter</a><hr>
                     <a class="btn btn-primary" href="index.php?action=editEpisode&id=<?=$data['post']['id']?>">Modifier</a><hr>
                     <a class="btn btn-primary" href="index.php?action=deleteEpisode&id=<?=$data['post']['id']?>">Supprimer</a>
                     </td>
