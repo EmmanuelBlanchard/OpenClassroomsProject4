@@ -135,7 +135,7 @@ class PostManager
         //  : ?array pour recuperer les données dans un tableau
         // Mais si l'id est inconnu, exemple 99 problème: non affichage du message erreur "Cet id n'existe pas" Alors qu'avec
         //  : ? bool , affichage du message erreur, si id inconnu ex 99 mais la recuperation des données ne marche pas ...
-        $request = $this->database->prepare('SELECT id, chapter, title, introduction, content, author, post_date FROM posts WHERE id = :id');
+        $request = $this->database->prepare('SELECT id, chapter, title, introduction, content, post_date FROM posts WHERE id = :id');
         //$request->execute(['id' => $postId]);
         //return $request->fetch();
         $request->bindValue(':id', $postId, \PDO::PARAM_INT);
@@ -143,39 +143,26 @@ class PostManager
         return $request->fetch();
     }
 
-    public function newPost(string $chapter, string $title, string $introduction, string $content, string $author): void
+    public function newPost(string $chapter, string $title, string $introduction, string $content): void
     {
-        $request = $this->database->prepare('INSERT INTO posts (chapter, title, introduction, content, author, post_date) VALUES (:chapter, :title, :introduction, :content, :author, NOW())');
+        $request = $this->database->prepare('INSERT INTO posts (chapter, title, introduction, content, post_date) VALUES (:chapter, :title, :introduction, :content, NOW())');
         $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
         $request->bindValue(':title', $title, \PDO::PARAM_STR);
         $request->bindValue(':introduction', $introduction, \PDO::PARAM_STR);
         $request->bindValue(':content', $content, \PDO::PARAM_STR);
-        $request->bindValue(':author', $author, \PDO::PARAM_STR);
         $request->execute();
         // Chercher, trouver comment envoyer la date au format datetime de mysql
         // dans le formulaire avec un input type date et recupere la variable $date dans la fonction ??
-        //$request->bindValue('post_date', $date("Y-m-d H:i:s", strtotime($date)), \PDO::PARAM_STR);
-        // return $request->execute();
-        /*return $request->execute([
-            'chapter' => $chapter,
-            'title' => $title,
-            'introduction' => $introduction,
-            'content' => $content,
-            'author' => $author,
-            'post_date' => $date
-            ]);
-        */
     }
     
-    public function editPost(string $id, string $chapter, string $title, string $introduction, string $content, string $author): void
+    public function editPost(string $id, string $chapter, string $title, string $introduction, string $content): void
     {
-        $request = $this->database->prepare('UPDATE posts SET chapter = :chapter, title = :title, introduction = :introduction, content = :content, author = :author WHERE id = :id');
+        $request = $this->database->prepare('UPDATE posts SET chapter = :chapter, title = :title, introduction = :introduction, content = :content, WHERE id = :id');
         $request->bindValue(':id', $id, \PDO::PARAM_INT);
         $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
         $request->bindValue(':title', $title, \PDO::PARAM_STR);
         $request->bindValue(':introduction', $introduction, \PDO::PARAM_STR);
         $request->bindValue(':content', $content, \PDO::PARAM_STR);
-        $request->bindValue(':author', $author, \PDO::PARAM_STR);
         $request->execute();
     }
 
