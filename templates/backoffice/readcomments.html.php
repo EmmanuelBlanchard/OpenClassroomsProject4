@@ -39,14 +39,14 @@
         <tbody>
             <?php foreach($data['allcomment'] as $post): ?>
                 <tr>
-                    <td><?=$post['id']?></td>
-                    <td><?=$post['post_id']?></td>
-                    <td><?=$post['pseudo']?></td>
-                    <td><?=$post['comment']?></td>
-                    <td><?=date("d/m/Y", strtotime($post['comment_date']));?></td>
-                    <td><?php if ((int)$post['reported']===1): ?> Oui <?php else: ?> Non <?php endif; ?></td>
-                    <td><?php if ((int)$post['approved']===1): ?> Oui <?php else: ?> Non <?php endif; ?></td>
-                    <td><a class="btn btn-primary" href="index.php?action=deleteComment&id=<?=$post['id']?>">Supprimer</a></td>
+                    <td data-title="ID"><?=$post['id']?></td>
+                    <td data-title="Episode"><?=$post['post_id']?></td>
+                    <td data-title="Auteur"><?=$post['pseudo']?></td>
+                    <td data-title="Commentaire"><?=$post['comment']?></td>
+                    <td data-title="Envoyé le"><?=date("d/m/Y", strtotime($post['comment_date']));?></td>
+                    <td data-title="Signalé"><?php if ((int)$post['reported']===1): ?> Oui <?php else: ?> Non <?php endif; ?></td>
+                    <td data-title="Approuvé"><?php if ((int)$post['approved']===1): ?> Oui <?php else: ?> Non <?php endif; ?></td>
+                    <td data-title="Supprimer"><a class="btn btn-primary" href="index.php?action=deleteComment&id=<?=$post['id']?>">Supprimer</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
