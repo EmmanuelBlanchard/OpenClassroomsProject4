@@ -36,7 +36,7 @@ class AdminController
             header('Location: index.php?action=blogControlPanel');
             exit();
         }
-        $this->view->render(['template' => 'adminloginpage'], 'backoffice');
+        $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
     
     public function logout(): void
