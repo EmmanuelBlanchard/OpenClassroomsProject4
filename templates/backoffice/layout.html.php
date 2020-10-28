@@ -1,11 +1,7 @@
 <?php
     if(!isset($_SESSION)) 
     {
-        // On demarre la session
-        session_start();/*
-        echo "<pre>";
-        print_r($_SESSION);
-        echo "</pre>";*/
+        session_start();
     } 
 ?>
 <!DOCTYPE html>

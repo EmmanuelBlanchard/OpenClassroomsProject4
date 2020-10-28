@@ -1,7 +1,22 @@
-
 <div id="body-sign-in" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
     <div clas="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div class="container">
+            <?php
+                if(!empty($_SESSION['erreur'])) {
+                    echo '<div class="alert alert-danger" role="alert">
+                            '. $_SESSION['erreur'].'
+                        </div>';
+                    $_SESSION['erreur'] = "";
+                } 
+            ?>
+            <?php
+                if(!empty($_SESSION['message'])) {
+                    echo '<div class="alert alert-success" role="alert">
+                            '. $_SESSION['message'].'
+                        </div>';
+                        $_SESSION['message'] = "";
+                }
+            ?>
             <div class="text-center">   
                 <form method="post" action="index.php?action=login" class="form-signin">
                     <img class="mb-4" src="./images/blogger-svgrepo-com.svg" alt="" width="72" height="72">

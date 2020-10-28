@@ -1,13 +1,27 @@
 <div class="wrap">
     <h1>Tableau de bord</h1>
     <div id="welcome-panel" class="welcome-panel">
-        <a></a>
         <div class="welcome-panel-content">
             <h2>Bienvenue sur le Blog de Jean Forteroche</h2>
+            <?php
+                if(!empty($_SESSION['erreur'])) {
+                    echo '<div class="alert alert-danger" role="alert">
+                            '. $_SESSION['erreur'].'
+                        </div>';
+                    $_SESSION['erreur'] = "";
+                } 
+            ?>
+            <?php
+                if(!empty($_SESSION['message'])) {
+                    echo '<div class="alert alert-success" role="alert">
+                            '. $_SESSION['message'].'
+                        </div>';
+                        $_SESSION['message'] = "";
+                }
+            ?>
             <div class="welcome-panel-column-container">
                 <div class="welcome-panel-column">
-                    <p class="homeTitle">Accueil</p>
-
+                    <p class="homeTitle">Accueil</p>                    
                     <p class="pControlPanelPage"> Bienvenue dans le panneau de configuration du blog ! </p>
 
                     <p class="pControlPanelPage">Actuellement, votre profil est JeanForteroche</p>
