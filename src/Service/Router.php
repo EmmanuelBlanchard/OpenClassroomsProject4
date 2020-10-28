@@ -10,6 +10,7 @@ use App\Controller\Frontoffice\PostController;
 use App\Model\AdminManager;
 use App\Model\CommentManager;
 use App\Model\PostManager;
+use App\Model\UserManager;
 use App\Service\Database;
 use App\View\View;
 
@@ -18,6 +19,7 @@ class Router
 {
     private Database $database;
     private AdminManager $adminManager;
+    private UserManager $userManager;
     private PostManager $postManager;
     private CommentManager $commentManager;
     private View $view;
@@ -32,12 +34,13 @@ class Router
         // Dépendances
         $this->database = new Database();
         $this->adminManager = new AdminManager($this->database);
+        $this->userManager = new UserManager($this->database);
         $this->postManager = new PostManager($this->database);
         $this->commentManager = new CommentManager($this->database);
         $this->view = new View();
 
         // Injection des dépendances
-        $this->adminController = new AdminController($this->adminManager, $this->postManager, $this->commentManager, $this->view);
+        $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view);
         $this->postController = new PostController($this->postManager, $this->commentManager, $this->view);
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
         

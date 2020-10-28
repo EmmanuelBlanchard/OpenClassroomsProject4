@@ -268,7 +268,7 @@ DROP TABLE IF EXISTS `Users`;
 CREATE TABLE IF NOT EXISTS `Users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `hashed_password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET='utf8mb4';
 
@@ -276,8 +276,8 @@ CREATE TABLE IF NOT EXISTS `Users` (
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`id`, `pseudo`, `password`) VALUES
-(1, 'JeanForteroche', 'motdepasse');
+INSERT INTO `Users` (`id`, `pseudo`, `hashed_password`) VALUES
+(1, 'JeanForteroche', '$2y$10$R8uF3AXyVwzsuRtOQoIq6eKwT6v8/Wii0k9vHEafAB3FsYinfKNj.');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

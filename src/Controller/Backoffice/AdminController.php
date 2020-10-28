@@ -7,23 +7,27 @@ namespace App\Controller\Backoffice;
 use App\Model\AdminManager;
 use App\Model\CommentManager;
 use App\Model\PostManager;
+use App\Model\UserManager;
 use App\View\View;
 
+/*
 if (!isset($_SESSION)) {
     // On demarre la session
     session_start();
 }
-
+*/
 class AdminController
 {
     private AdminManager $adminManager;
+    private UserManager $userManager;
     private PostManager $postManager;
     private CommentManager $commentManager;
     private View $view;
 
-    public function __construct(AdminManager $adminManager, PostManager $postManager, CommentManager $commentManager, View $view)
+    public function __construct(AdminManager $adminManager, UserManager $userManager, PostManager $postManager, CommentManager $commentManager, View $view)
     {
         $this->adminManager = $adminManager;
+        $this->userManager = $userManager;
         $this->postManager = $postManager;
         $this->commentManager = $commentManager;
         $this->view = $view;
@@ -32,9 +36,57 @@ class AdminController
     public function login(array $data): void
     {
         //var_dump($_POST);
-        if (!empty($data['pseudo']) && !empty($data['password']) && $data['pseudo'] === "JeanForteroche" && $data['password'] === "motdepasse") {
-            header('Location: index.php?action=blogControlPanel');
-            exit();
+        //var_dump($data);
+        if (!empty($data['pseudo']) && !empty($data['password'])) {
+            // Quand on est connecté ne pas mettre "connexion"
+            //$_SESSION['login']=1;
+            $password = $data['password'];
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            //echo '<pre>';
+            //var_dump($hashed_password);
+            //die();
+            //echo '</pre>';
+            // string(60) "$2y$10$4R2SS6sYts6gd5sBe17jv..6GfJ/N8vbEXL3szXwGNMqk.Igbdh3."
+            $resultat = $this->userManager->recoveryIdAndHashedPassword($data['pseudo']);
+            $dataRecoveryHashedPassword = $this->userManager->recoveryHashedPassword($data['pseudo']);
+            $dataRecoveryId = $this->userManager->recoveryId($data['pseudo']);
+            echo '<pre>';
+            //var_dump($dataRecoveryHashedPassword);
+            var_dump($dataRecoveryHashedPassword['hashed_password']);
+            //var_dump($dataIdHashedPassord);
+            //var_dump($dataIdHashedPassord['id']);
+            //var_dump($dataIdHashedPassord['pseudo']);
+            //var_dump($dataIdHashedPassord['hashed_password']);
+            die();
+            echo '</pre>';
+            // bool(false)
+
+            // Comparaison du mot de passe envoyé via le formulaire hashé avec celui de la base de donnees
+            $isPasswordCorrect = password_verify($hashed_password, $resultat['hashed_password']);
+            //echo '<pre>';
+            //var_dump($isPasswordCorrect);
+            //die();
+            //echo '</pre>';
+            // bool(false)
+            
+            //echo '<pre>';
+            //var_dump($hashed_password, $resultat['hashed_password']);
+            //die();
+            //echo '</pre>';
+
+            if (!$resultat) {
+                echo 'Mauvais identifiant ou mot de passe !';
+            } else {
+                if ($isPasswordCorrect) {
+                    session_start();
+                    $_SESSION['id'] = $resultat['id'];
+                    $_SESSION['pseudo'] = $resultat['pseudo'];
+                    ;
+                    echo 'Vous êtes connecté !';
+                } else {
+                    echo 'Mauvais identifiant ou mot de passe !';
+                }
+            }
         }
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
@@ -42,6 +94,7 @@ class AdminController
     public function logout(): void
     {
         // Ajouter deconnexion données de session
+        $_SESSION['login']=0;
 
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
