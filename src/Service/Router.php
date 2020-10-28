@@ -50,7 +50,7 @@ class Router
     {
         // Nous avons quatres routes
         // On teste si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action home)
-        $action = isset($this->get['action']) ? $this->get['action'] : 'home';
+        $action = $this->get['action'] ?? 'home';
 
         // Déterminer sur quelle route nous sommes // Attention algorithme naïf
         if ($action === 'home') {
