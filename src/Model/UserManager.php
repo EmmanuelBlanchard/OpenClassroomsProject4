@@ -26,4 +26,26 @@ class UserManager
         $request->execute(['pseudo' => $pseudo]);
         return $resultat = $request->fetchAll();
     }
+
+    public function recoveryPseudoDatabaseExist(string $pseudo)
+    {
+        $request = $this->database->prepare('SELECT pseudo FROM users WHERE pseudo = :pseudo');
+        $request->execute(['pseudo' => $pseudo]);
+        return $resultat = $request->fetch();
+    }
+
+    public function TryPseudoPassword(string $pseudo, string $hashedpassword): void
+    {
+        $request = $this->database->prepare('SELECT count(*) FROM users WHERE pseudo = :pseudo AND hashed_password = :hashed_password');
+        $request->bindParam('pseudo', $pseudo, \PDO::PARAM_STR);
+        $request->bindParam('hashed_password', $hashedpassword, \PDO::PARAM_STR);
+        $result = $request->fetchAll();
+        //echo '<pre>';
+        //var_dump($result);
+        //print_r($result);
+        //die();
+        //echo '</pre>';
+        //unset($request);
+        //$this->database=NULL;
+    }
 }

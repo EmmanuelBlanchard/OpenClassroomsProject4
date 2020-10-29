@@ -35,7 +35,6 @@ class AdminController
 
     public function login(array $data): void
     {
-        //var_dump($_POST);
         //var_dump($data);
         //echo '<pre>';
         //var_dump($_SESSION);
@@ -44,7 +43,7 @@ class AdminController
 
         if (!empty($data['pseudo']) && !empty($data['password'])) {
             // Quand on est connecté ne pas mettre "connexion"
-            //$_SESSION['login']=1;
+            $pseudo= $data['pseudo'];
             $password = $data['password'];
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             //echo '<pre>';
@@ -52,95 +51,48 @@ class AdminController
             //var_dump($hashed_password);
             //die();
             //echo '</pre>';
-            $resultat = $this->userManager->recoveryIdAndHashedPassword($data['pseudo']);
-            // Probleme si pas le bon pseudo ou mot de passe
-            /* Erreur
-             Whoops \ Exception \ ErrorException (E_NOTICE)
-            Undefined offset: 0
-            array(0) {
-            }
-            */
-            //echo '<pre>';
-            //var_dump($resultat);
-            //die();
-            //echo '</pre>';
-            /*
-            array(1) {
-                [0]=>
-                array(3) {
-                    ["id"]=>
-                    string(1) "1"
-                    ["pseudo"]=>
-                    string(14) "JeanForteroche"
-                    ["hashed_password"]=>
-                    string(60) "$2y$10$R8uF3AXyVwzsuRtOQoIq6eKwT6v8/Wii0k9vHEafAB3FsYinfKNj."
-                }
-                }
-            */
-            // Accès aux données de la table users,
-            // Récupération de l'id, du pseudo et du hashed_password
-            //echo '<pre>';
-            //var_dump($resultat[0]['hashed_password']);
-            //var_dump($resultat[0]['id']);
-            //var_dump($resultat[0]['pseudo']);
-            //die();
-            //echo '</pre>';
-            //string(60) "$2y$10$R8uF3AXyVwzsuRtOQoIq6eKwT6v8/Wii0k9vHEafAB3FsYinfKNj."
-
-            // Comparaison du mot de passe envoyé via le formulaire avec celui de la base de donnees
-            $isPasswordCorrect = password_verify($password, $resultat[0]['hashed_password']);
-            //echo '<pre>';
-            //var_dump($isPasswordCorrect);
-            //die();
-            //echo '</pre>';
             
-            //echo '<pre>';
-            //var_dump($hashed_password, $resultat[0]['hashed_password']);
-            //die();
-            //echo '</pre>';
-
-            if ($data['pseudo'] === $resultat[0]['pseudo']) {
-                if (!$resultat) {
-                    $_SESSION['erreur'] = "Mauvais identifiant ou mot de passe !";
-                    
-                    echo '<pre>';
-                    var_dump(!$resultat);
-                    die();
-                    echo '</pre>';
-                } else {
-                    if ($isPasswordCorrect) {
-                        $_SESSION['id'] = $resultat[0]['id'];
-                        $_SESSION['pseudo'] = $resultat[0]['pseudo'];
-                        $_SESSION['message'] = "Vous êtes connecté !";
-                        // Redirection vers le tableau de bord
-                        header('Location: index.php?action=blogControlPanel');
-                        exit();
-                    }
-                    $_SESSION['erreur'] = "Mauvais identifiant ou mot de passe !";
-                    //echo '<pre>';
-                    //var_dump("Erreur !\$isPassorwdCorrect");
-                    //die();
-                    //echo '</pre>';
-                    header('Location: index.php?action=login');
-                    exit();
-                }
-            } else {
-                $_SESSION['erreur'] = "Mauvais identifiant ou mot de passe !";
-                echo '<pre>';
-                var_dump("Erreur , pseudo incorrect !");
-                die();
-                echo '</pre>';
+            //$resultatPseudo = $this->userManager->recoveryPseudoDatabaseExist($data['pseudo']);
+            //$resultat = $this->userManager->recoveryIdAndHashedPassword($data['pseudo']);
+            $result = $this->userManager->TryPseudoPassword($pseudo, $hashed_password);
+            
+            // Probleme requete acces resultat
+            //Whoops \ Exception \ ErrorException (E_NOTICE)
+            //Trying to access array offset on value of type null
+            if ($result[0] === 1) {
+                session_start();
+                $_SESSION['pseudo']=$pseudo;
+                $_SESSION['id'] = $result[0]['id'];
+                $_SESSION['login'] = true;
+                $_SESSION['message'] = "Vous êtes connecté !";
+                // Redirection vers le tableau de bord
+                header('Location: index.php?action=blogControlPanel');
+                exit();
+            } elseif ($result[0] === 0) {
+                $erreur = 'Compte non reconnu.';
+                $_SESSION['erreur'] = "Compte non reconnu.";
                 header('Location: index.php?action=login');
                 exit();
             }
-            $_SESSION['erreur'] = "Identifiant ou mot de passe vide !";
+            
+            
+            $erreur = 'Problème dans la base de données : plusieurs membres ont les mêmes identifiants de connexion.';
+            $_SESSION['erreur'] = "Problème dans la base de données : plusieurs membres ont les mêmes identifiants de connexion.";
+            header('Location: index.php?action=login');
+            exit();
         }
+        
+        
+        $erreur = 'Au moins un des champs est vide.';
+        $_SESSION['erreur'] = "Au moins un des champs est vide.";
+        header('Location: index.php?action=login');
+        exit();
+        
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
     
     public function logout(): void
     {
-        //$_SESSION['login']=0;
         // Suppression des variables de session et de la session
         $_SESSION = [];
         session_destroy();
@@ -148,9 +100,16 @@ class AdminController
         //var_dump($_SESSION);
         //die();
         //echo '</pre>';
-        header('Location: index.php?action=login');
-        exit();
-        //$this->view->render(['template' => 'adminloginpage'], 'frontoffice');
+        $_SESSION['message'] = "Vous êtes maintenant déconnecté !";
+        $_SESSION['login'] = false;
+        //echo '<pre>';
+        //var_dump($_SESSION);
+        //die();
+        //echo '</pre>';
+        // Affichage de la div "Vous êtes maintenant déconnecté !" ne marche pas si code
+        //header('Location: index.php?action=login');
+        //exit();
+        $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
 
     public function blogControlPanel(): void
