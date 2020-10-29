@@ -40,7 +40,6 @@ class AdminController
         //var_dump($_SESSION);
         //die();
         //echo '</pre>';
-
         if (!empty($data['pseudo']) && !empty($data['password'])) {
             // Quand on est connecté ne pas mettre "connexion"
             $pseudo= $data['pseudo'];
@@ -52,42 +51,52 @@ class AdminController
             //die();
             //echo '</pre>';
             
-            //$resultatPseudo = $this->userManager->recoveryPseudoDatabaseExist($data['pseudo']);
-            //$resultat = $this->userManager->recoveryIdAndHashedPassword($data['pseudo']);
-            $result = $this->userManager->TryPseudoPassword($pseudo, $hashed_password);
+            //Récupération de l'id et de son mot de passe hashé
+            $result = $this->userManager->recoveryIdAndHashedPassword($data['pseudo']);
+
+            //echo '<pre>';
+            //var_dump($result);
+            //die();
+            //echo '</pre>';
+
+            // Probleme
+            /*
+            Whoops \ Exception \ ErrorException (E_NOTICE)
+            Trying to access array offset on value of type bool
+            */
+            // Comparaison du mot de passe envoyé via le formulaire avec celui de la base de donnees
+            $isPasswordValid = password_verify($password, $result['hashed_password']);
             
-            // Probleme requete acces resultat
-            //Whoops \ Exception \ ErrorException (E_NOTICE)
-            //Trying to access array offset on value of type null
-            if ($result[0] === 1) {
-                session_start();
-                $_SESSION['pseudo']=$pseudo;
-                $_SESSION['id'] = $result[0]['id'];
-                $_SESSION['login'] = true;
-                $_SESSION['message'] = "Vous êtes connecté !";
-                // Redirection vers le tableau de bord
-                header('Location: index.php?action=blogControlPanel');
-                exit();
-            } elseif ($result[0] === 0) {
-                $erreur = 'Compte non reconnu.';
-                $_SESSION['erreur'] = "Compte non reconnu.";
-                header('Location: index.php?action=login');
-                exit();
+            if (!$result) {
+                echo 'Mauvais identifiant ou mot de passe !';
+                $_SESSION['message'] = "Mauvais identifiant ou mot de passe !";
+                echo '<pre>';
+                var_dump(!$result . "dans !result");
+                die();
+                echo '</pre>';
+            } else {
+                if ($isPasswordValid) {
+                    $_SESSION['id'] = $result['id'];
+                    $_SESSION['pseudo'] = $pseudo;
+                    echo 'Bonjour ' . $pseudo;
+                    $_SESSION['message'] = "Vous êtes maintenant connecté ! " . $pseudo;
+                    $_SESSION['login'] = true;
+                    //echo '<pre>';
+                    //var_dump($isPasswordValid);
+                    //die();
+                    //echo '</pre>';
+                    header('Location: index.php?action=blogControlPanel');
+                    exit();
+                }
+                 
+                echo 'Mauvais identifiant ou mot de passe! !';
+                $_SESSION['message'] = "Mauvais identifiant ou mot de passe !";
+                echo '<pre>';
+                var_dump(!$isPasswordValid . "mot de passe incorrect");
+                die();
+                echo '</pre>';
             }
-            
-            
-            $erreur = 'Problème dans la base de données : plusieurs membres ont les mêmes identifiants de connexion.';
-            $_SESSION['erreur'] = "Problème dans la base de données : plusieurs membres ont les mêmes identifiants de connexion.";
-            header('Location: index.php?action=login');
-            exit();
         }
-        
-        
-        $erreur = 'Au moins un des champs est vide.';
-        $_SESSION['erreur'] = "Au moins un des champs est vide.";
-        header('Location: index.php?action=login');
-        exit();
-        
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
     

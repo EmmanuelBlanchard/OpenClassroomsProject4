@@ -19,12 +19,16 @@ class UserManager
         $this->database = $database->getPdo();
     }
 
-    public function recoveryIdAndHashedPassword(string $pseudo): ?array
+    public function recoveryIdAndHashedPassword(string $pseudo)
     {
         // A partir du pseudo, recuperation de l'identifiant et de son mot de passe hashé
+        //$request = $this->database->prepare('SELECT id, pseudo, hashed_password FROM users WHERE pseudo = :pseudo');
+        //$request->execute(['pseudo' => $pseudo]);
+        //return $result = $request->fetchAll();
+
         $request = $this->database->prepare('SELECT id, pseudo, hashed_password FROM users WHERE pseudo = :pseudo');
         $request->execute(['pseudo' => $pseudo]);
-        return $resultat = $request->fetchAll();
+        return $result = $request->fetch();
     }
 
     public function recoveryPseudoDatabaseExist(string $pseudo)
