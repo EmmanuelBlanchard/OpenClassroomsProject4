@@ -54,6 +54,7 @@ class AdminController
             //Récupération de l'id et de son mot de passe hashé
             $result = $this->userManager->recoveryIdAndHashedPassword($data['pseudo']);
 
+            $resultHashPassword = $this->userManager->recoveryHashedPassword($data['pseudo']);
             //echo '<pre>';
             //var_dump($result);
             //die();
@@ -65,7 +66,9 @@ class AdminController
             Trying to access array offset on value of type bool
             */
             // Comparaison du mot de passe envoyé via le formulaire avec celui de la base de donnees
-            $isPasswordValid = password_verify($password, $result['hashed_password']);
+            //$isPasswordValid = password_verify($password, $result['hashed_password']);
+            
+            $isPasswordValid = password_verify($password, $resultHashPassword[0]['hashed_password']);
             
             if (!$result) {
                 echo 'Mauvais identifiant ou mot de passe !';

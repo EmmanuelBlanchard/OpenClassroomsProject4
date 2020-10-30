@@ -157,7 +157,7 @@ class PostManager
     
     public function editPost(string $id, string $chapter, string $title, string $introduction, string $content): void
     {
-        $request = $this->database->prepare('UPDATE posts SET chapter = :chapter, title = :title, introduction = :introduction, content = :content, WHERE id = :id');
+        $request = $this->database->prepare('UPDATE posts SET chapter = :chapter, title = :title, introduction = :introduction, content = :content WHERE id = :id');
         $request->bindValue(':id', $id, \PDO::PARAM_INT);
         $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
         $request->bindValue(':title', $title, \PDO::PARAM_STR);
