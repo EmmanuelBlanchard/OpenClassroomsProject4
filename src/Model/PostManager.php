@@ -52,7 +52,7 @@ class PostManager
     
     public function getNbPosts(): int
     {
-        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_posts FROM posts;');
+        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_posts FROM posts');
         $request->execute();
         $result = $request->fetch();
         $nbTotalPosts = (int)$result['nb_total_posts'];

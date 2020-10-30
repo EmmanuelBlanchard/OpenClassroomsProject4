@@ -24,7 +24,13 @@
         <link rel="stylesheet" type="text/css" href="css/stylebackoffice.css">
 
         <script src="js/tinymce.min.js"></script>
-        <script>tinymce.init({ selector:'textarea', language: 'fr_FR' });</script>
+        <script>tinymce.init({ 
+            selector:'textarea', 
+            language: 'fr_FR', 
+            mode : "textareas", 
+            entity_encoding : 'raw', 
+            valid_elements : "em/i,strike,u,span[!style],strong/b,div[align],br,#p[align],-ol[type|compact],-ul[type|compact],-li"
+             });</script>
     </head>
 
     <body>

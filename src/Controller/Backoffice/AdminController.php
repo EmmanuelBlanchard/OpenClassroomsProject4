@@ -185,8 +185,8 @@ class AdminController
                 // On nettoie les données envoyées
                 $chapter = strip_tags($data['chapter']);
                 $title = strip_tags($data['title']);
-                $introduction = strip_tags($data['introduction']);
-                $content = strip_tags($data['content']);
+                $introduction = ($data['introduction']);
+                $content = ($data['content']);
                 $this->postManager->newPost($chapter, $title, $introduction, $content);
                 $_SESSION['message'] = "Épisode ajouté";
                 header('Location: index.php?action=readEpisodes');
@@ -224,8 +224,8 @@ class AdminController
                 $id = strip_tags($data['id']);
                 $chapter = strip_tags($data['chapter']);
                 $title = strip_tags($data['title']);
-                $introduction = strip_tags($data['introduction']);
-                $content = strip_tags($data['content']);
+                $introduction = ($data['introduction']);
+                $content = ($data['content']);
                 $this->postManager->editPost($id, $chapter, $title, $introduction, $content);
                 $_SESSION['message'] = "Épisode modifié";
                 header('Location: index.php?action=readEpisodes');
