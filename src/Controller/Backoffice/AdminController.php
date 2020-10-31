@@ -81,7 +81,7 @@ class AdminController
                 $isPasswordValid = password_verify($password, $resultHashPassword[0]['hashed_password']);
                 if ($isPasswordValid) {
                     $_SESSION['id'] = $result['id'];
-                    $_SESSION['pseudo'] = $pseudo;
+                    $_SESSION['pseudo'] = htmlspecialchars($pseudo);
                     echo 'Bonjour ' . htmlspecialchars($pseudo);
                     $_SESSION['message'] = "Vous êtes maintenant connecté ! " . htmlspecialchars($pseudo);
                     $_SESSION['login'] = true;
