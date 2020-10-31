@@ -27,7 +27,11 @@
               <li class="logo"><a href="index.php?action=home">Jean Forteroche</a></li>
               <li class="item episodes"><a href="index.php?action=home">Accueil</a></li>
               <li class="item episodes"><a href="index.php?action=listOfPosts">Liste des épisodes</a></li>
-              <li class="item button"><a href="index.php?action=login">Connexion</a></li>
+              <?php if(!isset($_SESSION['id']) AND !isset($_SESSION['pseudo'])): ?>
+                <li class="item button"><a href="index.php?action=login">Connexion</a></li>
+              <?php else: ?>
+                <li class="item button"><a href="index.php?action=logout">Deconnexion</a></li>
+              <?php endif ?>
             </ul>
         </nav>
 

@@ -31,16 +31,16 @@
         
         <?php foreach($data['allpostspagination'] as $post): ?>
 
-        <article>
-            <h3>Épisode <?=$post['title']?></h3>
-            <p class="pTitleIntroductionToTheEpisode">Introduction</p>
-            <p class="pIntroductionToTheEpisode"><?=$post['introduction']?></p>
-            <p class="pCreatedAt">Publié <?=$post['post_date_fr']?> </p>
-            <a href="index.php?action=detailOfPost&amp;id=<?=$post['id']?>" class="linkReadTheEntireEpisode">Lire l'épisode en entier</a>
-        </article>
+            <article>
+                <h3>Épisode <?=$post['title']?></h3>
+                <p class="pTitleIntroductionToTheEpisode">Introduction</p>
+                <p class="pIntroductionToTheEpisode"><?=$post['introduction']?></p>
+                <p class="pCreatedAt">Publié <?=$post['post_date_fr']?> </p>
+                <a href="index.php?action=detailOfPost&amp;id=<?=$post['id']?>" class="linkReadTheEntireEpisode">Lire l'épisode en entier</a>
+            </article>
+        <?php endforeach; ?>
     </section>
-    <?php endforeach; ?>
-
+    
     <div class="divLinkPage">
         <?php if ($data['previouspage'] !== null): ?>
             <a href="index.php?action=listOfPosts&page=<?=$data['previouspage']?>" class="linkPreviousPage">Page précèdente</a>

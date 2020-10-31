@@ -68,7 +68,7 @@ class AdminController
             // Comparaison du mot de passe envoyé via le formulaire avec celui de la base de donnees
             //$isPasswordValid = password_verify($password, $result['hashed_password']);
             
-            $isPasswordValid = password_verify($password, $resultHashPassword[0]['hashed_password']);
+            //$isPasswordValid = password_verify($password, $resultHashPassword[0]['hashed_password']);
             
             if (!$result) {
                 echo 'Mauvais identifiant ou mot de passe !';
@@ -78,11 +78,12 @@ class AdminController
                 die();
                 echo '</pre>';
             } else {
+                $isPasswordValid = password_verify($password, $resultHashPassword[0]['hashed_password']);
                 if ($isPasswordValid) {
                     $_SESSION['id'] = $result['id'];
                     $_SESSION['pseudo'] = $pseudo;
-                    echo 'Bonjour ' . $pseudo;
-                    $_SESSION['message'] = "Vous êtes maintenant connecté ! " . $pseudo;
+                    echo 'Bonjour ' . htmlspecialchars($pseudo);
+                    $_SESSION['message'] = "Vous êtes maintenant connecté ! " . htmlspecialchars($pseudo);
                     $_SESSION['login'] = true;
                     //echo '<pre>';
                     //var_dump($isPasswordValid);
