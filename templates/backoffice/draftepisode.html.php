@@ -43,8 +43,8 @@
             </div>
             <a class="btn btn-primary" href="index.php?action=readEpisodes">Retour</a>
 
-            <a class="btn btn-primary" href="index.php?action=draftEpisode">Brouillon</a>
-            <button class="btn btn-primary">Publier</button>
+            <a class="btn btn-primary" href="index.php?action=publishEpisode">Publier</a>
+            <button class="btn btn-primary">Brouillon</button>
         </form>
     </section>
 </div>

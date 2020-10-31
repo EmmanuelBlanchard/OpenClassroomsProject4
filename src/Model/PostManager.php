@@ -145,7 +145,7 @@ class PostManager
 
     public function newPost(string $chapter, string $title, string $introduction, string $content): void
     {
-        $request = $this->database->prepare('INSERT INTO posts (chapter, title, introduction, content, post_date) VALUES (:chapter, :title, :introduction, :content, NOW())');
+        $request = $this->database->prepare('INSERT INTO posts (chapter, title, introduction, content, post_date, draft, publish) VALUES (:chapter, :title, :introduction, :content, NOW(), 0, 1)');
         $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
         $request->bindValue(':title', $title, \PDO::PARAM_STR);
         $request->bindValue(':introduction', $introduction, \PDO::PARAM_STR);
@@ -153,6 +153,29 @@ class PostManager
         $request->execute();
         // Chercher, trouver comment envoyer la date au format datetime de mysql
         // dans le formulaire avec un input type date et recupere la variable $date dans la fonction ??
+    }
+
+    // Brouillon depuis le addEpisode mettre draft a 1 ??
+    // Puis Publier depuis le editEpisode mettre publish a 1 ??
+
+    public function draftPost(string $chapter, string $title, string $introduction, string $content): void
+    {
+        $request = $this->database->prepare('INSERT INTO posts (chapter, title, introduction, content, post_date, draft, publish) VALUES (:chapter, :title, :introduction, :content, NOW(), 1, 0)');
+        $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
+        $request->bindValue(':title', $title, \PDO::PARAM_STR);
+        $request->bindValue(':introduction', $introduction, \PDO::PARAM_STR);
+        $request->bindValue(':content', $content, \PDO::PARAM_STR);
+        $request->execute();
+    }
+
+    public function publishPost(string $chapter, string $title, string $introduction, string $content): void
+    {
+        $request = $this->database->prepare('INSERT INTO posts (chapter, title, introduction, content, post_date, draft, publish) VALUES (:chapter, :title, :introduction, :content, NOW(), 0, 1)');
+        $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
+        $request->bindValue(':title', $title, \PDO::PARAM_STR);
+        $request->bindValue(':introduction', $introduction, \PDO::PARAM_STR);
+        $request->bindValue(':content', $content, \PDO::PARAM_STR);
+        $request->execute();
     }
     
     public function editPost(string $id, string $chapter, string $title, string $introduction, string $content): void

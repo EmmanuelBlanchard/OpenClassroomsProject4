@@ -97,6 +97,12 @@ class Router
         } elseif ($action === 'addEpisode') {
             // route http://localhost:8000/?action=addEpisode
             $this->adminController->addEpisode($this->post);
+        } elseif ($action === 'draftEpisode') {
+            // route http://localhost:8000/?action=draftEpisode
+            $this->adminController->draftEpisode($this->post);
+        } elseif ($action === 'publishEpisode') {
+            // route http://localhost:8000/?action=publishEpisode
+            $this->adminController->publishEpisode($this->post);
         } elseif ($action === 'editEpisode' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=editEpisode&id=5
             $this->adminController->editEpisode((int)$this->get['id'], $this->post);
