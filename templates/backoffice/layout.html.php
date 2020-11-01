@@ -1,8 +1,19 @@
 <?php
     if(!isset($_SESSION)) 
     {
+        // On demarre la session
         session_start();
-    } 
+    }
+    //On génére un jeton
+    $token = uniqid(rand(), true);
+    //Et on le stocke
+    $_SESSION['token'] = $token;
+    //On enregistre aussi le timestamp correspondant au moment de la création du token
+    $_SESSION['token_time'] = time();
+    //echo '<pre>';
+    //var_dump($_SESSION['token'], $_SESSION['token_time']);
+    //die();
+    //echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="fr">

@@ -178,25 +178,52 @@ class AdminController
 
     public function addEpisode(array $data): void
     {
-        if ($data) {
-            if (isset($data['chapter']) && !empty($data['chapter'])
-             && isset($data['title']) && !empty($data['title'])
-             && isset($data['introduction']) && !empty($data['introduction'])
-             && isset($data['content']) && !empty($data['content'])) {
-                // On nettoie les données envoyées
-                $chapter = strip_tags($data['chapter']);
-                $title = strip_tags($data['title']);
-                $introduction = ($data['introduction']);
-                $content = ($data['content']);
-                $this->postManager->newPost($chapter, $title, $introduction, $content);
-                $_SESSION['message'] = "Épisode ajouté";
-                header('Location: index.php?action=readEpisodes');
-                exit();
+        echo '<pre>';
+        var_dump($_SESSION['token'], $_SESSION['token_time'], $_POST['token']);
+        die();
+        echo '</pre>';
+
+        //On va vérifier :
+        //Si le jeton est présent dans la session et dans le formulaire
+        if (isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])) {
+            echo '<pre>';
+            var_dump($_SESSION['token'], $_SESSION['token_time'], $_POST['token']);
+            die();
+            echo '</pre>';
+
+            //Si le jeton de la session correspond à celui du formulaire
+            if ($_SESSION['token'] === $_POST['token']) {
+                //On stocke le timestamp qu'il était il y a 15 minutes
+                $timestamp_ancien = time() - (15*60);
+                //Si le jeton n'est pas expiré
+                if ($_SESSION['token_time'] >= $timestamp_ancien) {
+                    //ON FAIT TOUS LES TRAITEMENTS ICI
+                    if ($data) {
+                        if (isset($data['chapter']) && !empty($data['chapter'])
+                            && isset($data['title']) && !empty($data['title'])
+                            && isset($data['introduction']) && !empty($data['introduction'])
+                            && isset($data['content']) && !empty($data['content'])) {
+                            // On nettoie les données envoyées
+                            $chapter = strip_tags($data['chapter']);
+                            $title = strip_tags($data['title']);
+                            $introduction = ($data['introduction']);
+                            $content = ($data['content']);
+                            $this->postManager->newPost($chapter, $title, $introduction, $content);
+                            $_SESSION['message'] = "Épisode ajouté";
+                            header('Location: index.php?action=readEpisodes');
+                            exit();
+                        }
+                        $_SESSION['erreur'] = "Le formulaire est incomplet";
+                        $this->view->render(['template' => 'addepisode'], 'backoffice');
+                    }
+                    $this->view->render(['template' => 'addepisode'], 'backoffice');
+                }
             }
-            $_SESSION['erreur'] = "Le formulaire est incomplet";
-            $this->view->render(['template' => 'addepisode'], 'backoffice');
         }
-        $this->view->render(['template' => 'addepisode'], 'backoffice');
+        //$this->view->render(['template' => 'addepisode'], 'backoffice');
+        $_SESSION['erreur'] = "Accès non autorisé";
+        header('Location: index.php?action=home');
+        exit();
     }
 
     public function draftEpisode(array $data): void
@@ -220,7 +247,6 @@ class AdminController
             $this->view->render(['template' => 'draftepisode'], 'backoffice');
         }
         $this->view->render(['template' => 'draftepisode'], 'backoffice');
-
     }
 
     public function publishEpisode(array $data): void
@@ -244,7 +270,6 @@ class AdminController
             $this->view->render(['template' => 'addepisode'], 'backoffice');
         }
         $this->view->render(['template' => 'addepisode'], 'backoffice');
-
     }
 
     public function editEpisode(int $postId, array $data): void

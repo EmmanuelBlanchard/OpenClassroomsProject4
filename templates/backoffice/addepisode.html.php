@@ -3,7 +3,18 @@
     {
         // On demarre la session
         session_start();
-    } 
+    }
+    //On génére un jeton totalement unique (c'est capital :D)
+    $token = uniqid(rand(), true);
+    //Et on le stocke
+    $_SESSION['token'] = $token;
+    //On enregistre aussi le timestamp correspondant au moment de la création du token
+    $_SESSION['token_time'] = time();
+
+    echo '<pre>';
+    var_dump($_SESSION['token'], $_SESSION['token_time']);
+    die();
+    echo '</pre>';
 ?>
 <?php
     if(!empty($_SESSION['erreur'])) {
@@ -41,6 +52,10 @@
                 <label for="content">Contenu de l'épisode <span>(obligatoire)</span> </label>
                 <textarea class="form-control" id="content" name="content" value="" size="30" maxlength="2000"><?php if (isset($_POST['content'])){echo $_POST['content'];} ?> </textarea>
             </div>
+            <input type="hidden" name="token" id="token" value="<?php
+            //Le champ caché a pour valeur le jeton
+            echo $token;
+                ?>"/>
             <a class="btn btn-primary" href="index.php?action=readEpisodes">Retour</a>
 
             <a class="btn btn-primary" href="index.php?action=draftEpisode">Brouillon</a>
