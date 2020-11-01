@@ -4,6 +4,12 @@
         // On demarre la session
         session_start();
     }
+    
+    echo '<pre>';
+    var_dump($_SESSION['token'], $_SESSION['token_time']);
+    die();
+    echo '</pre>';
+
     //On génére un jeton totalement unique (c'est capital :D)
     $token = uniqid(rand(), true);
     //Et on le stocke

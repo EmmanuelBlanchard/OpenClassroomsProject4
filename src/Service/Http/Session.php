@@ -119,6 +119,6 @@ class Session
             Notice: Use of undefined constant csrfguard_inject - assumed 'csrfguard_inject' */
         register_shutdown_function("csrfguard_inject");	
     }
-    $this->csrfguard_start();
+    csrfguard_start();
 
 }

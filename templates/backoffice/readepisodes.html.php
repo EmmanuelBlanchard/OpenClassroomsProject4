@@ -57,12 +57,26 @@
         </table>
     </div>
 
-    <div class="divLinkPage">
-        <?php if ($data['previouspage'] !== null): ?>
-            <a href="index.php?action=readEpisodes&page=<?=$data['previouspage']?>" class="linkPreviousPage">Page précèdente</a>
-        <?php endif?>
-        <?php if ($data['nextpage'] !== null): ?>
-            <a href="index.php?action=readEpisodes&page=<?=$data['nextpage']?>" class="linkNextPage">Page suivante</a>
-        <?php endif?>
-    </div>
+    <nav aria-label="Page navigation read of episodes">
+        <ul class="pagination justify-content-center">
+            <?php if ($data['previouspage'] !== null): ?>
+                <li class="page-item">
+                    <a class="page-link" href="index.php?action=readEpisodes&page=<?=$data['previouspage']?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            <?php endif?>
+            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=1">1</a></li>
+            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=2">2</a></li>
+            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=3">3</a></li>
+            <?php if ($data['nextpage'] !== null): ?>
+                <li class="page-item">
+                    <a class="page-link" href="index.php?action=readEpisodes&page=<?=$data['nextpage']?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            <?php endif?>
+        </ul>
+    </nav>
+
 <?php endif; ?>
