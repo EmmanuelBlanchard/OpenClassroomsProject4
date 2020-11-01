@@ -25,7 +25,16 @@ class CommentManager
         $request->execute();
         return $request->fetchAll();
     }
-        
+    
+    public function getNbComments(): int
+    {
+        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_comments FROM comments');
+        $request->execute();
+        $result = $request->fetch();
+        $nbTotalComments = (int)$result['nb_total_comments'];
+        return $nbTotalComments;
+    }
+
     public function getPostNbComments(int $postId): ?int
     {
         $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_comments FROM comments WHERE post_id = :post_id');
@@ -66,6 +75,16 @@ class CommentManager
     public function showAllComment(): ?array
     {
         $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY comment_date DESC');
+        $request->execute();
+        return $request->fetchAll();
+    }
+
+    public function getListCommentsPagination($currentPage, $nbCommentsPerPage): ?array
+    {
+        $firstCommentPage=($currentPage-1)*$nbCommentsPerPage;
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY comment_date ASC LIMIT :firstCommentPage, :nbCommentsPerPage');
+        $request->bindValue(':firstCommentPage', $firstCommentPage, \PDO::PARAM_INT);
+        $request->bindValue(':nbCommentsPerPage', $nbCommentsPerPage, \PDO::PARAM_INT);
         $request->execute();
         return $request->fetchAll();
     }

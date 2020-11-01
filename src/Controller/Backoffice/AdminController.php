@@ -331,10 +331,26 @@ class AdminController
         exit();
     }
 
-    public function readComments(): void
+    public function readComments(int $currentPage): void
     {
-        $dataComments = $this->commentManager->showAllComment();
-        $this->view->render(['template' => 'readcomments', 'allcomment' => $dataComments], 'backoffice');
+        $nbCommentsPerPage = 5;
+        $nbTotalComments = $this->commentManager->getNbComments();
+        $nbTotalPages = ceil($nbTotalComments / $nbCommentsPerPage);
+        if ($currentPage>$nbTotalPages) {
+            $_SESSION['erreur'] = "La page demandée n'existe pas ! Voici la deniere page du blog.";
+            $currentPage = $nbTotalPages;
+            header('Location: index.php?action=readComments&page=' .$currentPage .'');
+            exit();
+        } elseif ($currentPage<=0) {
+            $currentPage=1;
+        }
+        $previousPage = $currentPage<=1 ? null : ($currentPage-1);
+        $nextPage = $currentPage>=$nbTotalPages ? null : ($currentPage+1);
+        $dataAllCommentsPagination = $this->commentManager->getListCommentsPagination($currentPage, $nbCommentsPerPage);
+        $this->view->render(['template' => 'readcomments', 'allcommentspagination' => $dataAllCommentsPagination, 'previouspage' => $previousPage, 'nextpage' => $nextPage], 'backoffice');
+
+        //$dataComments = $this->commentManager->showAllComment();
+        //$this->view->render(['template' => 'readcomments', 'allcomment' => $dataComments], 'backoffice');
     }
     
     public function reportedComments(): void

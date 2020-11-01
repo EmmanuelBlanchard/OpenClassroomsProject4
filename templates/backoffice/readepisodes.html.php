@@ -58,7 +58,7 @@
     </div>
 
     <nav aria-label="Page navigation read of episodes">
-        <ul class="pagination justify-content-center">
+        <ul class="pagination pagination-lg justify-content-center">
             <?php if ($data['previouspage'] !== null): ?>
                 <li class="page-item">
                     <a class="page-link" href="index.php?action=readEpisodes&page=<?=$data['previouspage']?>" aria-label="Previous">
