@@ -44,61 +44,21 @@ class AdminController
             // Quand on est connecté ne pas mettre "connexion"
             $pseudo= $data['pseudo'];
             $password = $data['password'];
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            //echo '<pre>';
-            //var_dump($password);
-            //var_dump($hashed_password);
-            //die();
-            //echo '</pre>';
-            
             //Récupération de l'id et de son mot de passe hashé
             $result = $this->userManager->recoveryIdAndHashedPassword($data['pseudo']);
-
-            $resultHashPassword = $this->userManager->recoveryHashedPassword($data['pseudo']);
-            //echo '<pre>';
-            //var_dump($result);
-            //die();
-            //echo '</pre>';
-
-            // Probleme
-            /*
-            Whoops \ Exception \ ErrorException (E_NOTICE)
-            Trying to access array offset on value of type bool
-            */
-            // Comparaison du mot de passe envoyé via le formulaire avec celui de la base de donnees
-            //$isPasswordValid = password_verify($password, $result['hashed_password']);
-            
-            //$isPasswordValid = password_verify($password, $resultHashPassword[0]['hashed_password']);
-            
             if (!$result) {
-                echo 'Mauvais identifiant ou mot de passe !';
-                $_SESSION['message'] = "Mauvais identifiant ou mot de passe !";
-                echo '<pre>';
-                var_dump(!$result . "dans !result");
-                die();
-                echo '</pre>';
+                $_SESSION['erreur'] = "Mauvais identifiant ou mot de passe !";
             } else {
-                $isPasswordValid = password_verify($password, $resultHashPassword[0]['hashed_password']);
+                $isPasswordValid = password_verify($password, $result['hashed_password']);
                 if ($isPasswordValid) {
                     $_SESSION['id'] = $result['id'];
                     $_SESSION['pseudo'] = htmlspecialchars($pseudo);
-                    echo 'Bonjour ' . htmlspecialchars($pseudo);
                     $_SESSION['message'] = "Vous êtes maintenant connecté ! " . htmlspecialchars($pseudo);
                     $_SESSION['login'] = true;
-                    //echo '<pre>';
-                    //var_dump($isPasswordValid);
-                    //die();
-                    //echo '</pre>';
                     header('Location: index.php?action=blogControlPanel');
                     exit();
                 }
-                 
-                echo 'Mauvais identifiant ou mot de passe! !';
-                $_SESSION['message'] = "Mauvais identifiant ou mot de passe !";
-                echo '<pre>';
-                var_dump(!$isPasswordValid . "mot de passe incorrect");
-                die();
-                echo '</pre>';
+                $_SESSION['erreur'] = "Mauvais identifiant ou mot de passe !";
             }
         }
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
@@ -178,18 +138,36 @@ class AdminController
 
     public function addEpisode(array $data): void
     {
-        echo '<pre>';
-        var_dump($_SESSION['token'], $_SESSION['token_time'], $_POST['token']);
-        die();
-        echo '</pre>';
+        //echo '<pre>';
+        //var_dump($_SESSION['token'], $_SESSION['token_time'], $_POST['token']);
+        //die();
+        //echo '</pre>';
 
+        if ($data) {
+            if (isset($data['chapter']) && !empty($data['chapter'])
+                && isset($data['title']) && !empty($data['title'])
+                && isset($data['introduction']) && !empty($data['introduction'])
+                && isset($data['content']) && !empty($data['content'])) {
+                // On nettoie les données envoyées
+                $chapter = strip_tags($data['chapter']);
+                $title = strip_tags($data['title']);
+                $introduction = ($data['introduction']);
+                $content = ($data['content']);
+                $this->postManager->newPost($chapter, $title, $introduction, $content);
+                $_SESSION['message'] = "Épisode ajouté";
+                header('Location: index.php?action=readEpisodes');
+                exit();
+            }
+            $_SESSION['erreur'] = "Le formulaire est incomplet";
+            $this->view->render(['template' => 'addepisode'], 'backoffice');
+        }
         //On va vérifier :
         //Si le jeton est présent dans la session et dans le formulaire
         if (isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])) {
-            echo '<pre>';
-            var_dump($_SESSION['token'], $_SESSION['token_time'], $_POST['token']);
-            die();
-            echo '</pre>';
+            //echo '<pre>';
+            //var_dump($_SESSION['token'], $_SESSION['token_time'], $_POST['token']);
+            //die();
+            //echo '</pre>';
 
             //Si le jeton de la session correspond à celui du formulaire
             if ($_SESSION['token'] === $_POST['token']) {
@@ -221,9 +199,10 @@ class AdminController
             }
         }
         //$this->view->render(['template' => 'addepisode'], 'backoffice');
-        $_SESSION['erreur'] = "Accès non autorisé";
-        header('Location: index.php?action=home');
-        exit();
+        //$_SESSION['erreur'] = "Accès non autorisé";
+        //header('Location: index.php?action=home');
+        //exit();
+        
     }
 
     public function draftEpisode(array $data): void
