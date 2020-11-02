@@ -1,43 +1,3 @@
-<?php
-    if(!isset($_SESSION)) 
-    {
-        // On demarre la session
-        session_start();
-    }
-    
-    echo '<pre>';
-    var_dump($_SESSION['token'], $_SESSION['token_time']);
-    die();
-    echo '</pre>';
-
-    //On génére un jeton totalement unique (c'est capital :D)
-    $token = uniqid(rand(), true);
-    //Et on le stocke
-    $_SESSION['token'] = $token;
-    //On enregistre aussi le timestamp correspondant au moment de la création du token
-    $_SESSION['token_time'] = time();
-
-    echo '<pre>';
-    var_dump($_SESSION['token'], $_SESSION['token_time']);
-    die();
-    echo '</pre>';
-?>
-<?php
-    if(!empty($_SESSION['erreur'])) {
-        echo '<div class="alert alert-danger" role="alert">
-                '. $_SESSION['erreur'].'
-            </div>';
-        $_SESSION['erreur'] = "";
-    } 
-?>
-<?php
-    if(!empty($_SESSION['message'])) {
-        echo '<div class="alert alert-success" role="alert">
-                '. $_SESSION['message'].'
-            </div>';
-            $_SESSION['message'] = "";
-    }
-?>
 <h2>Ajouter un épisode</h2>
 <div class="row justify-content-center pt-3 pb-2 mb-3">
     <section class="col-10">
@@ -60,7 +20,7 @@
             </div>
             <input type="hidden" name="token" id="token" value="<?php
             //Le champ caché a pour valeur le jeton
-            echo $token;
+            //echo $token;
                 ?>"/>
             <a class="btn btn-primary" href="index.php?action=readEpisodes">Retour</a>
 

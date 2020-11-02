@@ -10,12 +10,6 @@ use App\Model\PostManager;
 use App\Model\UserManager;
 use App\View\View;
 
-/*
-if (!isset($_SESSION)) {
-    // On demarre la session
-    session_start();
-}
-*/
 class AdminController
 {
     private AdminManager $adminManager;
@@ -41,7 +35,6 @@ class AdminController
         //die();
         //echo '</pre>';
         if (!empty($data['pseudo']) && !empty($data['password'])) {
-            // Quand on est connecté ne pas mettre "connexion"
             $pseudo= $data['pseudo'];
             $password = $data['password'];
             //Récupération de l'id et de son mot de passe hashé
@@ -79,9 +72,6 @@ class AdminController
         //var_dump($_SESSION);
         //die();
         //echo '</pre>';
-        // Affichage de la div "Vous êtes maintenant déconnecté !" ne marche pas si code
-        //header('Location: index.php?action=login');
-        //exit();
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
 
@@ -142,7 +132,6 @@ class AdminController
         //var_dump($_SESSION['token'], $_SESSION['token_time'], $_POST['token']);
         //die();
         //echo '</pre>';
-
         if ($data) {
             if (isset($data['chapter']) && !empty($data['chapter'])
                 && isset($data['title']) && !empty($data['title'])
@@ -161,48 +150,7 @@ class AdminController
             $_SESSION['erreur'] = "Le formulaire est incomplet";
             $this->view->render(['template' => 'addepisode'], 'backoffice');
         }
-        //On va vérifier :
-        //Si le jeton est présent dans la session et dans le formulaire
-        if (isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])) {
-            //echo '<pre>';
-            //var_dump($_SESSION['token'], $_SESSION['token_time'], $_POST['token']);
-            //die();
-            //echo '</pre>';
-
-            //Si le jeton de la session correspond à celui du formulaire
-            if ($_SESSION['token'] === $_POST['token']) {
-                //On stocke le timestamp qu'il était il y a 15 minutes
-                $timestamp_ancien = time() - (15*60);
-                //Si le jeton n'est pas expiré
-                if ($_SESSION['token_time'] >= $timestamp_ancien) {
-                    //ON FAIT TOUS LES TRAITEMENTS ICI
-                    if ($data) {
-                        if (isset($data['chapter']) && !empty($data['chapter'])
-                            && isset($data['title']) && !empty($data['title'])
-                            && isset($data['introduction']) && !empty($data['introduction'])
-                            && isset($data['content']) && !empty($data['content'])) {
-                            // On nettoie les données envoyées
-                            $chapter = strip_tags($data['chapter']);
-                            $title = strip_tags($data['title']);
-                            $introduction = ($data['introduction']);
-                            $content = ($data['content']);
-                            $this->postManager->newPost($chapter, $title, $introduction, $content);
-                            $_SESSION['message'] = "Épisode ajouté";
-                            header('Location: index.php?action=readEpisodes');
-                            exit();
-                        }
-                        $_SESSION['erreur'] = "Le formulaire est incomplet";
-                        $this->view->render(['template' => 'addepisode'], 'backoffice');
-                    }
-                    $this->view->render(['template' => 'addepisode'], 'backoffice');
-                }
-            }
-        }
-        //$this->view->render(['template' => 'addepisode'], 'backoffice');
-        //$_SESSION['erreur'] = "Accès non autorisé";
-        //header('Location: index.php?action=home');
-        //exit();
-        
+        $this->view->render(['template' => 'addepisode'], 'backoffice');
     }
 
     public function draftEpisode(array $data): void
@@ -327,9 +275,6 @@ class AdminController
         $nextPage = $currentPage>=$nbTotalPages ? null : ($currentPage+1);
         $dataAllCommentsPagination = $this->commentManager->getListCommentsPagination($currentPage, $nbCommentsPerPage);
         $this->view->render(['template' => 'readcomments', 'allcommentspagination' => $dataAllCommentsPagination, 'previouspage' => $previousPage, 'nextpage' => $nextPage], 'backoffice');
-
-        //$dataComments = $this->commentManager->showAllComment();
-        //$this->view->render(['template' => 'readcomments', 'allcomment' => $dataComments], 'backoffice');
     }
     
     public function reportedComments(): void

@@ -1,26 +1,3 @@
-<?php
-    if(!isset($_SESSION)) 
-    {
-        // On demarre la session
-        session_start();
-    } 
-?>
-<?php
-    if(!empty($_SESSION['erreur'])) {
-        echo '<div class="alert alert-danger" role="alert">
-                '. $_SESSION['erreur'].'
-            </div>';
-        $_SESSION['erreur'] = "";
-    } 
-?>
-<?php
-    if(!empty($_SESSION['message'])) {
-        echo '<div class="alert alert-success" role="alert">
-                '. $_SESSION['message'].'
-            </div>';
-            $_SESSION['message'] = "";
-    }
-?>
 <h2>Modifier un épisode</h2>
 <div class="row justify-content-center pt-3 pb-2 mb-3">
     <section class="col-10">
