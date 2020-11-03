@@ -143,7 +143,7 @@ class PostManager
         return $request->fetch();
     }
 
-    public function newPost(string $chapter, string $title, string $introduction, string $content, $episodeStatus): void
+    public function newPost(string $chapter, string $title, string $introduction, string $content, string $episodeStatus): void
     {
         $request = $this->database->prepare('INSERT INTO posts (chapter, title, introduction, content, post_date, post_status) VALUES (:chapter, :title, :introduction, :content, NOW(), :post_status)');
         $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
@@ -156,29 +156,6 @@ class PostManager
         // dans le formulaire avec un input type date et recupere la variable $date dans la fonction ??
     }
 
-    // Brouillon depuis le addEpisode mettre draft a 1 ??
-    // Puis Publier depuis le editEpisode mettre publish a 1 ??
-
-    public function draftPost(string $chapter, string $title, string $introduction, string $content): void
-    {
-        $request = $this->database->prepare('INSERT INTO posts (chapter, title, introduction, content, post_date, draft, publish) VALUES (:chapter, :title, :introduction, :content, NOW(), 1, 0)');
-        $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
-        $request->bindValue(':title', $title, \PDO::PARAM_STR);
-        $request->bindValue(':introduction', $introduction, \PDO::PARAM_STR);
-        $request->bindValue(':content', $content, \PDO::PARAM_STR);
-        $request->execute();
-    }
-
-    public function publishPost(string $chapter, string $title, string $introduction, string $content): void
-    {
-        $request = $this->database->prepare('INSERT INTO posts (chapter, title, introduction, content, post_date, draft, publish) VALUES (:chapter, :title, :introduction, :content, NOW(), 0, 1)');
-        $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
-        $request->bindValue(':title', $title, \PDO::PARAM_STR);
-        $request->bindValue(':introduction', $introduction, \PDO::PARAM_STR);
-        $request->bindValue(':content', $content, \PDO::PARAM_STR);
-        $request->execute();
-    }
-    
     public function editPost(string $id, string $chapter, string $title, string $introduction, string $content, string $episodeStatus): void
     {
         // Trouver solution pour mettre a jour le champ datetime de post_date

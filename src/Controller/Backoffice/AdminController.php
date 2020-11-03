@@ -143,59 +143,9 @@ class AdminController
                 $title = strip_tags($data['title']);
                 $introduction = ($data['introduction']);
                 $content = ($data['content']);
-                $episodeStatus = ($data['episodeStatus']);
-                //echo '<pre>';
-                //var_dump($data);
-                //die();
-                //echo '</pre>';
+                $episodeStatus = strip_tags($data['episodeStatus']);
                 $this->postManager->newPost($chapter, $title, $introduction, $content, $episodeStatus);
                 $_SESSION['message'] = "Épisode ajouté";
-                header('Location: index.php?action=readEpisodes');
-                exit();
-            }
-            $_SESSION['erreur'] = "Le formulaire est incomplet";
-            $this->view->render(['template' => 'addepisode'], 'backoffice');
-        }
-        $this->view->render(['template' => 'addepisode'], 'backoffice');
-    }
-
-    public function draftEpisode(array $data): void
-    {
-        if ($data) {
-            if (isset($data['chapter']) && !empty($data['chapter'])
-             && isset($data['title']) && !empty($data['title'])
-             && isset($data['introduction']) && !empty($data['introduction'])
-             && isset($data['content']) && !empty($data['content'])) {
-                // On nettoie les données envoyées
-                $chapter = strip_tags($data['chapter']);
-                $title = strip_tags($data['title']);
-                $introduction = ($data['introduction']);
-                $content = ($data['content']);
-                $this->postManager->draftPost($chapter, $title, $introduction, $content);
-                $_SESSION['message'] = "Brouillon de l'épisode ";
-                header('Location: index.php?action=readEpisodes');
-                exit();
-            }
-            $_SESSION['erreur'] = "Le formulaire est incomplet";
-            $this->view->render(['template' => 'draftepisode'], 'backoffice');
-        }
-        $this->view->render(['template' => 'draftepisode'], 'backoffice');
-    }
-
-    public function publishEpisode(array $data): void
-    {
-        if ($data) {
-            if (isset($data['chapter']) && !empty($data['chapter'])
-             && isset($data['title']) && !empty($data['title'])
-             && isset($data['introduction']) && !empty($data['introduction'])
-             && isset($data['content']) && !empty($data['content'])) {
-                // On nettoie les données envoyées
-                $chapter = strip_tags($data['chapter']);
-                $title = strip_tags($data['title']);
-                $introduction = ($data['introduction']);
-                $content = ($data['content']);
-                $this->postManager->publishPost($chapter, $title, $introduction, $content);
-                $_SESSION['message'] = "Épisode publié";
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
