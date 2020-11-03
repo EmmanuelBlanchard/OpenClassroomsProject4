@@ -179,14 +179,17 @@ class PostManager
         $request->execute();
     }
     
-    public function editPost(string $id, string $chapter, string $title, string $introduction, string $content): void
+    public function editPost(string $id, string $chapter, string $title, string $introduction, string $content, string $episodeStatus): void
     {
-        $request = $this->database->prepare('UPDATE posts SET chapter = :chapter, title = :title, introduction = :introduction, content = :content WHERE id = :id');
+        // Trouver solution pour mettre a jour le champ datetime de post_date
+        //$request = $this->database->prepare('UPDATE posts SET chapter = :chapter, title = :title, introduction = :introduction, content = :content, post_date = NOW() post_status = :post_status WHERE id = :id');
+        $request = $this->database->prepare('UPDATE posts SET chapter = :chapter, title = :title, introduction = :introduction, content = :content, post_status = :post_status WHERE id = :id');
         $request->bindValue(':id', $id, \PDO::PARAM_INT);
         $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
         $request->bindValue(':title', $title, \PDO::PARAM_STR);
         $request->bindValue(':introduction', $introduction, \PDO::PARAM_STR);
         $request->bindValue(':content', $content, \PDO::PARAM_STR);
+        $request->bindValue(':post_status', $episodeStatus, \PDO::PARAM_STR);
         $request->execute();
     }
 

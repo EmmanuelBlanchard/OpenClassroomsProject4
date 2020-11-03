@@ -226,14 +226,16 @@ class AdminController
              && isset($data['chapter']) && !empty($data['chapter'])
              && isset($data['title']) && !empty($data['title'])
              && isset($data['introduction']) && !empty($data['introduction'])
-             && isset($data['content']) && !empty($data['content'])) {
+             && isset($data['content']) && !empty($data['content'])
+             && isset($data['episodeStatus']) && !empty($data['episodeStatus'])) {
                 // On nettoie les données envoyées
                 $id = strip_tags($data['id']);
                 $chapter = strip_tags($data['chapter']);
                 $title = strip_tags($data['title']);
                 $introduction = ($data['introduction']);
                 $content = ($data['content']);
-                $this->postManager->editPost($id, $chapter, $title, $introduction, $content);
+                $episodeStatus = strip_tags($data['episodeStatus']);
+                $this->postManager->editPost($id, $chapter, $title, $introduction, $content, $episodeStatus);
                 $_SESSION['message'] = "Épisode modifié";
                 header('Location: index.php?action=readEpisodes');
                 exit();
