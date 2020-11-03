@@ -37,7 +37,7 @@ class AdminController
         if (!empty($data['pseudo']) && !empty($data['password'])) {
             $pseudo= $data['pseudo'];
             $password = $data['password'];
-            //Récupération de l'id et de son mot de passe hashé
+            // Récupération de l'id et de son mot de passe hashé
             $result = $this->userManager->recoveryIdAndHashedPassword($data['pseudo']);
             if (!$result) {
                 $_SESSION['erreur'] = "Mauvais identifiant ou mot de passe !";
@@ -136,13 +136,19 @@ class AdminController
             if (isset($data['chapter']) && !empty($data['chapter'])
                 && isset($data['title']) && !empty($data['title'])
                 && isset($data['introduction']) && !empty($data['introduction'])
-                && isset($data['content']) && !empty($data['content'])) {
+                && isset($data['content']) && !empty($data['content'])
+                && isset($data['episodeStatus']) && !empty($data['episodeStatus'])) {
                 // On nettoie les données envoyées
                 $chapter = strip_tags($data['chapter']);
                 $title = strip_tags($data['title']);
                 $introduction = ($data['introduction']);
                 $content = ($data['content']);
-                $this->postManager->newPost($chapter, $title, $introduction, $content);
+                $episodeStatus = ($data['episodeStatus']);
+                //echo '<pre>';
+                //var_dump($data);
+                //die();
+                //echo '</pre>';
+                $this->postManager->newPost($chapter, $title, $introduction, $content, $episodeStatus);
                 $_SESSION['message'] = "Épisode ajouté";
                 header('Location: index.php?action=readEpisodes');
                 exit();

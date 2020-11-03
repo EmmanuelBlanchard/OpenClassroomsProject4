@@ -13,6 +13,7 @@
                     <th>Titre</th>
                     <th>Date</th>
                     <th>Introduction</th>
+                    <th>Statut de l'épisode</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -24,6 +25,7 @@
                         <td data-title="Titre"><?=$post['title']?></td>
                         <td data-title="Date"><?=date("d/m/Y", strtotime($post['post_date']));?></td>
                         <td data-title="Introduction"><?=$post['introduction']?></td>
+                        <td data-title="Statut de l'episode"><?php if ($post['post_status'] === 'draft'): ?> Brouillon <?php elseif ($post['post_status'] === 'publish'): ?> Publié <?php endif;?></td>
                         <td data-title="Actions"><a class="btn btn-primary" href="index.php?action=detailOfPost&id=<?=$post['id']?>">Voir</a><hr>
                         <a class="btn btn-primary" href="index.php?action=editEpisode&id=<?=$post['id']?>">Modifier</a><hr>
                         <a class="btn btn-primary" href="index.php?action=deleteEpisode&id=<?=$post['id']?>">Supprimer</a>

@@ -18,14 +18,32 @@
                 <label for="content">Contenu de l'épisode <span>(obligatoire)</span> </label>
                 <textarea class="form-control" id="content" name="content" value="" size="30" maxlength="2000"><?php if (isset($_POST['content'])){echo $_POST['content'];} ?> </textarea>
             </div>
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Statut de l'épisode</legend>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="episodeStatus" id="episodeStatusDraft" value="draft" checked>
+                            <label class="form-check-label" for="episodeStatusDraft">
+                                Brouillon
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="episodeStatus" id="episodeStatusPublish" value="publish">
+                            <label class="form-check-label" for="episodeStatusPublish">
+                                Publié
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
             <input type="hidden" name="token" id="token" value="<?php
             //Le champ caché a pour valeur le jeton
             //echo $token;
                 ?>"/>
-            <a class="btn btn-primary" href="index.php?action=readEpisodes">Retour</a>
-
-            <a class="btn btn-primary" href="index.php?action=draftEpisode">Brouillon</a>
-            <button class="btn btn-primary">Publier</button>
+            
+            <button class="btn btn-primary">Enregister</button>
         </form>
     </section>
 </div>

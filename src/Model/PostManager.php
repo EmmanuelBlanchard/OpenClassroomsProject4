@@ -84,7 +84,7 @@ class PostManager
     public function getListEpisodesPagination(int $currentPage, int $nbEpisodesPerPage): ?array
     {
         $firstEpisodePage=($currentPage-1)*$nbEpisodesPerPage;
-        $request = $this->database->prepare('SELECT id, chapter, title, introduction, post_date FROM posts ORDER BY post_date ASC LIMIT :firstEpisodePage, :nbEpisodesPerPage');
+        $request = $this->database->prepare('SELECT id, chapter, title, introduction, post_date, post_status FROM posts ORDER BY post_date ASC LIMIT :firstEpisodePage, :nbEpisodesPerPage');
         $request->bindValue(':firstEpisodePage', $firstEpisodePage, \PDO::PARAM_INT);
         $request->bindvalue(':nbEpisodesPerPage', $nbEpisodesPerPage, \PDO::PARAM_INT);
         $request->execute();
@@ -143,13 +143,14 @@ class PostManager
         return $request->fetch();
     }
 
-    public function newPost(string $chapter, string $title, string $introduction, string $content): void
+    public function newPost(string $chapter, string $title, string $introduction, string $content, $episodeStatus): void
     {
-        $request = $this->database->prepare('INSERT INTO posts (chapter, title, introduction, content, post_date, draft, publish) VALUES (:chapter, :title, :introduction, :content, NOW(), 0, 1)');
+        $request = $this->database->prepare('INSERT INTO posts (chapter, title, introduction, content, post_date, post_status) VALUES (:chapter, :title, :introduction, :content, NOW(), :post_status)');
         $request->bindValue(':chapter', $chapter, \PDO::PARAM_INT);
         $request->bindValue(':title', $title, \PDO::PARAM_STR);
         $request->bindValue(':introduction', $introduction, \PDO::PARAM_STR);
         $request->bindValue(':content', $content, \PDO::PARAM_STR);
+        $request->bindValue(':post_status', $episodeStatus, \PDO::PARAM_STR);
         $request->execute();
         // Chercher, trouver comment envoyer la date au format datetime de mysql
         // dans le formulaire avec un input type date et recupere la variable $date dans la fonction ??
