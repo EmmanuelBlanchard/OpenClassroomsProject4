@@ -9,22 +9,41 @@
             <form method="post">
                 <div class="form-group">
                     <label for="title">Titre <span>(obligatoire)</span> </label>
-                    <input id="title" class="form-control" name="title" type="text" value="<?php if (isset($data['post']['title'])){echo $data['post']['title'];} ?>" size="30" maxlength="245">
+                    <input id="title" class="form-control" name="title" type="text" value="<?php if (isset($data['post']['title'])){echo htmlentities($data['post']['title'], ENT_COMPAT,'UTF-8', true);} ?>" size="30" maxlength="245">
                 </div>
                 <div class="form-group">
                     <label for="chapter">Numéro de l'épisode <span>(obligatoire)</span> </label>
-                    <input id="chapter" class="form-control" name="chapter" type="number" value="<?php if (isset($data['post']['chapter'])){echo $data['post']['chapter'];} ?>" size="30" maxlength="245">
+                    <input id="chapter" class="form-control" name="chapter" type="number" value="<?php if (isset($data['post']['chapter'])){echo htmlentities($data['post']['chapter'], ENT_COMPAT,'UTF-8', true);} ?>" size="30" maxlength="245">
                 </div>
                 <div class="form-group">
                     <label for="introduction">Introduction de l'épisode <span>(obligatoire)</span> </label>
-                    <textarea class="form-control" id="introduction" name="introduction" size="30" maxlength="245" class="form-control"><?php if (isset($data['post']['introduction'])){echo $data['post']['introduction'];} ?></textarea>
+                    <textarea class="form-control" id="introduction" name="introduction" size="30" maxlength="245" class="form-control"><?php if (isset($data['post']['introduction'])){echo htmlentities($data['post']['introduction'], ENT_COMPAT,'UTF-8', true);} ?></textarea>
                 </div>
                 <div class="form-group">
                     <label for="content">Contenu de l'épisode <span>(obligatoire)</span> </label>
-                    <textarea class="form-control" id="content" name="content" size="30" maxlength="2000"><?php if (isset($data['post']['content'])){echo $data['post']['content'];} ?></textarea>
+                    <textarea class="form-control" id="content" name="content" size="30" maxlength="2000"><?php if (isset($data['post']['content'])){echo htmlentities($data['post']['content'], ENT_COMPAT,'UTF-8', true);} ?></textarea>
                 </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0">Statut de l'épisode</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="episodeStatus" id="episodeStatusDraft" value="draft" checked>
+                                <label class="form-check-label" for="episodeStatusDraft">
+                                    Brouillon
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="episodeStatus" id="episodeStatusPublish" value="publish">
+                                <label class="form-check-label" for="episodeStatusPublish">
+                                    Publié
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
                 <input type="hidden" name="id" value="<?=$data['post']['id']?>">
-                <a class="btn btn-primary" href="index.php?action=readEpisodes">Retour</a>
+                
                 <button class="btn btn-primary">Envoyer</button>
             </form>
         <?php endif; ?> 
