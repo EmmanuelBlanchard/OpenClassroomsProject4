@@ -28,7 +28,6 @@
 <?php elseif ($data['allpostspagination'] !== null): ?>
     <section>
         <h2>Liste des épisodes</h2>
-        
         <?php foreach($data['allpostspagination'] as $post): ?>
             <?php if ($post['post_status'] === 'publish'): ?>
                 <article>
@@ -38,7 +37,6 @@
                     <p class="pCreatedAt">Publié <?=$post['post_date_fr']?> </p>
                     <a href="index.php?action=detailOfPost&amp;id=<?=$post['id']?>" class="linkReadTheEntireEpisode">Lire l'épisode en entier</a>
                 </article>
-            <?php else: ?> 
             <?php endif;?>
         <?php endforeach; ?>
     </section>
