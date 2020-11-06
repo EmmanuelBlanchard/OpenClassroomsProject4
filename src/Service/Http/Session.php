@@ -10,10 +10,16 @@ use App\Controller\Backoffice\AdminController;
 class Session
 {
     private $session;
-
+    /*
     public function __construct($session)
     {
         $this->session = $session;
+    }
+*/
+
+    public function __construct()
+    {
+        session_start();
     }
 
     public function startSession(): void
@@ -33,6 +39,7 @@ class Session
         if (isset($_SESSION[$name])) {
             return $_SESSION[$name];
         }
+        return null;
     }
 
     public function showSession($name): ?array
