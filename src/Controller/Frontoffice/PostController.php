@@ -8,7 +8,6 @@ use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\View\View;
 
-
 class PostController
 {
     private PostManager $postManager;
