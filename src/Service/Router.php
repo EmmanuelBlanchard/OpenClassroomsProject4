@@ -12,7 +12,7 @@ use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Model\UserManager;
 use App\Service\Database;
-//use App\Service\Http\Request;
+use App\Service\Http\Request;
 use App\Service\Http\Session;
 use App\View\View;
 
@@ -31,14 +31,14 @@ class Router
     private array $get;
     private array $post;
     private Session $session;
-    //private Request $request;
+    private Request $request;
 
     public function __construct()
     {
         // Dépendances
         $this->database = new Database();
         $this->session = new Session();
-        //$this->request = new Request();
+        $this->request = new Request();
         $this->adminManager = new AdminManager($this->database);
         $this->userManager = new UserManager($this->database);
         $this->postManager = new PostManager($this->database);
@@ -51,8 +51,8 @@ class Router
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
         
         // En attendant de mettre en place la classe App\Service\Http\Request
-        $this->get = $_GET;
-        $this->post = $_POST;
+        //$this->get = $_GET;
+        //$this->post = $_POST;
     }
 
     public function run(): void

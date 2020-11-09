@@ -8,10 +8,6 @@ use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\View\View;
 
-if (!isset($_SESSION)) {
-    // On demarre la session
-    session_start();
-}
 
 class PostController
 {
