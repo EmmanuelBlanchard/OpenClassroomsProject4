@@ -10,8 +10,7 @@ $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
-$session = new Session();/*
-$session->startSession();*/
+$session = new Session();
 
 $router = new Router();
 $router->run();
