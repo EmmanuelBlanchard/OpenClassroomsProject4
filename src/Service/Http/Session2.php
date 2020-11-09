@@ -8,89 +8,91 @@ use App\Controller\Backoffice\AdminController;
 
 class SessionManager
 {
-    static function sessionStart($name, $limit = 0, $path = '/', $domain = null, $secure = null)
+    public static function sessionStart($name, $limit = 0, $path = '/', $domain = null, $secure = null): void
     {
         // Set the cookie name
         session_name($name . '_Session');
 
         // Set SSL level
-        $https = isset($secure) ? $secure : isset($_SERVER['HTTPS']);
+        $https = $secure ?? isset($_SERVER['HTTPS']);
 
         // Set session cookie options
         session_set_cookie_params($limit, $path, $domain, $https, true);
         session_start();
 
         // Make sure the session hasn't expired, and destroy it if it has
-        if(self::validateSession())
-        {
+        if (self::validateSession()) {
             // Check to see if the session is new or a hijacking attempt
-            if(!self::preventHijacking())
-            {
+            if (!self::preventHijacking()) {
                 // Reset session data and regenerate id
-                $_SESSION = array();
+                $_SESSION = [];
                 $_SESSION['IPaddress'] = $_SERVER['REMOTE_ADDR'];
                 $_SESSION['userAgent'] = $_SERVER['HTTP_USER_AGENT'];
                 self::regenerateSession();
 
             // Give a 5% chance of the session id changing on any request
-            }elseif(rand(1, 100) <= 5){
+            } elseif (random_int(1, 100) <= 5) {
                 self::regenerateSession();
             }
-        }else{
-            $_SESSION = array();
+        } else {
+            $_SESSION = [];
             session_destroy();
             session_start();
         }
     }
-/*
-   static function sessionStart($name, $limit = 0, $path = '/', $domain = null, $secure = null)
-   {
-      // Set the cookie name before we start.
-      session_name($name . '_Session');
+    /*
+       static function sessionStart($name, $limit = 0, $path = '/', $domain = null, $secure = null)
+       {
+          // Set the cookie name before we start.
+          session_name($name . '_Session');
 
-      // Set the domain to default to the current domain.
-      $domain = isset($domain) ? $domain : isset($_SERVER['SERVER_NAME']);
+          // Set the domain to default to the current domain.
+          $domain = isset($domain) ? $domain : isset($_SERVER['SERVER_NAME']);
 
-      // Set the default secure value to whether the site is being accessed with SSL
-      $https = isset($secure) ? $secure : isset($_SERVER['HTTPS']);
+          // Set the default secure value to whether the site is being accessed with SSL
+          $https = isset($secure) ? $secure : isset($_SERVER['HTTPS']);
 
-      // Set the cookie settings and start the session
-      session_set_cookie_params($limit, $path, $domain, $secure, true);
-      session_start();
-   }
+          // Set the cookie settings and start the session
+          session_set_cookie_params($limit, $path, $domain, $secure, true);
+          session_start();
+       }
 
-   static function sessionStart($name, $limit = 0, $path = '/', $domain = null, $secure = null)
-    {
-        ...
-        session_start();
-
-        if(!self::preventHijacking())
+       static function sessionStart($name, $limit = 0, $path = '/', $domain = null, $secure = null)
         {
-            $_SESSION = array();
-            $_SESSION['IPaddress'] = $_SERVER['REMOTE_ADDR'];
-            $_SESSION['userAgent'] = $_SERVER['HTTP_USER_AGENT'];
+            ...
+            session_start();
+
+            if(!self::preventHijacking())
+            {
+                $_SESSION = array();
+                $_SESSION['IPaddress'] = $_SERVER['REMOTE_ADDR'];
+                $_SESSION['userAgent'] = $_SERVER['HTTP_USER_AGENT'];
+            }
         }
-    }
-*/
-   static protected function preventHijacking()
+    */
+    protected static function preventHijacking()
     {
-        if(!isset($_SESSION['IPaddress']) || !isset($_SESSION['userAgent']))
+        if (!isset($_SESSION['IPaddress']) || !isset($_SESSION['userAgent'])) {
             return false;
+        }
 
-        if ($_SESSION['IPaddress'] != $_SERVER['REMOTE_ADDR'])
+        if ($_SESSION['IPaddress'] !== $_SERVER['REMOTE_ADDR']) {
             return false;
+        }
 
-        if( $_SESSION['userAgent'] != $_SERVER['HTTP_USER_AGENT'])
+        if ($_SESSION['userAgent'] !== $_SERVER['HTTP_USER_AGENT']) {
             return false;
+        }
 
         return true;
     }
 
-    static function regenerateSession()
+    public static function regenerateSession(): void
     {
         // If this session is obsolete it means there already is a new id
-        if(isset($_SESSION['OBSOLETE']) || $_SESSION['OBSOLETE'] == true)
+        if (isset($_SESSION['OBSOLETE']) || $_SESSION['OBSOLETE'] === true) {
             return;
+        }
 
         // Set current session to expire in 10 seconds
         $_SESSION['OBSOLETE'] = true;
@@ -112,15 +114,16 @@ class SessionManager
         unset($_SESSION['EXPIRES']);
     }
 
-    static protected function validateSession()
+    protected static function validateSession()
     {
-        if( isset($_SESSION['OBSOLETE']) && !isset($_SESSION['EXPIRES']) )
+        if (isset($_SESSION['OBSOLETE']) && !isset($_SESSION['EXPIRES'])) {
             return false;
+        }
 
-        if(isset($_SESSION['EXPIRES']) && $_SESSION['EXPIRES'] < time())
+        if (isset($_SESSION['EXPIRES']) && $_SESSION['EXPIRES'] < time()) {
             return false;
+        }
 
         return true;
     }
-
 }

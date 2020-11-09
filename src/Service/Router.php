@@ -11,9 +11,9 @@ use App\Model\AdminManager;
 use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Model\UserManager;
-use App\Service\Http\Session;
-use App\Service\Http\Request;
 use App\Service\Database;
+use App\Service\Http\Request;
+use App\Service\Http\Session;
 use App\View\View;
 
 // Cette classe router est un exemple très basique. Cette façon de faire n'est pas optimale
@@ -37,6 +37,8 @@ class Router
     {
         // Dépendances
         $this->database = new Database();
+        $this->session = new Session();
+        $this->request = new Request();
         $this->adminManager = new AdminManager($this->database);
         $this->userManager = new UserManager($this->database);
         $this->postManager = new PostManager($this->database);
