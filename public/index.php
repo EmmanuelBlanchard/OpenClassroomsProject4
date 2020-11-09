@@ -12,7 +12,6 @@ $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
 $session = new Session();
-//$session = new Session2();
 
 $router = new Router();
 $router->run();
