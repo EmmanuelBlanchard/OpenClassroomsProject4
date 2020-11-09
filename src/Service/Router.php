@@ -11,6 +11,8 @@ use App\Model\AdminManager;
 use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Model\UserManager;
+use App\Service\Http\Session;
+use App\Service\Http\Request;
 use App\Service\Database;
 use App\View\View;
 
@@ -28,6 +30,8 @@ class Router
     private CommentController $commentController;
     private array $get;
     private array $post;
+    private Session $session;
+    private Request $request;
 
     public function __construct()
     {
@@ -51,6 +55,7 @@ class Router
 
     public function run(): void
     {
+        var_dump($this->request);
         // Nous avons quatres routes
         // On teste si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action home)
         $action = $this->get['action'] ?? 'home';
