@@ -25,7 +25,7 @@ class PostManager
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
         
-        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr, post_status FROM posts ORDER BY post_date DESC LIMIT 0,3');
+        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr, post_status FROM posts WHERE post_status=\'publish\' ORDER BY post_date DESC LIMIT 0,3');
         $request->execute();
         return $request->fetchAll();
     }
@@ -52,7 +52,7 @@ class PostManager
     
     public function getNbPosts(): int
     {
-        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_posts FROM posts');
+        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_posts FROM posts WHERE post_status=\'publish\' ');
         $request->execute();
         $result = $request->fetch();
         $nbTotalPosts = (int)$result['nb_total_posts'];
