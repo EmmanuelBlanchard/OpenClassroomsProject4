@@ -10,16 +10,12 @@ use App\Controller\Backoffice\AdminController;
 class Session
 {
     private $session;
-    /*
-    public function __construct($session)
-    {
-        $this->session = $session;
-    }
-*/
 
     public function __construct()
     {
-        session_start();
+        if (isset($_SESSION)) {
+            session_start();
+        }
     }
 
     public function startSession(): void
@@ -58,7 +54,18 @@ class Session
 
     public function stopSession(): void
     {
+        $_SESSION = [];
         session_destroy();
+        //echo '<pre>';
+        //var_dump($_SESSION);
+        //die();
+        //echo '</pre>';
+        $_SESSION['message'] = "Vous êtes maintenant déconnecté !";
+        $_SESSION['login'] = false;
+        //echo '<pre>';
+        //var_dump($_SESSION);
+        //die();
+        //echo '</pre>';
     }
 
     /* ESSAI CRSF */

@@ -8,6 +8,7 @@ use App\Model\AdminManager;
 use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Model\UserManager;
+use App\Service\Http\Session;
 use App\View\View;
 
 class AdminController
@@ -17,14 +18,16 @@ class AdminController
     private PostManager $postManager;
     private CommentManager $commentManager;
     private View $view;
+    private Session $session;
 
-    public function __construct(AdminManager $adminManager, UserManager $userManager, PostManager $postManager, CommentManager $commentManager, View $view)
+    public function __construct(AdminManager $adminManager, UserManager $userManager, PostManager $postManager, CommentManager $commentManager, View $view, Session $session)
     {
         $this->adminManager = $adminManager;
         $this->userManager = $userManager;
         $this->postManager = $postManager;
         $this->commentManager = $commentManager;
         $this->view = $view;
+        $this->session = $session;
     }
 
     public function login(array $data): void
@@ -57,21 +60,10 @@ class AdminController
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
     
-    public function logout(): void
+    public function logout($session): void
     {
         // Suppression des variables de session et de la session
-        $_SESSION = [];
-        session_destroy();
-        //echo '<pre>';
-        //var_dump($_SESSION);
-        //die();
-        //echo '</pre>';
-        $_SESSION['message'] = "Vous êtes maintenant déconnecté !";
-        $_SESSION['login'] = false;
-        //echo '<pre>';
-        //var_dump($_SESSION);
-        //die();
-        //echo '</pre>';
+        $session->stopSession();
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
 

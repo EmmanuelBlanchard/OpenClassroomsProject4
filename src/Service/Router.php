@@ -46,7 +46,7 @@ class Router
         $this->view = new View();
 
         // Injection des dépendances
-        $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view);
+        $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view, $this->session);
         $this->postController = new PostController($this->postManager, $this->commentManager, $this->view);
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
         
@@ -57,7 +57,8 @@ class Router
 
     public function run(): void
     {
-        var_dump($this->request);
+        //var_dump($this->session);
+        //var_dump($this->request);
         // Nous avons quatres routes
         // On teste si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action home)
         $action = $this->get['action'] ?? 'home';
@@ -87,7 +88,7 @@ class Router
             $this->adminController->login($this->post);
         } elseif ($action === 'logout') {
             // route http://localhost:8000/?action=blogControlPanel
-            $this->adminController->logout();
+            $this->adminController->logout($this->session);
         } elseif ($action === 'blogControlPanel') {
             // route http://localhost:8000/?action=blogControlPanel
             $this->adminController->blogControlPanel();
