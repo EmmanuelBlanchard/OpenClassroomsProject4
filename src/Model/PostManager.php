@@ -97,8 +97,6 @@ class PostManager
         return $result === false ? null : (int)$result['id'];
     }
 
-    /*************************************************************************/
-    
     public function showOnePost(int $postId)
     {   // Que mettre comme proprietes typées ?
         //  : ?array pour recuperer les données dans un tableau

@@ -1,18 +1,21 @@
 <?php
 
 declare(strict_types=1);
+
+namespace App\Service\Http;
+
+use App\Controller\Backoffice\AdminController;
+
 // class permettant la gestion des variables supers globales de php sauf $_SESSION
 class Request
 {
     private $get;
     private $post;
-    private $session;
 
     public function __construct()
     {
         $this->get = $_GET;
         $this->post = $_POST;
-        $this->session = $_SESSION;
     }
 
     /**
@@ -29,13 +32,5 @@ class Request
     public function getPost()
     {
         return $this->post;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSession()
-    {
-        return $this->session;
     }
 }
