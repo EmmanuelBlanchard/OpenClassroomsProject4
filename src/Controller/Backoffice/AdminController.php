@@ -100,19 +100,19 @@ class AdminController
         $this->view->render(['template' => 'readepisodes', 'allepisodespagination' => $dataAllEpisodesPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage], 'backoffice');
     }
     
-    public function detailEpisode(int $postId): void
+    public function detailEpisode(int $postId, $session): void
     {
         if (isset($postId) && !empty($postId)) {
             $dataPost = $this->postManager->showOnePost($postId);
             // On verifie si le post existe
             if (!$dataPost) {
-                $_SESSION['erreur'] = "Cet id n'existe pas";
+                $session->setSession('erreur', 'Cet id n\'existe pas');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
             $this->view->render(['template' => 'detailepisode', 'post' => $dataPost], 'backoffice');
         } else {
-            $_SESSION['erreur'] = "URL invalide";
+            $session->setSession('erreur', 'URL invalide');
             header('Location: index.php?action=readEpisodes');
             exit();
         }
