@@ -118,7 +118,7 @@ class AdminController
         }
     }
 
-    public function addEpisode(array $data): void
+    public function addEpisode(array $data, $session): void
     {
         //echo '<pre>';
         //var_dump($_SESSION['token'], $_SESSION['token_time'], $_POST['token']);
@@ -137,11 +137,11 @@ class AdminController
                 $content = ($data['content']);
                 $episodeStatus = strip_tags($data['episodeStatus']);
                 $this->postManager->newPost($chapter, $title, $introduction, $content, $episodeStatus);
-                $_SESSION['message'] = "Épisode ajouté";
+                $session->setSession('message', 'Épisode ajouté');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
-            $_SESSION['erreur'] = "Le formulaire est incomplet";
+            $session->setSession('erreur', 'le formulaire est incomplet');
             $this->view->render(['template' => 'addepisode'], 'backoffice');
         }
         $this->view->render(['template' => 'addepisode'], 'backoffice');
