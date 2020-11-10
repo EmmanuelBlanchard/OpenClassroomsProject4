@@ -34,7 +34,7 @@ class AdminController
     {
         //var_dump($data);
         //echo '<pre>';
-        //var_dump($_SESSION);
+        //var_dump($session);
         //die();
         //echo '</pre>';
         if (!empty($data['pseudo']) && !empty($data['password'])) {
@@ -51,8 +51,6 @@ class AdminController
                     $session->setSession('pseudo', htmlspecialchars($pseudo));
                     $session->setSession('message', 'Vous êtes maintenant connecté ! ' . htmlspecialchars($pseudo));
                     $session->setSession('login', true);
-                    //var_dump($_SESSION['id'], $_SESSION['pseudo'], $_SESSION['message'], $_SESSION['login']);
-                    //die();
                     header('Location: index.php?action=blogControlPanel');
                     exit();
                 }
@@ -79,14 +77,14 @@ class AdminController
         $this->view->render(['template' => 'myprofile'], 'backoffice');
     }
 
-    public function readEpisodes(int $currentPage): void
+    public function readEpisodes(int $currentPage, $session): void
     {
         $nbEpisodesPerPage = 5;
         $nbTotalEpisodes = $this->postManager->getNbEpisodes();
         $nbTotalPages = ceil($nbTotalEpisodes / $nbEpisodesPerPage);
         
         if ($currentPage>$nbTotalPages) {
-            $_SESSION['erreur'] = "La page demandée n'existe pas ! Voici la dernière page du blog.";
+            $session->setSession('erreur', 'La page demandée n\'existe pas ! Voici la dernière page du blog.');
             $currentPage= $nbTotalPages;
             header('Location: index.php?action=readEpisodes&page=' .$currentPage . '');
             exit();
