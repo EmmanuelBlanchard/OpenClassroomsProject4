@@ -253,22 +253,22 @@ class AdminController
         exit();
     }
 
-    public function deleteComment(int $commentId): void
+    public function deleteComment(int $commentId, $session): void
     {
         if (isset($commentId) && !empty($commentId)) {
             $dataComment = $this->commentManager->showOneComment($commentId);
             // On verifie si le commentaire existe
             if (!$dataComment) {
-                $_SESSION['erreur'] = "Cet id n'existe pas";
+                $session->setSession('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
                 header('Location: index.php?action=readComments');
                 exit();
             }
             $dataComment = $this->commentManager->deleteComment($commentId);
-            $_SESSION['message'] = "Commentaire supprimé";
+            $session->setSession('message', 'Commentaire n°' . $commentId . ' supprimé');
             header('Location: index.php?action=readComments');
             exit();
         }
-        $_SESSION['erreur'] = "URL invalide";
+        $session->setSession('erreur', 'URL invalide');
         header('Location: index.php?action=readComments');
         exit();
     }

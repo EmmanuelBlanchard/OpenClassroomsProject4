@@ -123,7 +123,7 @@ class Router
             $this->adminController->approveComment((int)$this->get['id'], $this->session);
         } elseif ($action === 'deleteComment') {
             // route http://localhost:8000/?action=deleteComment&id=5
-            $this->adminController->deleteComment((int)$this->get['id'], $this->post);
+            $this->adminController->deleteComment((int)$this->get['id'], $this->session);
         } else {
             echo "Error 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
         }
