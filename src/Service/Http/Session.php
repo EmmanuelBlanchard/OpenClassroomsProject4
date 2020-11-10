@@ -60,8 +60,8 @@ class Session
         //var_dump($_SESSION);
         //die();
         //echo '</pre>';
-        $_SESSION['message'] = "Vous êtes maintenant déconnecté !";
-        $_SESSION['login'] = false;
+        $this->setSession('message', 'Vous êtes maintenant déconnecté !');
+        $this->setSession('login', false);
         //echo '<pre>';
         //var_dump($_SESSION);
         //die();
