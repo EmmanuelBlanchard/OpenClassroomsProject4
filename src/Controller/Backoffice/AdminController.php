@@ -153,7 +153,7 @@ class AdminController
             $dataPost = $this->postManager->showOnePost($postId);
             // On verifie si le post existe
             if (!$dataPost) {
-                $session->setSession('erreur', 'Cet id n\'existe pas');
+                $session->setSession('erreur', 'L\'épisode n°' . $postId . ' n\'existe pas');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
