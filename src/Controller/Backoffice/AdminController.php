@@ -214,7 +214,7 @@ class AdminController
         $nbTotalComments = $this->commentManager->getNbComments();
         $nbTotalPages = ceil($nbTotalComments / $nbCommentsPerPage);
         if ($currentPage>$nbTotalPages) {
-            $session->setSession('erreur', 'La page demandée n\'existe pas ! Voici la denière page de Liste des commentaires.');
+            $session->setSession('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la denière page de Liste des commentaires.');
             $currentPage = $nbTotalPages;
             header('Location: index.php?action=readComments&page=' .$currentPage .'');
             exit();
