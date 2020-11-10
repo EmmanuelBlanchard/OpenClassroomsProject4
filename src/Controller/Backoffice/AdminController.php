@@ -84,7 +84,7 @@ class AdminController
         $nbTotalPages = ceil($nbTotalEpisodes / $nbEpisodesPerPage);
         
         if ($currentPage>$nbTotalPages) {
-            $session->setSession('erreur', 'La page demandée n\'existe pas ! Voici la dernière page du blog.');
+            $session->setSession('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la denière page de Liste des épisodes.');
             $currentPage= $nbTotalPages;
             header('Location: index.php?action=readEpisodes&page=' .$currentPage . '');
             exit();
