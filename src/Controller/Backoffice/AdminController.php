@@ -239,7 +239,7 @@ class AdminController
             $dataComment = $this->commentManager->showOneComment($commentId);
             // On verifie si le commentaire existe
             if (!$dataComment) {
-                $session->setSession('erreur', 'Ce commentaire n\'existe pas');
+                $session->setSession('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
                 header('Location: index.php?action=readComments');
                 exit();
             }
