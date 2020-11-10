@@ -121,9 +121,6 @@ class Router
         } elseif ($action === 'approveComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=approveComment&id=5
             $this->adminController->approveComment((int)$this->get['id']);
-        } elseif ($action === 'addComment') {
-            // route http://localhost:8000/?action=addComment
-            $this->adminController->addComment($this->post);
         } elseif ($action === 'deleteComment') {
             // route http://localhost:8000/?action=deleteComment&id=5
             $this->adminController->deleteComment((int)$this->get['id'], $this->post);

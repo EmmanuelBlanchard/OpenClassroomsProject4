@@ -233,30 +233,6 @@ class AdminController
         $this->view->render(['template' => 'reportedcomments', 'allreportedcomment' => $dataReportedComments], 'backoffice');
     }
 
-    // A RESOUDRE, marque que le formulaire est incomplet malgré le remplissage de tous les champs
-    public function addComment(array $data): void
-    {
-        if ($data) {
-            if (isset($data['pseudo']) && !empty($data['pseudo'])
-             && isset($data['comment']) && !empty($data['comment'])
-             && isset($data['post_id']) && !empty($data['post_id'])
-             && isset($data['reported']) && !empty($data['reported'])) {
-                // On nettoie les données envoyées
-                $pseudo = strip_tags($data['pseudo']);
-                $comment = strip_tags($data['comment']);
-                $post_id = strip_tags($data['post_id']);
-                $reported = strip_tags($data['reported']);
-                $this->commentManager->newComment($pseudo, $comment, $post_id, $reported);
-                $_SESSION['message'] = "Commentaire ajouté";
-                header('Location: index.php?action=readComments');
-                exit();
-            }
-            $_SESSION['erreur'] = "Le formulaire est incomplet";
-            $this->view->render(['template' => 'addcomment'], 'backoffice');
-        }
-        $this->view->render(['template' => 'addcomment'], 'backoffice');
-    }
-
     public function approveComment($commentId): void
     {
         if (isset($commentId) && !empty($commentId)) {
