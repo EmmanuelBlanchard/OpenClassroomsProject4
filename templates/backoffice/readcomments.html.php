@@ -4,6 +4,22 @@
     </section>
 <?php elseif ($data['allcommentspagination'] !== null): ?>
     <h2>Liste des commentaires</h2>
+    <?php
+        if(!empty($_SESSION['erreur'])) {
+            echo '<div class="alert alert-danger" role="alert">
+                    '. $_SESSION['erreur'].'
+                </div>';
+            $_SESSION['erreur'] = "";
+        } 
+    ?>
+    <?php
+        if(!empty($_SESSION['message'])) {
+            echo '<div class="alert alert-success" role="alert">
+                    '. $_SESSION['message'].'
+                </div>';
+                $_SESSION['message'] = "";
+        }
+    ?>
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-sm">
             <thead class="text-center">

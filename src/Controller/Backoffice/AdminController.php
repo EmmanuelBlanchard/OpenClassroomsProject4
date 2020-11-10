@@ -208,13 +208,13 @@ class AdminController
         exit();
     }
 
-    public function readComments(int $currentPage): void
+    public function readComments(int $currentPage, $session): void
     {
         $nbCommentsPerPage = 5;
         $nbTotalComments = $this->commentManager->getNbComments();
         $nbTotalPages = ceil($nbTotalComments / $nbCommentsPerPage);
         if ($currentPage>$nbTotalPages) {
-            $_SESSION['erreur'] = "La page demandée n'existe pas ! Voici la deniere page du blog.";
+            $session->setSession('erreur', 'La page demandée n\'existe pas ! Voici la denière page de Liste des commentaires.');
             $currentPage = $nbTotalPages;
             header('Location: index.php?action=readComments&page=' .$currentPage .'');
             exit();

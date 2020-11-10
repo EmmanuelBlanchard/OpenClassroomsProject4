@@ -114,7 +114,7 @@ class Router
         } elseif ($action === 'readComments') {
             // route http://localhost:8000/?action=readComments
             $currentPage = isset($this->get['page']) ? (int) $this->get['page'] : 1;
-            $this->adminController->readComments($currentPage);
+            $this->adminController->readComments($currentPage, $this->session);
         } elseif ($action === 'reportedComments') {
             // route http://localhost:8000/?action=reportedComments
             $this->adminController->reportedComments();
