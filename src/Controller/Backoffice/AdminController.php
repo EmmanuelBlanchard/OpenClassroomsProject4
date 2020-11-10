@@ -147,18 +147,18 @@ class AdminController
         $this->view->render(['template' => 'addepisode'], 'backoffice');
     }
 
-    public function editEpisode(int $postId, array $data): void
+    public function editEpisode(int $postId, array $data, $session): void
     {
         if (isset($postId) && !empty($postId)) {
             $dataPost = $this->postManager->showOnePost($postId);
             // On verifie si le post existe
             if (!$dataPost) {
-                $_SESSION['erreur'] = "Cet id n'existe pas";
+                $session->setSession('erreur', 'Cet id n\'existe pas');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
         } else {
-            $_SESSION['erreur'] = "URL invalide";
+            $session->setSession('erreur', 'URL invalide');
             header('Location: index.php?action=readEpisodes');
             exit();
         }
@@ -178,11 +178,11 @@ class AdminController
                 $content = ($data['content']);
                 $episodeStatus = strip_tags($data['episodeStatus']);
                 $this->postManager->editPost($id, $chapter, $title, $introduction, $content, $episodeStatus);
-                $_SESSION['message'] = "Épisode modifié";
+                $session->setSession('message', 'Épisode modifié');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
-            $_SESSION['erreur'] = "Le formulaire est incomplet";
+            $session->setsession('erreur', 'Le formulaire est incomplet');
             $this->view->render(['template' => 'editepisode'], 'backoffice');
         }
         $this->view->render(['template' => 'editepisode', 'post' => $dataPost], 'backoffice');
