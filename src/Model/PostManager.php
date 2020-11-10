@@ -93,17 +93,13 @@ class PostManager
         return $result === false ? null : (int)$result['id'];
     }
 
-    public function showOnePost(int $postId)
-    {   // Que mettre comme proprietes typées ?
-        //  : ?array pour recuperer les données dans un tableau
-        // Mais si l'id est inconnu, exemple 99 problème: non affichage du message erreur "Cet id n'existe pas" Alors qu'avec
-        //  : ? bool , affichage du message erreur, si id inconnu ex 99 mais la recuperation des données ne marche pas ...
+    public function showOnePost(int $postId): ?array
+    {
         $request = $this->database->prepare('SELECT id, chapter, title, introduction, content, post_date FROM posts WHERE id = :id');
-        //$request->execute(['id' => $postId]);
-        //return $request->fetch();
         $request->bindValue(':id', $postId, \PDO::PARAM_INT);
         $request->execute();
-        return $request->fetch();
+        $result = $request->fetch();
+        return !$result ? null : $result;
     }
 
     public function newPost(string $chapter, string $title, string $introduction, string $content, string $episodeStatus): void
