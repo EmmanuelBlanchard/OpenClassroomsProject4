@@ -99,9 +99,6 @@ class Router
             // route http://localhost:8000/?action=readEpisodes
             $currentPage = isset($this->get['page']) ? (int) $this->get['page'] : 1;
             $this->adminController->readEpisodes($currentPage, $this->session);
-        } elseif ($action === 'detailEpisode' && isset($this->get['id'])) {
-            // route http://localhost:8000/?action=detailEpisode&id=5
-            $this->adminController->detailEpisode((int)$this->get['id'], $this->session);
         } elseif ($action === 'addEpisode') {
             // route http://localhost:8000/?action=addEpisode
             $this->adminController->addEpisode($this->post, $this->session);
