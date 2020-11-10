@@ -51,8 +51,8 @@ class Router
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
         
         // En attendant de mettre en place la classe App\Service\Http\Request
-        //$this->get = $_GET;
-        //$this->post = $_POST;
+        $this->get = $_GET;
+        $this->post = $_POST;
     }
 
     public function run(): void
@@ -85,7 +85,7 @@ class Router
             $this->commentController->error((int)$this->get['id']);
         } elseif ($action === 'login') {
             // route http://localhost:8000/?action=login
-            $this->adminController->login($this->post);
+            $this->adminController->login($this->post, $this->session);
         } elseif ($action === 'logout') {
             // route http://localhost:8000/?action=blogControlPanel
             $this->adminController->logout($this->session);

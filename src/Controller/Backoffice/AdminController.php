@@ -30,7 +30,7 @@ class AdminController
         $this->session = $session;
     }
 
-    public function login(array $data): void
+    public function login(array $data, $session): void
     {
         //var_dump($data);
         //echo '<pre>';
@@ -43,7 +43,7 @@ class AdminController
             // Récupération de l'id et de son mot de passe hashé
             $result = $this->userManager->recoveryIdAndHashedPassword($data['pseudo']);
             if (!$result) {
-                $_SESSION['erreur'] = "Mauvais identifiant ou mot de passe !";
+                $session->setSession('erreur','Mauvais identifiant ou mot de passe !');
             } else {
                 $isPasswordValid = password_verify($password, $result['hashed_password']);
                 if ($isPasswordValid) {
@@ -54,7 +54,7 @@ class AdminController
                     header('Location: index.php?action=blogControlPanel');
                     exit();
                 }
-                $_SESSION['erreur'] = "Mauvais identifiant ou mot de passe !";
+                $session->setSession('erreur','Mauvais identifiant ou mot de passe !');
             }
         }
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
