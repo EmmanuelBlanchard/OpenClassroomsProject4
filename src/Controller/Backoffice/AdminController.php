@@ -188,7 +188,7 @@ class AdminController
         $this->view->render(['template' => 'editepisode', 'post' => $dataPost], 'backoffice');
     }
 
-    public function deleteEpisode(int $postId): void
+    public function deleteEpisode(int $postId, $session): void
     {
         if (isset($postId) && !empty($postId)) {
             $dataPost = $this->postManager->showOnePost($postId);
@@ -199,11 +199,11 @@ class AdminController
                 exit();
             }
             $this->postManager->deletePost($postId);
-            $_SESSION['message'] = "Épisode supprimé";
+            $session->setsession('message', 'Épisode supprimé ' . $postId . '');
             header('Location: index.php?action=readEpisodes');
             exit();
         }
-        $_SESSION['erreur'] = "URL invalide";
+        $session->setSession('erreur', 'URL invalide');
         header('Location: index.php?action=readEpisodes');
         exit();
     }
