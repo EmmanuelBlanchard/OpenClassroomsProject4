@@ -233,22 +233,22 @@ class AdminController
         $this->view->render(['template' => 'reportedcomments', 'allreportedcomment' => $dataReportedComments], 'backoffice');
     }
 
-    public function approveComment($commentId): void
+    public function approveComment($commentId, $session): void
     {
         if (isset($commentId) && !empty($commentId)) {
             $dataComment = $this->commentManager->showOneComment($commentId);
             // On verifie si le commentaire existe
             if (!$dataComment) {
-                $_SESSION['erreur'] = "Cet id n'existe pas";
+                $session->setSession('erreur', 'Ce commentaire n\'existe pas');
                 header('Location: index.php?action=readComments');
                 exit();
             }
             $this->commentManager->approveComment($commentId);
-            $_SESSION['message'] = "Commentaire approuvé";
+            $session->setSession('message', 'Commentaire n°' . $commentId . ' approuvé');
             header('Location: index.php?action=reportedComments');
             exit();
         }
-        $_SESSION['erreur'] = "URL invalide";
+        $session->setSession('erreur', 'URL invalide');
         header('Location: index.php?action=readComments');
         exit();
     }
