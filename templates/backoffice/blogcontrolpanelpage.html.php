@@ -3,22 +3,6 @@
     <div id="welcome-panel" class="welcome-panel">
         <div class="welcome-panel-content">
             <h2>Bienvenue sur le Blog de Jean Forteroche</h2>
-            <?php
-                if(!empty($_SESSION['erreur'])) {
-                    echo '<div class="alert alert-danger" role="alert">
-                            '. $_SESSION['erreur'].'
-                        </div>';
-                    $_SESSION['erreur'] = "";
-                } 
-            ?>
-            <?php
-                if(!empty($_SESSION['message'])) {
-                    echo '<div class="alert alert-success" role="alert">
-                            '. $_SESSION['message'].'
-                        </div>';
-                        $_SESSION['message'] = "";
-                }
-            ?>
             <div class="welcome-panel-column-container">
                 <div class="welcome-panel-column">
                     <p class="homeTitle">Accueil</p>                    

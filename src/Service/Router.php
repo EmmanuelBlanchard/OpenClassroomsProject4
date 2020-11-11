@@ -91,7 +91,7 @@ class Router
             $this->adminController->logout($this->session);
         } elseif ($action === 'blogControlPanel') {
             // route http://localhost:8000/?action=blogControlPanel
-            $this->adminController->blogControlPanel();
+            $this->adminController->blogControlPanel($this->session);
         } elseif ($action === 'myProfile') {
             // route http://localhost:8000/?action=myProfile
             $this->adminController->myProfile();

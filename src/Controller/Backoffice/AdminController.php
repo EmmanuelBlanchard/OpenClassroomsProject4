@@ -37,6 +37,9 @@ class AdminController
         //var_dump($session);
         //die();
         //echo '</pre>';
+        // ESSAI AFFICHAGE des messages de Session en bootstrap
+        $session->displaySession();
+
         if (!empty($data['pseudo']) && !empty($data['password'])) {
             $pseudo= $data['pseudo'];
             $password = $data['password'];
@@ -67,8 +70,10 @@ class AdminController
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
 
-    public function blogControlPanel(): void
+    public function blogControlPanel($session): void
     {
+        // Essai Affichage des messages de session sans balise php et echo dans le template
+        $session->displaySession();
         $this->view->render(['template' => 'blogcontrolpanelpage'], 'backoffice');
     }
     
