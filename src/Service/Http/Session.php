@@ -39,16 +39,6 @@ class Session
             echo '<div class="alert alert-success" role="alert">'. $_SESSION['message'] . '</div>';
             unset($_SESSION['message']);
         }
-        /*
-        if (!empty($_SESSION['erreur'])) {
-            echo '<div class="alert alert-danger" role="alert"> '. $_SESSION['erreur'] . '</div>';
-            unset($_SESSION['erreur']);
-        }
-        else if (!empty($_SESSION['message'])) {
-            echo '<div class="alert alert-success" role="alert">'. $_SESSION['message'] . '</div>';
-            unset($_SESSION['message']);
-        }
-        */
     }
 
     public function getSession($name): ?array
