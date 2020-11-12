@@ -33,14 +33,14 @@ class Session
         */
     }
 
-/*
-    public function __construct()
-    {
-        if (isset($_SESSION)) {
-            session_start();
+    /*
+        public function __construct()
+        {
+            if (isset($_SESSION)) {
+                session_start();
+            }
         }
-    }
-*/
+    */
     public function startSession(): void
     {
         session_start();
