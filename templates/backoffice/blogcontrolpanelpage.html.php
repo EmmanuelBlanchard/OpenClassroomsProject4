@@ -3,12 +3,9 @@
     <div id="welcome-panel" class="welcome-panel">
         <div class="welcome-panel-content">
             <h2>Bienvenue sur le Blog de Jean Forteroche</h2>
-            <?php $session->displaySession(); ?>
-            <?php foreach($data['session'] as $post): ?>
-                <?=$post['erreur']?>
-                <?=$post['message']?>
-            <?php endforeach; ?>
-
+            <?php if (isset($session['message'])) { ?>
+                <div class="alert alert-success" role="alert"><?php echo $session['message']; ?></div>
+            <?php } ?>
             <div class="welcome-panel-column-container">
                 <div class="welcome-panel-column">
                     <p class="homeTitle">Accueil</p>                    
