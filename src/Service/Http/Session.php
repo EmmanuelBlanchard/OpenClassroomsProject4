@@ -9,15 +9,38 @@ use App\Controller\Backoffice\AdminController;
 // Class permettant de gérer la variable super globale $_SESSION
 class Session
 {
-    private $session;
+    private array $session;
 
+    public function __construct()
+    {
+        //$this->session = $_SESSION;
+        /*
+        var_dump($this->session);
+        die();
+        */
+        /*
+        var_dump($_SESSION);
+        die();
+        */
+        /*
+        if (isset($_SESSION)) {
+            session_start();
+        }
+
+        if (isset($this->session)) {
+            session_start();
+        }
+        */
+    }
+
+/*
     public function __construct()
     {
         if (isset($_SESSION)) {
             session_start();
         }
     }
-
+*/
     public function startSession(): void
     {
         session_start();
