@@ -9,6 +9,7 @@ use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Model\UserManager;
 use App\Service\Http\Session;
+use App\Service\Security\Token;
 use App\View\View;
 
 class AdminController
@@ -19,8 +20,9 @@ class AdminController
     private CommentManager $commentManager;
     private View $view;
     private Session $session;
+    private Token $token;
 
-    public function __construct(AdminManager $adminManager, UserManager $userManager, PostManager $postManager, CommentManager $commentManager, View $view, Session $session)
+    public function __construct(AdminManager $adminManager, UserManager $userManager, PostManager $postManager, CommentManager $commentManager, View $view, Session $session, Token $token)
     {
         $this->adminManager = $adminManager;
         $this->userManager = $userManager;
@@ -28,6 +30,7 @@ class AdminController
         $this->commentManager = $commentManager;
         $this->view = $view;
         $this->session = $session;
+        $this->token = $token;
     }
 
     public function login(array $data, $session): void
@@ -69,8 +72,6 @@ class AdminController
 
     public function blogControlPanel($session): void
     {
-        // Essai Affichage des messages de session sans balise php et echo dans le template
-        //$session->displaySession();
         $this->view->render(['template' => 'blogcontrolpanelpage', 'session' => $session], 'backoffice');
     }
     
@@ -102,12 +103,14 @@ class AdminController
         $this->view->render(['template' => 'readepisodes', 'allepisodespagination' => $dataAllEpisodesPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage], 'backoffice');
     }
     
-    public function addEpisode(array $data, $session): void
+    public function addEpisode(array $data, $session, $token): void
     {
         //echo '<pre>';
         //var_dump($_SESSION['token'], $_SESSION['token_time'], $_POST['token']);
+        //var_dump($session, $data);
         //die();
         //echo '</pre>';
+        
         if ($data) {
             if (isset($data['chapter']) && !empty($data['chapter'])
                 && isset($data['title']) && !empty($data['title'])
@@ -121,12 +124,15 @@ class AdminController
                 $content = ($data['content']);
                 $episodeStatus = strip_tags($data['episodeStatus']);
                 $this->postManager->newPost($chapter, $title, $introduction, $content, $episodeStatus);
+                // ?? $uniqueFromName $tokenValue
+                $token->csrfguardValidateToken($uniqueFormName, $tokenValue);
+
                 $session->setSession('message', 'Épisode ajouté');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
             $session->setSession('erreur', 'le formulaire est incomplet');
-            $this->view->render(['template' => 'addepisode'], 'backoffice');
+            $this->view->render(['template' => 'addepisode', 'session' => $session, 'token' => $token], 'backoffice');
         }
         $this->view->render(['template' => 'addepisode'], 'backoffice');
     }

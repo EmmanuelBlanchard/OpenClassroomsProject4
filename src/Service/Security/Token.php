@@ -14,31 +14,33 @@ class Token
     private Session $session;
     private Request $request;
 
-    public function __construct($token)
+    public function __construct($session)
     {
-        $this->session = $_SESSION;
-        
-        $this->token = $token;
+        //echo '<pre>';
+        //var_dump($session);
+        //die();
+        //echo '</pre>';
 
-        var_dump($this->session);
-        die();
+        $this->csrfguardGenerateToken($session);
+        //var_dump($session);
+        //die();
+        // object(App\Service\Http\Session)#6 (0) { ["session":"App\Service\Http\Session":private]=> uninitialized(array) }
     }
-
     // Essais CSRF
-    public function store_in_session($key, $value): void
+    public function storeInSession($key, $value): void
     {
         if (isset($_SESSION)) {
             $_SESSION[$key]=$value;
         }
     }
  
-    public function unset_session($key): void
+    public function unsetSession($key): void
     {
         $_SESSION[$key]=' ';
         unset($_SESSION[$key]);
     }
  
-    public function get_from_session($key)
+    public function getFromSession($key)
     {
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
@@ -46,21 +48,21 @@ class Token
         return false;
     }
  
-    public function csrfguard_generate_token($unique_form_name)
+    public function csrfguardGenerateToken($uniqueFormName)
     {
         $token = random_bytes(64); // PHP 7, or via paragonie/random_compat
-        $this->store_in_session($unique_form_name, $token);
+        $this->storeInSession($uniqueFormName, $token);
         return $token;
     }
  
-    public function csrfguard_validate_token($unique_form_name, $token_value)
+    public function csrfguardValidateToken($uniqueFormName, $tokenValue)
     {
-        $token = $this->get_from_session($unique_form_name);
-        if (!is_string($token_value)) {
+        $token = $this->getFromSession($uniqueFormName);
+        if (!is_string($tokenValue)) {
             return false;
         }
-        $result = hash_equals($token, $token_value);
-        $this->unset_session($unique_form_name);
+        $result = hash_equals($token, $tokenValue);
+        $this->unsetSession($uniqueFormName);
         return $result;
     }
     /*

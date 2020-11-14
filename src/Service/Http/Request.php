@@ -9,8 +9,8 @@ use App\Controller\Backoffice\AdminController;
 // class permettant la gestion des variables supers globales de php sauf $_SESSION
 class Request
 {
-    private $get;
-    private $post;
+    private array $get;
+    private array $post;
 
     public function __construct()
     {

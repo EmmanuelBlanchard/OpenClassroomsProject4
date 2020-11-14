@@ -14,6 +14,7 @@ use App\Model\UserManager;
 use App\Service\Database;
 use App\Service\Http\Request;
 use App\Service\Http\Session;
+use App\Service\Security\Token;
 use App\View\View;
 
 // Cette classe router est un exemple très basique. Cette façon de faire n'est pas optimale
@@ -30,15 +31,17 @@ class Router
     private CommentController $commentController;
     private array $get;
     private array $post;
-    private Session $session;
     private Request $request;
+    private Session $session;
+    private Token $token;
 
     public function __construct()
     {
         // Dépendances
         $this->database = new Database();
-        $this->session = new Session();
         $this->request = new Request();
+        $this->session = new Session();
+        $this->token = new Token($this->session);
         $this->adminManager = new AdminManager($this->database);
         $this->userManager = new UserManager($this->database);
         $this->postManager = new PostManager($this->database);
@@ -46,7 +49,7 @@ class Router
         $this->view = new View();
 
         // Injection des dépendances
-        $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view, $this->session);
+        $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view, $this->session, $this->token);
         $this->postController = new PostController($this->postManager, $this->commentManager, $this->view);
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
         
@@ -101,7 +104,7 @@ class Router
             $this->adminController->readEpisodes($currentPage, $this->session);
         } elseif ($action === 'addEpisode') {
             // route http://localhost:8000/?action=addEpisode
-            $this->adminController->addEpisode($this->post, $this->session);
+            $this->adminController->addEpisode($this->post, $this->session, $this->token);
         } elseif ($action === 'editEpisode' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=editEpisode&id=5
             $this->adminController->editEpisode((int)$this->get['id'], $this->post, $this->session);

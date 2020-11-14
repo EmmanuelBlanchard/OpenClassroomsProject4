@@ -14,36 +14,20 @@ class Session
     public function __construct()
     {
         //$this->session = $_SESSION;
-        /*
-        var_dump($this->session);
-        die();
-        */
-        /*
-        var_dump($_SESSION);
-        die();
-        */
-        /*
-        if (isset($_SESSION)) {
+        if (empty($_SESSION)) {
             session_start();
         }
-
-        if (isset($this->session)) {
-            session_start();
-        }
-        */
+        //var_dump($_SESSION);
+        //die();
     }
-
-    /*
-        public function __construct()
-        {
-            if (isset($_SESSION)) {
-                session_start();
-            }
-        }
-    */
+    
     public function startSession(): void
     {
         session_start();
+        //var_dump($this->session);
+        //die();
+        //var_dump($_SESSION);
+        //die();
     }
 
     public function setSession($name, $value): void
