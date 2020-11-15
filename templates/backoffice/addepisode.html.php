@@ -40,10 +40,13 @@
 
             <input type="hidden" name="token" id="token" value="<?php
             //Le champ caché a pour valeur le jeton
-            //echo $token;
+            //echo $token['name'];
+            //echo $token['value'];
             //echo $data['token'];
             //echo $session['token'];
+            // Non acces aux valeurs $token $session $_SESSION
                 ?>"/>
+            <input type="hidden" name="'.$token['name'].'" value="'.$token['value'].'" />
             
             <button class="btn btn-primary">Enregister</button>
         </form>
