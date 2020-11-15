@@ -14,7 +14,7 @@ class Session
     public function __construct()
     {
         //$this->session = $_SESSION;
-        if (empty($_SESSION)) {
+        if (isset($_SESSION)) {
             session_start();
         }
         //var_dump($_SESSION);

@@ -13,12 +13,12 @@ $whoops->register();
 
 $session = new Session();
 
-$token = new Token($session);
+$token = new Token(64, 32);
 
-echo '<pre>';
-var_dump($session, $token);
-die();
-echo '</pre>';
+//echo '<pre>';
+//var_dump($session, $token);
+//die();
+//echo '</pre>';
 
 $router = new Router();
 $router->run();
