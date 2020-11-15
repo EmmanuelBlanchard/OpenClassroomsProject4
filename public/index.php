@@ -13,9 +13,27 @@ $whoops->register();
 
 $session = new Session();
 
-$token = new Token(64, 32, $session);
+//$token = new Token(64, 32, $session);
 
-$csrf = $token->getToken();
+//$csrf = $token->getToken();
+
+/************************* */
+//session_start();
+//$token = uniqid(rand(), true);
+//$token = random_bytes(64);
+
+$token = new Token(64,32);
+//$token->generateToken();
+//$token($this->generateToken());
+
+echo '<pre>';
+//var_dump($_SESSION['token'], $_POST['token']);
+var_dump($_SESSION['CSRF']);
+die();
+echo '</pre>';
+ 
+$_SESSION['token'] = $token;
+ 
 
 //echo '<pre>';
 //var_dump($session, $token, $csrf);

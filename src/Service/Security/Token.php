@@ -41,15 +41,14 @@ class Token
      *                           before and if token strenght parameter is
      *                           less than 16
      */
+    /*
     public function __construct(int $maxStorage, int $tokenStrength, $session)
     {
         if (\session_status() === 1) {
-            //throw new RuntimeException('Session must be started before create instance.');
             $session->setSession('erreur', 'La session doit être lancée avant de créer l\'instance.');
         }
 
         if ($tokenStrength < 16) {
-            //throw new RuntimeException('The minimum CSRF token strength is 16.');
             $session->setSession('erreur', 'Le nombre minimum de jetons du CSRF est de 16.');
         }
 
@@ -58,6 +57,17 @@ class Token
         $this->session = &$_SESSION;
         $this->maxStorage = $maxStorage;
         $this->tokenStrength = $tokenStrength;
+    }
+*/
+
+    public function __construct(int $maxStorage, int $tokenStrength)
+    {
+        $_SESSION['CSRF'] = $_SESSION['CSRF'] ?? [];
+
+        $this->session = &$_SESSION;
+        $this->maxStorage = $maxStorage;
+        $this->tokenStrength = $tokenStrength;
+
     }
 
     /**
@@ -244,17 +254,14 @@ class Token
      *
      * @param int $preserve Token that will be preserved.
      *
-     * @throws InvalidArgumentException If arguments lesser than 0 or grater than max storage value.
      */
     private function cleanStorage(int $preserve, $session): void
     {
         if ($preserve < 0) {
-            //throw new InvalidArgumentException('Argument value should be grater than zero.');
             $session->setSession('erreur', 'La valeur de l\'argument doit être supérieure à zéro.');
         }
 
         if ($preserve > $this->maxStorage) {
-            //throw new InvalidArgumentException("Argument value should be lesser than max storage value ({$this->maxStorage}).");
             $session->setSession('erreur', "La valeur de l\'argument doit être inférieure à la valeur maximale de stockage ({$this->maxStorage}).");
         }
 
@@ -262,8 +269,8 @@ class Token
         $tokens = \array_splice($tokens, -$preserve);
     }
 
-    // Essais CSRF
-    /*
+    /*************************************** */
+
     public function storeInSession($key, $value): void
     {
         if (isset($_SESSION)) {
@@ -302,35 +309,34 @@ class Token
         $this->unsetSession($uniqueFormName);
         return $result;
     }
-    */
-    /*
-    public function csrfguard_replace_forms($form_data_html)
+
+    public function csrfguardReplaceForms($formDataHtml)
     {
-        $count=preg_match_all("/<form(.*?)>(.*?)<\\/form>/is",$form_data_html,$matches,PREG_SET_ORDER);
+        $count=preg_match_all("/<form(.*?)>(.*?)<\\/form>/is",$formDataHtml,$matches,PREG_SET_ORDER);
         if (is_array($matches))
         {
             foreach ($matches as $m)
             {
                 if (strpos($m[1],"nocsrf")!==false) { continue; }
                 $name="CSRFGuard_".mt_rand(0,mt_getrandmax());
-                $token= $this->csrfguard_generate_token($name);
+                $token= $this->csrfguardGenerateToken($name);
                 $form_data_html=str_replace($m[0],
                     "<form{$m[1]}>
     <input type='hidden' name='CSRFName' value='{$name}' />
-    <input type='hidden' name='CSRFToken' value='{$token}' />{$m[2]}</form>",$form_data_html);
+    <input type='hidden' name='CSRFToken' value='{$token}' />{$m[2]}</form>",$formDataHtml);
             }
         }
-        return $form_data_html;
+        return $formDataHtml;
     }
 
-    public function csrfguard_inject()
+    public function csrfguardInject()
     {
         $data=ob_get_clean();
-        $data= $this->csrfguard_replace_forms($data);
+        $data= $this->csrfguardReplaceForms($data);
         echo $data;
     }
 
-    public function csrfguard_start()
+    public function csrfguardStart()
     {
         if (count($_POST))
         {
@@ -340,16 +346,16 @@ class Token
             }
             $name =$_POST['CSRFName'];
             $token=$_POST['CSRFToken'];
-            if (!$this->csrfguard_validate_token($name, $token))
+            if (!$this->csrfguardValidateToken($name, $token))
             {
                 throw new \Exception("Invalid CSRF token.");
             }
         }
         ob_start();
-        // adding double quotes for "csrfguard_inject" to prevent:
-        //  Notice: Use of undefined constant csrfguard_inject - assumed 'csrfguard_inject'
-        register_shutdown_function("csrfguard_inject");
+        // adding double quotes for "csrfguardInject" to prevent:
+        //  Notice: Use of undefined constant csrfguardInject - assumed 'csrfguardInject'
+        register_shutdown_function("csrfguardInject");
     }
-    //$this->csrfguard_start();
-  */
+    //$this->csrfguardStart();
+
 }

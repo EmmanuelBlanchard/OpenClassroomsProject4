@@ -47,6 +47,8 @@
             // Non acces aux valeurs $token $session $_SESSION
                 ?>"/>
             <input type="hidden" name="'.$token['name'].'" value="'.$token['value'].'" />
+
+            <input type="hidden" name="token" id="token" value="<?php echo $token; ?>"/>
             
             <button class="btn btn-primary">Enregister</button>
         </form>
