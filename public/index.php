@@ -13,7 +13,7 @@ $whoops->register();
 
 $session = new Session();
 
-$token = new Token(64, 32);
+$token = new Token(64, 32, $session);
 
 //echo '<pre>';
 //var_dump($session, $token);

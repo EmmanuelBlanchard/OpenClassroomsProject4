@@ -41,7 +41,7 @@ class Token
      *                           before and if token strenght parameter is
      *                           less than 16
      */
-    public function __construct(int $maxStorage, int $tokenStrength = 16, $session)
+    public function __construct(int $maxStorage, int $tokenStrength, $session)
     {
         if (\session_status() === 1) {
             //throw new RuntimeException('Session must be started before create instance.');
@@ -67,7 +67,7 @@ class Token
         //die();
         //echo '</pre>';
 
-        
+
         //var_dump($session);
         //die();
         // object(App\Service\Http\Session)#6 (0) { ["session":"App\Service\Http\Session":private]=> uninitialized(array) }
@@ -157,7 +157,7 @@ class Token
     {
         //apply matchToken method elements of passed data,
         //using this instead of forach for code shortness.
-        $array = \array_filter($requestData, array($this, 'doChecks'), ARRAY_FILTER_USE_BOTH);
+        $array = \array_filter($requestData, [$this, 'doChecks'], ARRAY_FILTER_USE_BOTH);
 
         return (bool) \count($array);
     }
@@ -285,13 +285,13 @@ class Token
             $_SESSION[$key]=$value;
         }
     }
- 
+
     public function unsetSession($key): void
     {
         $_SESSION[$key]=' ';
         unset($_SESSION[$key]);
     }
- 
+
     public function getFromSession($key)
     {
         if (isset($_SESSION[$key])) {
@@ -299,14 +299,14 @@ class Token
         }
         return false;
     }
- 
+
     public function csrfguardGenerateToken($uniqueFormName)
     {
         $token = random_bytes(64); // PHP 7, or via paragonie/random_compat
         $this->storeInSession($uniqueFormName, $token);
         return $token;
     }
- 
+
     public function csrfguardValidateToken($uniqueFormName, $tokenValue)
     {
         $token = $this->getFromSession($uniqueFormName);
