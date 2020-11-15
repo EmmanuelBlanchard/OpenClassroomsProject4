@@ -15,8 +15,10 @@ $session = new Session();
 
 $token = new Token(64, 32, $session);
 
+$csrf = $token->getToken();
+
 //echo '<pre>';
-//var_dump($session, $token);
+//var_dump($session, $token, $csrf);
 //die();
 //echo '</pre>';
 

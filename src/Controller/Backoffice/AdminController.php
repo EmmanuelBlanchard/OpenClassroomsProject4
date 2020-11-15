@@ -125,8 +125,8 @@ class AdminController
                 $episodeStatus = strip_tags($data['episodeStatus']);
                 $this->postManager->newPost($chapter, $title, $introduction, $content, $episodeStatus);
                 
-                // ?? $uniqueFromName $tokenValue
-                //$token->csrfguardValidateToken($uniqueFormName, $tokenValue);
+                //$csrf->validate($_REQUEST);
+                $token->validate($_REQUEST);
 
                 $session->setSession('message', 'Épisode ajouté');
                 header('Location: index.php?action=readEpisodes');

@@ -59,20 +59,6 @@ class Token
         $this->maxStorage = $maxStorage;
         $this->tokenStrength = $tokenStrength;
     }
-    /*
-    public function __construct()
-    {
-        //echo '<pre>';
-        //var_dump($session);
-        //die();
-        //echo '</pre>';
-
-
-        //var_dump($session);
-        //die();
-        // object(App\Service\Http\Session)#6 (0) { ["session":"App\Service\Http\Session":private]=> uninitialized(array) }
-    }
-    */
 
     /**
      * Limit number of token stored in session.
@@ -275,7 +261,6 @@ class Token
         $tokens = &$this->session['CSRF'];
         $tokens = \array_splice($tokens, -$preserve);
     }
-
 
     // Essais CSRF
     /*
