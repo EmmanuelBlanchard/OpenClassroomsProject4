@@ -14,7 +14,7 @@ $whoops->register();
 
 $session = new Session();
 
-$token = new Token($session, $request);
+$token = new Token($session);
 $token->generate();
 
 //echo '<pre>';
