@@ -41,7 +41,7 @@ class Router
         $this->database = new Database();
         $this->request = new Request();
         $this->session = new Session();
-        $this->token = new Token($this->session);
+        $this->token = new Token($this->session, $this->request);
         $this->adminManager = new AdminManager($this->database);
         $this->userManager = new UserManager($this->database);
         $this->postManager = new PostManager($this->database);

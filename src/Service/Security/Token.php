@@ -13,7 +13,7 @@ class Token
     private Session $session;
     private Request $request;
 
-    public function __construct(Session $session)
+    public function __construct(Session $session, Request $request)
     {
         $this->session = $session;
     }
@@ -31,16 +31,17 @@ class Token
         //var_dump($token);
         //die();
         //echo '</pre>';
-        // d6c7b731fff6e79e08ba63e84573e005891380b732a5f5f79210368e2a4f8ed881839de9654bc9be42bcb6747a009bdeaf7ef956f11b0fa193d5279fc57fddfb
         return $token;
     }
 
-    public function verify(): bool
+    public function verify(Request $request): bool
     {
         $tokenSession = $this->session->getToken();
         
+        $token = $request['csrfToken'];
+
         echo '<pre>';
-        var_dump($tokenSession);
+        var_dump($token, $tokenSession);
         die();
         echo '</pre>';
 
