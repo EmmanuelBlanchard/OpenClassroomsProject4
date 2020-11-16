@@ -6,6 +6,7 @@ namespace App\Controller\Frontoffice;
 
 use App\Model\CommentManager;
 use App\Model\PostManager;
+use App\Service\Security\Token;
 use App\View\View;
 
 class CommentController
@@ -21,8 +22,15 @@ class CommentController
         $this->view = $view;
     }
 
-    public function addComment(int $postId, array $data): void
+    public function addComment(int $postId, array $data, Token $token): void
     {
+        $token->verify();
+
+        echo '<pre>';
+        var_dump($token, $token->verify());
+        die();
+        echo '</pre>';
+
         if (!empty($data['pseudo']) && !empty($data['comment'])) {
             $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));
         } else {

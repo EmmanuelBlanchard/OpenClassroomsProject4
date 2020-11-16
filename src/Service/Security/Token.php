@@ -40,8 +40,10 @@ class Token
         
         $token = $_POST['csrfToken'];
 
+        hash_equals($token, $tokenSession);
+
         echo '<pre>';
-        var_dump($token, $tokenSession);
+        var_dump($token, $tokenSession, hash_equals($token, $tokenSession));
         die();
         echo '</pre>';
 
