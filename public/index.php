@@ -13,6 +13,7 @@ $whoops->register();
 
 $session = new Session();
 
+$token = new Token($session);
 
 $router = new Router();
 $router->run();
