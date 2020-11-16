@@ -24,10 +24,10 @@ class CommentController
 
     public function addComment(int $postId, array $data, Token $token): void
     {
-        $token->verify();
+        $token->verify($data['csrfToken']);
 
         echo '<pre>';
-        var_dump($token, $token->verify());
+        var_dump($token, $token->verify($data['csrfToken']));
         die();
         echo '</pre>';
 

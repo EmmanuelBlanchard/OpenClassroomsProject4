@@ -34,17 +34,17 @@ class Token
         return $token;
     }
 
-    public function verify(): bool
+    public function verify($token): bool
     {
         $tokenSession = $this->session->getToken();
         
         //$token = $_POST['csrfToken']; // Undefined index: csrfToken
-        $token = $this->generate();
+        //$token = $this->generate();
         //echo '<pre>';
         //var_dump($token);
         //die();
         //echo '</pre>';
-        return hash_equals($_POST['csrfToken'], $tokenSession);
+        return hash_equals($token, $tokenSession);
         //echo '<pre>';
         //var_dump($token, $tokenSession, hash_equals($token, $tokenSession));
         //die();
