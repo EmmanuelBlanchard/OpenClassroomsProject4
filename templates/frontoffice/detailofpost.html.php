@@ -65,6 +65,8 @@
                         <input id="pseudo" name="pseudo" type="text" value="" size="30" maxlength="245" required>
                     </p>
                     <p>
+                        <input class="hidden" type="hidden" name="csrfToken" value="<?=$data['csrfToken']; ?>" />
+
                         <input type="submit" class="inputTypeSubmitPublishComment" value="Publier" />
                     </p>
                 </form>

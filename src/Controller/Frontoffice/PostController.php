@@ -6,6 +6,7 @@ namespace  App\Controller\Frontoffice;
 
 use App\Model\CommentManager;
 use App\Model\PostManager;
+use App\Service\Security\Token;
 use App\View\View;
 
 class PostController
@@ -51,7 +52,7 @@ class PostController
         $this->view->render(['template' => 'listofposts', 'allpostspagination' => $dataAllPostsPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage], 'frontoffice');
     }
     
-    public function displayDetailOfPost(int $postId): void
+    public function displayDetailOfPost(int $postId, Token $token): void
     {
         $dataPost = $this->postManager->getPost($postId);
         $dataComments = $this->commentManager->getComments($postId);
@@ -59,6 +60,6 @@ class PostController
         $previousPost = $this->postManager->previousPost($postId);
         $nextPost = $this->postManager->nextPost($postId);
 
-        $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost], 'frontoffice');
+        $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost, 'csrfToken' => $token->generate()], 'frontoffice');
     }
 }

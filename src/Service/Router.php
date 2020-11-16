@@ -41,7 +41,7 @@ class Router
         $this->database = new Database();
         $this->request = new Request();
         $this->session = new Session();
-        $this->token = new Token(64, 32, $this->session);
+        $this->token = new Token($this->session);
         $this->adminManager = new AdminManager($this->database);
         $this->userManager = new UserManager($this->database);
         $this->postManager = new PostManager($this->database);
@@ -72,7 +72,7 @@ class Router
             $this->postController->displayHomeWithTheLastThreePosts();
         } elseif ($action === 'detailOfPost' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=detailOfPost&id=5
-            $this->postController->displayDetailOfPost((int)$this->get['id']);
+            $this->postController->displayDetailOfPost((int)$this->get['id'], $this->token);
         } elseif ($action === 'listOfPosts') {
             // route http://localhost:8000/?action=listOfPosts
             $currentPage = isset($this->get['page']) ? (int) $this->get['page'] : 1;

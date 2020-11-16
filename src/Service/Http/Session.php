@@ -21,6 +21,16 @@ class Session
         //die();
     }
     
+    public function getToken(): string
+    {
+        return $_SESSION['csrfToken'];
+    }
+
+    public function setToken(string $hash): void
+    {
+        $_SESSION['csrfToken'] = $hash;
+    }
+
     public function startSession(): void
     {
         session_start();
@@ -29,7 +39,7 @@ class Session
         //var_dump($_SESSION);
         //die();
     }
-
+ 
     public function setSession($name, $value): void
     {
         if (isset($_SESSION)) {
