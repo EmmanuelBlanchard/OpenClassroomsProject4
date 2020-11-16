@@ -9,11 +9,10 @@ use App\Controller\Backoffice\AdminController;
 // Class permettant de gérer la variable super globale $_SESSION
 class Session
 {
-    private array $session;
+    private Session $session;
 
     public function __construct()
     {
-        //$this->session = $_SESSION;
         if (empty($_SESSION)) {
             session_start();
         }
@@ -34,10 +33,6 @@ class Session
     public function startSession(): void
     {
         session_start();
-        //var_dump($this->session);
-        //die();
-        //var_dump($_SESSION);
-        //die();
     }
  
     public function setSession($name, $value): void
