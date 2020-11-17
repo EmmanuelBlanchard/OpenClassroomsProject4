@@ -52,4 +52,9 @@ class Token
 
         //return false;
     }
+
+    public function generateTime(): void
+    {
+        $this->session->setTokenTime();
+    }
 }
