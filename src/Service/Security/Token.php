@@ -53,8 +53,10 @@ class Token
         //return false;
     }
 
-    public function generateTime(): void
+    public function generateTime(): int
     {
-        $this->session->setTokenTime();
+        $tokenTime = time();
+        $this->session->setTokenTime($tokenTime);
+        return $tokenTime;
     }
 }

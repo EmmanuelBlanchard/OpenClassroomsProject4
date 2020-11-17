@@ -32,12 +32,13 @@ class Session
 
     public function getTokenTime(): int
     {
-        return $_SESSION['crsfTokenTime'];
+        return $_SESSION['csrfTokenTime'];
     }
 
-    public function setTokenTime(): void
+    public function setTokenTime(int $time): void
     {
-        $_SESSION["csrfTokenTime"] = time();
+        //$_SESSION["csrfTokenTime"] = time();
+        $_SESSION["csrfTokenTime"] = $time;
     }
 
     public function startSession(): void
