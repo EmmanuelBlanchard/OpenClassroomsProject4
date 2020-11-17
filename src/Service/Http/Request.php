@@ -33,4 +33,19 @@ class Request
     {
         return $this->post;
     }
+
+    public function getRequest($name): ?array
+    {
+        if (isset($_SESSION[$name])) {
+            return $_REQUEST[$name];
+        }
+        return null;
+    }
+
+    public function setRequest($name, $value): void
+    {
+        if (isset($_REQUEST)) {
+            $_REQUEST[$name] = $value;
+        }
+    }
 }

@@ -27,7 +27,9 @@ class Session
 
     public function setToken(string $hash): void
     {
-        $_SESSION['csrfToken'] = $hash;
+        if (!isset($_SESSION['csrfToken'])) {
+            $_SESSION['csrfToken'] = $hash;
+        }
     }
 
     public function getTokenTime(): int
@@ -37,8 +39,10 @@ class Session
 
     public function setTokenTime(int $time): void
     {
-        //$_SESSION["csrfTokenTime"] = time();
-        $_SESSION["csrfTokenTime"] = $time;
+        //$_SESSION["csrfTokenTime"] = time(); // Avant sans parametre int $time
+        if (!isset($_SESSION['csrfTokenTime'])) {
+            $_SESSION["csrfTokenTime"] = $time;
+        }
     }
 
     public function startSession(): void

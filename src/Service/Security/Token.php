@@ -38,6 +38,8 @@ class Token
     {
         $tokenSession = $this->session->getToken();
         
+        $tokenTimeSession = $this->session->getTokenTime();
+        
         //$token = $_POST['csrfToken']; // Undefined index: csrfToken
         //$token = $this->generate();
         //echo '<pre>';
