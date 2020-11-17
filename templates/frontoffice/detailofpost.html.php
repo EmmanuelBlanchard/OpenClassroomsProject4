@@ -66,6 +66,7 @@
                     </p>
                     <p>
                         <input class="hidden" type="hidden" name="csrfToken" value="<?=$data['csrfToken']; ?>" />
+                        <input class="hidden" type="hidden" name="csrfTokenTime" value="<?=$data['csrfTokenTime']; ?>" />
 
                         <input type="submit" class="inputTypeSubmitPublishComment" value="Publier" />
                     </p>
