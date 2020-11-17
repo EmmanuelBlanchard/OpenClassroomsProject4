@@ -30,7 +30,7 @@ class Session
         $_SESSION['csrfToken'] = $hash;
     }
 
-    public function getTokenTime()
+    public function getTokenTime(): int
     {
         return $_SESSION['crsfTokenTime'];
     }
