@@ -30,6 +30,16 @@ class Session
         $_SESSION['csrfToken'] = $hash;
     }
 
+    public function getTokenTime()
+    {
+        return $_SESSION['crsfTokenTime'];
+    }
+
+    public function setTokenTime(): void
+    {
+        $_SESSION["csrfTokenTime"] = time();
+    }
+
     public function startSession(): void
     {
         session_start();
