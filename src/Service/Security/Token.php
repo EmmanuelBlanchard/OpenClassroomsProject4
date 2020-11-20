@@ -30,22 +30,6 @@ class Token
     public function verify($token): bool
     {
         $tokenSession = $this->session->getToken();
-        
-        $tokenTimeSession = $this->session->getTokenTime();
-        
-        //$token = $_POST['csrfToken']; // Undefined index: csrfToken
-        //$token = $this->generate();
-        //echo '<pre>';
-        //var_dump($token);
-        //die();
-        //echo '</pre>';
-        return hash_equals($token, $tokenSession);
-        //echo '<pre>';
-        //var_dump($token, $tokenSession, hash_equals($token, $tokenSession));
-        //die();
-        //echo '</pre>';
-
-        //return false;
     }
 
     public function generateTime(): int
