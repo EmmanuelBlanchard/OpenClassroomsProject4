@@ -12,16 +12,5 @@ $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
-$session = new Session();
-
-$token = new Token($session);
-$token->generate();
-
-//echo '<pre>';
-//var_dump($token);
-//var_dump($_SESSION['csrfToken']);
-//die();
-//echo '</pre>';
-
 $router = new Router();
 $router->run();
