@@ -20,17 +20,10 @@ class Token
 
     public function generate(): string
     {
-        //$token = 'toto';
-        //$this->session->setToken($token);
-        //return $token;
-        
         $length = 64;
         $token = bin2hex(random_bytes($length));
         $this->session->setToken($token);
-        //echo '<pre>';
-        //var_dump($token);
-        //die();
-        //echo '</pre>';
+        
         return $token;
     }
 
