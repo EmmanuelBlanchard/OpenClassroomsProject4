@@ -33,7 +33,7 @@ class AdminController
         $this->token = $token;
     }
 
-    public function login(array $data, $session): void
+    public function login(array $data, Session $session): void
     {
         //var_dump($data);
         //echo '<pre>';
@@ -63,14 +63,14 @@ class AdminController
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
     
-    public function logout($session): void
+    public function logout(Session $session): void
     {
         // Suppression des variables de session et de la session
         $session->stopSession();
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
     }
 
-    public function blogControlPanel($session): void
+    public function blogControlPanel(Session $session): void
     {
         $this->view->render(['template' => 'blogcontrolpanelpage', 'session' => $session], 'backoffice');
     }
@@ -80,7 +80,7 @@ class AdminController
         $this->view->render(['template' => 'myprofile'], 'backoffice');
     }
 
-    public function readEpisodes(int $currentPage, $session): void
+    public function readEpisodes(int $currentPage, Session $session): void
     {
         $nbEpisodesPerPage = 5;
         $nbTotalEpisodes = $this->postManager->getNbEpisodes();
@@ -103,14 +103,8 @@ class AdminController
         $this->view->render(['template' => 'readepisodes', 'allepisodespagination' => $dataAllEpisodesPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage], 'backoffice');
     }
     
-    public function addEpisode(array $data, $session, $token): void
+    public function addEpisode(array $data, Session $session): void
     {
-        //echo '<pre>';
-        //var_dump($_SESSION['token'], $_SESSION['token_time'], $_POST['token']);
-        //var_dump($session, $data);
-        //die();
-        //echo '</pre>';
-        
         if ($data) {
             if (isset($data['chapter']) && !empty($data['chapter'])
                 && isset($data['title']) && !empty($data['title'])
@@ -124,21 +118,17 @@ class AdminController
                 $content = ($data['content']);
                 $episodeStatus = strip_tags($data['episodeStatus']);
                 $this->postManager->newPost($chapter, $title, $introduction, $content, $episodeStatus);
-                
-                //$csrf->validate($_REQUEST);
-                $token->validate($_REQUEST);
-
                 $session->setSession('message', 'Épisode ajouté');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
             $session->setSession('erreur', 'le formulaire est incomplet');
-            $this->view->render(['template' => 'addepisode', 'session' => $session, 'token' => $token], 'backoffice');
+            $this->view->render(['template' => 'addepisode'], 'backoffice');
         }
         $this->view->render(['template' => 'addepisode'], 'backoffice');
     }
 
-    public function editEpisode(int $postId, array $data, $session): void
+    public function editEpisode(int $postId, array $data, Session $session): void
     {
         if (isset($postId) && !empty($postId)) {
             $dataPost = $this->postManager->showOnePost($postId);
@@ -179,7 +169,7 @@ class AdminController
         $this->view->render(['template' => 'editepisode', 'post' => $dataPost], 'backoffice');
     }
 
-    public function deleteEpisode(int $postId, $session): void
+    public function deleteEpisode(int $postId, Session $session): void
     {
         if (isset($postId) && !empty($postId)) {
             $dataPost = $this->postManager->showOnePost($postId);
@@ -199,7 +189,7 @@ class AdminController
         exit();
     }
 
-    public function readComments(int $currentPage, $session): void
+    public function readComments(int $currentPage, Session $session): void
     {
         $nbCommentsPerPage = 5;
         $nbTotalComments = $this->commentManager->getNbComments();
@@ -224,7 +214,7 @@ class AdminController
         $this->view->render(['template' => 'reportedcomments', 'allreportedcomment' => $dataReportedComments], 'backoffice');
     }
 
-    public function approveComment($commentId, $session): void
+    public function approveComment(int $commentId, Session $session): void
     {
         if (isset($commentId) && !empty($commentId)) {
             $dataComment = $this->commentManager->showOneComment($commentId);
@@ -244,7 +234,7 @@ class AdminController
         exit();
     }
 
-    public function deleteComment(int $commentId, $session): void
+    public function deleteComment(int $commentId, Session $session): void
     {
         if (isset($commentId) && !empty($commentId)) {
             $dataComment = $this->commentManager->showOneComment($commentId);

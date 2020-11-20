@@ -39,7 +39,6 @@ class Request
         if (!isset($this->post[$key])) {
             return null;
         }
-
         return $this->post[$key];
     }
 }

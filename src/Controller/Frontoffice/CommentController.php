@@ -32,6 +32,9 @@ class CommentController
             die();
         }
 
+        var_dump("Le token du formulaire est valide !");
+        die();
+        
         if (!empty($data['pseudo']) && !empty($data['comment'])) {
             $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));
         } else {
