@@ -79,7 +79,7 @@ class Router
             $this->postController->displayListOfPosts($currentPage);
         } elseif ($action === 'addComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=addCommente&id=5
-            $this->commentController->addComment((int)$this->get['id'], $this->post, $this->token, $this->session, $this->request);
+            $this->commentController->addComment((int)$this->get['id'], $this->post, $this->token, $this->request);
         } elseif ($action === 'reported' && isset($this->get['commentid'], $this->get['id'])) {
             // route http://localhost:8000/?action=reported&commentid=1&id=1
             $this->commentController->reported((int)$this->get['commentid'], (int)$this->get['id']);
