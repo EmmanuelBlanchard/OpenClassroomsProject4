@@ -30,12 +30,6 @@ class Token
     public function verify($token): bool
     {
         $tokenSession = $this->session->getToken();
-    }
-
-    public function generateTime(): int
-    {
-        $tokenTime = time();
-        $this->session->setTokenTime($tokenTime);
-        return $tokenTime;
+        return $token === $tokenSession;
     }
 }
