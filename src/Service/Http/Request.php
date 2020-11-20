@@ -21,7 +21,7 @@ class Request
     /**
      * @return mixed
      */
-    public function getGet()
+    public function getGet(): ?array
     {
         return $this->get;
     }
@@ -29,7 +29,7 @@ class Request
     /**
      * @return mixed
      */
-    public function getPost()
+    public function getPost(): ?array
     {
         return $this->post;
     }
