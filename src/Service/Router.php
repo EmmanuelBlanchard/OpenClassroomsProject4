@@ -104,7 +104,7 @@ class Router
             $this->adminController->readEpisodes($currentPage, $this->session);
         } elseif ($action === 'addEpisode') {
             // route http://localhost:8000/?action=addEpisode
-            $this->adminController->addEpisode($this->post, $this->session, $this->token);
+            $this->adminController->addEpisode($this->post, $this->session);
         } elseif ($action === 'editEpisode' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=editEpisode&id=5
             $this->adminController->editEpisode((int)$this->get['id'], $this->post, $this->session);
