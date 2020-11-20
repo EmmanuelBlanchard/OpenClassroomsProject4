@@ -24,7 +24,7 @@ class CommentController
         $this->view = $view;
     }
 
-    public function addComment(int $postId, array $data, Token $token, Session $session, Request $request): void
+    public function addComment(int $postId, array $data, Token $token, Request $request): void
     {
         if (!empty($data['pseudo']) && !empty($data['comment'])) {
             $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));
