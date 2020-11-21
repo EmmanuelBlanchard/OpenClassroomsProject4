@@ -29,6 +29,7 @@ class Token
     public function verify($token): bool
     {
         $tokenSession = $this->session->getToken();
+        var_dump("Affichage des token, le token du formulaire : " .$token . " et le token de session : ", $tokenSession);
         return $token === $tokenSession;
     }
 }

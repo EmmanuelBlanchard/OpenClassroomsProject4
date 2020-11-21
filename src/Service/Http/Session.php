@@ -16,8 +16,8 @@ class Session
         if (!isset($_SESSION)) {
             session_start();
         }
-        var_dump($_SESSION);
-        die();
+        //var_dump($_SESSION);
+        //die();
         // http://localhost:8000/index.php?action=addComment&id=36
         // array(1) { ["csrfToken"]=> string(128) "25294818439e21525ac95e670c24f47034593b26cc679efcd202b61f470c2acdeca2901c586e23f81443f4a7a98a6c42e3192482578764ae4a3b5f15fd0ab6dd" }
     }
