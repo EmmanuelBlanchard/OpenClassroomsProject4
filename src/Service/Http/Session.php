@@ -13,11 +13,11 @@ class Session
 
     public function __construct()
     {
-        if (empty($_SESSION)) {
+        if (!isset($_SESSION)) {
             session_start();
         }
-        //var_dump($_SESSION);
-        //die();
+        var_dump($_SESSION);
+        die();
     }
     
     public function getToken(): string
