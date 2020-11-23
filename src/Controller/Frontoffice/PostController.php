@@ -12,12 +12,14 @@ use App\View\View;
 
 class PostController
 {
+    private Error $error;
     private PostManager $postManager;
     private CommentManager $commentManager;
     private View $view;
 
-    public function __construct(PostManager $postManager, CommentManager $commentManager, View $view)
+    public function __construct(Error $error, PostManager $postManager, CommentManager $commentManager, View $view)
     {
+        $this->error = $error;
         $this->postManager = $postManager;
         $this->commentManager = $commentManager;
         $this->view = $view;
