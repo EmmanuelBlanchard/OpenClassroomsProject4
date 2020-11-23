@@ -34,11 +34,6 @@ class CommentController
 
             //var_dump(!$token->verify($request->getPostItem('csrfToken')), $token->verify($request->getPostItem('csrfToken')));
             //die;
-            // bool(true) bool(false)
-
-            //var_dump($request->getPostItem('csrfToken'));
-            //die;
-            // NULL
             
             //var_dump("Le token du formulaire n'est pas valide");
             //die();

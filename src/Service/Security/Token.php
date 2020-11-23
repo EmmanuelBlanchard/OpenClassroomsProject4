@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Service\Security;
 
-use App\Controller\Backoffice\AdminController;
-use App\Service\Http\Request;
 use App\Service\Http\Session;
 
 class Token
