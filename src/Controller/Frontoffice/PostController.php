@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace  App\Controller\Frontoffice;
 
+use App\Controller\Error;
 use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Service\Security\Token;
