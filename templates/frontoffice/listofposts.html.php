@@ -29,7 +29,7 @@
     <?php if ($data['message'] !== null) :?>
         <div class="alert alert-success" role="alert"><?=$data['message']; ?></div>
     <?php endif; ?>
-    <?php if ($data['error'] !== null) : ?>
+    <?php if ($data['error'] !== null): ?>
         <div class="alert alert-danger" role="alert"><?=$data['error']; ?></div>
     <?php endif; ?>
     <section>
