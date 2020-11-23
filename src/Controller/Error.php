@@ -10,12 +10,10 @@ use App\View\View;
 class Error
 {
     private Session $session;
-    private View $view;
 
-    public function __construct(Session $session, View $view)
+    public function __construct(Session $session)
     {
         $this->session = $session;
-        $this->view = $view;
     }
     
     public function generate($name, $value): string
