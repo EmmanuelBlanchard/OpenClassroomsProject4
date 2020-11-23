@@ -41,9 +41,9 @@ class Router
     {
         // Dépendances
         $this->database = new Database();
-        $this->error = new Error($this->session);
         $this->request = new Request();
         $this->session = new Session();
+        $this->error = new Error($this->session);
         $this->token = new Token($this->session);
         $this->adminManager = new AdminManager($this->database);
         $this->userManager = new UserManager($this->database);
