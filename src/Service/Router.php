@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace  App\Service;
 
 use App\Controller\Backoffice\AdminController;
+use App\Controller\Error;
 use App\Controller\Frontoffice\CommentController;
 use App\Controller\Frontoffice\PostController;
 use App\Model\AdminManager;
