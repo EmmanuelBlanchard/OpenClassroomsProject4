@@ -30,6 +30,7 @@ class Router
     private AdminController $adminController;
     private PostController $postController;
     private CommentController $commentController;
+    private Error $error;
     private array $get;
     private array $post;
     private Request $request;
@@ -40,6 +41,7 @@ class Router
     {
         // Dépendances
         $this->database = new Database();
+        $this->error = new Error($this->session);
         $this->request = new Request();
         $this->session = new Session();
         $this->token = new Token($this->session);
@@ -51,7 +53,7 @@ class Router
 
         // Injection des dépendances
         $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view, $this->session, $this->token);
-        $this->postController = new PostController($this->postManager, $this->commentManager, $this->view);
+        $this->postController = new PostController($this->error, $this->postManager, $this->commentManager, $this->view);
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
         
         // En attendant de mettre en place la classe App\Service\Http\Request
