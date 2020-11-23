@@ -36,6 +36,14 @@ class Session
         }
     }
 
+    public function getSession($name): ?array
+    {
+        if (isset($_SESSION[$name])) {
+            return $_SESSION[$name];
+        }
+        return null;
+    }
+
     public function displaySession(): void
     {
         if (isset($_SESSION['erreur'])) {
@@ -45,14 +53,6 @@ class Session
             echo '<div class="alert alert-success" role="alert">'. $_SESSION['message'] . '</div>';
             unset($_SESSION['message']);
         }
-    }
-
-    public function getSession($name): ?array
-    {
-        if (isset($_SESSION[$name])) {
-            return $_SESSION[$name];
-        }
-        return null;
     }
 
     public function showSession($name): ?array
