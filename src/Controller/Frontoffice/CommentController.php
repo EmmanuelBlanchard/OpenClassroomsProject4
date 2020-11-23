@@ -26,6 +26,9 @@ class CommentController
 
     public function addComment(int $postId, array $data, Token $token, Request $request): void
     {
+        //var_dump($token, $request->getPostItem('csrfToken'), $_POST);
+        //die();
+
         if (!$token->verify($request->getPostItem('csrfToken'))) {
             ////////// A FINIR
 
@@ -37,12 +40,12 @@ class CommentController
             //die;
             // NULL
             
-            var_dump("Le token du formulaire n'est pas valide");
-            die();
+            //var_dump("Le token du formulaire n'est pas valide");
+            //die();
         }
 
-        var_dump("Le token du formulaire est valide !");
-        die();
+        //var_dump("Le token du formulaire est valide !");
+        //die();
         
         if (!empty($data['pseudo']) && !empty($data['comment'])) {
             $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));

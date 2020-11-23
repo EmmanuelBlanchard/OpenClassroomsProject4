@@ -4,13 +4,9 @@ declare(strict_types=1);
 
 namespace App\Service\Http;
 
-use App\Controller\Backoffice\AdminController;
-
 // Class permettant de gérer la variable super globale $_SESSION
 class Session
 {
-    private Session $session;
-
     public function __construct()
     {
         if (!isset($_SESSION)) {
@@ -29,9 +25,7 @@ class Session
 
     public function setToken(string $hash): void
     {
-        if (!isset($_SESSION['csrfToken'])) {
-            $_SESSION['csrfToken'] = $hash;
-        }
+        $_SESSION['csrfToken'] = $hash;
     }
 
     public function startSession(): void
