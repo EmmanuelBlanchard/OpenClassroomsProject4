@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Error;
+namespace App\Controller;
 
 use App\Service\Http\Session;
 use App\View\View;
