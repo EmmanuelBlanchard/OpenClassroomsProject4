@@ -64,13 +64,13 @@ class Router
         // On teste si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action home)
         //$action = $this->get['action'] ?? 'home';
         // Essai sans $this->get
-        $action = $this->request->getGetitem('action') ?? 'home';
+        $action = $this->request->getGetItem('action') ?? 'home';
 
         // Déterminer sur quelle route nous sommes // Attention algorithme naïf
         if ($action === 'home') {
             // route http://localhost:8000/?action=home
             $this->postController->displayHomeWithTheLastThreePosts();
-        } elseif ($action === 'detailOfPost' && isset($this->request->getGetitem('id'))) {
+        } elseif ($action === 'detailOfPost' && (null !== ($this->request->getGetItem('id')))) {
             // route http://localhost:8000/?action=detailOfPost&id=5
             $this->postController->displayDetailOfPost((int)$this->get['id'], $this->token);
         } elseif ($action === 'listOfPosts') {
