@@ -34,6 +34,14 @@ class Request
         return $this->post;
     }
 
+    public function getGetItem(string $key): ?string
+    {
+        if (!isset($this->get[$key])) {
+            return null;
+        }
+        return $this->get[$key];
+    }
+
     public function getPostItem(string $key): ?string
     {
         if (!isset($this->post[$key])) {
