@@ -26,12 +26,6 @@
         <p class="pError"> Erreur : l'affichage de la liste des épisodes n'est pas possible </p>
     </section>
 <?php elseif ($data['allpostspagination'] !== null): ?>
-    <?php if ($data['message'] !== null) :?>
-        <div class="alert alert-success" role="alert"><?=$data['message']; ?></div>
-    <?php endif; ?>
-    <?php if ($data['error'] !== null): ?>
-        <div class="alert alert-danger" role="alert"><?=$data['error']; ?></div>
-    <?php endif; ?>
     <section>
         <h2>Liste des épisodes</h2>
         <?php foreach($data['allpostspagination'] as $post): ?>
