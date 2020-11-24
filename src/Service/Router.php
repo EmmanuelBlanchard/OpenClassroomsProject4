@@ -75,7 +75,7 @@ class Router
             $this->postController->displayDetailOfPost((int)$this->request->getGetItem('id'), $this->token);
         } elseif ($action === 'listOfPosts') {
             // route http://localhost:8000/?action=listOfPosts
-            $currentPage = null !== ($this->request->getGetItem('page') ? (int) $this->request->getGetItem('page') : 1;
+            $currentPage = ($this->request->getGetItem('page') !== null) ? (int) $this->request->getGetItem('page') : 1;
             $this->postController->displayListOfPosts($currentPage);
         } elseif ($action === 'addComment' && isset($this->get['id'])) {
             // route http://localhost:8000/?action=addCommente&id=5
