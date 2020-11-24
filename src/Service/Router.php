@@ -72,7 +72,7 @@ class Router
             $this->postController->displayHomeWithTheLastThreePosts();
         } elseif ($action === 'detailOfPost' && (null !== ($this->request->getGetItem('id')))) {
             // route http://localhost:8000/?action=detailOfPost&id=5
-            $this->postController->displayDetailOfPost((int)$this->get['id'], $this->token);
+            $this->postController->displayDetailOfPost((int)$this->request->getGetItem('id'), $this->token);
         } elseif ($action === 'listOfPosts') {
             // route http://localhost:8000/?action=listOfPosts
             $currentPage = isset($this->get['page']) ? (int) $this->get['page'] : 1;
