@@ -118,9 +118,9 @@ class Router
         } elseif ($action === 'reportedComments') {
             // route http://localhost:8000/?action=reportedComments
             $this->adminController->reportedComments();
-        } elseif ($action === 'approveComment' && isset($this->get['id'])) {
+        } elseif ($action === 'approveComment' && ($this->request->getGetItem('id') !== null)) {
             // route http://localhost:8000/?action=approveComment&id=5
-            $this->adminController->approveComment((int)$this->get['id'], $this->session);
+            $this->adminController->approveComment((int)$this->request->getGetItem('id'), $this->session);
         } elseif ($action === 'deleteComment') {
             // route http://localhost:8000/?action=deleteComment&id=5
             $this->adminController->deleteComment((int)$this->get['id'], $this->session);
