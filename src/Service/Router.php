@@ -79,8 +79,8 @@ class Router
             $this->commentController->addComment((int)$this->request->getGetItem('id'), $this->request->getPost(), $this->token, $this->request);
         } elseif ($action === 'reported' && ($this->request->getGetItem('commentid') !== null) && ($this->request->getGetItem('id') !== null)) {
             // route http://localhost:8000/?action=reported&commentid=1&id=1
-            $this->commentController->reported((int)$this->request->getGetItem('commentid'), (int)$this->request->getGetitem('id'));
-        } elseif ($action === 'error' && ($this->request->getgetitem('id') !== null)) {
+            $this->commentController->reported((int)$this->request->getGetItem('commentid'), (int)$this->request->getGetItem('id'));
+        } elseif ($action === 'error' && ($this->request->getGetItem('id') !== null)) {
             // route http://localhost:8000/?action=error&id=5
             $this->commentController->error((int)$this->request->getGetItem('id'));
         } elseif ($action === 'login') {
