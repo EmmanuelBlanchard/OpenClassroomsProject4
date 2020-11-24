@@ -30,11 +30,11 @@ class Router
     private AdminController $adminController;
     private PostController $postController;
     private CommentController $commentController;
-    private Error $error;
-    private array $get;
-    private array $post;
+    //private array $get;
+    //private array $post;
     private Request $request;
     private Session $session;
+    private Error $error;
     private Token $token;
 
     public function __construct()
@@ -57,8 +57,8 @@ class Router
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
         
         // En attendant de mettre en place la classe App\Service\Http\Request
-        $this->get = $_GET;
-        $this->post = $_POST;
+        //$this->get = $_GET;
+        //$this->post = $_POST;
     }
 
     public function run(): void
@@ -67,7 +67,9 @@ class Router
         //var_dump($this->request);
         // Nous avons quatres routes
         // On teste si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action home)
-        $action = $this->get['action'] ?? 'home';
+        //$action = $this->get['action'] ?? 'home';
+        // Essai sans $this->get
+        $action = $this->request->getGetitem('action') ?? 'home';
 
         // Déterminer sur quelle route nous sommes // Attention algorithme naïf
         if ($action === 'home') {
