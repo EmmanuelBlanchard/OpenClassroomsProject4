@@ -36,7 +36,7 @@ class Session
         }
     }
 
-    public function getSession($name): ?array
+    public function getSession($name): ?string
     {
         if (isset($_SESSION[$name])) {
             return $_SESSION[$name];
