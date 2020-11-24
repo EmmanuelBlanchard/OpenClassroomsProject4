@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Service\Http;
 
-use App\Controller\Backoffice\AdminController;
-
 // class permettant la gestion des variables supers globales de php sauf $_SESSION
 class Request
 {
