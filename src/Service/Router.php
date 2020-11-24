@@ -57,8 +57,9 @@ class Router
 
     public function run(): void
     {
-        //var_dump($this->session);
-        //var_dump($this->request);
+        //var_dump();
+        //die();
+        
         // Nous avons quatres routes
         // On teste si une action a été définie ? si oui alors on récupére l'action : sinon on mets une action par défaut (ici l'action home)
         //$action = $this->get['action'] ?? 'home';
@@ -69,7 +70,7 @@ class Router
         if ($action === 'home') {
             // route http://localhost:8000/?action=home
             $this->postController->displayHomeWithTheLastThreePosts();
-        } elseif ($action === 'detailOfPost' && isset($this->get['id'])) {
+        } elseif ($action === 'detailOfPost' && isset($this->request->getGetitem('id'))) {
             // route http://localhost:8000/?action=detailOfPost&id=5
             $this->postController->displayDetailOfPost((int)$this->get['id'], $this->token);
         } elseif ($action === 'listOfPosts') {
