@@ -110,7 +110,7 @@ class Router
             $this->adminController->editEpisode((int)$this->request->getGetitem('id'), $this->request->getPost(), $this->session);
         } elseif ($action === 'deleteEpisode') {
             // route http://localhost:8000/?action=deleteEpisode&id=5
-            $this->adminController->deleteEpisode((int)$this->get['id'], $this->session);
+            $this->adminController->deleteEpisode((int)$this->request->getGetItem('id'), $this->session);
         } elseif ($action === 'readComments') {
             // route http://localhost:8000/?action=readComments
             $currentPage = isset($this->get['page']) ? (int) $this->get['page'] : 1;
