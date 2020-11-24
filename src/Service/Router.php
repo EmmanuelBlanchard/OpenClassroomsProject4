@@ -100,7 +100,7 @@ class Router
             $this->adminController->myProfile();
         } elseif ($action === 'readEpisodes') {
             // route http://localhost:8000/?action=readEpisodes
-            $currentPage = isset($this->get['page']) ? (int) $this->get['page'] : 1;
+            $currentPage = ($this->request->getGetitem('page') !== null) ? (int) $this->request->getGetItem('page') : 1;
             $this->adminController->readEpisodes($currentPage, $this->session);
         } elseif ($action === 'addEpisode') {
             // route http://localhost:8000/?action=addEpisode
