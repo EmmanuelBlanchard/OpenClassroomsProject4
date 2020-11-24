@@ -30,8 +30,6 @@ class Router
     private AdminController $adminController;
     private PostController $postController;
     private CommentController $commentController;
-    //private array $get;
-    //private array $post;
     private Request $request;
     private Session $session;
     private Error $error;
@@ -55,10 +53,6 @@ class Router
         $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view, $this->session, $this->token);
         $this->postController = new PostController($this->error, $this->postManager, $this->commentManager, $this->view);
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
-        
-        // En attendant de mettre en place la classe App\Service\Http\Request
-        //$this->get = $_GET;
-        //$this->post = $_POST;
     }
 
     public function run(): void
