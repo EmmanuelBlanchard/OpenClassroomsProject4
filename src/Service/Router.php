@@ -83,9 +83,9 @@ class Router
         } elseif ($action === 'reported' && ($this->request->getGetItem('commentid') !== null) && ($this->request->getGetItem('id') !== null)) {
             // route http://localhost:8000/?action=reported&commentid=1&id=1
             $this->commentController->reported((int)$this->request->getGetItem('commentid'), (int)$this->request->getGetitem('id'));
-        } elseif ($action === 'error' && isset($this->get['id'])) {
+        } elseif ($action === 'error' && ($this->request->getgetitem('id') !== null)) {
             // route http://localhost:8000/?action=error&id=5
-            $this->commentController->error((int)$this->get['id']);
+            $this->commentController->error((int)$this->request->getGetItem('id'));
         } elseif ($action === 'login') {
             // route http://localhost:8000/?action=login
             $this->adminController->login($this->post, $this->session);
