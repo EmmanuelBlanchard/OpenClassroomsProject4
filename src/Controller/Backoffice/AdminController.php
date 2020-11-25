@@ -96,25 +96,30 @@ class AdminController
 
     public function readEpisodes(int $currentPage, Session $session): void
     {
-        $nbEpisodesPerPage = 5;
-        $nbTotalEpisodes = $this->postManager->getNbEpisodes();
-        $nbTotalPages = ceil($nbTotalEpisodes / $nbEpisodesPerPage);
-        
-        if ($currentPage>$nbTotalPages) {
-            $session->setSession('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la denière page de Liste des épisodes.');
-            $currentPage= $nbTotalPages;
-            header('Location: index.php?action=readEpisodes&page=' .$currentPage . '');
+        if ($this->accesscontrol->isAuthorized()) {
+            $nbEpisodesPerPage = 5;
+            $nbTotalEpisodes = $this->postManager->getNbEpisodes();
+            $nbTotalPages = ceil($nbTotalEpisodes / $nbEpisodesPerPage);
+            
+            if ($currentPage>$nbTotalPages) {
+                $session->setSession('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la denière page de Liste des épisodes.');
+                $currentPage= $nbTotalPages;
+                header('Location: index.php?action=readEpisodes&page=' .$currentPage . '');
+                exit();
+            } elseif ($currentPage<=0) {
+                $currentPage=1;
+            }
+
+            $previousPage = $currentPage<=1 ? null : ($currentPage-1);
+            $nextPage = $currentPage>=$nbTotalPages ? null : ($currentPage+1);
+
+            $dataAllEpisodesPagination = $this->postManager->getListEpisodesPagination($currentPage, $nbEpisodesPerPage);
+
+            $this->view->render(['template' => 'readepisodes', 'allepisodespagination' => $dataAllEpisodesPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage], 'backoffice');
+        } else {
+            header('Location: index.php?action=login');
             exit();
-        } elseif ($currentPage<=0) {
-            $currentPage=1;
         }
-
-        $previousPage = $currentPage<=1 ? null : ($currentPage-1);
-        $nextPage = $currentPage>=$nbTotalPages ? null : ($currentPage+1);
-
-        $dataAllEpisodesPagination = $this->postManager->getListEpisodesPagination($currentPage, $nbEpisodesPerPage);
-
-        $this->view->render(['template' => 'readepisodes', 'allepisodespagination' => $dataAllEpisodesPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage], 'backoffice');
     }
     
     public function addEpisode(array $data, Session $session): void
