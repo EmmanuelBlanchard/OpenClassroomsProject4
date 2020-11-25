@@ -23,9 +23,4 @@ class AccessControl
         }
         return false;
     }
-
-    public function isValid(): bool
-    {
-        return true;
-    }
 }
