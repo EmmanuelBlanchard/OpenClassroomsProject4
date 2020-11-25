@@ -9,6 +9,7 @@ use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Model\UserManager;
 use App\Service\Http\Session;
+use App\Service\Security\AccessControl;
 use App\Service\Security\Token;
 use App\View\View;
 
@@ -20,9 +21,10 @@ class AdminController
     private CommentManager $commentManager;
     private View $view;
     private Session $session;
+    private AccessControl $accesscontrol;
     private Token $token;
 
-    public function __construct(AdminManager $adminManager, UserManager $userManager, PostManager $postManager, CommentManager $commentManager, View $view, Session $session, Token $token)
+    public function __construct(AdminManager $adminManager, UserManager $userManager, PostManager $postManager, CommentManager $commentManager, View $view, Session $session, AccessControl $accesscontrol, Token $token)
     {
         $this->adminManager = $adminManager;
         $this->userManager = $userManager;
@@ -30,6 +32,7 @@ class AdminController
         $this->commentManager = $commentManager;
         $this->view = $view;
         $this->session = $session;
+        $this->accesscontrol = $accesscontrol;
         $this->token = $token;
     }
 

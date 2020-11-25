@@ -20,6 +20,8 @@ class AccessControl
     {
         $this->session->getSession('login');
 
+        var_dump($this->session->getSession('login'));
+        die();
         // Si login true
 
         // Tableau des differentes actions possibles si login === true ???
