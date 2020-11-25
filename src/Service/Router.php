@@ -15,6 +15,7 @@ use App\Model\UserManager;
 use App\Service\Database;
 use App\Service\Http\Request;
 use App\Service\Http\Session;
+use App\Service\Security\AccessControl;
 use App\Service\Security\Token;
 use App\View\View;
 
@@ -33,6 +34,7 @@ class Router
     private Request $request;
     private Session $session;
     private Error $error;
+    private AccessControl $accesscontrol;
     private Token $token;
 
     public function __construct()
@@ -42,6 +44,7 @@ class Router
         $this->request = new Request();
         $this->session = new Session();
         $this->error = new Error($this->session);
+        $this->accesscontrol = new AccessControl($this->session);
         $this->token = new Token($this->session);
         $this->adminManager = new AdminManager($this->database);
         $this->userManager = new UserManager($this->database);
@@ -50,7 +53,7 @@ class Router
         $this->view = new View();
 
         // Injection des dépendances
-        $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view, $this->session, $this->token);
+        $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view, $this->session, $this->accesscontrol, $this->token);
         $this->postController = new PostController($this->error, $this->postManager, $this->commentManager, $this->view);
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
     }
