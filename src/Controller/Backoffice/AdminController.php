@@ -86,7 +86,12 @@ class AdminController
     
     public function myProfile(): void
     {
-        $this->view->render(['template' => 'myprofile'], 'backoffice');
+        if ($this->accesscontrol->isAuthorized()) {
+            $this->view->render(['template' => 'myprofile'], 'backoffice');
+        } else {
+            header('Location: index.php?action=login');
+            exit();
+        }
     }
 
     public function readEpisodes(int $currentPage, Session $session): void
