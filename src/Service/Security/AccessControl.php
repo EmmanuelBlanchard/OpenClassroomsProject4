@@ -16,15 +16,12 @@ class AccessControl
         $this->session = $session;
     }
 
-    public function isAutorized(): void
+    public function isAuthorized(): bool
     {
-        $this->session->getSession('login');
-
-        var_dump($this->session->getSession('login'));
-        die();
-        // Si login true
-
-        // Tableau des differentes actions possibles si login === true ???
+        if ($this->session->getLogin() === true) {
+            return true;
+        }
+        return false;
     }
 
     public function isValid(): bool

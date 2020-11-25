@@ -24,6 +24,14 @@ class Session
         $_SESSION['csrfToken'] = $hash;
     }
 
+    public function getLogin(): bool
+    {
+        if (isset($_SESSION['login'])) {
+            return $_SESSION['login'];
+        }
+        return false;
+    }
+
     public function startSession(): void
     {
         session_start();
