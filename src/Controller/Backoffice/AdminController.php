@@ -75,7 +75,6 @@ class AdminController
 
     public function blogControlPanel(Session $session): void
     {
-        // Essai de fonctionnement de la class AccesControl , non access si pas login et acces si login a la vue blogcontrolpanel
         if ($this->accesscontrol->isAuthorized()) {
             $this->view->render(['template' => 'blogcontrolpanelpage', 'session' => $session], 'backoffice');
         } else {
