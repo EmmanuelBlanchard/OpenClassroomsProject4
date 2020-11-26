@@ -39,16 +39,17 @@ class Error
         return null;
     }
 
-    public function showTryFront($name): void
+    public function showTryFront($name, $value): void
     {
-        $this->session->getSession($name);
+        //$this->session->getSession($name);
+        //var_dump($this->session->getSession($name));
+        //die();
 
-        var_dump($this->session->getSession($name));
-        die();
+        //$errorName = 'Erreur 404';
+        //$errorName = $name;
+        $errorTab = ['errorName' => $name, 'errorValue' => $value];
 
-        $errorName = 'Erreur 404';
-
-        $this->view->render(['template' => 'error', 'errorname' => $errorName], 'frontoffice');
+        $this->view->render(['template' => 'error', 'errortab' => $errorTab ], 'frontoffice');
     }
 
     public function showTryBack($name): void

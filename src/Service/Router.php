@@ -130,7 +130,7 @@ class Router
             //$this->session->setSession('Erreur 404', 'Erreur 404 - Cette page n\'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a> ');
             //var_dump($this->session->getSession('Erreur 404'));
             //die();
-            $this->error->showTryFront('Erreur 404');
+            $this->error->showTryFront('Erreur 404', 'Cette page n\'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a> ');
         }
     }
 }
