@@ -10,10 +10,12 @@ use App\View\View;
 class Error
 {
     private Session $session;
+    private View $view;
 
-    public function __construct(Session $session)
+    public function __construct(Session $session, View $view)
     {
         $this->session = $session;
+        $this->view = $view;
     }
     
     public function generate($name, $value): string
@@ -35,6 +37,24 @@ class Error
             return $_SESSION[$name];
         }
         return null;
+    }
+
+    public function showTryFront($name): void
+    {
+        $this->session->getSession($name);
+
+        $errorName = 'Erreur 404';
+
+        $this->view->render(['template' => 'error', 'errorname' => $errorName], 'frontoffice');
+    }
+
+    public function showTryBack($name): void
+    {
+        $this->session->getSession($name);
+
+        $errorName = 'Erreur 404';
+        
+        $this->view->render(['template' => 'error', 'errorname' => $errorName], 'backoffice');
     }
 
     public function show($name): ?array

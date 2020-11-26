@@ -43,7 +43,7 @@ class Router
         $this->database = new Database();
         $this->request = new Request();
         $this->session = new Session();
-        $this->error = new Error($this->session);
+        $this->error = new Error($this->session, $this->view);
         $this->accesscontrol = new AccessControl($this->session);
         $this->token = new Token($this->session);
         $this->adminManager = new AdminManager($this->database);
