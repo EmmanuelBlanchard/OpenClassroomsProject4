@@ -43,6 +43,9 @@ class Error
     {
         $this->session->getSession($name);
 
+        var_dump($this->session->getSession($name));
+        die();
+
         $errorName = 'Erreur 404';
 
         $this->view->render(['template' => 'error', 'errorname' => $errorName], 'frontoffice');
@@ -53,7 +56,7 @@ class Error
         $this->session->getSession($name);
 
         $errorName = 'Erreur 404';
-        
+
         $this->view->render(['template' => 'error', 'errorname' => $errorName], 'backoffice');
     }
 

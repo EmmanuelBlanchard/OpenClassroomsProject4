@@ -43,7 +43,6 @@ class Router
         $this->database = new Database();
         $this->request = new Request();
         $this->session = new Session();
-        $this->error = new Error($this->session, $this->view);
         $this->accesscontrol = new AccessControl($this->session);
         $this->token = new Token($this->session);
         $this->adminManager = new AdminManager($this->database);
@@ -51,6 +50,7 @@ class Router
         $this->postManager = new PostManager($this->database);
         $this->commentManager = new CommentManager($this->database);
         $this->view = new View();
+        $this->error = new Error($this->session, $this->view);
 
         // Injection des dépendances
         $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view, $this->session, $this->accesscontrol, $this->token);
@@ -127,9 +127,10 @@ class Router
         } else {
             //echo "Erreur 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
             // Essai sans le echo
-            $this->session->setSession('Erreur 404', 'Erreur 404 - Cette page n\'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a> ');
-            var_dump($this->session->getSession('Erreur 404'));
-            die();
+            //$this->session->setSession('Erreur 404', 'Erreur 404 - Cette page n\'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a> ');
+            //var_dump($this->session->getSession('Erreur 404'));
+            //die();
+            $this->error->showTryFront('Erreur 404');
         }
     }
 }
