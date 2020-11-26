@@ -22,7 +22,7 @@
     <section>
         <h2>Erreurs</h2>
 
-       <?php printf($data['errortab']); die(); ?>
+        <?php var_dump($data['errortab']); die(); ?>
         <?php foreach($data['errortab'] as $post): ?>
                 <article>
                     <h3>Erreur</h3>
