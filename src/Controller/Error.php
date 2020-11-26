@@ -41,12 +41,6 @@ class Error
 
     public function showTryFront($name, $value): void
     {
-        //$this->session->getSession($name);
-        //var_dump($this->session->getSession($name));
-        //die();
-
-        //$errorName = 'Erreur 404';
-        //$errorName = $name;
         $errorTab = [['errorName' => $name, 'errorValue' => $value]];
 
         $this->view->render(['template' => 'error', 'errortab' => $errorTab ], 'frontoffice');
