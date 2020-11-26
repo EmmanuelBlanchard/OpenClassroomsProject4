@@ -39,11 +39,11 @@ class Error
         return null;
     }
 
-    public function showTryFront($name, $value): void
+    public function display($name, $value, $origin): void
     {
         $errorTab = [['errorName' => $name, 'errorValue' => $value]];
 
-        $this->view->render(['template' => 'error', 'errortab' => $errorTab ], 'frontoffice');
+        $this->view->render(['template' => 'error', 'errortab' => $errorTab ], $origin);
     }
 
     public function showTryBack($name): void

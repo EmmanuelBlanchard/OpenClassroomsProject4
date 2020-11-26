@@ -125,7 +125,7 @@ class Router
             // route http://localhost:8000/?action=deleteComment&id=5
             $this->adminController->deleteComment((int)$this->request->getGetItem('id'), $this->session);
         } else {
-            $this->error->showTryFront('Erreur 404', 'Cette page n\'existe pas !');
+            $this->error->display('Erreur 404', 'Cette page n\'existe pas !', 'frontoffice');
         }
     }
 }
