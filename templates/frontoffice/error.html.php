@@ -5,7 +5,7 @@
 <?php elseif ($data['errortab'] !== null): ?>
         <?php foreach($data['errortab'] as $post): ?>
             <article>
-                <h3>Erreur</h3>
+                <h3>Information</h3>
                 <p> <?=$post['errorName']?> </p>
                 <p> <?=$post['errorValue']?> </p>
                 <a href="index.php?action=home" class="linkToTheRestOfThePost">Accueil</a>
