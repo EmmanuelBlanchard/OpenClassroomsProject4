@@ -46,15 +46,6 @@ class Error
         $this->view->render(['template' => 'error', 'errortab' => $errorTab ], $origin);
     }
 
-    public function showTryBack($name): void
-    {
-        $this->session->getSession($name);
-
-        $errorName = 'Erreur 404';
-
-        $this->view->render(['template' => 'error', 'errorname' => $errorName], 'backoffice');
-    }
-
     public function show($name): ?array
     {
         if (isset($_SESSION[$name])) {
