@@ -125,12 +125,7 @@ class Router
             // route http://localhost:8000/?action=deleteComment&id=5
             $this->adminController->deleteComment((int)$this->request->getGetItem('id'), $this->session);
         } else {
-            //echo "Erreur 404 - cette page n'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a>";
-            // Essai sans le echo
-            //$this->session->setSession('Erreur 404', 'Erreur 404 - Cette page n\'existe pas<br><a href=http://localhost:8000/?action=home>Aller Ici</a> ');
-            //var_dump($this->session->getSession('Erreur 404'));
-            //die();
-            $this->error->showTryFront('Erreur 404', 'Cette page n\'existe pas ! ');
+            $this->error->showTryFront('Erreur 404', 'Cette page n\'existe pas !');
         }
     }
 }
