@@ -55,7 +55,7 @@ class Router
         // Injection des dépendances
         $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view, $this->session, $this->accesscontrol, $this->token);
         $this->postController = new PostController($this->postManager, $this->commentManager, $this->view, $this->session, $this->error);
-        $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
+        $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view, $this->session, $this->error);
     }
 
     public function run(): void
@@ -72,7 +72,7 @@ class Router
             $this->postController->displayHomeWithTheLastThreePosts();
         } elseif ($action === 'detailOfPost' && (($this->request->getGetItem('id')) !== null)) {
             // route http://localhost:8000/?action=detailOfPost&id=5
-            $this->postController->displayDetailOfPost((int)$this->request->getGetItem('id'), $this->token);
+            $this->postController->displayDetailOfPost((int)$this->request->getGetItem('id'), $this->token, $this->session);
         } elseif ($action === 'listOfPosts') {
             // route http://localhost:8000/?action=listOfPosts
             $currentPage = ($this->request->getGetItem('page') !== null) ? (int) $this->request->getGetItem('page') : 1;

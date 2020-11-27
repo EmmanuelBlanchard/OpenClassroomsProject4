@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontoffice;
 
+use App\Controller\Error;
 use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Service\Http\Request;
@@ -16,12 +17,18 @@ class CommentController
     private PostManager $postManager;
     private CommentManager $commentManager;
     private View $view;
+    private Request $request;
+    private Session $session;
+    private Token $token;
+    private Error $error;
 
-    public function __construct(PostManager $postManager, CommentManager $commentManager, View $view)
+    public function __construct(PostManager $postManager, CommentManager $commentManager, View $view, Session $session, Error $error)
     {
         $this->postManager = $postManager;
         $this->commentManager = $commentManager;
         $this->view = $view;
+        $this->session = $session;
+        $this->error = $error;
     }
 
     public function addComment(int $postId, array $data, Token $token, Request $request): void
@@ -34,7 +41,7 @@ class CommentController
             //var_dump(!$token->verify($request->getPostItem('csrfToken')), $token->verify($request->getPostItem('csrfToken')));
             //die;
         }
-        $this->session->setSession('message', 'Le token du formulaire est pas valide !');
+        $this->session->setSession('message', 'Le token du formulaire est valide !');
         //var_dump("Le token du formulaire est valide !");
         //die();
         
@@ -62,9 +69,14 @@ class CommentController
         $dataPost = $this->postManager->getPost($postId);
 
         if ($dataPost !== null) {
-            $this->view->render(['template' => 'error', 'post' => $dataPost], 'frontoffice');
+            // http://localhost:8000/index.php?action=error&id=21
+            $this->error->display('Erreur', 'Il n\' y a pas de post n°' . $postId . '', 'frontoffice');
+        // Avant
+            //$this->view->render(['template' => 'error', 'post' => $dataPost], 'frontoffice');
         } elseif ($dataPost === null) {
-            echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
+            //echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
+            // Essai sans le echo
+            $this->error->display('Erreur', 'Il n\'y pas de post !', 'frontoffice');
         }
     }
 }

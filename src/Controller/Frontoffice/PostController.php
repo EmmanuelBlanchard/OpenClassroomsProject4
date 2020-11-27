@@ -64,7 +64,7 @@ class PostController
         $this->view->render(['template' => 'listofposts', 'allpostspagination' => $dataAllPostsPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage, 'sessionmessage' => $session->getSession('message'), 'sessionerreur' => $session->getSession('erreur')], 'frontoffice');
     }
     
-    public function displayDetailOfPost(int $postId, Token $token): void
+    public function displayDetailOfPost(int $postId, Token $token, Session $session): void
     {
         $dataPost = $this->postManager->getPost($postId);
         $dataComments = $this->commentManager->getComments($postId);
@@ -72,6 +72,6 @@ class PostController
         $previousPost = $this->postManager->previousPost($postId);
         $nextPost = $this->postManager->nextPost($postId);
 
-        $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost, 'csrfToken' => $token->generate()], 'frontoffice');
+        $this->view->render(['template' => 'detailofpost', 'post' => $dataPost, 'allcomment' => $dataComments, 'previouspost' => $previousPost, 'nextpost'=> $nextPost, 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSession('message'), 'sessionerreur' => $session->getSession('erreur')], 'frontoffice');
     }
 }

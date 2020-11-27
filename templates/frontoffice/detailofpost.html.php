@@ -53,6 +53,25 @@
             <?php endforeach; ?>
         </section>
     <?php endif; ?>
+
+    <?php if ($data['sessionerreur'] !== null): ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $data['sessionerreur'] ?>
+        </div>
+        <?php unset($data['sessionerreur']) ?>
+        <?php //$session->removeSession('erreur'); ?>
+        <?php //$this->session->removeSession('erreur'); ?>
+    <?php endif; ?>
+
+    <?php if ($data['sessionmessage'] !== null): ?>
+        <div class="alert alert-success" role="alert">
+            <?= $data['sessionmessage'] ?>
+        </div>
+        <?php unset($data['sessionmessage']) ?>
+        <?php //$session->removeSession('message') ?>
+        <?php //$this->session->removeSession('message') ?>
+    <?php endif; ?>
+
         <section class="sectionPostComment">
             <h4 class="sectionH4TitlePostComment"> Publier un commentaire</h4>
                 <form class="commentForm" method="post" action="index.php?action=addComment&amp;id=<?=$data['post']['id']?>">
