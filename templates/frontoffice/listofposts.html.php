@@ -1,26 +1,21 @@
-<?php
-    if(!isset($_SESSION)) 
-    {
-        // On demarre la session
-        session_start();
-    } 
-?>
-<?php
-    if(!empty($_SESSION['erreur'])) {
-        echo '<div class="alert alert-danger" role="alert">
-                '. $_SESSION['erreur'].'
-            </div>';
-        $_SESSION['erreur'] = "";
-    } 
-?>
-<?php
-    if(!empty($_SESSION['message'])) {
-        echo '<div class="alert alert-success" role="alert">
-                '. $_SESSION['message'].'
-            </div>';
-            $_SESSION['message'] = "";
-    } 
-?>
+<?php if ($data['sessionerreur'] !== null): ?>
+    <div class="alert alert-danger" role="alert">
+        <?= $data['sessionerreur'] ?>
+    </div>
+    <?php unset($data['sessionerreur']) ?>
+    <?php //$session->removeSession('erreur'); ?>
+    <?php //$this->session->removeSession('erreur'); ?>
+<?php endif; ?>
+
+<?php if ($data['sessionmessage'] !== null): ?>
+    <div class="alert alert-success" role="alert">
+        <?= $data['sessionmessage'] ?>
+    </div>
+    <?php unset($data['sessionmessage']) ?>
+    <?php //$session->removeSession('message') ?>
+    <?php //$this->session->removeSession('message') ?>
+<?php endif; ?>
+
 <?php if ($data['allpostspagination'] === null): ?>
     <section>
         <p class="pError"> Erreur : l'affichage de la liste des épisodes n'est pas possible </p>

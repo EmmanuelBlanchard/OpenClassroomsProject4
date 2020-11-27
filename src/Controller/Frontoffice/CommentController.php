@@ -28,17 +28,13 @@ class CommentController
     {
         //var_dump($token, $request->getPostItem('csrfToken'), $_POST);
         //die();
-
         if (!$token->verify($request->getPostItem('csrfToken'))) {
             ////////// A FINIR
-
+            $this->session->setSession('erreur', 'Le token du formulaire n\'est pas valide !');
             //var_dump(!$token->verify($request->getPostItem('csrfToken')), $token->verify($request->getPostItem('csrfToken')));
             //die;
-            
-            //var_dump("Le token du formulaire n'est pas valide");
-            //die();
         }
-
+        $this->session->setSession('message', 'Le token du formulaire est pas valide !');
         //var_dump("Le token du formulaire est valide !");
         //die();
         

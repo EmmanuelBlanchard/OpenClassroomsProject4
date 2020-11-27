@@ -14,6 +14,11 @@ class Session
         }
     }
     
+    public function startSession(): void
+    {
+        session_start();
+    }
+ 
     public function getToken(): string
     {
         return $_SESSION['csrfToken'];
@@ -32,11 +37,6 @@ class Session
         return false;
     }
 
-    public function startSession(): void
-    {
-        session_start();
-    }
- 
     public function setSession($name, $value): void
     {
         if (isset($_SESSION)) {
