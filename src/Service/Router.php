@@ -70,7 +70,7 @@ class Router
         if ($action === 'home') {
             // route http://localhost:8000/?action=home
             $this->postController->displayHomeWithTheLastThreePosts();
-        } elseif ($action === 'detailOfPost' && (null !== ($this->request->getGetItem('id')))) {
+        } elseif ($action === 'detailOfPost' && (($this->request->getGetItem('id')) !== null)) {
             // route http://localhost:8000/?action=detailOfPost&id=5
             $this->postController->displayDetailOfPost((int)$this->request->getGetItem('id'), $this->token);
         } elseif ($action === 'listOfPosts') {
