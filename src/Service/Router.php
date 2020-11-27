@@ -33,28 +33,28 @@ class Router
     private CommentController $commentController;
     private Request $request;
     private Session $session;
-    private Error $error;
     private AccessControl $accesscontrol;
     private Token $token;
+    private Error $error;
 
     public function __construct()
     {
         // Dépendances
         $this->database = new Database();
-        $this->request = new Request();
-        $this->session = new Session();
-        $this->accesscontrol = new AccessControl($this->session);
-        $this->token = new Token($this->session);
         $this->adminManager = new AdminManager($this->database);
         $this->userManager = new UserManager($this->database);
         $this->postManager = new PostManager($this->database);
         $this->commentManager = new CommentManager($this->database);
         $this->view = new View();
+        $this->request = new Request();
+        $this->session = new Session();
+        $this->accesscontrol = new AccessControl($this->session);
+        $this->token = new Token($this->session);
         $this->error = new Error($this->session, $this->view);
 
         // Injection des dépendances
         $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view, $this->session, $this->accesscontrol, $this->token);
-        $this->postController = new PostController($this->error, $this->postManager, $this->commentManager, $this->view, $this->session);
+        $this->postController = new PostController($this->postManager, $this->commentManager, $this->view, $this->session, $this->error);
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
     }
 
