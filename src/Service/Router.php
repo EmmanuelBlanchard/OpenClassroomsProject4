@@ -54,7 +54,7 @@ class Router
 
         // Injection des dépendances
         $this->adminController = new AdminController($this->adminManager, $this->userManager, $this->postManager, $this->commentManager, $this->view, $this->session, $this->accesscontrol, $this->token);
-        $this->postController = new PostController($this->error, $this->postManager, $this->commentManager, $this->view);
+        $this->postController = new PostController($this->error, $this->postManager, $this->commentManager, $this->view, $this->session);
         $this->commentController = new CommentController($this->postManager, $this->commentManager, $this->view);
     }
 
@@ -76,7 +76,7 @@ class Router
         } elseif ($action === 'listOfPosts') {
             // route http://localhost:8000/?action=listOfPosts
             $currentPage = ($this->request->getGetItem('page') !== null) ? (int) $this->request->getGetItem('page') : 1;
-            $this->postController->displayListOfPosts($currentPage);
+            $this->postController->displayListOfPosts($currentPage, $this->session);
         } elseif ($action === 'addComment' && ($this->request->getGetItem('id') !== null)) {
             // route http://localhost:8000/?action=addCommente&id=5
             $this->commentController->addComment((int)$this->request->getGetItem('id'), $this->request->getPost(), $this->token, $this->request);
