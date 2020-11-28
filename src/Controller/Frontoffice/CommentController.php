@@ -38,18 +38,19 @@ class CommentController
         if (!$token->verify($request->getPostItem('csrfToken'))) {
             ////////// A FINIR
             $this->session->setSession('erreur', 'Le token du formulaire n\'est pas valide !');
-            //var_dump(!$token->verify($request->getPostItem('csrfToken')), $token->verify($request->getPostItem('csrfToken')));
-            //die;
-        }
-        $this->session->setSession('message', 'Le token du formulaire est valide !');
-        //var_dump("Le token du formulaire est valide !");
-        //die();
-        
-        if (!empty($data['pseudo']) && !empty($data['comment'])) {
-            $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));
-        } else {
-            header('Location: index.php?action=error&id='.$postId);
+            // Suppression du token puis renouveller un autre token pour une nouvelle validation
+            $this->session->removeSession('csrfToken');
+            header('Location: index.php?action=detailOfPost&id='.$postId);
             exit();
+        } elseif ($token->verify($request->getPostItem('csrfToken'))) {
+            $this->session->setSession('message', 'Le token du formulaire est valide !');
+                
+            if (!empty($data['pseudo']) && !empty($data['comment'])) {
+                $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));
+            } else {
+                header('Location: index.php?action=error&id='.$postId);
+                exit();
+            }
         }
         header('Location: index.php?action=detailOfPost&id='.$postId);
         exit();
