@@ -37,13 +37,13 @@ class CommentController
         //die();
         if (!$token->verify($request->getPostItem('csrfToken'))) {
             ////////// A FINIR
-            $this->session->setSession('erreur', 'Le token du formulaire n\'est pas valide !');
+            $this->session->setSession('erreur', 'Votre commentaire ne peut être posté (Le token du formulaire n\'est pas valide !)');
             // Suppression du token puis renouveller un autre token pour une nouvelle validation
             $this->session->removeSession('csrfToken');
             header('Location: index.php?action=detailOfPost&id='.$postId);
             exit();
         } elseif ($token->verify($request->getPostItem('csrfToken'))) {
-            $this->session->setSession('message', 'Le token du formulaire est valide !');
+            $this->session->setSession('message', 'Votre commentaire est posté (Le token du formulaire est valide !)');
                 
             if (!empty($data['pseudo']) && !empty($data['comment'])) {
                 $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));
