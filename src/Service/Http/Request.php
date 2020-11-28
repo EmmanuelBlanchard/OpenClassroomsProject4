@@ -47,4 +47,11 @@ class Request
         }
         return $this->post[$key];
     }
+
+    public function setGetItem($key, $value): void
+    {
+        if (isset($this->get[$key])) {
+            $this->get[$key] = $value;
+        }
+    }
 }

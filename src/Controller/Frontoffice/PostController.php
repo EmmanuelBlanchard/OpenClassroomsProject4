@@ -54,6 +54,8 @@ class PostController
             exit();
         } elseif ($currentPage<=0) {
             $currentPage=1;
+            header('Location: index.php?action=listOfPosts&page=' . $currentPage . '');
+            exit();
         }
 
         $previousPage = $currentPage<=1 ? null : ($currentPage-1);
