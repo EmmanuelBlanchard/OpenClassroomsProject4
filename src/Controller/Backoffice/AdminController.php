@@ -49,18 +49,18 @@ class AdminController
             // Récupération de l'id et de son mot de passe hashé
             $result = $this->userManager->recoveryIdAndHashedPassword($data['pseudo']);
             if (!$result) {
-                $session->setSession('erreur', 'Mauvais identifiant ou mot de passe !');
+                $session->setSessionMessage('erreur', 'Mauvais identifiant ou mot de passe !');
             } else {
                 $isPasswordValid = password_verify($password, $result['hashed_password']);
                 if ($isPasswordValid) {
-                    $session->setSession('id', $result['id']);
-                    $session->setSession('pseudo', htmlspecialchars($pseudo));
-                    $session->setSession('message', 'Vous êtes maintenant connecté ! ' . htmlspecialchars($pseudo));
+                    $session->setSessionMessage('id', $result['id']);
+                    $session->setSessionMessage('pseudo', htmlspecialchars($pseudo));
+                    $session->setSessionMessage('message', 'Vous êtes maintenant connecté ! ' . htmlspecialchars($pseudo));
                     $session->setSession('login', true);
                     header('Location: index.php?action=blogControlPanel');
                     exit();
                 }
-                $session->setSession('erreur', 'Mauvais identifiant ou mot de passe !');
+                $session->setSessionMessage('erreur', 'Mauvais identifiant ou mot de passe !');
             }
         }
         $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
