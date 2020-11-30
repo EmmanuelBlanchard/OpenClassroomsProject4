@@ -803,7 +803,6 @@ button, input, optgroup, select, textarea {
         font-size: 25px;
     }
 }
-
 /* Laptop width 768px*1366px and DPR=1 */
 @media all and (min-width: 768px) and (min-resolution: 1dppx) {
     header h1 {
@@ -822,6 +821,11 @@ button, input, optgroup, select, textarea {
 @media all and (min-width: 800px) and (min-resolution: 1dppx) {
     header h1 {
         top: 18%; /* Avant 12% */
+    }
+}
+@media all and (min-width: 800px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 14%; /* Avant 12% */
     }
 }
 /* Laptop width 1536px*864px DPR=1 */
