@@ -684,7 +684,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Galaxy Note 9 - 414px*846px and DPR=3.5 */
 @media all and (min-width: 414px) and (min-resolution: 3.5dppx) {
     header h1 {
-        top: 35%;
+        top: 45%; /* avant 35% */
     }
 }
 /* Mobile menu - 437px and DPR=1 */
