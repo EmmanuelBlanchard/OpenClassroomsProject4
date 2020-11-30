@@ -104,7 +104,7 @@ class AdminController
         $nbTotalPages = ceil($nbTotalEpisodes / $nbEpisodesPerPage);
         
         if ($currentPage>$nbTotalPages) {
-            $session->setSession('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la denière page de Liste des épisodes.');
+            $session->setSessionMessage('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la denière page de Liste des épisodes.');
             $currentPage= $nbTotalPages;
             header('Location: index.php?action=readEpisodes&page=' .$currentPage . '');
             exit();
@@ -136,11 +136,11 @@ class AdminController
                     $content = ($data['content']);
                     $episodeStatus = strip_tags($data['episodeStatus']);
                     $this->postManager->newPost($chapter, $title, $introduction, $content, $episodeStatus);
-                    $session->setSession('message', 'Épisode ajouté');
+                    $session->setSessionMessage('message', 'Épisode ajouté');
                     header('Location: index.php?action=readEpisodes');
                     exit();
                 }
-                $session->setSession('erreur', 'le formulaire est incomplet');
+                $session->setSessionMessage('erreur', 'le formulaire est incomplet');
                 $this->view->render(['template' => 'addepisode'], 'backoffice');
             }
             $this->view->render(['template' => 'addepisode'], 'backoffice');
@@ -157,12 +157,12 @@ class AdminController
                 $dataPost = $this->postManager->showOnePost($postId);
                 // On verifie si le post existe
                 if (!$dataPost) {
-                    $session->setSession('erreur', 'L\'épisode n°' . $postId . ' n\'existe pas');
+                    $session->setSessionMessage('erreur', 'L\'épisode n°' . $postId . ' n\'existe pas');
                     header('Location: index.php?action=readEpisodes');
                     exit();
                 }
             } else {
-                $session->setSession('erreur', 'URL invalide');
+                $session->setSessionMessage('erreur', 'URL invalide');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
@@ -182,11 +182,11 @@ class AdminController
                     $content = ($data['content']);
                     $episodeStatus = strip_tags($data['episodeStatus']);
                     $this->postManager->editPost($id, $chapter, $title, $introduction, $content, $episodeStatus);
-                    $session->setSession('message', 'Épisode modifié');
+                    $session->setSessionMessage('message', 'Épisode modifié');
                     header('Location: index.php?action=readEpisodes');
                     exit();
                 }
-                $session->setsession('erreur', 'Le formulaire est incomplet');
+                $session->setsessionMessage('erreur', 'Le formulaire est incomplet');
                 $this->view->render(['template' => 'editepisode'], 'backoffice');
             }
             $this->view->render(['template' => 'editepisode', 'post' => $dataPost], 'backoffice');
@@ -203,16 +203,16 @@ class AdminController
                 $dataPost = $this->postManager->showOnePost($postId);
                 // On verifie si le post existe
                 if (!$dataPost) {
-                    $session->setSession('erreur', 'L\'épisode n°' . $postId . ' n\'existe pas');
+                    $session->setSessionMessage('erreur', 'L\'épisode n°' . $postId . ' n\'existe pas');
                     header('Location: index.php?action=readEpisodes');
                     exit();
                 }
                 $this->postManager->deletePost($postId);
-                $session->setsession('message', 'Épisode n°' . $postId . ' supprimé');
+                $session->setsessionMessage('message', 'Épisode n°' . $postId . ' supprimé');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
-            $session->setSession('erreur', 'URL invalide');
+            $session->setSessionMessage('erreur', 'URL invalide');
             header('Location: index.php?action=readEpisodes');
             exit();
         }
@@ -227,7 +227,7 @@ class AdminController
             $nbTotalComments = $this->commentManager->getNbComments();
             $nbTotalPages = ceil($nbTotalComments / $nbCommentsPerPage);
             if ($currentPage>$nbTotalPages) {
-                $session->setSession('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la denière page de Liste des commentaires.');
+                $session->setSessionMessage('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la denière page de Liste des commentaires.');
                 $currentPage = $nbTotalPages;
                 header('Location: index.php?action=readComments&page=' .$currentPage .'');
                 exit();
@@ -262,16 +262,16 @@ class AdminController
                 $dataComment = $this->commentManager->showOneComment($commentId);
                 // On verifie si le commentaire existe
                 if (!$dataComment) {
-                    $session->setSession('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
+                    $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
                     header('Location: index.php?action=readComments');
                     exit();
                 }
                 $this->commentManager->approveComment($commentId);
-                $session->setSession('message', 'Commentaire n°' . $commentId . ' approuvé');
+                $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' approuvé');
                 header('Location: index.php?action=reportedComments');
                 exit();
             }
-            $session->setSession('erreur', 'URL invalide');
+            $session->setSessionMessage('erreur', 'URL invalide');
             header('Location: index.php?action=readComments');
             exit();
         }
@@ -286,16 +286,16 @@ class AdminController
                 $dataComment = $this->commentManager->showOneComment($commentId);
                 // On verifie si le commentaire existe
                 if (!$dataComment) {
-                    $session->setSession('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
+                    $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
                     header('Location: index.php?action=readComments');
                     exit();
                 }
                 $dataComment = $this->commentManager->deleteComment($commentId);
-                $session->setSession('message', 'Commentaire n°' . $commentId . ' supprimé');
+                $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' supprimé');
                 header('Location: index.php?action=readComments');
                 exit();
             }
-            $session->setSession('erreur', 'URL invalide');
+            $session->setSessionMessage('erreur', 'URL invalide');
             header('Location: index.php?action=readComments');
             exit();
         }
