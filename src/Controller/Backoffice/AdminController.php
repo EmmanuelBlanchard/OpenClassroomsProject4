@@ -122,32 +122,31 @@ class AdminController
     
     public function addEpisode(array $data, Session $session): void
     {
-        if ($this->accesscontrol->isAuthorized()) {
-            if ($data) {
-                if (isset($data['chapter']) && !empty($data['chapter'])
-                    && isset($data['title']) && !empty($data['title'])
-                    && isset($data['introduction']) && !empty($data['introduction'])
-                    && isset($data['content']) && !empty($data['content'])
-                    && isset($data['episodeStatus']) && !empty($data['episodeStatus'])) {
-                    // On nettoie les données envoyées
-                    $chapter = strip_tags($data['chapter']);
-                    $title = strip_tags($data['title']);
-                    $introduction = ($data['introduction']);
-                    $content = ($data['content']);
-                    $episodeStatus = strip_tags($data['episodeStatus']);
-                    $this->postManager->newPost($chapter, $title, $introduction, $content, $episodeStatus);
-                    $session->setSessionMessage('message', 'Épisode ajouté');
-                    header('Location: index.php?action=readEpisodes');
-                    exit();
-                }
-                $session->setSessionMessage('erreur', 'le formulaire est incomplet');
-                $this->view->render(['template' => 'addepisode'], 'backoffice');
-            }
-            $this->view->render(['template' => 'addepisode'], 'backoffice');
-        } else {
+        if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
             exit();
         }
+        if ($data) {
+            if (isset($data['chapter']) && !empty($data['chapter'])
+                && isset($data['title']) && !empty($data['title'])
+                && isset($data['introduction']) && !empty($data['introduction'])
+                && isset($data['content']) && !empty($data['content'])
+                && isset($data['episodeStatus']) && !empty($data['episodeStatus'])) {
+                // On nettoie les données envoyées
+                $chapter = strip_tags($data['chapter']);
+                $title = strip_tags($data['title']);
+                $introduction = ($data['introduction']);
+                $content = ($data['content']);
+                $episodeStatus = strip_tags($data['episodeStatus']);
+                $this->postManager->newPost($chapter, $title, $introduction, $content, $episodeStatus);
+                $session->setSessionMessage('message', 'Épisode ajouté');
+                header('Location: index.php?action=readEpisodes');
+                exit();
+            }
+            $session->setSessionMessage('erreur', 'le formulaire est incomplet');
+            $this->view->render(['template' => 'addepisode'], 'backoffice');
+        }
+        $this->view->render(['template' => 'addepisode'], 'backoffice');
     }
 
     public function editEpisode(int $postId, array $data, Session $session): void
