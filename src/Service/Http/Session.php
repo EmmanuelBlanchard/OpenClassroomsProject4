@@ -52,6 +52,21 @@ class Session
         return null;
     }
 
+    public function setSessionMessage(string $typeMessage, string $message)
+    {
+        if (isset($_SESSION)) {
+            return $_SESSION[$typeMessage] = $message;
+        }
+    }
+
+    public function getSessionMessage(string $typeMessage)
+    {
+        $sessionMessage = $_SESSION[$typeMessage];
+        unset($sessionMessage);
+        return $sessionMessage;
+        //unset($_SESSION[$typeMessage]);
+    }
+
     public function showSession($name): ?array
     {
         if (isset($_SESSION[$name])) {

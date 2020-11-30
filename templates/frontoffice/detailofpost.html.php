@@ -58,18 +58,12 @@
         <div class="alert alert-danger" role="alert">
             <?= $data['sessionerreur'] ?>
         </div>
-        <?php unset($data['sessionerreur']) ?>
-        <?php //$session->removeSession('erreur'); ?>
-        <?php //$this->session->removeSession('erreur'); ?>
     <?php endif; ?>
 
     <?php if ($data['sessionmessage'] !== null): ?>
         <div class="alert alert-success" role="alert">
             <?= $data['sessionmessage'] ?>
         </div>
-        <?php unset($data['sessionmessage']) ?>
-        <?php //$session->removeSession('message') ?>
-        <?php //$this->session->removeSession('message') ?>
     <?php endif; ?>
 
         <section class="sectionPostComment">
