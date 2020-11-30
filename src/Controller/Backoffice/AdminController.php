@@ -8,6 +8,7 @@ use App\Model\AdminManager;
 use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Model\UserManager;
+use App\Service\Http\Request;
 use App\Service\Http\Session;
 use App\Service\Security\AccessControl;
 use App\Service\Security\Token;
@@ -20,6 +21,7 @@ class AdminController
     private PostManager $postManager;
     private CommentManager $commentManager;
     private View $view;
+    private Request $request;
     private Session $session;
     private AccessControl $accesscontrol;
     private Token $token;
@@ -36,7 +38,7 @@ class AdminController
         $this->token = $token;
     }
 
-    public function login(array $data, Session $session, Token $token): void
+    public function login(array $data, Session $session, Token $token, Request $request): void
     {
         //var_dump($data);
         //echo '<pre>';
