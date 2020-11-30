@@ -45,6 +45,15 @@ class AdminController
         //var_dump($session);
         //die();
         //echo '</pre>';
+        if (!$token->verify($request->getPostItem('csrfToken'))) {
+            $this->session->setSessionMessage('erreur', 'Vous ne pouvez pas vous connecter !');
+            $this->session->getSessionMessage('erreur');
+            // Suppression du token puis renouveller un autre token pour une nouvelle validation
+            $this->session->removeSession('csrfToken');
+            header('Location: index.php?action=login');
+            exit();
+        }
+
         if (!empty($data['pseudo']) && !empty($data['password'])) {
             $pseudo= $data['pseudo'];
             $password = $data['password'];
