@@ -3,9 +3,11 @@
     <div id="welcome-panel" class="welcome-panel">
         <div class="welcome-panel-content">
             <h2>Bienvenue sur le Blog de Jean Forteroche</h2>
-            <?php if (isset($session['message'])) { ?>
-                <div class="alert alert-success" role="alert"><?php echo $session['message']; ?></div>
-            <?php } ?>
+            <?php if ($data['sessionmessage'] !== null): ?>
+                <div class="alert alert-success" role="alert">
+                    <?= $data['sessionmessage'] ?>
+                </div>
+            <?php endif; ?>
             <div class="welcome-panel-column-container">
                 <div class="welcome-panel-column">
                     <p class="homeTitle">Accueil</p>                    
