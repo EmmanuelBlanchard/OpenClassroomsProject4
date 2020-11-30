@@ -222,26 +222,26 @@ class AdminController
 
     public function readComments(int $currentPage, Session $session): void
     {
-        if ($this->accesscontrol->isAuthorized()) {
-            $nbCommentsPerPage = 5;
-            $nbTotalComments = $this->commentManager->getNbComments();
-            $nbTotalPages = ceil($nbTotalComments / $nbCommentsPerPage);
-            if ($currentPage>$nbTotalPages) {
-                $session->setSessionMessage('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la denière page de Liste des commentaires.');
-                $currentPage = $nbTotalPages;
-                header('Location: index.php?action=readComments&page=' .$currentPage .'');
-                exit();
-            } elseif ($currentPage<=0) {
-                $currentPage=1;
-            }
-            $previousPage = $currentPage<=1 ? null : ($currentPage-1);
-            $nextPage = $currentPage>=$nbTotalPages ? null : ($currentPage+1);
-            $dataAllCommentsPagination = $this->commentManager->getListCommentsPagination($currentPage, $nbCommentsPerPage);
-            $this->view->render(['template' => 'readcomments', 'allcommentspagination' => $dataAllCommentsPagination, 'previouspage' => $previousPage, 'nextpage' => $nextPage], 'backoffice');
-        } else {
+        if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
             exit();
         }
+
+        $nbCommentsPerPage = 5;
+        $nbTotalComments = $this->commentManager->getNbComments();
+        $nbTotalPages = ceil($nbTotalComments / $nbCommentsPerPage);
+        if ($currentPage>$nbTotalPages) {
+            $session->setSessionMessage('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la denière page de Liste des commentaires.');
+            $currentPage = $nbTotalPages;
+            header('Location: index.php?action=readComments&page=' .$currentPage .'');
+            exit();
+        } elseif ($currentPage<=0) {
+            $currentPage=1;
+        }
+        $previousPage = $currentPage<=1 ? null : ($currentPage-1);
+        $nextPage = $currentPage>=$nbTotalPages ? null : ($currentPage+1);
+        $dataAllCommentsPagination = $this->commentManager->getListCommentsPagination($currentPage, $nbCommentsPerPage);
+        $this->view->render(['template' => 'readcomments', 'allcommentspagination' => $dataAllCommentsPagination, 'previouspage' => $previousPage, 'nextpage' => $nextPage], 'backoffice');
     }
     
     public function reportedComments(): void
