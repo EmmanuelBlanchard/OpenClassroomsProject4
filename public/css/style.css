@@ -803,6 +803,13 @@ button, input, optgroup, select, textarea {
         font-size: 25px;
     }
 }
+
+/* Tablet menu IPAD - 768px*1024px and DPR=2 */
+@media all and (min-width: 768px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 14%;
+    }
+}
 /* Laptop width 768px*1366px and DPR=1 */
 @media all and (min-width: 768px) and (min-resolution: 1dppx) {
     header h1 {
@@ -811,12 +818,7 @@ button, input, optgroup, select, textarea {
         font-size: 25px;
     }
 }
-/* Tablet menu IPAD - 768px*1024px and DPR=2 */
-@media all and (min-width: 768px) and (min-resolution: 2dppx) {
-    header h1 {
-        top: 14%;
-    }
-}
+
 /* Laptop with MDPi 1280px*800px and Tablet menu Kindle Fire 800px*1280px and DPR=2 */
 @media all and (min-width: 800px) and (min-resolution: 1dppx) {
     header h1 {
