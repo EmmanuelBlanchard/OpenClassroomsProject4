@@ -881,7 +881,7 @@ button, input, optgroup, select, textarea {
 /* Laptop width 1024px and 1280px and DPR=1 */
 @media all and (min-width: 1024px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 14%;
+        top: 18%;   /* avant 14%*/
         left: 28%;
         font-size: 27px;
     }
