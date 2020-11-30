@@ -77,11 +77,11 @@ class AdminController
         $this->view->render(['template' => 'adminloginpage', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'frontoffice');
     }
     
-    public function logout(Session $session): void
+    public function logout(Session $session, Token $token): void
     {
         // Suppression des variables de session et de la session
         $session->stopSession();
-        $this->view->render(['template' => 'adminloginpage', 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'frontoffice');
+        $this->view->render(['template' => 'adminloginpage', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'frontoffice');
     }
 
     public function blogControlPanel(Session $session): void
