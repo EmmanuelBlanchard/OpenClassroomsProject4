@@ -847,10 +847,16 @@ button, input, optgroup, select, textarea {
         top: 43%;
     }
 }
-/* Mobile menu Pixel 2 XL  411px*823px DPR=3.5 */
+/* Mobile menu Pixel 2 XL - 411px*823px DPR=3.5 */
 @media all and (min-width: 823px) and (min-resolution: 3.5dppx) {
     header h1 {
         top: 34%;
+    }
+}
+/* Mobile menu Galaxy Note 9 - 414px*846px DPR=3.5 */
+@media all and (min-width: 846px) and (min-resolution: 3.5dppx) {
+    header h1 {
+        top: 41%;
     }
 }
 /* Mobile menu Iphon XR  414px*896px DPR=2 */
