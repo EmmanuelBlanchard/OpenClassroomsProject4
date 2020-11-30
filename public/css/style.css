@@ -823,9 +823,10 @@ button, input, optgroup, select, textarea {
         top: 18%; /* Avant 12% */
     }
 }
+/* Nexus 10 Android 800px * 1280px and DPR:2 */
 @media all and (min-width: 800px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 14%; /* Avant 12% */
+        top: 14%;
     }
 }
 /* Laptop width 1536px*864px DPR=1 */
