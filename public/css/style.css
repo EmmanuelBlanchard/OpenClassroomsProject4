@@ -955,7 +955,7 @@ button, input, optgroup, select, textarea {
         width: 50vw;
     }
     header h1 {
-        top: 15%;
+        top: 18%; /* avant 15% */
         left: 34%;
         font-size: 28px;
     }
