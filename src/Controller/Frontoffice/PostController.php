@@ -43,12 +43,8 @@ class PostController
         $nbTotalPages = ceil($nbTotalPosts / $nbPostsPerPage);
         
         if ($currentPage>$nbTotalPages) {
-            // Essai avec la classe Error
-            //$this->error->generate('erreur', 'La page demandée n\'existe pas ! Voici la dernière page du blog.');
-            //$_SESSION['erreur'] = "La page demandée n'existe pas ! Voici la dernière page du blog.";
-            $this->session->setSession('erreur', 'La page demandée n\'existe pas ! Voici la dernière page du blog.');
-            // Essai suppression du message d erreur une fois affiché (mais n'affiche plus le message d erreur une seul fois ...)
-            //$this->session->removeSession('erreur');
+            $this->session->setSessionMessage('erreur', 'La page demandée n\'existe pas ! Voici la dernière page du blog.');
+            
             $currentPage= $nbTotalPages;
             header('Location: index.php?action=listOfPosts&page=' . $currentPage . '');
             exit();
@@ -63,7 +59,7 @@ class PostController
 
         $dataAllPostsPagination = $this->postManager->getListPostsPagination($currentPage, $nbPostsPerPage);
 
-        $this->view->render(['template' => 'listofposts', 'allpostspagination' => $dataAllPostsPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage, 'sessionmessage' => $session->getSession('message'), 'sessionerreur' => $session->getSession('erreur')], 'frontoffice');
+        $this->view->render(['template' => 'listofposts', 'allpostspagination' => $dataAllPostsPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'frontoffice');
     }
     
     public function displayDetailOfPost(int $postId, Token $token, Session $session): void

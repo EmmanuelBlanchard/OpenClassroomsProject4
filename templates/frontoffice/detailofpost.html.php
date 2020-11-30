@@ -27,6 +27,18 @@
     <?php elseif($data['allcomment'] !== null): ?>
         <section class="sectionDisplayComments">
             <h4 class="sectionH4TitleComments">Commentaires</h4>
+            <?php if ($data['sessionerreur'] !== null): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= $data['sessionerreur'] ?>
+                </div>
+            <?php endif; ?>
+            
+            <?php if ($data['sessionmessage'] !== null): ?>
+                <div class="alert alert-success" role="alert">
+                    <?= $data['sessionmessage'] ?>
+                </div>
+            <?php endif; ?>
+            
             <?php foreach($data['allcomment'] as $post): ?>
             <article>        
                 <?php if ((int)$post['reported']===1): ?>
@@ -52,18 +64,6 @@
             </article>
             <?php endforeach; ?>
         </section>
-    <?php endif; ?>
-
-    <?php if ($data['sessionerreur'] !== null): ?>
-        <div class="alert alert-danger" role="alert">
-            <?= $data['sessionerreur'] ?>
-        </div>
-    <?php endif; ?>
-
-    <?php if ($data['sessionmessage'] !== null): ?>
-        <div class="alert alert-success" role="alert">
-            <?= $data['sessionmessage'] ?>
-        </div>
     <?php endif; ?>
 
         <section class="sectionPostComment">

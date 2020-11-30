@@ -52,19 +52,29 @@ class Session
         return null;
     }
 
-    public function setSessionMessage(string $typeMessage, string $message)
+    public function setSessionMessage(string $typeMessage, string $message): void
     {
         if (isset($_SESSION)) {
-            return $_SESSION[$typeMessage] = $message;
+            $_SESSION[$typeMessage] = $message;
         }
     }
 
-    public function getSessionMessage(string $typeMessage)
+    public function getSessionMessage(string $typeMessage): ?string
     {
-        $sessionMessage = $_SESSION[$typeMessage];
-        unset($sessionMessage);
-        return $sessionMessage;
+        if (isset($_SESSION[$typeMessage])) {
+            $sessionMessage = $_SESSION[$typeMessage];
+            return $_SESSION[$typeMessage];
+            unset($sessionMessage);
+        }
+        return null;
+        //$sessionMessage = $_SESSION[$typeMessage];
+        //unset($sessionMessage);
+        //$sessionMessage = $_SESSION[$typeMessage];
+        //return $sessionMessage;
+        //$sessionMessage = $_SESSION[$typeMessage];
+        //unset($sessionMessage);
         //unset($_SESSION[$typeMessage]);
+        //return $sessionMessage;
     }
 
     public function showSession($name): ?array
