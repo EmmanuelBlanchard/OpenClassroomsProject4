@@ -88,7 +88,7 @@ class Router
             $this->commentController->error((int)$this->request->getGetItem('id'));
         } elseif ($action === 'login') {
             // route http://localhost:8000/?action=login
-            $this->adminController->login($this->request->getPost(), $this->session);
+            $this->adminController->login($this->request->getPost(), $this->session, $this->token);
         } elseif ($action === 'logout') {
             // route http://localhost:8000/?action=blogControlPanel
             $this->adminController->logout($this->session);

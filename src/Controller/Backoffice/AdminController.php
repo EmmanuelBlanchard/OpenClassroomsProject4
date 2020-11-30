@@ -36,7 +36,7 @@ class AdminController
         $this->token = $token;
     }
 
-    public function login(array $data, Session $session): void
+    public function login(array $data, Session $session, Token $token): void
     {
         //var_dump($data);
         //echo '<pre>';
@@ -63,7 +63,7 @@ class AdminController
                 $session->setSessionMessage('erreur', 'Mauvais identifiant ou mot de passe !');
             }
         }
-        $this->view->render(['template' => 'adminloginpage', 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'frontoffice');
+        $this->view->render(['template' => 'adminloginpage', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'frontoffice');
     }
     
     public function logout(Session $session): void

@@ -29,6 +29,7 @@
                             <input type="checkbox" value="remember-me"> Se souvenir de moi
                         </label>
                     </div>
+                    <input class="hidden" type="hidden" name="csrfToken" value="<?=$data['csrfToken']; ?>" />
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Se connecter</button>
                     <p class="mt-5 mb-3 text-muted">© 2020</p>
                     
