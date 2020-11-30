@@ -63,14 +63,14 @@ class AdminController
                 $session->setSessionMessage('erreur', 'Mauvais identifiant ou mot de passe !');
             }
         }
-        $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
+        $this->view->render(['template' => 'adminloginpage', 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'frontoffice');
     }
     
     public function logout(Session $session): void
     {
         // Suppression des variables de session et de la session
         $session->stopSession();
-        $this->view->render(['template' => 'adminloginpage'], 'frontoffice');
+        $this->view->render(['template' => 'adminloginpage', 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'frontoffice');
     }
 
     public function blogControlPanel(Session $session): void
