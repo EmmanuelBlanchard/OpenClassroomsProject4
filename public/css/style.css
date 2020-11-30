@@ -932,7 +932,7 @@ button, input, optgroup, select, textarea {
 /* Laptop width 1200px and 1600px and DPR=1 */
 @media all and (min-width: 1200px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 12%;
+        top: 23%; /* Avant 12% */
     }
 }
 /* Laptop with MDPi 1280px*800px and Tablet menu Kindle Fire 800px*1280px and DPR=2 and Nexus 10 Android - 800px*1280px and DPR=2 */
