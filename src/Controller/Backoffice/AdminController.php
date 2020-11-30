@@ -75,22 +75,20 @@ class AdminController
 
     public function blogControlPanel(Session $session): void
     {
-        if ($this->accesscontrol->isAuthorized()) {
-            $this->view->render(['template' => 'blogcontrolpanelpage', 'sessionmessage' => $session->getSessionMessage('message')], 'backoffice');
-        } else {
+        if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
             exit();
         }
+        $this->view->render(['template' => 'blogcontrolpanelpage', 'sessionmessage' => $session->getSessionMessage('message')], 'backoffice');
     }
     
     public function myProfile(): void
     {
-        if ($this->accesscontrol->isAuthorized()) {
-            $this->view->render(['template' => 'myprofile'], 'backoffice');
-        } else {
+        if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
             exit();
         }
+        $this->view->render(['template' => 'myprofile'], 'backoffice');
     }
 
     public function readEpisodes(int $currentPage, Session $session): void
