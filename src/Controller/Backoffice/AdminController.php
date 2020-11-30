@@ -76,7 +76,7 @@ class AdminController
     public function blogControlPanel(Session $session): void
     {
         if ($this->accesscontrol->isAuthorized()) {
-            $this->view->render(['template' => 'blogcontrolpanelpage', 'session' => $session], 'backoffice');
+            $this->view->render(['template' => 'blogcontrolpanelpage', 'sessionmessage' => $session->getSessionMessage('message')], 'backoffice');
         } else {
             header('Location: index.php?action=login');
             exit();
