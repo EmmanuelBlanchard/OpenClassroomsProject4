@@ -246,60 +246,59 @@ class AdminController
     
     public function reportedComments(): void
     {
-        if ($this->accesscontrol->isAuthorized()) {
-            $dataReportedComments = $this->commentManager->showAllReportedComment();
-            $this->view->render(['template' => 'reportedcomments', 'allreportedcomment' => $dataReportedComments], 'backoffice');
-        } else {
+        if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
             exit();
         }
+        $dataReportedComments = $this->commentManager->showAllReportedComment();
+        $this->view->render(['template' => 'reportedcomments', 'allreportedcomment' => $dataReportedComments], 'backoffice');
     }
 
     public function approveComment(int $commentId, Session $session): void
     {
-        if ($this->accesscontrol->isAuthorized()) {
-            if (isset($commentId) && !empty($commentId)) {
-                $dataComment = $this->commentManager->showOneComment($commentId);
-                // On verifie si le commentaire existe
-                if (!$dataComment) {
-                    $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
-                    header('Location: index.php?action=readComments');
-                    exit();
-                }
-                $this->commentManager->approveComment($commentId);
-                $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' approuvé');
-                header('Location: index.php?action=reportedComments');
-                exit();
-            }
-            $session->setSessionMessage('erreur', 'URL invalide');
-            header('Location: index.php?action=readComments');
+        if (!$this->accesscontrol->isAuthorized()) {
+            header('Location: index.php?action=login');
             exit();
         }
-        header('Location: index.php?action=login');
+        if (isset($commentId) && !empty($commentId)) {
+            $dataComment = $this->commentManager->showOneComment($commentId);
+            // On verifie si le commentaire existe
+            if (!$dataComment) {
+                $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
+                header('Location: index.php?action=readComments');
+                exit();
+            }
+            $this->commentManager->approveComment($commentId);
+            $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' approuvé');
+            header('Location: index.php?action=reportedComments');
+            exit();
+        }
+        $session->setSessionMessage('erreur', 'URL invalide');
+        header('Location: index.php?action=readComments');
         exit();
     }
 
     public function deleteComment(int $commentId, Session $session): void
     {
-        if ($this->accesscontrol->isAuthorized()) {
-            if (isset($commentId) && !empty($commentId)) {
-                $dataComment = $this->commentManager->showOneComment($commentId);
-                // On verifie si le commentaire existe
-                if (!$dataComment) {
-                    $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
-                    header('Location: index.php?action=readComments');
-                    exit();
-                }
-                $dataComment = $this->commentManager->deleteComment($commentId);
-                $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' supprimé');
+        if (!$this->accesscontrol->isAuthorized()) {
+            header('Location: index.php?action=login');
+            exit();
+        }
+        if (isset($commentId) && !empty($commentId)) {
+            $dataComment = $this->commentManager->showOneComment($commentId);
+            // On verifie si le commentaire existe
+            if (!$dataComment) {
+                $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
                 header('Location: index.php?action=readComments');
                 exit();
             }
-            $session->setSessionMessage('erreur', 'URL invalide');
+            $dataComment = $this->commentManager->deleteComment($commentId);
+            $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' supprimé');
             header('Location: index.php?action=readComments');
             exit();
         }
-        header('Location: index.php?action=login');
+        $session->setSessionMessage('erreur', 'URL invalide');
+        header('Location: index.php?action=readComments');
         exit();
     }
 }
