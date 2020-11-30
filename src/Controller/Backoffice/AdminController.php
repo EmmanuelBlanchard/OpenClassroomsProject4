@@ -45,6 +45,13 @@ class AdminController
         //var_dump($session);
         //die();
         //echo '</pre>';
+
+        //  Whoops \ Exception \ ErrorException (E_NOTICE)
+        // Undefined index: csrfToken
+        //var_dump($token, $request->getPostItem('csrfToken'), $_POST);
+        //var_dump($request->getPostItem('csrfToken'));
+        //die();
+
         if (!$token->verify($request->getPostItem('csrfToken'))) {
             $this->session->setSessionMessage('erreur', 'Vous ne pouvez pas vous connecter !');
             $this->session->getSessionMessage('erreur');
