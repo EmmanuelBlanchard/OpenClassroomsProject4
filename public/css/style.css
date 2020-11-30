@@ -609,7 +609,7 @@ button, input, optgroup, select, textarea {
 /* Mobil menu Galaxy Note3 - 360px*640px and DPR=3 */
 @media all and (min-width: 360px) and (min-resolution: 3dppx) {
     header h1 {
-        top: 51%; /* Avant 45% */
+        top: 59%; /* Avant 45% */
     }
 }
 /* Mobile menu Microsoft Lumia 950 - 360px*640px and DPR=4 */
