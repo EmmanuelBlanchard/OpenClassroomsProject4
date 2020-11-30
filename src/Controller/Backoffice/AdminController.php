@@ -197,25 +197,26 @@ class AdminController
 
     public function deleteEpisode(int $postId, Session $session): void
     {
-        if ($this->accesscontrol->isAuthorized()) {
-            if (isset($postId) && !empty($postId)) {
-                $dataPost = $this->postManager->showOnePost($postId);
-                // On verifie si le post existe
-                if (!$dataPost) {
-                    $session->setSessionMessage('erreur', 'L\'épisode n°' . $postId . ' n\'existe pas');
-                    header('Location: index.php?action=readEpisodes');
-                    exit();
-                }
-                $this->postManager->deletePost($postId);
-                $session->setsessionMessage('message', 'Épisode n°' . $postId . ' supprimé');
+        if (!$this->accesscontrol->isAuthorized()) {
+            header('Location: index.php?action=login');
+            exit();
+        }
+
+        if (isset($postId) && !empty($postId)) {
+            $dataPost = $this->postManager->showOnePost($postId);
+            // On verifie si le post existe
+            if (!$dataPost) {
+                $session->setSessionMessage('erreur', 'L\'épisode n°' . $postId . ' n\'existe pas');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
-            $session->setSessionMessage('erreur', 'URL invalide');
+            $this->postManager->deletePost($postId);
+            $session->setsessionMessage('message', 'Épisode n°' . $postId . ' supprimé');
             header('Location: index.php?action=readEpisodes');
             exit();
         }
-        header('Location: index.php?action=login');
+        $session->setSessionMessage('erreur', 'URL invalide');
+        header('Location: index.php?action=readEpisodes');
         exit();
     }
 
