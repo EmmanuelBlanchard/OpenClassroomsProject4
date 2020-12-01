@@ -60,6 +60,8 @@ class AdminController
             header('Location: index.php?action=login');
             exit();
         }
+        $this->session->setSessionMessage('message', 'Vous êtes connecté !');
+        $this->session->getSessionMessage('message');
 
         if (!empty($data['pseudo']) && !empty($data['password'])) {
             $pseudo= $data['pseudo'];
