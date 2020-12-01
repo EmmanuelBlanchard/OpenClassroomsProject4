@@ -165,7 +165,7 @@ class AdminController
             $session->setSessionMessage('erreur', 'le formulaire est incomplet');
             $this->view->render(['template' => 'addepisode'], 'backoffice');
         }
-        $this->view->render(['template' => 'addepisode'], 'backoffice');
+        $this->view->render(['template' => 'addepisode', 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
 
     public function editEpisode(int $postId, array $data, Session $session): void
