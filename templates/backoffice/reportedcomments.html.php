@@ -1,27 +1,15 @@
-<?php
-    if(!isset($_SESSION)) 
-    {
-        // On demarre la session
-        session_start();
-    } 
-?>
-<?php
-    if(!empty($_SESSION['erreur'])) {
-        echo '<div class="alert alert-danger" role="alert">
-                '. $_SESSION['erreur'].'
-            </div>';
-        $_SESSION['erreur'] = "";
-    } 
-?>
-<?php
-    if(!empty($_SESSION['message'])) {
-        echo '<div class="alert alert-success" role="alert">
-                '. $_SESSION['message'].'
-            </div>';
-            $_SESSION['message'] = "";
-    } 
-?>
 <h2>Liste des commentaires signalés</h2>
+<?php if ($data['sessionerreur'] !== null): ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $data['sessionerreur'] ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($data['sessionmessage'] !== null): ?>
+        <div class="alert alert-success" role="alert">
+            <?= $data['sessionmessage'] ?>
+        </div>
+    <?php endif; ?>
 <div class="table-responsive">
     <table class="table table-bordered table-hover table-sm">
         <thead class="text-center">
