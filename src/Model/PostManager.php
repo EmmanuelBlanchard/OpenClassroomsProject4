@@ -41,7 +41,7 @@ class PostManager
     public function getListEpisodesPagination(int $currentPage, int $nbEpisodesPerPage): ?array
     {
         $firstEpisodePage=($currentPage-1)*$nbEpisodesPerPage;
-        $request = $this->database->prepare('SELECT id, chapter, title, introduction, post_date, post_status FROM posts ORDER BY post_date ASC LIMIT :firstEpisodePage, :nbEpisodesPerPage');
+        $request = $this->database->prepare('SELECT id, chapter, title, introduction, post_date, post_status FROM posts ORDER BY chapter, post_date ASC LIMIT :firstEpisodePage, :nbEpisodesPerPage');
         $request->bindValue(':firstEpisodePage', $firstEpisodePage, \PDO::PARAM_INT);
         $request->bindvalue(':nbEpisodesPerPage', $nbEpisodesPerPage, \PDO::PARAM_INT);
         $request->execute();
