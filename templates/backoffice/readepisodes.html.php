@@ -3,7 +3,11 @@
         <p class="pError"> Erreur : l'affichage de la liste des épisodes n'est pas possible </p>
     </section>
 <?php elseif ($data['allepisodespagination'] !== null): ?>
-    <h2>Liste des épisodes</h2>
+    <div>
+        <h2 class="h2inline">Liste des épisodes</h2>
+
+        <a class="btn btn-primary abuttonadd" href="index.php?action=addEpisode">Ajouter</a>
+    </div>
     <?php if ($data['sessionerreur'] !== null): ?>
         <div class="alert alert-danger" role="alert">
             <?= $data['sessionerreur'] ?>
