@@ -50,21 +50,31 @@
         <ul class="pagination pagination-lg justify-content-center">
             <?php if ($data['previouspage'] !== null): ?>
                 <li class="page-item">
-                    <a class="page-link" href="index.php?action=readEpisodes&page=<?=$data['previouspage']?>" aria-label="Previous">
+                    <a class="page-link" href="index.php?action=readEpisodes&page=1" aria-label="First Page">
                         <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="index.php?action=readEpisodes&page=<?=$data['previouspage']?>" aria-label="Previous">
+                        <span aria-hidden="true">&#139;</span>
                     </a>
                 </li>
             <?php endif?>
             <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=1">1</a></li>
             <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=2">2</a></li>
-            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=3">3</a></li>
+            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=3">3</a></li><!--
             <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=4">4</a></li>
             <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=5">5</a></li>
             <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=6">6</a></li>
-            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=7">7</a></li>
+            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=7">7</a></li>-->
             <?php if ($data['nextpage'] !== null): ?>
                 <li class="page-item">
                     <a class="page-link" href="index.php?action=readEpisodes&page=<?=$data['nextpage']?>" aria-label="Next">
+                        <span aria-hidden="true">&#155;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="index.php?action=readEpisodes&page=<?=$data['lastpage']?>" aria-label="Last Page">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
