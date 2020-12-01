@@ -13,6 +13,12 @@
             <?= $data['sessionerreur'] ?>
         </div>
     <?php endif; ?>
+
+    <?php if ($data['sessionmessage'] !== null): ?>
+        <div class="alert alert-success" role="alert">
+            <?= $data['sessionmessage'] ?>
+        </div>
+    <?php endif; ?>
     
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-sm">
