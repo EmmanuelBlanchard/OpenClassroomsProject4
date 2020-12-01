@@ -19,7 +19,6 @@
             <?= $data['sessionmessage'] ?>
         </div>
     <?php endif; ?>
-    
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-sm">
             <thead class="text-center">
