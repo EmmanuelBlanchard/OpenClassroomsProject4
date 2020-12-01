@@ -6,6 +6,17 @@
                 <p class="pError">Erreur : L'id n'est pas trouvé !</p>
             </section>
         <?php elseif ($data['post'] !== null): ?>
+            <?php if ($data['sessionerreur'] !== null): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= $data['sessionerreur'] ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($data['sessionmessage'] !== null): ?>
+                <div class="alert alert-success" role="alert">
+                    <?= $data['sessionmessage'] ?>
+                </div>
+            <?php endif; ?>
             <form method="post">
                 <div class="form-group">
                     <label for="title">Titre <span>(obligatoire)</span> </label>
