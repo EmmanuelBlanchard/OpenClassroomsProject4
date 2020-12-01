@@ -224,12 +224,12 @@ class AdminController
             $dataPost = $this->postManager->showOnePost($postId);
             // On verifie si le post existe
             if (!$dataPost) {
-                $session->setSessionMessage('erreur', 'L\'épisode n°' . $postId . ' n\'existe pas');
+                $session->setSessionMessage('erreur', 'L\'épisode n°' . $dataPost['chapter'] . ' avec pour numéro d\'identifiant ' . $postId . ' n\'existe pas');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
             $this->postManager->deletePost($postId);
-            $session->setsessionMessage('message', 'Épisode n°' . $postId . ' supprimé');
+            $session->setsessionMessage('message', 'L\'épisode n°' . $dataPost['chapter'] . ' avec pour numéro d\'identifiant ' . $postId . ' est supprimé');
             header('Location: index.php?action=readEpisodes');
             exit();
         }
