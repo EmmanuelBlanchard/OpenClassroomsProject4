@@ -23,25 +23,41 @@
                     <label for="content">Contenu de l'épisode <span>(obligatoire)</span> </label>
                     <textarea class="form-control" id="content" name="content" size="30" maxlength="2000"><?php if (isset($data['post']['content'])){echo htmlentities($data['post']['content'], ENT_COMPAT,'UTF-8', true);} ?></textarea>
                 </div>
-                <fieldset class="form-group">
-                    <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Statut de l'épisode</legend>
-                        <div class="col-sm-10">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="episodeStatus" id="episodeStatusDraft" value="draft" checked>
-                                <label class="form-check-label" for="episodeStatusDraft">
-                                    Brouillon
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="episodeStatus" id="episodeStatusPublish" value="publish">
-                                <label class="form-check-label" for="episodeStatusPublish">
-                                    Publié
-                                </label>
+                <?php if ($data['post']['post_status'] === 'publish'): ?>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-sm-2 pt-0">Statut de l'épisode</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="episodeStatus" id="episodeStatusPublish" value="publish" checked>
+                                    <label class="form-check-label" for="episodeStatusPublish">
+                                        Publié
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </fieldset>
+                    </fieldset>
+                <?php elseif ($data['post']['post_status'] === 'draft'): ?>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-sm-2 pt-0">Statut de l'épisode</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="episodeStatus" id="episodeStatusDraft" value="draft" checked>
+                                    <label class="form-check-label" for="episodeStatusDraft">
+                                        Brouillon
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="episodeStatus" id="episodeStatusPublish" value="publish">
+                                    <label class="form-check-label" for="episodeStatusPublish">
+                                        Publié
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                <?php endif; ?>
                 <input type="hidden" name="id" value="<?=$data['post']['id']?>">
                 
                 <button class="btn btn-primary">Envoyer</button>

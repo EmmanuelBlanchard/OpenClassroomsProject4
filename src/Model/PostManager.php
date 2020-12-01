@@ -95,7 +95,7 @@ class PostManager
 
     public function showOnePost(int $postId): ?array
     {
-        $request = $this->database->prepare('SELECT id, chapter, title, introduction, content, post_date FROM posts WHERE id = :id');
+        $request = $this->database->prepare('SELECT id, chapter, title, introduction, content, post_date, post_status FROM posts WHERE id = :id');
         $request->bindValue(':id', $postId, \PDO::PARAM_INT);
         $request->execute();
         $result = $request->fetch();
