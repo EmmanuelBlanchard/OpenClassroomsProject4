@@ -1,17 +1,17 @@
 <h2>Ajouter un épisode</h2>
 <div class="row justify-content-center pt-3 pb-2 mb-3">
-    <?php if ($data['sessionerreur'] !== null): ?>
-        <div class="alert alert-danger" role="alert">
-            <?= $data['sessionerreur'] ?>
-        </div>
-    <?php endif; ?>
-
-    <?php if ($data['sessionmessage'] !== null): ?>
-        <div class="alert alert-success" role="alert">
-            <?= $data['sessionmessage'] ?>
-        </div>
-    <?php endif; ?>
     <section class="col-10">
+        <?php if ($data['sessionerreur'] !== null): ?>
+            <div class="alert alert-danger" role="alert">
+                <?= $data['sessionerreur'] ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($data['sessionmessage'] !== null): ?>
+            <div class="alert alert-success" role="alert">
+                <?= $data['sessionmessage'] ?>
+            </div>
+        <?php endif; ?>
         <form method="post">
             <div class="form-group">
                 <label for="title">Titre <span>(obligatoire)</span> </label>
