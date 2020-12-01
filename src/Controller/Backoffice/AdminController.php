@@ -162,8 +162,8 @@ class AdminController
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
-            $session->setSessionMessage('erreur', 'le formulaire est incomplet');
-            $this->view->render(['template' => 'addepisode'], 'backoffice');
+            $session->setSessionMessage('erreur', 'Le formulaire est incomplet !');
+            $this->view->render(['template' => 'addepisode', 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
         }
         $this->view->render(['template' => 'addepisode', 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
