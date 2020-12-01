@@ -62,11 +62,7 @@
             <?php endif?>
             <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=1">1</a></li>
             <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=2">2</a></li>
-            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=3">3</a></li><!--
-            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=4">4</a></li>
-            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=5">5</a></li>
-            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=6">6</a></li>
-            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=7">7</a></li>-->
+            <li class="page-item"><a class="page-link" href="index.php?action=readEpisodes&page=3">3</a></li>
             <?php if ($data['nextpage'] !== null): ?>
                 <li class="page-item">
                     <a class="page-link" href="index.php?action=readEpisodes&page=<?=$data['nextpage']?>" aria-label="Next">
