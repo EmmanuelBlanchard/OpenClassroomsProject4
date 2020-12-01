@@ -203,14 +203,14 @@ class AdminController
                 $content = ($data['content']);
                 $episodeStatus = strip_tags($data['episodeStatus']);
                 $this->postManager->editPost($id, $chapter, $title, $introduction, $content, $episodeStatus);
-                $session->setSessionMessage('message', 'Épisode modifié');
+                $session->setSessionMessage('message', 'Épisode n°' . $chapter . ' modifié');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
             $session->setsessionMessage('erreur', 'Le formulaire est incomplet');
-            $this->view->render(['template' => 'editepisode'], 'backoffice');
+            $this->view->render(['template' => 'editepisode', 'post' => $dataPost, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
         }
-        $this->view->render(['template' => 'editepisode', 'post' => $dataPost], 'backoffice');
+        $this->view->render(['template' => 'editepisode', 'post' => $dataPost, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
 
     public function deleteEpisode(int $postId, Session $session): void
