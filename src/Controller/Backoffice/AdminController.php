@@ -158,7 +158,7 @@ class AdminController
                 $content = ($data['content']);
                 $episodeStatus = strip_tags($data['episodeStatus']);
                 $this->postManager->newPost($chapter, $title, $introduction, $content, $episodeStatus);
-                $session->setSessionMessage('message', 'Épisode ajouté');
+                $session->setSessionMessage('message', 'Épisode n°' . $chapter . ' ajouté');
                 header('Location: index.php?action=readEpisodes');
                 exit();
             }
