@@ -262,14 +262,14 @@ class AdminController
         $this->view->render(['template' => 'readcomments', 'allcommentspagination' => $dataAllCommentsPagination, 'previouspage' => $previousPage, 'nextpage' => $nextPage, 'lastpage' => $nbTotalPages, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
     
-    public function reportedComments(): void
+    public function reportedComments(Session $session): void
     {
         if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
             exit();
         }
         $dataReportedComments = $this->commentManager->showAllReportedComment();
-        $this->view->render(['template' => 'reportedcomments', 'allreportedcomment' => $dataReportedComments], 'backoffice');
+        $this->view->render(['template' => 'reportedcomments', 'allreportedcomment' => $dataReportedComments, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
 
     public function approveComment(int $commentId, Session $session): void

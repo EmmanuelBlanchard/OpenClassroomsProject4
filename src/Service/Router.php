@@ -117,7 +117,7 @@ class Router
             $this->adminController->readComments($currentPage, $this->session);
         } elseif ($action === 'reportedComments') {
             // route http://localhost:8000/?action=reportedComments
-            $this->adminController->reportedComments();
+            $this->adminController->reportedComments($this->session);
         } elseif ($action === 'approveComment' && ($this->request->getGetItem('id') !== null)) {
             // route http://localhost:8000/?action=approveComment&id=5
             $this->adminController->approveComment((int)$this->request->getGetItem('id'), $this->session);
