@@ -136,7 +136,7 @@ class AdminController
 
         $dataAllEpisodesPagination = $this->postManager->getListEpisodesPagination($currentPage, $nbEpisodesPerPage);
 
-        $this->view->render(['template' => 'readepisodes', 'allepisodespagination' => $dataAllEpisodesPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage, 'lastpage' => $nbTotalPages, 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
+        $this->view->render(['template' => 'readepisodes', 'allepisodespagination' => $dataAllEpisodesPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage, 'lastpage' => $nbTotalPages, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
     
     public function addEpisode(array $data, Session $session): void
