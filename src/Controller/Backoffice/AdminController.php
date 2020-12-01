@@ -51,7 +51,7 @@ class AdminController
         //var_dump($token, $request->getPostItem('csrfToken'), $_POST);
         //var_dump($request->getPostItem('csrfToken'));
         //die();
-
+        /*
         if (!$token->verify($request->getPostItem('csrfToken'))) {
             $this->session->setSessionMessage('erreur', 'Vous ne pouvez pas vous connecter !');
             $this->session->getSessionMessage('erreur');
@@ -60,9 +60,10 @@ class AdminController
             header('Location: index.php?action=login');
             exit();
         }
+
         $this->session->setSessionMessage('message', 'Vous êtes connecté !');
         $this->session->getSessionMessage('message');
-
+        */
         if (!empty($data['pseudo']) && !empty($data['password'])) {
             $pseudo= $data['pseudo'];
             $password = $data['password'];
