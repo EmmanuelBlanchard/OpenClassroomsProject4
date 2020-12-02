@@ -98,7 +98,7 @@ class CommentManager
 
     public function showAllApprovedComment(): ?array
     {
-        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM comments WHERE approved=1 ORDER BY comment_date DESC');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM comments WHERE approved=1 ORDER BY post_id, pseudo DESC');
         $request->execute();
         return $request->fetchAll();
     }
