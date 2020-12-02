@@ -313,12 +313,12 @@ class AdminController
             $dataComment = $this->commentManager->showOneComment($commentId);
             // On verifie si le commentaire existe
             if (!$dataComment) {
-                $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
+                $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' de l\'épisode n°' . $dataComment['post_id'] . ' n\'existe pas');
                 header('Location: index.php?action=readComments');
                 exit();
             }
             $dataComment = $this->commentManager->deleteComment($commentId);
-            $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' supprimé');
+            $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' de l\'épisode n°' . $dataComment['post_id'] . ' supprimé');
             header('Location: index.php?action=readComments');
             exit();
         }
