@@ -285,7 +285,8 @@ class AdminController
             die();
             // On verifie si le commentaire existe
             if (!$dataComment) {
-                $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
+                //$session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
+                $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' de l\'épisode n°' . $dataComment['post_id'] . ' n\'existe pas');
                 header('Location: index.php?action=readComments');
                 exit();
             }
