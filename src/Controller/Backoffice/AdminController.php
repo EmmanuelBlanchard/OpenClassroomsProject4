@@ -128,7 +128,10 @@ class AdminController
             header('Location: index.php?action=readEpisodes&page=' .$currentPage . '');
             exit();
         } elseif ($currentPage<=0) {
+            $session->setSessionMessage('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la première page de Liste des épisodes.');
             $currentPage=1;
+            header('Location: index.php?action=readEpisodes&page=' .$currentPage . '');
+            exit();
         }
 
         $previousPage = $currentPage<=1 ? null : ($currentPage-1);
