@@ -254,6 +254,7 @@ class AdminController
             header('Location: index.php?action=readComments&page=' .$currentPage .'');
             exit();
         } elseif ($currentPage<=0) {
+            $session->setSessionMessage('erreur', 'La page n°' .$currentPage . ' n\'existe pas ! Voici la première page de Liste des commentaires.');
             $currentPage=1;
             header('Location: index.php?action=readComments&page=' . $currentPage . '');
             exit();
