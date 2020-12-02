@@ -44,11 +44,11 @@ class PostController
         
         if ($currentPage>$nbTotalPages) {
             $this->session->setSessionMessage('erreur', 'La page demandée n\'existe pas ! Voici la dernière page du blog.');
-            
             $currentPage= $nbTotalPages;
             header('Location: index.php?action=listOfPosts&page=' . $currentPage . '');
             exit();
         } elseif ($currentPage<=0) {
+            $this->session->setSessionMessage('erreur', 'La page demandée n\'existe pas ! Voici la première page du blog.');
             $currentPage=1;
             header('Location: index.php?action=listOfPosts&page=' . $currentPage . '');
             exit();
