@@ -23,7 +23,8 @@ class CommentManager
         $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, reported, approved FROM comments WHERE post_id = :post_id ORDER BY comment_date DESC');
         $request->bindValue(':post_id', $postId, \PDO::PARAM_INT);
         $request->execute();
-        return $request->fetchAll();
+        $result = $request->fetchAll();
+        return !$result ? null : $result;
     }
     
     public function getNbComments(): int
@@ -50,7 +51,8 @@ class CommentManager
     {
         $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM comments WHERE post_id = :post_id ORDER BY comment_date DESC');
         $request->execute(['post_id' => $postId]);
-        return $request->fetch();
+        $result = $request->fetch();
+        return !$result ? null : $result;
     }
 
     public function postComment(int $postId, string $comment, string $pseudo): bool
@@ -76,7 +78,8 @@ class CommentManager
     {
         $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY comment_date DESC');
         $request->execute();
-        return $request->fetchAll();
+        $result = $request->fetchAll();
+        return !$result ? null : $result;
     }
 
     public function getListCommentsPagination($currentPage, $nbCommentsPerPage): ?array
@@ -86,21 +89,24 @@ class CommentManager
         $request->bindValue(':firstCommentPage', $firstCommentPage, \PDO::PARAM_INT);
         $request->bindValue(':nbCommentsPerPage', $nbCommentsPerPage, \PDO::PARAM_INT);
         $request->execute();
-        return $request->fetchAll();
+        $result = $request->fetchAll();
+        return !$result ? null : $result;
     }
 
     public function showAllReportedComment(): ?array
     {
         $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM comments WHERE reported=1 ORDER BY post_id, pseudo DESC');
         $request->execute();
-        return $request->fetchAll();
+        $result = $request->fetchAll();
+        return !$result ? null : $result;
     }
 
     public function showAllApprovedComment(): ?array
     {
         $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM comments WHERE approved=1 ORDER BY post_id, pseudo DESC');
         $request->execute();
-        return $request->fetchAll();
+        $result = $request->fetchAll();
+        return !$result ? null : $result;
     }
 
     // Probleme si int post_id et reported pour AdminController.php
