@@ -22,7 +22,8 @@ class PostManager
         
         $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr, post_status FROM posts WHERE post_status=\'publish\' ORDER BY post_date DESC LIMIT 0,3');
         $request->execute();
-        return $request->fetchAll();
+        $result = $request->fetchAll();
+        return !$result ? null : $result;
     }
 
     public function getListPostsPagination(int $currentPage, int $nbPostsPerPage): ?array
@@ -35,7 +36,8 @@ class PostManager
         $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
         $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
         $request->execute();
-        return $request->fetchAll();
+        $result = $request->fetchAll();
+        return !$result ? null : $result;
     }
 
     public function getListEpisodesPagination(int $currentPage, int $nbEpisodesPerPage): ?array
@@ -45,7 +47,8 @@ class PostManager
         $request->bindValue(':firstEpisodePage', $firstEpisodePage, \PDO::PARAM_INT);
         $request->bindvalue(':nbEpisodesPerPage', $nbEpisodesPerPage, \PDO::PARAM_INT);
         $request->execute();
-        return $request->fetchAll();
+        $result = $request->fetchAll();
+        return !$result ? null : $result;
     }
     
     public function getPost(int $postId): ?array
