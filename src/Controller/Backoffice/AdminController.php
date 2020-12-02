@@ -255,6 +255,8 @@ class AdminController
             exit();
         } elseif ($currentPage<=0) {
             $currentPage=1;
+            header('Location: index.php?action=readComments&page=' . $currentPage . '');
+            exit();
         }
         $previousPage = $currentPage<=1 ? null : ($currentPage-1);
         $nextPage = $currentPage>=$nbTotalPages ? null : ($currentPage+1);
@@ -281,8 +283,8 @@ class AdminController
         if (isset($commentId) && !empty($commentId)) {
             $dataComment = $this->commentManager->showOneComment($commentId);
 
-            var_dump($dataComment['id'], $dataComment['post_id']);
-            die();
+            //var_dump($dataComment['id'], $dataComment['post_id']);
+            //die();
             // On verifie si le commentaire existe
             if (!$dataComment) {
                 //$session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
@@ -291,7 +293,8 @@ class AdminController
                 exit();
             }
             $this->commentManager->approveComment($commentId);
-            $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' approuvé');
+            //$session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' approuvé');
+            $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' de l\'épisode n°' . $dataComment['post_id'] . ' approuvé');
             header('Location: index.php?action=reportedComments');
             exit();
         }
