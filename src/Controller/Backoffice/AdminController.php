@@ -280,6 +280,9 @@ class AdminController
         }
         if (isset($commentId) && !empty($commentId)) {
             $dataComment = $this->commentManager->showOneComment($commentId);
+
+            var_dump($dataComment['id'], $dataComment['post_id']);
+            die();
             // On verifie si le commentaire existe
             if (!$dataComment) {
                 $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' n\'existe pas');
