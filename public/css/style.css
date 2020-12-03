@@ -647,8 +647,8 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Pixel 2 - 411px*731px and DPR=2 */
 @media all and (min-width: 411px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 39%;
-        left: 22%;
+        top: 52%;   /* Avant 39% */
+        left: 28%;  /* Avant 22% */
     }
 }
 /* Mobile menu Pixel 2 XL - 411px*823px and DPR=3.5 */
