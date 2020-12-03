@@ -804,8 +804,8 @@ button, input, optgroup, select, textarea {
 /* Galaxy S9 breakpoints 740px */
 @media all and (min-width: 739px) {
     header h1 {
-        top: 38%;
-        left: 19%;
+        top: 44%;           /* Avant 38% */
+        left: 26%;          /* Avant 19% */
         font-size: 25px;
     }
 }
@@ -937,7 +937,7 @@ button, input, optgroup, select, textarea {
     }
 }
 /* Tablet menu Ipad Pro 12,9-inch - 1024px*1366px and DPR=2 */
-@media only screen and (device-width : 1024px) and (device-height : 1366px) and (min-resolution: 2dppx) {
+@media only screen and (device-width: 1024px) and (device-height: 1366px) and (min-resolution: 2dppx) {
     header h1 {
         top: 11%;
     }
