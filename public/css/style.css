@@ -696,7 +696,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
 @media all and (min-width: 568px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 92%;
+        top: 122%;           /* Avant 92% */
         font-size: 19px;
     }
 }
