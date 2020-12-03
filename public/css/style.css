@@ -578,8 +578,8 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
 @media all and (min-width: 320px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 66%;           /* Avant 50% */
-        left: 20%;          /* Avant 16% */
+        top: 66%;
+        left: 20%;
         font-size: 13px;
     }
 }
@@ -609,7 +609,7 @@ button, input, optgroup, select, textarea {
 /* Mobil menu Galaxy Note3 - 360px*640px and DPR=3 */
 @media all and (min-width: 360px) and (min-resolution: 3dppx) {
     header h1 {
-        top: 59%;           /* Avant 45% */
+        top: 59%;
     }
 }
 /* Mobile menu Microsoft Lumia 950 - 360px*640px and DPR=4 */
@@ -621,20 +621,21 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Galasy S9 - 360px*740px and DPR=4 */
 @media only screen and (device-width: 360px) and (device-height: 740px) and (min-resolution: 4dppx) {
     header h1 {
-        top: 51%;           /* Avant 39% */
+        top: 51%;
     }
 }
 /* Mobile menu Iphon 6/7/8 - 375px*667px and DPR=2 */
 @media all and (min-width: 375px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 57%;           /* Avant 43% */
+        top: 57%;
         left: 23%;
     }
 }
 /* Mobile menu Iphon X/XS - 375px*812px and DPR=3  */
 @media all and (min-width: 375px) and (min-resolution: 3dppx) {
     header h1 {
-        top: 36%;
+        top: 46%;
+        left: 27%;
     }
 }
 /* Mobile menu LG Optimus L70 - 384px*640px and DPR=1 */
@@ -647,8 +648,8 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Pixel 2 - 411px*731px and DPR=2 */
 @media all and (min-width: 411px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 52%;           /* Avant 39% */
-        left: 28%;          /* Avant 22% */
+        top: 52%;
+        left: 28%;
     }
 }
 /* Mobile menu Pixel 2 XL - 411px*823px and DPR=3.5 */
@@ -666,13 +667,13 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon XR - 414px*896px and DPR=2 */
 @media all and (min-width: 414px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 32%;
+        top: 42%;
     }
 }
 /* Mobile menu Iphon 6/7/8 PLUS - 414px*736px and DPR=3 */
 @media only screen and (device-width: 414px) and (device-height: 736px) and (min-resolution: 3dppx) {
     header h1 {
-        top: 52%;           /* Avant 39% */
+        top: 52%;
     }
 }
 /* Apple iPhone XS Max 2688x1242px at 458ppi Media Queries */
@@ -684,7 +685,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Galaxy Note 9 - 414px*846px and DPR=3.5 */
 @media all and (min-width: 414px) and (min-resolution: 3.5dppx) {
     header h1 {
-        top: 45%;           /* Avant 35% */
+        top: 45%;
     }
 }
 /* Mobile menu - 437px and DPR=1 */
@@ -696,7 +697,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
 @media all and (min-width: 568px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 122%;           /* Avant 92% */
+        top: 122%;
         font-size: 19px;
     }
 }
@@ -741,8 +742,8 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon 6/7/8 - 375px*667px and DPR=2 */
 @media all and (min-width: 667px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 104%;          /* Avant 79% */
-        left: 28%;          /* Avant 25% */
+        top: 104%;
+        left: 28%;
         font-size: 22px;
     }
 }
@@ -785,7 +786,7 @@ button, input, optgroup, select, textarea {
 /* TV 720 HD - 720px*1280px DPR=1 */
 @media all and (min-width: 720px) {
     header h1 {
-        top: 12%;           /* Avant 11% */
+        top: 12%;
         left: 19%;
     }
 }
@@ -810,15 +811,15 @@ button, input, optgroup, select, textarea {
 /* Galaxy S9 breakpoints 740px */
 @media all and (min-width: 739px) {
     header h1 {
-        top: 44%;           /* Avant 38% */
-        left: 26%;          /* Avant 19% */
+        top: 44%;
+        left: 26%;
         font-size: 25px;
     }
 }
 /* Laptop width 768px*1366px and DPR=1 */
 @media all and (min-width: 768px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 18%;           /* Avant 11% */
+        top: 18%;
         left: 26%;
         font-size: 25px;
     }
@@ -826,13 +827,13 @@ button, input, optgroup, select, textarea {
 /* Tablet menu IPAD - 768px*1024px and DPR=2 */
 @media all and (min-width: 768px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 16%;           /* Avant 14% */
+        top: 16%;
     }
 }
 /* Laptop with MDPi 1280px*800px and Tablet menu Kindle Fire 800px*1280px and DPR=2 */
 @media all and (min-width: 800px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 18%;           /* Avant 12% */
+        top: 18%;
     }
 }
 /* Nexus 10 Android 800px * 1280px and DPR:2 */
@@ -844,7 +845,7 @@ button, input, optgroup, select, textarea {
 /* Laptop width 1536px*864px DPR=1 */
 @media all and (min-width: 864px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 18%;           /* Avant 11% */
+        top: 18%;
     }
 }
 /* Mobile menu Iphon X/XS - 375px*812px and DPR=3  */
@@ -905,7 +906,7 @@ button, input, optgroup, select, textarea {
 /* Laptop width 1024px and 1280px and DPR=1 */
 @media all and (min-width: 1024px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 18%;           /* Avant 14%*/
+        top: 18%;
         left: 28%;
         font-size: 27px;
     }
@@ -938,7 +939,7 @@ button, input, optgroup, select, textarea {
 /* Tablet menu IPAD - 768px*1024px and DPR=2 */
 @media all and (min-width: 1024px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 22%;           /* Avant 19% */
+        top: 22%;
         left: 31%;
     }
 }
@@ -957,7 +958,7 @@ button, input, optgroup, select, textarea {
 /* Laptop width 1200px and 1600px and DPR=1 */
 @media all and (min-width: 1200px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 23%;           /* Avant 12% */
+        top: 23%;
     }
 }
 /* Laptop with MDPi 1280px*800px and Tablet menu Kindle Fire 800px*1280px and DPR=2 and Nexus 10 Android - 800px*1280px and DPR=2 */
@@ -980,7 +981,7 @@ button, input, optgroup, select, textarea {
         width: 50vw;
     }
     header h1 {
-        top: 18%;           /* Avant 15% */
+        top: 18%;
         left: 34%;
         font-size: 28px;
     }
