@@ -613,13 +613,13 @@ button, input, optgroup, select, textarea {
     }
 }
 /* Mobile menu Microsoft Lumia 950 - 360px*640px and DPR=4 */
-@media only screen and (device-width : 360px) and (device-height : 640px) and (min-resolution: 4dppx) {
+@media only screen and (device-width: 360px) and (device-height: 640px) and (min-resolution: 4dppx) {
     header h1 {
         top: 44%;
     }
 }
 /* Mobile menu Galasy S9 - 360px*740px and DPR=4 */
-@media only screen and (device-width : 360px) and (device-height : 740px) and (min-resolution: 4dppx) {
+@media only screen and (device-width: 360px) and (device-height: 740px) and (min-resolution: 4dppx) {
     header h1 {
         top: 51%;       /* Avant 39% */
     }
