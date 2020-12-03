@@ -870,6 +870,7 @@ button, input, optgroup, select, textarea {
 @media all and (min-width: 896px) and (min-resolution: 2dppx) {
     header h1 {
         top: 38%;
+        left: 29%;
     }
 }
 /* Laptop with HiDPI - 1440px*900px and DPR=2 */
