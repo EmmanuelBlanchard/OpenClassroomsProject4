@@ -799,7 +799,15 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Pixel 2 - 411px*731px and DPR=2 */
 @media all and (min-width: 731px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 35%;
+        top: 37%;
+        left: 23%;
+    }
+}
+/* Mobile menu Nexus 5X - 412px*732px and DPR=2 */
+@media all and (min-width: 732px) and (min-resolution: 2dppx) {
+    header h1 {
+        top: 37%;
+        left: 23%;
     }
 }
 /* Iphon 6/7/8 Plus breakpoints 736px */
