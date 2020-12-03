@@ -672,7 +672,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon 6/7/8 PLUS - 414px*736px and DPR=3 */
 @media only screen and (device-width : 414px) and (device-height : 736px) and (min-resolution: 3dppx) {
     header h1 {
-        top: 39%;
+        top: 52%; /* Avant 39% */
     }
 }
 /* Apple iPhone XS Max 2688x1242px at 458ppi Media Queries */
