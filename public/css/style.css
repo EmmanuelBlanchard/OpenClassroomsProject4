@@ -932,7 +932,7 @@ button, input, optgroup, select, textarea {
 /* Tablet menu IPAD - 768px*1024px and DPR=2 */
 @media all and (min-width: 1024px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 19%;
+        top: 22%;  /* Avant 19% */
     }
 }
 /* Tablet menu Ipad Pro 12,9-inch - 1024px*1366px and DPR=2 */
