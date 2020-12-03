@@ -1024,3 +1024,145 @@ button, input, optgroup, select, textarea {
         width: 60vw;
     }
 }
+/* 4K Ultra HD Television - 3840*2160px */
+@media all and (min-width: 2160px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 9%;
+        left: 24%;
+        font-size: 75px;
+    }
+    .classImg img {
+        width: 60vw;
+    }
+    /* ajout de la version 3840px */
+    .logo {
+        font-size: 4.6rem;
+    }
+    .item {
+        font-size: 3.5rem;
+    }
+    .menu li a {
+        padding: 35px 30px;
+    }
+    .item.button {
+        padding: 9px 80px;
+    }
+    .classImg img {
+        width: 86vw;
+    }
+    body {
+        font-size: 3rem;
+    }
+    p {
+        width: 2700px;
+    }
+    article, section h2, article h3, .linkPreviousPost, .linkNextPost, .linkPreviousPage, .linkNextPage, footer {
+        margin: 3.5rem 0rem;
+    }
+    .linkPreviousPost, .linkNextPost, .linkPreviousPage, .linkNextPage {
+        padding: 35px 35px;
+    }
+    article h5 {
+        margin-bottom: 0;
+        padding-left: 2%;
+        margin-top: 3.5rem;
+    }
+    .linkPreviousPost, .linkNextPost {
+        margin-left: 17.5%;
+    }
+    .sectionH4TitlePostComment {
+        margin-left: 4rem;
+        margin-top: 3.5rem;
+    }
+    .sectionPostComment, .pCreatedAt, .sectionH4TitleComments {
+        margin-bottom: 3.5rem;
+    }
+    h3 {
+        font-size: 3.75rem;
+    }
+    main {
+        width : 2000px;
+    }
+    .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword, .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft, .inputTypeSubmitPreview, .inputTypeSubmitPublish, .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
+        width: 20rem;
+        padding: 35px 35px;
+    }
+    .linkReadTheEntireEpisode {
+        width: 36rem;
+    }
+    .h3, h3 {
+        font-size: 2.75rem;
+    }
+    .form-control {
+        font-size: 2.5rem;
+    }
+    .btn, #body-sign-in, .text-muted {
+        font-size: 2rem;
+    }
+    .btn-lg {
+        font-size:2.5rem;
+    }
+}
+/* 4K Ultra HD Television - 3840*2160px */
+@media all and (min-width: 3840px) and (min-resolution: 1dppx) {
+    .logo {
+        font-size: 5.6rem;
+    }
+    .item {
+        font-size: 3.5rem;
+    }
+    .menu li a {
+        padding: 35px 130px;
+    }
+    .item.button {
+        padding: 9px 230px;
+    }
+    header h1 {
+        top: 22%;
+        left: 30%;
+        font-size: 107px;
+    }
+    .classImg img {
+        width: 86vw;
+    }
+    body {
+        font-size: 3rem;
+    }
+    p {
+        width: 2700px;
+    }
+    article, section h2, article h3, .linkPreviousPost, .linkNextPost, .linkPreviousPage, .linkNextPage, footer {
+        margin: 3.5rem 0rem;
+    }
+    .linkPreviousPost, .linkNextPost, .linkPreviousPage, .linkNextPage {
+        padding: 35px 35px;
+    }
+    article h5 {
+        margin-bottom: 0;
+        padding-left: 2%;
+        margin-top: 3.5rem;
+    }
+    .linkPreviousPost, .linkNextPost {
+        margin-left: 17.5%;
+    }
+    .sectionH4TitlePostComment {
+        margin-left: 4rem;
+        margin-top: 3.5rem;
+    }
+    .sectionPostComment, .pCreatedAt, .sectionH4TitleComments {
+        margin-bottom: 3.5rem;
+    }
+    h3 {
+        font-size: 3.75rem;
+    }
+    main {
+        width : 3000px;
+    }
+    .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword, .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft, .inputTypeSubmitPreview, .inputTypeSubmitPublish, .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
+        width: 20rem;
+        padding: 35px 35px;
+    }
+    .linkReadTheEntireEpisode {
+        width: 36rem;
+    }
+}
