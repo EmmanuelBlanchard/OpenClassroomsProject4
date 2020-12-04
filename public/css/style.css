@@ -373,6 +373,12 @@ article, section h2, article h3, .linkPreviousPost, .linkNextPost, .linkPrevious
     line-height: 1.5;
     color: #212529;
     text-align: left;
+    /* Essai, ajout de la propriete background-color pour un meilleur contraste que 
+    #212529 et #025AA0 => 2.18
+    #212529 et #f5f5f5 => 14.15 */
+    border: 3px solid rgb(242, 243, 248);
+	border-radius: 20px;
+    background-color: #f5f5f5;
 }
 *, ::after, ::before {
 	box-sizing: border-box;
