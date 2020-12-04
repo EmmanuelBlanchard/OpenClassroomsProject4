@@ -142,7 +142,8 @@ article h3, article h4, article h5 {
 }
 article h5 {
     margin-bottom: 0;
-    padding-left: 1%;
+    padding-left: 2.5%;
+    margin-top: 1.25rem;
 }
 p {
     line-height: 1.7;
@@ -193,7 +194,8 @@ p {
     background-color: #025AA0;
 }
 .sectionH4TitlePostComment {
-    margin-left: 20px;
+    margin-left: 1rem;  /* avant 20px */
+    margin-top: 1.5rem;
 }
 form {
     box-sizing: border-box;
@@ -351,6 +353,13 @@ footer {
 footer p {
     text-align: center;
     font-family: 'merienda_oneregular', Arial, sans-serif, serif;
+}
+/* Ajout marges pour un peu d espace */
+article, section h2, article h3, .linkPreviousPost, .linkNextPost, .linkPreviousPage, .linkNextPage, footer {
+    margin: 1.5rem 0rem;
+}
+.sectionPostComment, .pCreatedAt, .sectionH4TitleComments {
+    margin-bottom: 3.5rem;
 }
 /* error message */
 /* _alert.scss:48 */
@@ -710,7 +719,7 @@ button, input, optgroup, select, textarea {
         width: 556px;
     }
 }
-/*Mobile menu Nexus 7 Android - 600px*960px and DPR=2 */
+/* Mobile menu Nexus 7 Android - 600px*960px and DPR=2 */
 @media all and (min-width: 600px) and (min-resolution: 2dppx) {
     header h1 {
         top: 41%;
