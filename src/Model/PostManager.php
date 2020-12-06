@@ -32,7 +32,7 @@ class PostManager
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
 
-        $request = $this->database->prepare('SELECT id, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr, post_status FROM posts WHERE post_status=\'publish\' ORDER BY post_date ASC LIMIT :firstPostPage, :nbPostsPerPage');
+        $request = $this->database->prepare('SELECT id, chapter, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr, post_status FROM posts WHERE post_status=\'publish\' ORDER BY chapter, post_date ASC LIMIT :firstPostPage, :nbPostsPerPage');
         $request->bindValue(':firstPostPage', $firstPostPage, \PDO::PARAM_INT);
         $request->bindValue(':nbPostsPerPage', $nbPostsPerPage, \PDO::PARAM_INT);
         $request->execute();
