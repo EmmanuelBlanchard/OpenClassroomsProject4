@@ -46,24 +46,21 @@ class AdminController
         //die();
         //echo '</pre>';
 
-        //  Whoops \ Exception \ ErrorException (E_NOTICE)
-        // Undefined index: csrfToken
-        //var_dump($token, $request->getPostItem('csrfToken'), $_POST);
-        //var_dump($request->getPostItem('csrfToken'));
-        //die();
+        if (!$token->verify($request->getpostItem('csrfToken'))) {
+            var_dump("error token");
+        }
+        /*  Whoops \ Exception \ ErrorException (E_NOTICE)
+            Undefined index: csrfToken */
         /*
         if (!$token->verify($request->getPostItem('csrfToken'))) {
             $this->session->setSessionMessage('erreur', 'Vous ne pouvez pas vous connecter !');
-            $this->session->getSessionMessage('erreur');
-            // Suppression du token puis renouveller un autre token pour une nouvelle validation
-            $this->session->removeSession('csrfToken');
-            header('Location: index.php?action=login');
+
+            header('Location: index.php?action=home');
             exit();
         }
-
         $this->session->setSessionMessage('message', 'Vous êtes connecté !');
-        $this->session->getSessionMessage('message');
         */
+
         if (!empty($data['pseudo']) && !empty($data['password'])) {
             $pseudo= $data['pseudo'];
             $password = $data['password'];
