@@ -275,8 +275,7 @@ class AdminController
             exit();
         }
         $dataReportedComments = $this->commentManager->showAllReportedComment();
-        //var_dump($dataReportedComments);
-        //die();
+
         $this->view->render(['template' => 'reportedcomments', 'allreportedcomment' => $dataReportedComments, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
 
