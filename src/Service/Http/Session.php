@@ -63,18 +63,10 @@ class Session
     {
         if (isset($_SESSION[$typeMessage])) {
             $sessionMessage = $_SESSION[$typeMessage];
-            return $_SESSION[$typeMessage];
-            unset($sessionMessage);
+            unset($_SESSION[$typeMessage]);
+            return $sessionMessage;
         }
         return null;
-        //$sessionMessage = $_SESSION[$typeMessage];
-        //unset($sessionMessage);
-        //$sessionMessage = $_SESSION[$typeMessage];
-        //return $sessionMessage;
-        //$sessionMessage = $_SESSION[$typeMessage];
-        //unset($sessionMessage);
-        //unset($_SESSION[$typeMessage]);
-        //return $sessionMessage;
     }
 
     public function showSession($name): ?array
