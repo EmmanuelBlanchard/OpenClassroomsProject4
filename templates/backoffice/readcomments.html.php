@@ -60,9 +60,6 @@
                     </a>
                 </li>
             <?php endif?>
-            <li class="page-item"><a class="page-link" href="index.php?action=readComments&page=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="index.php?action=readComments&page=2">2</a></li>
-            <li class="page-item"><a class="page-link" href="index.php?action=readComments&page=3">3</a></li>
             <?php if ($data['nextpage'] !== null): ?>
                 <li class="page-item">
                     <a class="page-link" href="index.php?action=readComments&page=<?=$data['nextpage']?>" aria-label="Next">
