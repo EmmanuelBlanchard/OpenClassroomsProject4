@@ -64,7 +64,6 @@ class CommentController
         exit();
     }
 
-    // Essai en cas d'erreur, route vers la page d'erreur
     public function error(int $postId): void
     {
         $dataPost = $this->postManager->getPost($postId);
@@ -72,11 +71,7 @@ class CommentController
         if ($dataPost !== null) {
             // http://localhost:8000/index.php?action=error&id=21
             $this->error->display('Erreur', 'Il n\' y a pas de post n°' . $postId . '', 'frontoffice');
-        // Avant
-            //$this->view->render(['template' => 'error', 'post' => $dataPost], 'frontoffice');
         } elseif ($dataPost === null) {
-            //echo '<h1>faire une redirection vers la page d\'erreur, il n\'y pas de post</h1><a href="index.php?action=home">Accueil</a><br>';
-            // Essai sans le echo
             $this->error->display('Erreur', 'Il n\'y pas de post !', 'frontoffice');
         }
     }

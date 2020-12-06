@@ -107,7 +107,6 @@ class CommentManager
         return !$result ? null : $result;
     }
 
-    // Probleme si int post_id et reported pour AdminController.php
     public function newComment(string $pseudo, string $comment, string $post_id, string $reported): void
     {
         $request = $this->database->prepare('INSERT INTO comments (pseudo, comment, post_id, reported, post_date) VALUES (:pseudo, :comment, :post_id, :reported, NOW())');
