@@ -219,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `Comments` (
   `reported` int(3) NOT NULL DEFAULT 0,
   `approved` int(3) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_posts_id` FOREIGN KEY (`post_id`) REFERENCES `Posts`(`id`) ON DELETE CASCADE
+  CONSTRAINT `fk_posts_id` FOREIGN KEY (`post_id`) REFERENCES `Posts`(`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_posts_chapter` FOREIGN KEY (`post_chapter`) REFERENCES `Posts`(`chapter`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET='utf8mb4';
 
