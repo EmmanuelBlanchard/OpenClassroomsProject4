@@ -33,7 +33,7 @@
                 <?php foreach($data['allcommentspagination'] as $post): ?>
                     <tr>
                         <td data-title="ID"><?=$post['id']?></td>
-                        <td data-title="Episode"><?=$post['post_id']?></td>
+                        <td data-title="Numero"><?=$post['chapter']?></td>
                         <td data-title="Auteur"><?=$post['pseudo']?></td>
                         <td data-title="Commentaire"><?=$post['comment']?></td>
                         <td data-title="Envoyé le"><?=date("d/m/Y", strtotime($post['comment_date']));?></td>
