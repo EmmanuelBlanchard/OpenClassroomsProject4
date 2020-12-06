@@ -95,7 +95,7 @@ class CommentManager
 
     public function showAllReportedComment(): ?array
     {
-        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM comments WHERE reported=1 ORDER BY post_id, pseudo DESC');
+        $request = $this->database->prepare('SELECT id, chapter, pseudo, comment, comment_date, post_id FROM comments WHERE reported=1 ORDER BY chapter, pseudo DESC');
         $request->execute();
         $result = $request->fetchAll();
         return !$result ? null : $result;
@@ -103,7 +103,7 @@ class CommentManager
 
     public function showAllApprovedComment(): ?array
     {
-        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM comments WHERE approved=1 ORDER BY post_id, pseudo DESC');
+        $request = $this->database->prepare('SELECT id, chapter, pseudo, comment, comment_date, post_id FROM comments WHERE approved=1 ORDER BY chapter, pseudo DESC');
         $request->execute();
         $result = $request->fetchAll();
         return !$result ? null : $result;
