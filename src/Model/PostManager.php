@@ -114,8 +114,6 @@ class PostManager
         $request->bindValue(':content', $content, \PDO::PARAM_STR);
         $request->bindValue(':post_status', $episodeStatus, \PDO::PARAM_STR);
         $request->execute();
-        // Chercher, trouver comment envoyer la date au format datetime de mysql
-        // dans le formulaire avec un input type date et recupere la variable $date dans la fonction ??
     }
 
     public function editPost(string $id, string $chapter, string $title, string $introduction, string $content, string $episodeStatus): void
