@@ -24,7 +24,7 @@
                 <li class="item button"><a href="index.php?action=login">Connexion</a></li>
               <?php else: ?>
                 <li class="item button"><a href="index.php?action=logout">Deconnexion</a></li>
-                <li class="item button"><a href="index.php?action=blogControlPanel">Tableau de Bord</a></li>
+                <li class="item button"><a href="index.php?action=blogControlPanel">Tableau de bord</a></li>
               <?php endif ?>
             </ul>
         </nav>
