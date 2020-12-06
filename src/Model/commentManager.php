@@ -72,11 +72,9 @@ class CommentManager
         return $request->execute(['id' => $commentId]);
     }
 
-    /*************************************************************************/
-
     public function showAllComment(): ?array
     {
-        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY comment_date DESC');
+        $request = $this->database->prepare('SELECT id, chapter, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY chapter, pseudo DESC');
         $request->execute();
         $result = $request->fetchAll();
         return !$result ? null : $result;
