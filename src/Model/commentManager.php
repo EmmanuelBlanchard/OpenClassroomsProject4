@@ -85,7 +85,7 @@ class CommentManager
     public function getListCommentsPagination($currentPage, $nbCommentsPerPage): ?array
     {
         $firstCommentPage=($currentPage-1)*$nbCommentsPerPage;
-        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY post_id, pseudo ASC LIMIT :firstCommentPage, :nbCommentsPerPage');
+        $request = $this->database->prepare('SELECT id, chapter, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY chapter, pseudo ASC LIMIT :firstCommentPage, :nbCommentsPerPage');
         $request->bindValue(':firstCommentPage', $firstCommentPage, \PDO::PARAM_INT);
         $request->bindValue(':nbCommentsPerPage', $nbCommentsPerPage, \PDO::PARAM_INT);
         $request->execute();
