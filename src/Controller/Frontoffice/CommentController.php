@@ -36,16 +36,14 @@ class CommentController
         //var_dump($token, $request->getPostItem('csrfToken'), $_POST);
         //die();
         if (!$token->verify($request->getPostItem('csrfToken'))) {
-            ////////// A FINIR
             $this->session->setSessionMessage('erreur', 'Votre commentaire ne peut être posté !');
-            $this->session->getSessionMessage('erreur');
+            
             // Suppression du token puis renouveller un autre token pour une nouvelle validation
             $this->session->removeSession('csrfToken');
             header('Location: index.php?action=detailOfPost&id='.$postId);
             exit();
         } elseif ($token->verify($request->getPostItem('csrfToken'))) {
             $this->session->setSessionMessage('message', 'Votre commentaire est posté !');
-            $this->session->getSessionMessage('message');
                 
             if (!empty($data['pseudo']) && !empty($data['comment'])) {
                 $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));
