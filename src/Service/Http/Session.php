@@ -29,16 +29,6 @@ class Session
         $_SESSION['csrfToken'] = $hash;
     }
 
-    public function getTokenTry(string $titleToken): string
-    {
-        return $_SESSION[$titleToken];
-    }
-
-    public function setTokenTry(string $titleToken, string $hash): void
-    {
-        $_SESSION[$titleToken] = $hash;
-    }
-
     public function getLogin(): bool
     {
         if (isset($_SESSION['login'])) {

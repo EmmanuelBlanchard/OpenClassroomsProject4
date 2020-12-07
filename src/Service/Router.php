@@ -87,7 +87,7 @@ class Router
             $this->adminController->login($this->request->getPost(), $this->session, $this->token, $this->request);
         } elseif ($action === 'logout') {
             // route http://localhost:8000/?action=blogControlPanel
-            $this->adminController->logout($this->session, $this->token);
+            $this->adminController->logout($this->session);
         } elseif ($action === 'blogControlPanel') {
             // route http://localhost:8000/?action=blogControlPanel
             $this->adminController->blogControlPanel($this->session);

@@ -77,9 +77,8 @@ class AdminController
         $this->view->render(['template' => 'adminloginpage', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'frontoffice');
     }
     
-    public function logout(Session $session, Token $token): void
+    public function logout(Session $session): void
     {
-        // Suppression des variables de session et de la session
         $session->stopSession();
         header('Location: index.php?action=login');
         exit();
@@ -101,14 +100,14 @@ class AdminController
             exit();
         }
         
-        if (!$token->verifyTry('csrfTokenMyProfile', $request->getPostItem('csrfTokenMyProfile'))) {
-            var_dump("error token");
-            die();
-            $session->setSessionMessage('erreur', 'Modification non possible !');
-            header('Location: index.php?action=blogControlPanel');
+        if ($request->getPostItem('csrfToken') !== null) {
+            if (!$token->verify($request->getPostItem('csrfToken'))) {
+                $session->setSessionMessage('erreur', 'Modification non possible !');
+                header('Location: index.php?action=login');
+            }
         }
 
-        $this->view->render(['template' => 'myprofile', 'csrfTokenMyProfile' => $token->generateTry('csrfTokenMyProfile'), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
+        $this->view->render(['template' => 'myprofile', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
 
     public function readEpisodes(int $currentPage, Session $session): void
@@ -148,11 +147,11 @@ class AdminController
             exit();
         }
 
-        if (!$token->verify($request->getPostItem('csrfToken'))) {
-            //var_dump("error token");
-            //die();
-            $session->setSessionMessage('erreur', 'Modification non possible !');
-            header('Location: index.php?action=blogControlPanel');
+        if ($request->getPostItem('csrfToken') !== null) {
+            if (!$token->verify($request->getPostItem('csrfToken'))) {
+                $session->setSessionMessage('erreur', 'Modification non possible !');
+                header('Location: index.php?action=login');
+            }
         }
 
         if ($data) {
@@ -185,11 +184,11 @@ class AdminController
             exit();
         }
         
-        if (!$token->verify($request->getPostItem('csrfToken'))) {
-            //var_dump("error token");
-            //die();
-            $session->setSessionMessage('erreur', 'Modification non possible !');
-            header('Location: index.php?action=blogControlPanel');
+        if ($request->getPostItem('csrfToken') !== null) {
+            if (!$token->verify($request->getPostItem('csrfToken'))) {
+                $session->setSessionMessage('erreur', 'Modification non possible !');
+                header('Location: index.php?action=login');
+            }
         }
 
         if (isset($postId) && !empty($postId)) {
