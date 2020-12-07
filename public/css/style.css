@@ -632,7 +632,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Galasy S9 - 360px*740px and DPR=4 */
 @media only screen and (device-width: 360px) and (device-height: 740px) and (min-resolution: 4dppx) {
     header h1 {
-        top: 51%;
+        top: 10%;
     }
 }
 /* Mobile menu Iphon 6/7/8 - 375px*667px and DPR=2 */
@@ -834,7 +834,7 @@ button, input, optgroup, select, textarea {
 /* Galaxy S9 breakpoints 740px */
 @media all and (min-width: 739px) {
     header h1 {
-        top: 44%;
+        top: 9%;
         left: 26%;
         font-size: 25px;
     }
