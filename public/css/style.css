@@ -801,7 +801,7 @@ button, input, optgroup, select, textarea {
 /* TV 720 HD - 720px*1280px DPR=1 */
 @media all and (min-width: 720px) {
     header h1 {
-        top: 12%;
+        top: 9%;
         left: 19%;
     }
 }
@@ -856,19 +856,13 @@ button, input, optgroup, select, textarea {
 /* Laptop with MDPi 1280px*800px */
 @media all and (min-width: 800px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 13%;
+        top: 10%;
     }
 }
 /* Nexus 10 Android 800px*1280px and DPR:2 && Tablet menu Kindle Fire 800px*1280px and DPR=2 */
 @media all and (min-width: 800px) and (min-resolution: 2dppx) {
     header h1 {
         top: 10%;
-    }
-}
-/* Laptop width 1536px*864px DPR=1 */
-@media all and (min-width: 864px) and (min-resolution: 1dppx) {
-    header h1 {
-        top: 18%;
     }
 }
 /* Mobile menu Iphon X/XS - 375px*812px and DPR=3  */
@@ -885,6 +879,12 @@ button, input, optgroup, select, textarea {
 }
 /* Mobile menu Galaxy Note 9 - 414px*846px DPR=3.5 */
 @media all and (min-width: 846px) and (min-resolution: 3.5dppx) {
+    header h1 {
+        top: 10%;
+    }
+}
+/* Laptop width 1536px*864px DPR=1 */
+@media all and (min-width: 864px) and (min-resolution: 1dppx) {
     header h1 {
         top: 10%;
     }
@@ -916,13 +916,14 @@ button, input, optgroup, select, textarea {
 /* Width 983px */
 @media all and (min-width: 983px) {
     header h1 {
-        top: 18%;
+        top: 10%;
+        left: 30%;
     }
 }
 /* Laptop width 1024px and 1280px and DPR=1 */
 @media all and (min-width: 1024px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 18%;
+        top: 10%;
         left: 28%;
         font-size: 27px;
     }
@@ -968,14 +969,21 @@ button, input, optgroup, select, textarea {
 /* TV Full HD - 1080px*1920px DPR=1 */
 @media all and (min-width: 1080px) and (min-resolution: 1dppx) {
     header h1 {
+        top: 9%;
+        left: 31%;
+    }
+}
+/* Tablet menu Ipad Pro 10,5-inch - 1112px*834px and DPR=2 */
+@media only screen and (min-width: 1112px) and (min-resolution: 2dppx) {
+    header h1 {
         top: 10%;
-        left: 32%;
+        left: 26%;
     }
 }
 /* Laptop width 1200px and 1600px and DPR=1 */
 @media all and (min-width: 1200px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 23%;
+        top: 12%;
     }
 }
 /* Laptop with MDPi 1280px*800px */
@@ -996,7 +1004,7 @@ button, input, optgroup, select, textarea {
 /* Laptop width 1366px and 768px and DPR=1 */
 @media all and (device-width: 1366px) and (device-height: 768px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 25%;
+        top: 13%;
     }
 }
 /* Laptop width HiDPI - 1440px*900px and DPR=2 */
@@ -1013,7 +1021,7 @@ button, input, optgroup, select, textarea {
 /* Desktop menu  1745px */
 @media all and (min-width: 1745px) {
     header h1 {
-        top: 25%;
+        top: 10%;
         left: 37%;
         font-size: 32px;
     }
@@ -1021,8 +1029,8 @@ button, input, optgroup, select, textarea {
 /* TV Full HD - 1080px*1920px DPR=1 */
 @media all and (min-width: 1920px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 18%;
-        left: 35%;
+        top: 10%;
+        left: 26%;
         font-size: 42px;
     }
     .classImg img {
@@ -1033,7 +1041,7 @@ button, input, optgroup, select, textarea {
 @media all and (min-width: 2160px) and (min-resolution: 1dppx) {
     header h1 {
         top: 9%;
-        left: 24%;
+        left: 21%;
         font-size: 75px;
     }
     .classImg img {
@@ -1122,8 +1130,8 @@ button, input, optgroup, select, textarea {
         padding: 9px 230px;
     }
     header h1 {
-        top: 22%;
-        left: 30%;
+        top: 11%;
+        left: 27%;
         font-size: 107px;
     }
     .classImg img {
