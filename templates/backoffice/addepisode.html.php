@@ -47,7 +47,8 @@
                         </div>
                     </div>
                 </div>
-            </fieldset>            
+            </fieldset>
+            <input class="hidden" type="hidden" name="csrfToken" value="<?=$data['csrfToken']; ?>" />
             <button class="btn btn-primary">Enregister</button>
         </form>
     </section>

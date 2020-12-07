@@ -70,7 +70,7 @@
                     </fieldset>
                 <?php endif; ?>
                 <input type="hidden" name="id" value="<?=$data['post']['id']?>">
-                
+                <input class="hidden" type="hidden" name="csrfToken" value="<?=$data['csrfToken']; ?>" />
                 <button class="btn btn-primary">Envoyer</button>
             </form>
         <?php endif; ?> 

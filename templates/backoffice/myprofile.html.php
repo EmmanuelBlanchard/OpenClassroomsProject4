@@ -2,22 +2,17 @@
 <main class="container">
     <div class="row">
         <section class="col-12">
-            <?php
-                if(!empty($_SESSION['erreur'])) {
-                    echo '<div class="alert alert-danger" role="alert">
-                            '. $_SESSION['erreur'].'
-                        </div>';
-                    $_SESSION['erreur'] = "";
-                } 
-            ?>
-            <?php
-                if(!empty($_SESSION['message'])) {
-                    echo '<div class="alert alert-success" role="alert">
-                            '. $_SESSION['message'].'
-                        </div>';
-                        $_SESSION['message'] = "";
-                }
-            ?>                        
+            <?php if ($data['sessionerreur'] !== null): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= $data['sessionerreur'] ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($data['sessionmessage'] !== null): ?>
+                <div class="alert alert-success" role="alert">
+                    <?= $data['sessionmessage'] ?>
+                </div>
+            <?php endif; ?>                       
             <h2>Mon Profil</h2>
             <form method="post" action="index.php?action=">
                 <div class="form-group">
@@ -43,6 +38,7 @@
                 </div>
                 <a class="btn btn-primary" href="index.php?action=blogControlPanel">Retour</a>
                 <a class="btn btn-primary" href="index.php?action=readEpisodes">Retour Liste des épisodes</a>
+                <input class="hidden" type="hidden" name="csrfToken" value="<?=$data['csrfToken']; ?>" />
                 <button class="btn btn-primary">Valider le changement de mot de passe</button>
             </form>
         </section>
