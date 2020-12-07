@@ -42,19 +42,18 @@ class AdminController
     {
         //var_dump($data);
         //echo '<pre>';
-        //var_dump($session);
-        //die();
+        //var_dump($session, $request->getPostItem('csrfToken'));
         //echo '</pre>';
-        /*
-        if (!$token->verify($request->getPostItem('csrfToken'))) {
-            var_dump("error token");
-            die();
-            $this->session->setSessionMessage('erreur', 'Vous ne pouvez pas vous connecter !');
-            header('Location: index.php?action=home');
-            exit();
+        //die();
+        
+        if ($request->getPostItem('csrfToken') !== null) {
+            if (!$token->verify($request->getPostItem('csrfToken'))) {
+                $this->session->setSessionMessage('erreur', 'Vous ne pouvez pas vous connecter !');
+                header('Location: index.php?action=login');
+                exit();
+            }
         }
-        $this->session->setSessionMessage('message', 'Vous êtes connecté !');
-*/
+
         if (!empty($data['pseudo']) && !empty($data['password'])) {
             $pseudo= $data['pseudo'];
             $password = $data['password'];
@@ -82,7 +81,8 @@ class AdminController
     {
         // Suppression des variables de session et de la session
         $session->stopSession();
-        $this->view->render(['template' => 'adminloginpage', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'frontoffice');
+        header('Location: index.php?action=login');
+        exit();
     }
 
     public function blogControlPanel(Session $session): void
