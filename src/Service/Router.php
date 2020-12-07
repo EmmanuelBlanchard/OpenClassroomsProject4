@@ -97,17 +97,17 @@ class Router
             $this->adminController->blogControlPanel($this->session);
         } elseif ($action === 'myProfile') {
             // route http://localhost:8000/?action=myProfile
-            $this->adminController->myProfile();
+            $this->adminController->myProfile($this->session, $this->token);
         } elseif ($action === 'readEpisodes') {
             // route http://localhost:8000/?action=readEpisodes
             $currentPage = ($this->request->getGetitem('page') !== null) ? (int) $this->request->getGetItem('page') : 1;
             $this->adminController->readEpisodes($currentPage, $this->session);
         } elseif ($action === 'addEpisode') {
             // route http://localhost:8000/?action=addEpisode
-            $this->adminController->addEpisode($this->request->getPost(), $this->session);
+            $this->adminController->addEpisode($this->request->getPost(), $this->session, $this->token);
         } elseif ($action === 'editEpisode' && ($this->request->getGetItem('id') !== null)) {
             // route http://localhost:8000/?action=editEpisode&id=5
-            $this->adminController->editEpisode((int)$this->request->getGetitem('id'), $this->request->getPost(), $this->session);
+            $this->adminController->editEpisode((int)$this->request->getGetitem('id'), $this->request->getPost(), $this->session, $this->token);
         } elseif ($action === 'deleteEpisode') {
             // route http://localhost:8000/?action=deleteEpisode&id=5
             $this->adminController->deleteEpisode((int)$this->request->getGetItem('id'), $this->session);
