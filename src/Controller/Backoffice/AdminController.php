@@ -101,14 +101,14 @@ class AdminController
             exit();
         }
         
-        if (!$token->verify($request->getPostItem('csrfToken'))) {
+        if (!$token->verifyTry('csrfTokenMyProfile', $request->getPostItem('csrfTokenMyProfile'))) {
             var_dump("error token");
             die();
             $session->setSessionMessage('erreur', 'Modification non possible !');
             header('Location: index.php?action=blogControlPanel');
         }
 
-        $this->view->render(['template' => 'myprofile', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
+        $this->view->render(['template' => 'myprofile', 'csrfTokenMyProfile' => $token->generateTry('csrfTokenMyProfile'), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
 
     public function readEpisodes(int $currentPage, Session $session): void
