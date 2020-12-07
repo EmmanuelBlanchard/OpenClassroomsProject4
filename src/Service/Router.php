@@ -104,10 +104,10 @@ class Router
             $this->adminController->readEpisodes($currentPage, $this->session);
         } elseif ($action === 'addEpisode') {
             // route http://localhost:8000/?action=addEpisode
-            $this->adminController->addEpisode($this->request->getPost(), $this->session, $this->token);
+            $this->adminController->addEpisode($this->request->getPost(), $this->session, $this->token, $this->request);
         } elseif ($action === 'editEpisode' && ($this->request->getGetItem('id') !== null)) {
             // route http://localhost:8000/?action=editEpisode&id=5
-            $this->adminController->editEpisode((int)$this->request->getGetitem('id'), $this->request->getPost(), $this->session, $this->token);
+            $this->adminController->editEpisode((int)$this->request->getGetitem('id'), $this->request->getPost(), $this->session, $this->token, $this->request);
         } elseif ($action === 'deleteEpisode') {
             // route http://localhost:8000/?action=deleteEpisode&id=5
             $this->adminController->deleteEpisode((int)$this->request->getGetItem('id'), $this->session);

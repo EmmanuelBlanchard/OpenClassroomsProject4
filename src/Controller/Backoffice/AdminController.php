@@ -141,12 +141,18 @@ class AdminController
         $this->view->render(['template' => 'readepisodes', 'allepisodespagination' => $dataAllEpisodesPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage, 'lastpage' => $nbTotalPages, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
     
-    public function addEpisode(array $data, Session $session, Token $token): void
+    public function addEpisode(array $data, Session $session, Token $token, Request $request): void
     {
         if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
             exit();
         }
+
+        if (!$token->verify($request->getPostItem('csrfToken'))) {
+            var_dump("error token");
+            die();
+        }
+
         if ($data) {
             if (isset($data['chapter']) && !empty($data['chapter'])
                 && isset($data['title']) && !empty($data['title'])
@@ -170,12 +176,18 @@ class AdminController
         $this->view->render(['template' => 'addepisode', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
 
-    public function editEpisode(int $postId, array $data, Session $session, Token $token): void
+    public function editEpisode(int $postId, array $data, Session $session, Token $token, Request $request): void
     {
         if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
             exit();
         }
+        
+        if (!$token->verify($request->getPostItem('csrfToken'))) {
+            var_dump("error token");
+            die();
+        }
+
         if (isset($postId) && !empty($postId)) {
             $dataPost = $this->postManager->showOnePost($postId);
             // On verifie si le post existe
