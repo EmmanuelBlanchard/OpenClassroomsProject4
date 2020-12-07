@@ -102,12 +102,20 @@ class AdminController
         $this->view->render(['template' => 'blogcontrolpanelpage', 'sessionmessage' => $session->getSessionMessage('message')], 'backoffice');
     }
     
-    public function myProfile(Session $session, Token $token): void
+    public function myProfile(Session $session, Token $token, Request $request): void
     {
         if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
             exit();
         }
+        
+        if (!$token->verify($request->getPostItem('csrfToken'))) {
+            var_dump("error token");
+            die();
+            $session->setSessionMessage('erreur', 'Modification non possible !');
+            header('Location: index.php?action=blogControlPanel');
+        }
+
         $this->view->render(['template' => 'myprofile', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
 

@@ -97,7 +97,7 @@ class Router
             $this->adminController->blogControlPanel($this->session);
         } elseif ($action === 'myProfile') {
             // route http://localhost:8000/?action=myProfile
-            $this->adminController->myProfile($this->session, $this->token);
+            $this->adminController->myProfile($this->session, $this->token, $this->request);
         } elseif ($action === 'readEpisodes') {
             // route http://localhost:8000/?action=readEpisodes
             $currentPage = ($this->request->getGetitem('page') !== null) ? (int) $this->request->getGetItem('page') : 1;
