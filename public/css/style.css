@@ -981,7 +981,7 @@ button, input, optgroup, select, textarea {
 /* Laptop with MDPi 1280px*800px */
 @media all and (min-width: 1280px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 29%;
+        top: 12%;
         left: 33%;
         font-size: 29px;
     }
