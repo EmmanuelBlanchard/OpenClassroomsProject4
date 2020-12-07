@@ -1000,13 +1000,13 @@ button, input, optgroup, select, textarea {
     }
 }
 /* Laptop width HiDPI - 1440px*900px and DPR=2 */
-@media all and (min-width: 1400px) and (min-resolution: 2dppx) {
+@media all and (min-width: 1440px) and (min-resolution: 2dppx) {
     .classImg img {
         width: 50vw;
     }
     header h1 {
-        top: 18%;
-        left: 34%;
+        top: 9%;
+        left: 24%;
         font-size: 28px;
     }
 }
