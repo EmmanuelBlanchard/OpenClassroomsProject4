@@ -86,6 +86,9 @@ nav li {
     border-radius: .3rem;
 }
 /* Règles CSS après la barre de navigation */
+header {
+    position: relative;
+}
 /* Mobile menu Nokia 8110 - 240px*320px and DPR=1 */
 header h1 {
     position: absolute;
@@ -577,16 +580,19 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Nokia 8110 - 240px*320px and DPR=1 */
 @media all and (min-width: 240px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 135%;
-        left: 18%;
+        top: 5%;
+        left: 23%;
         font-size: 10px;
+    }
+    .btn-group-lg > .btn, .btn-lg {
+        font-size: 1rem;
     }
 }
 /* Mobile menu Nokia 8110 - 240px*320px and DPR=1 */
 @media all and (min-width: 320px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 156%;
-        left: 20%;
+        top: 7%;
+        left: 15%;
         font-size: 13px;
     }
 }
