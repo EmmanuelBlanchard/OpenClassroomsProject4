@@ -611,22 +611,22 @@ button, input, optgroup, select, textarea {
         left: 23%;
     }
 }
-/* Mobil menu Nexus 5 - 360px*640px and DPR=? */
+/* Mobil menu Lumia 550 - 360px*640px and DPR=2 */
 @media all and (min-width: 360px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 51%;
+        top: 10%;
     }
 }
-/* Mobil menu Galaxy Note3 - 360px*640px and DPR=3 */
+/* Mobil menu Galaxy Note3 and Galaxy S5 - 360px*640px and DPR=3 */
 @media all and (min-width: 360px) and (min-resolution: 3dppx) {
     header h1 {
-        top: 59%;
+        top: 10%;
     }
 }
 /* Mobile menu Microsoft Lumia 950 - 360px*640px and DPR=4 */
 @media only screen and (device-width: 360px) and (device-height: 640px) and (min-resolution: 4dppx) {
     header h1 {
-        top: 44%;
+        top: 9%;
     }
 }
 /* Mobile menu Galasy S9 - 360px*740px and DPR=4 */
@@ -696,7 +696,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Galaxy Note 9 - 414px*846px and DPR=3.5 */
 @media all and (min-width: 414px) and (min-resolution: 3.5dppx) {
     header h1 {
-        top: 45%;
+        top: 11%;
     }
 }
 /* Mobile menu - 437px and DPR=1 */
@@ -745,13 +745,13 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Microsoft Lumia 550 - 360px*640px and DPR=2 */
 @media all and (min-width: 640px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 109%;
+        top: 10%;
     }
 }
-/* Mobile menu Galaxy Note 3 - 360px*640px and DPR=3 */
+/* Mobile menu Galaxy Note 3 and Galaxy S5 - 360px*640px and DPR=3 */
 @media all and (min-width: 640px) and (min-resolution: 3dppx) {
     header h1 {
-        top: 109%;
+        top: 9%;
     }
 }
 /* Mobile menu Iphon 6/7/8 - 375px*667px and DPR=2 */
@@ -850,7 +850,7 @@ button, input, optgroup, select, textarea {
 /* Tablet menu IPAD - 768px*1024px and DPR=2 */
 @media all and (min-width: 768px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 16%;
+        top: 10%;
     }
 }
 /* Laptop with MDPi 1280px*800px */
@@ -862,7 +862,7 @@ button, input, optgroup, select, textarea {
 /* Nexus 10 Android 800px*1280px and DPR:2 && Tablet menu Kindle Fire 800px*1280px and DPR=2 */
 @media all and (min-width: 800px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 13%;
+        top: 10%;
     }
 }
 /* Laptop width 1536px*864px DPR=1 */
@@ -886,7 +886,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Galaxy Note 9 - 414px*846px DPR=3.5 */
 @media all and (min-width: 846px) and (min-resolution: 3.5dppx) {
     header h1 {
-        top: 41%;
+        top: 10%;
     }
 }
 /* Mobile menu Iphon XR  414px*896px DPR=2 */
@@ -955,8 +955,8 @@ button, input, optgroup, select, textarea {
 /* Tablet menu IPAD - 768px*1024px and DPR=2 */
 @media all and (min-width: 1024px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 22%;
-        left: 31%;
+        top: 10%;
+        left: 24%;
     }
 }
 /* Tablet menu Ipad Pro 12,9-inch - 1024px*1366px and DPR=2 */
