@@ -1,30 +1,17 @@
-<?php
-    if(!isset($_SESSION)) 
-    {
-        // On demarre la session
-        session_start();
-    } 
-?>
-
 <main class="container">
     <div class="row">
         <section class="col-12">
-            <?php
-                if(!empty($_SESSION['erreur'])) {
-                    echo '<div class="alert alert-danger" role="alert">
-                            '. $_SESSION['erreur'].'
-                        </div>';
-                    $_SESSION['erreur'] = "";
-                } 
-            ?>
-            <?php
-                if(!empty($_SESSION['message'])) {
-                    echo '<div class="alert alert-success" role="alert">
-                            '. $_SESSION['message'].'
-                        </div>';
-                        $_SESSION['message'] = "";
-                }
-            ?>
+            <?php if ($data['sessionerreur'] !== null): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= $data['sessionerreur'] ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($data['sessionmessage'] !== null): ?>
+                <div class="alert alert-success" role="alert">
+                    <?= $data['sessionmessage'] ?>
+                </div>
+            <?php endif; ?>
             <h1>Ajouter un commentaire</h1>
             <form method="post">
                 <div class="form-group">

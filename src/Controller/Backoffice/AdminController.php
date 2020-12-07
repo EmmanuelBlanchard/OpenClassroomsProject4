@@ -45,10 +45,12 @@ class AdminController
         //var_dump($session);
         //die();
         //echo '</pre>';
-
+        /*
         if (!$token->verify($request->getpostItem('csrfToken'))) {
             var_dump("error token");
+            die();
         }
+        */
         /*  Whoops \ Exception \ ErrorException (E_NOTICE)
             Undefined index: csrfToken */
         /*
