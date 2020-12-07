@@ -42,8 +42,10 @@ class Token
     public function verifyTry(string $titleToken, string $token): bool
     {
         $tokenSession = $this->session->getTokenTry($titleToken);
-        //var_dump("Affichage des token, le token du formulaire : " .$token . " et le token de session : ", $tokenSession);
-        //die();
+        
+        var_dump("Affichage des token, le token du formulaire : " .$token . " et le token de session : ", $tokenSession);
+        die();
+        
         return $token === $tokenSession;
     }
 }
