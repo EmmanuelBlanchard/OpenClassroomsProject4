@@ -45,23 +45,15 @@ class AdminController
         //var_dump($session);
         //die();
         //echo '</pre>';
-        /*
-        if (!$token->verify($request->getpostItem('csrfToken'))) {
+        
+        if (!$token->verify($request->getPostItem('csrfToken'))) {
             var_dump("error token");
             die();
-        }
-        */
-        /*  Whoops \ Exception \ ErrorException (E_NOTICE)
-            Undefined index: csrfToken */
-        /*
-        if (!$token->verify($request->getPostItem('csrfToken'))) {
             $this->session->setSessionMessage('erreur', 'Vous ne pouvez pas vous connecter !');
-
             header('Location: index.php?action=home');
             exit();
         }
         $this->session->setSessionMessage('message', 'Vous êtes connecté !');
-        */
 
         if (!empty($data['pseudo']) && !empty($data['password'])) {
             $pseudo= $data['pseudo'];
@@ -157,8 +149,8 @@ class AdminController
         }
 
         if (!$token->verify($request->getPostItem('csrfToken'))) {
-            var_dump("error token");
-            die();
+            //var_dump("error token");
+            //die();
             $session->setSessionMessage('erreur', 'Modification non possible !');
             header('Location: index.php?action=blogControlPanel');
         }
@@ -194,8 +186,8 @@ class AdminController
         }
         
         if (!$token->verify($request->getPostItem('csrfToken'))) {
-            var_dump("error token");
-            die();
+            //var_dump("error token");
+            //die();
             $session->setSessionMessage('erreur', 'Modification non possible !');
             header('Location: index.php?action=blogControlPanel');
         }
