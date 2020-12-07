@@ -659,20 +659,20 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Pixel 2 - 411px*731px and DPR=2 */
 @media all and (min-width: 411px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 52%;
+        top: 10%;
         left: 28%;
     }
 }
 /* Mobile menu Pixel 2 XL - 411px*823px and DPR=3.5 */
 @media all and (min-width: 411px) and (min-resolution: 3.5dppx) {
     header h1 {
-        top: 46%;
+        top: 11%;
     }
 }
 /* Mobile menu Nexus 6P - 412px*732px and DPR=3.5 */
 @media all and (min-width: 412px) and (min-resolution: 3.5dppx) {
     header h1 {
-        top: 52%;
+        top: 11%;
     }
 }
 /* Mobile menu Iphon XR - 414px*896px and DPR=2 */
@@ -726,7 +726,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Nexus 7 Android - 600px*960px and DPR=2 */
 @media all and (min-width: 600px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 41%;
+        top: 10%;
         left: 29%;
         font-size: 19px;
     }
@@ -814,14 +814,14 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Pixel 2 - 411px*731px and DPR=2 */
 @media all and (min-width: 731px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 37%;
+        top: 9%;
         left: 23%;
     }
 }
 /* Mobile menu Nexus 5X - 412px*732px and DPR=2 */
 @media all and (min-width: 732px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 37%;
+        top: 9%;
         left: 23%;
     }
 }
@@ -880,7 +880,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Pixel 2 XL - 411px*823px DPR=3.5 */
 @media all and (min-width: 823px) and (min-resolution: 3.5dppx) {
     header h1 {
-        top: 34%;
+        top: 9%;
     }
 }
 /* Mobile menu Galaxy Note 9 - 414px*846px DPR=3.5 */
@@ -905,8 +905,8 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Nexus 7 Android - 600px*960px and DPR=2 */
 @media all and (min-width: 960px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 23%;
-        left: 32%;
+        top: 11%;
+        left: 27%;
         font-size: 22px;
     }
     .classImg img {
@@ -989,7 +989,7 @@ button, input, optgroup, select, textarea {
 /* Nexus 10 Android 800px*1280px and DPR:2 && Tablet menu Kindle Fire 800px*1280px and DPR=2 */
 @media all and (min-width: 1280px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 13%;
+        top: 10%;
         left: 27%;
     }
 }
