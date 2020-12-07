@@ -599,8 +599,8 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
 @media all and (min-width: 320px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 66%;
-        left: 20%;
+        top: 9%;
+        left: 16%;
         font-size: 13px;
     }
 }
@@ -708,7 +708,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
 @media all and (min-width: 568px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 122%;
+        top: 9%;
         font-size: 19px;
     }
 }
