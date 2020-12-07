@@ -102,13 +102,13 @@ class AdminController
         $this->view->render(['template' => 'blogcontrolpanelpage', 'sessionmessage' => $session->getSessionMessage('message')], 'backoffice');
     }
     
-    public function myProfile(): void
+    public function myProfile(Session $session, Token $token): void
     {
         if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
             exit();
         }
-        $this->view->render(['template' => 'myprofile'], 'backoffice');
+        $this->view->render(['template' => 'myprofile', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
 
     public function readEpisodes(int $currentPage, Session $session): void
@@ -141,7 +141,7 @@ class AdminController
         $this->view->render(['template' => 'readepisodes', 'allepisodespagination' => $dataAllEpisodesPagination, 'previouspage' => $previousPage, 'nextpage'=> $nextPage, 'lastpage' => $nbTotalPages, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
     
-    public function addEpisode(array $data, Session $session): void
+    public function addEpisode(array $data, Session $session, Token $token): void
     {
         if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
@@ -167,10 +167,10 @@ class AdminController
             $session->setSessionMessage('erreur', 'Le formulaire est incomplet !');
             $this->view->render(['template' => 'addepisode', 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
         }
-        $this->view->render(['template' => 'addepisode', 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
+        $this->view->render(['template' => 'addepisode', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
 
-    public function editEpisode(int $postId, array $data, Session $session): void
+    public function editEpisode(int $postId, array $data, Session $session, Token $token): void
     {
         if (!$this->accesscontrol->isAuthorized()) {
             header('Location: index.php?action=login');
@@ -212,7 +212,7 @@ class AdminController
             $session->setsessionMessage('erreur', 'Le formulaire est incomplet');
             $this->view->render(['template' => 'editepisode', 'post' => $dataPost, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
         }
-        $this->view->render(['template' => 'editepisode', 'post' => $dataPost, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
+        $this->view->render(['template' => 'editepisode', 'post' => $dataPost, 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
 
     public function deleteEpisode(int $postId, Session $session): void
