@@ -159,6 +159,8 @@ class AdminController
         if (!$token->verify($request->getPostItem('csrfToken'))) {
             var_dump("error token");
             die();
+            $session->setSessionMessage('erreur', 'Modification non possible !');
+            header('Location: index.php?action=blogControlPanel');
         }
 
         if ($data) {
@@ -194,6 +196,8 @@ class AdminController
         if (!$token->verify($request->getPostItem('csrfToken'))) {
             var_dump("error token");
             die();
+            $session->setSessionMessage('erreur', 'Modification non possible !');
+            header('Location: index.php?action=blogControlPanel');
         }
 
         if (isset($postId) && !empty($postId)) {
