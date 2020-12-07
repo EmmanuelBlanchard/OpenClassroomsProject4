@@ -38,7 +38,7 @@
                 </div>
                 <a class="btn btn-primary" href="index.php?action=blogControlPanel">Retour</a>
                 <a class="btn btn-primary" href="index.php?action=readEpisodes">Retour Liste des épisodes</a>
-                <input class="hidden" type="hidden" name="csrfToken" value="<?=$data['csrfToken']; ?>" />
+                <input class="hidden" type="hidden" name="csrfTokenMyProfile" value="<?=$data['csrfTokenMyProfile']; ?>" />
                 <button class="btn btn-primary">Valider le changement de mot de passe</button>
             </form>
         </section>
