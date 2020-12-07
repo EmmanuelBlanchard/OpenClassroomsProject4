@@ -45,7 +45,7 @@ class AdminController
         //var_dump($session);
         //die();
         //echo '</pre>';
-        
+        /*
         if (!$token->verify($request->getPostItem('csrfToken'))) {
             var_dump("error token");
             die();
@@ -54,7 +54,7 @@ class AdminController
             exit();
         }
         $this->session->setSessionMessage('message', 'Vous êtes connecté !');
-
+*/
         if (!empty($data['pseudo']) && !empty($data['password'])) {
             $pseudo= $data['pseudo'];
             $password = $data['password'];

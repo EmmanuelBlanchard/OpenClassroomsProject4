@@ -30,4 +30,12 @@ class Token
         //die();
         return $token === $tokenSession;
     }
+
+    public function generateTry(string $titleToken): string
+    {
+        $length = 64;
+        $token = bin2hex(random_bytes($length));
+        $this->session->setTokenTry($titleToken, $token);
+        return $token;
+    }
 }
