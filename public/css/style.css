@@ -645,7 +645,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon X/XS - 375px*812px and DPR=3  */
 @media all and (min-width: 375px) and (min-resolution: 3dppx) {
     header h1 {
-        top: 46%;
+        top: 10%;
         left: 27%;
     }
 }
@@ -678,19 +678,19 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon XR - 414px*896px and DPR=2 */
 @media all and (min-width: 414px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 42%;
+        top: 13%;
     }
 }
 /* Mobile menu Iphon 6/7/8 PLUS - 414px*736px and DPR=3 */
 @media only screen and (device-width: 414px) and (device-height: 736px) and (min-resolution: 3dppx) {
     header h1 {
-        top: 52%;
+        top: 11%;
     }
 }
 /* Apple iPhone XS Max 2688x1242px at 458ppi Media Queries */
 @media only screen and (device-width: 414px) and (device-height: 896px) and (min-resolution: 3dppx) {
     header h1 {
-        top: 42%;
+        top: 11%;
     }
 }
 /* Mobile menu Galaxy Note 9 - 414px*846px and DPR=3.5 */
@@ -828,7 +828,7 @@ button, input, optgroup, select, textarea {
 /* Iphon 6/7/8 Plus breakpoints 736px */
 @media all and (min-width: 736px) {
     header h1 {
-        top: 35%;
+        top: 10%;
     }
 }
 /* Galaxy S9 breakpoints 740px */
@@ -874,7 +874,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon X/XS - 375px*812px and DPR=3  */
 @media all and (min-width: 812px) and (min-resolution: 3dppx) {
     header h1 {
-        top: 43%;
+        top: 12%;
     }
 }
 /* Mobile menu Pixel 2 XL - 411px*823px DPR=3.5 */
@@ -892,7 +892,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Iphon XR  414px*896px DPR=2 */
 @media all and (min-width: 896px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 38%;
+        top: 12%;
         left: 29%;
     }
 }
@@ -989,8 +989,8 @@ button, input, optgroup, select, textarea {
 /* Nexus 10 Android 800px*1280px and DPR:2 && Tablet menu Kindle Fire 800px*1280px and DPR=2 */
 @media all and (min-width: 1280px) and (min-resolution: 2dppx) {
     header h1 {
-        top: 23%;
-        left: 33%;
+        top: 13%;
+        left: 27%;
     }
 }
 /* Laptop width 1366px and 768px and DPR=1 */
