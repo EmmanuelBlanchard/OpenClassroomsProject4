@@ -44,6 +44,14 @@ class CommentController
             }
         }
         
+        // Appel a une requete dans PostManager.php qui recupere le numero de 'chapter' depuis $post_id de la table Post
+        $nbChapter = $this->postManager->retrieveChapterFromId($postId);
+        
+        echo '<pre>';
+        var_dump("Numéro du chapitre : " . $nbChapter . "");
+        echo '</pre>';
+        die();
+
         if (!empty($data['pseudo']) && !empty($data['comment'])) {
             $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));
         } else {

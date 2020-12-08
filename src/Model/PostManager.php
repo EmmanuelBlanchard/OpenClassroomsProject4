@@ -134,4 +134,14 @@ class PostManager
         $request->bindValue(':id', $postId, \PDO::PARAM_INT);
         $request->execute();
     }
+
+    public function retrieveChapterFromId(int $postId): ?int
+    {
+        $request = $this->database->prepare('SELECT chapter FROM Posts WHERE id =:id');
+        $request->execute(['id' => $postId]);
+        $result = $request->fetch();
+        return $result === false ? null : (int)$result['chapter'];
+        //$nbChapter = (int)$result['chapter'];
+        //return $nbChapter;
+    }
 }
