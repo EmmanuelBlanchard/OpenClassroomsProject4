@@ -24,7 +24,7 @@
             <thead class="text-center">
                 <tr>
                     <th>ID</th>
-                    <th>Numero</th>
+                    <th>Numéro de l'épisode</th>
                     <th>Titre</th>
                     <th>Date</th>
                     <th>Introduction</th>
@@ -36,7 +36,7 @@
                 <?php foreach($data['allepisodespagination'] as $post): ?>
                     <tr>
                         <td data-title="ID"><?=$post['id']?></td>
-                        <td data-title="Numero"><?=$post['chapter']?></td>
+                        <td data-title="Numéro de l'épisode"><?=$post['chapter']?></td>
                         <td data-title="Titre"><?=$post['title']?></td>
                         <td data-title="Date"><?=date("d/m/Y", strtotime($post['post_date']));?></td>
                         <td data-title="Introduction"><?=$post['introduction']?></td>

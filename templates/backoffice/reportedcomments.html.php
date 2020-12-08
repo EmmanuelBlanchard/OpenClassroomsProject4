@@ -16,7 +16,7 @@
                 <thead class="text-center">
                     <tr>
                         <th>ID</th>
-                        <th>Episode</th>
+                        <th>Numéro de l'épisode</th>
                         <th>Pseudo</th>
                         <th>Commentaire</th>
                         <th>Envoyé le</th>
@@ -27,7 +27,7 @@
                 <tbody>
                     <tr>
                         <td data-title="ID"></td>
-                        <td data-title="Numero"></td>
+                        <td data-title="Numéro de l'épisode"></td>
                         <td data-title="Pseudo"></td>
                         <td data-title="Commentaire"></td>
                         <td data-title="Envoyé le"></td>
@@ -57,7 +57,7 @@
                 <thead class="text-center">
                     <tr>
                         <th>ID</th>
-                        <th>Episode</th>
+                        <th>Numéro de l'épisode</th>
                         <th>Pseudo</th>
                         <th>Commentaire</th>
                         <th>Envoyé le</th>
@@ -69,7 +69,7 @@
                     <?php foreach($data['allreportedcomment'] as $post): ?>
                         <tr>
                             <td data-title="ID"><?=$post['id']?></td>
-                            <td data-title="Numero"><?=$post['chapter']?></td>
+                            <td data-title="Numéro de l'épisode"><?=$post['chapter']?></td>
                             <td data-title="Pseudo"><?=$post['pseudo']?></td>
                             <td data-title="Commentaire"><?=$post['comment']?></td>
                             <td data-title="Envoyé le"><?=date("d/m/Y", strtotime($post['comment_date']));?></td>
