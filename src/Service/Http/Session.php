@@ -44,6 +44,13 @@ class Session
         return false;
     }
 
+    public function setSession($name, $value): void
+    {
+        if (isset($_SESSION)) {
+            $_SESSION[$name] = $value;
+        }
+    }
+
     public function setSessionMessage(string $typeMessage, string $message): void
     {
         if (isset($_SESSION[$typeMessage])) {
@@ -80,6 +87,7 @@ class Session
         $_SESSION = [];
         session_destroy();
         $this->setSessionMessage('message', 'Vous êtes maintenant déconnecté !');
-        $this->setLogin('login', false);
+        //$this->setLogin('login', false);
+        $this->session->setSession('login', false);
     }
 }
