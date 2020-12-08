@@ -151,6 +151,7 @@ class AdminController
             if (!$token->verify($request->getPostItem('csrfToken'))) {
                 $session->setSessionMessage('erreur', 'Modification non possible !');
                 header('Location: index.php?action=login');
+                exit();
             }
         }
 
@@ -172,7 +173,8 @@ class AdminController
                 exit();
             }
             $session->setSessionMessage('erreur', 'Le formulaire est incomplet !');
-            $this->view->render(['template' => 'addepisode', 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
+            header('Location: index.php?action=addEpisode');
+            exit();
         }
         $this->view->render(['template' => 'addepisode', 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }
@@ -225,7 +227,8 @@ class AdminController
                 exit();
             }
             $session->setsessionMessage('erreur', 'Le formulaire est incomplet');
-            $this->view->render(['template' => 'editepisode', 'post' => $dataPost, 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
+            header('Location: index.php?action=editEpisode&id=' . $postId . '');
+            exit();
         }
         $this->view->render(['template' => 'editepisode', 'post' => $dataPost, 'csrfToken' => $token->generate(), 'sessionmessage' => $session->getSessionMessage('message'), 'sessionerreur' => $session->getSessionMessage('erreur')], 'backoffice');
     }

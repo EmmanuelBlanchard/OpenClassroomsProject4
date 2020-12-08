@@ -74,7 +74,7 @@ class CommentManager
 
     public function showAllComment(): ?array
     {
-        $request = $this->database->prepare('SELECT id, chapter, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY chapter, pseudo DESC');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY post_id, pseudo DESC');
         $request->execute();
         $result = $request->fetchAll();
         return !$result ? null : $result;
@@ -83,7 +83,7 @@ class CommentManager
     public function getListCommentsPagination($currentPage, $nbCommentsPerPage): ?array
     {
         $firstCommentPage=($currentPage-1)*$nbCommentsPerPage;
-        $request = $this->database->prepare('SELECT id, chapter, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY chapter, pseudo ASC LIMIT :firstCommentPage, :nbCommentsPerPage');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY post_id, pseudo ASC LIMIT :firstCommentPage, :nbCommentsPerPage');
         $request->bindValue(':firstCommentPage', $firstCommentPage, \PDO::PARAM_INT);
         $request->bindValue(':nbCommentsPerPage', $nbCommentsPerPage, \PDO::PARAM_INT);
         $request->execute();
@@ -93,7 +93,7 @@ class CommentManager
 
     public function showAllReportedComment(): ?array
     {
-        $request = $this->database->prepare('SELECT id, chapter, pseudo, comment, comment_date, post_id FROM comments WHERE reported=1 ORDER BY chapter, pseudo DESC');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM comments WHERE reported=1 ORDER BY post_id, pseudo DESC');
         $request->execute();
         $result = $request->fetchAll();
         return !$result ? null : $result;
@@ -101,7 +101,7 @@ class CommentManager
 
     public function showAllApprovedComment(): ?array
     {
-        $request = $this->database->prepare('SELECT id, chapter, pseudo, comment, comment_date, post_id FROM comments WHERE approved=1 ORDER BY chapter, pseudo DESC');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id FROM comments WHERE approved=1 ORDER BY post_id, pseudo DESC');
         $request->execute();
         $result = $request->fetchAll();
         return !$result ? null : $result;
@@ -137,7 +137,7 @@ class CommentManager
 
     public function showOneComment(int $id): ?array
     {
-        $request = $this->database->prepare('SELECT id, chapter, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, reported, approved FROM comments WHERE id = :id ORDER BY chapter, pseudo DESC');
+        $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, reported, approved FROM comments WHERE id = :id ORDER BY post_id, pseudo DESC');
         $request->bindValue(':id', $id, \PDO::PARAM_INT);
         $request->execute();
         $result = $request->fetch();
