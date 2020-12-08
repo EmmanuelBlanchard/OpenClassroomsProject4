@@ -18,45 +18,45 @@ class Error
         $this->view = $view;
     }
     
-    public function generate($name, $value): string
+    public function generate($typeMessage, $message): string
     {
-        $this->session->setSession($name, $value);
-        return $value;
+        $this->session->setSessionMessage($typeMessage, $message);
+        return $message;
     }
 
-    public function set($name, $value): void
+    public function set($typeMessage, $message): void
     {
         if (isset($_SESSION)) {
-            $_SESSION[$name] = $value;
+            $_SESSION[$typeMessage] = $message;
         }
     }
 
-    public function get($name): ?array
+    public function get($typeMessage): ?array
     {
-        if (isset($_SESSION[$name])) {
-            return $_SESSION[$name];
+        if (isset($_SESSION[$typeMessage])) {
+            return $_SESSION[$typeMessage];
         }
         return null;
     }
 
-    public function display($name, $value, $origin): void
+    public function display($typeMessage, $message, $origin): void
     {
-        $errorTab = [['errorName' => $name, 'errorValue' => $value]];
+        $errorTab = [['errorName' => $typeMessage, 'errorValue' => $message]];
 
         $this->view->render(['template' => 'error', 'errortab' => $errorTab ], $origin);
     }
 
-    public function show($name): ?array
+    public function show($typeMessage): ?array
     {
-        if (isset($_SESSION[$name])) {
-            $key = $this->get($name);
-            $this->remove($name);
+        if (isset($_SESSION[$typeMessage])) {
+            $key = $this->get($typeMessage);
+            $this->remove($typeMessage);
             return $key;
         }
     }
 
-    public function remove($name): void
+    public function remove($typeMessage): void
     {
-        unset($_SESSION[$name]);
+        unset($_SESSION[$typeMessage]);
     }
 }

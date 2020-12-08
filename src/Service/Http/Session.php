@@ -29,6 +29,13 @@ class Session
         $_SESSION['csrfToken'] = $hash;
     }
 
+    public function setLogin(bool $value): void
+    {
+        if (isset($_SESSION['login'])) {
+            $_SESSION['login'] = $value;
+        }
+    }
+
     public function getLogin(): bool
     {
         if (isset($_SESSION['login'])) {
@@ -37,24 +44,9 @@ class Session
         return false;
     }
 
-    public function setSession($name, $value): void
-    {
-        if (isset($_SESSION)) {
-            $_SESSION[$name] = $value;
-        }
-    }
-
-    public function getSession($name): ?string
-    {
-        if (isset($_SESSION[$name])) {
-            return $_SESSION[$name];
-        }
-        return null;
-    }
-
     public function setSessionMessage(string $typeMessage, string $message): void
     {
-        if (isset($_SESSION)) {
+        if (isset($_SESSION[$typeMessage])) {
             $_SESSION[$typeMessage] = $message;
         }
     }
@@ -69,18 +61,18 @@ class Session
         return null;
     }
 
-    public function showSession($name): ?array
+    public function showSession($typeMessage): ?array
     {
-        if (isset($_SESSION[$name])) {
-            $key = $this->getSession($name);
-            $this->removeSession($name);
+        if (isset($_SESSION[$typeMessage])) {
+            $key = $this->getSessionMessage($typeMessage);
+            $this->removeSession($typeMessage);
             return $key;
         }
     }
 
-    public function removeSession($name): void
+    public function removeSession($typeMessage): void
     {
-        unset($_SESSION[$name]);
+        unset($_SESSION[$typeMessage]);
     }
 
     public function stopSession(): void
@@ -91,11 +83,11 @@ class Session
         //var_dump($_SESSION);
         //die();
         //echo '</pre>';
-        $this->setSession('message', 'Vous êtes maintenant déconnecté !');
-        $this->setSession('login', false);
-        //echo '<pre>';
-        //var_dump($_SESSION);
-        //die();
-        //echo '</pre>';
+        $this->setSessionMessage('message', 'Vous êtes maintenant déconnecté !');
+        $this->setLogin(false);
+        echo '<pre>';
+        var_dump($_SESSION);
+        echo '</pre>';
+        die();
     }
 }
