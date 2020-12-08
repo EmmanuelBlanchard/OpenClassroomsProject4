@@ -35,22 +35,20 @@ class CommentController
     {
         //var_dump($token, $request->getPostItem('csrfToken'), $_POST);
         //die();
-        if (!$token->verify($request->getPostItem('csrfToken'))) {
-            $this->session->setSessionMessage('erreur', 'Votre commentaire ne peut être posté !');
-            
-            // Suppression du token puis renouveller un autre token pour une nouvelle validation
-            $this->session->removeSession('csrfToken');
-            header('Location: index.php?action=detailOfPost&id='.$postId);
-            exit();
-        } elseif ($token->verify($request->getPostItem('csrfToken'))) {
-            $this->session->setSessionMessage('message', 'Votre commentaire est posté !');
-                
-            if (!empty($data['pseudo']) && !empty($data['comment'])) {
-                $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));
-            } else {
-                header('Location: index.php?action=error&id='.$postId);
+
+        if ($request->getPostItem('csrfToken') !== null) {
+            if (!$token->verify($request->getPostItem('csrfToken'))) {
+                $this->session->setSessionMessage('erreur', 'Votre commentaire ne peut être posté !');
+                header('Location: index.php?action=detailOfPost&id='.$postId);
                 exit();
             }
+        }
+        
+        if (!empty($data['pseudo']) && !empty($data['comment'])) {
+            $this->commentManager->postComment($postId, htmlspecialchars($data['comment']), htmlspecialchars($data['pseudo']));
+        } else {
+            header('Location: index.php?action=error&id='.$postId);
+            exit();
         }
         header('Location: index.php?action=detailOfPost&id='.$postId);
         exit();
