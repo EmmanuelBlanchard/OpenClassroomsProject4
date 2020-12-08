@@ -67,7 +67,11 @@ class AdminController
                     $session->setSessionMessage('id', $result['id']);
                     $session->setSessionMessage('pseudo', htmlspecialchars($pseudo));
                     $session->setSessionMessage('message', 'Vous êtes maintenant connecté ! ' . htmlspecialchars($pseudo));
-                    $session->setLogin(true);
+                    $session->setLogin('login', true);
+
+                    //var_dump($_SESSION['id'], $_SESSION['pseudo']);
+                    //die();
+                    
                     header('Location: index.php?action=blogControlPanel');
                     exit();
                 }

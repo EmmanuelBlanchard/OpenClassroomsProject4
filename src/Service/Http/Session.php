@@ -29,10 +29,10 @@ class Session
         $_SESSION['csrfToken'] = $hash;
     }
 
-    public function setLogin(bool $value): void
+    public function setLogin(string $typeMessage, bool $value): void
     {
-        if (isset($_SESSION['login'])) {
-            $_SESSION['login'] = $value;
+        if (isset($_SESSION)) {
+            $_SESSION[$typeMessage] = $value;
         }
     }
 
@@ -79,15 +79,7 @@ class Session
     {
         $_SESSION = [];
         session_destroy();
-        //echo '<pre>';
-        //var_dump($_SESSION);
-        //die();
-        //echo '</pre>';
         $this->setSessionMessage('message', 'Vous êtes maintenant déconnecté !');
-        $this->setLogin(false);
-        echo '<pre>';
-        var_dump($_SESSION);
-        echo '</pre>';
-        die();
+        $this->setLogin('login', false);
     }
 }
