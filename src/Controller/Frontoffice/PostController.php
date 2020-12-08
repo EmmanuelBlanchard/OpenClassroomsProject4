@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace  App\Controller\Frontoffice;
 
-use App\Controller\Error;
 use App\Model\CommentManager;
 use App\Model\PostManager;
 use App\Service\Http\Session;
@@ -18,15 +17,13 @@ class PostController
     private View $view;
     private Session $session;
     private Token $token;
-    private Error $error;
 
-    public function __construct(PostManager $postManager, CommentManager $commentManager, View $view, Session $session, Error $error)
+    public function __construct(PostManager $postManager, CommentManager $commentManager, View $view, Session $session)
     {
         $this->postManager = $postManager;
         $this->commentManager = $commentManager;
         $this->view = $view;
         $this->session = $session;
-        $this->error = $error;
     }
 
     public function displayHomeWithTheLastThreePosts(): void
