@@ -80,7 +80,7 @@ class AdminController
     public function logout(Session $session): void
     {
         $session->stopSession();
-        header('Location: index.php?action=login');
+        header('Location: index.php?action=home');
         exit();
     }
 
