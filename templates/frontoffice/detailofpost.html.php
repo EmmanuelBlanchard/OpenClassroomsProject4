@@ -22,7 +22,7 @@
 
     <?php if ($data['allcomment'] === null): ?>
         <section>
-            <p class="pError">Erreur : l'affichage des commentaires de Details des épisodes n'est pas possible !</p>
+            <p class="pError">Aucun commentaire n'a été posté.</p>
         </section>
     <?php elseif($data['allcomment'] !== null): ?>
         <section class="sectionDisplayComments">
