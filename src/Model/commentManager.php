@@ -101,6 +101,27 @@ class CommentManager
     public function getListCommentsPagination($currentPage, $nbCommentsPerPage): ?array
     {
         $firstCommentPage=($currentPage-1)*$nbCommentsPerPage;
+
+        // Recuperation de 'chapter' dans la table Posts, voir post_id (Numéro du chapitre de l'épisode) dans la table Comments
+        // pour affichage dans la methode render la classe View ['chapter']
+        // Requete puis sous requete ??
+        /*
+        SELECT Posts.chapter
+        FROM Posts
+        INNER JOIN Comments
+                ON Posts.chapter = Comments.post_id
+
+        SELECT Comments.id
+        FROM Comments
+        INNER JOIN Posts
+                ON Comments.post_id = Posts.chapter
+        WHERE Posts.chapter = " ";
+        */
+        // Creation d une cle etrangère post_chapter sur la table Comments ??
+        // Selection des tous les chapitres dans Posts de post_id de Comments ??
+        // $chapter = $this->database->('SELECT chapter FROM Posts WHERE ('SELECT post_id FROM Comments') ');
+        // $request = $this->database->prepare('SELECT chapter FROM Posts WHERE id =:id');
+
         $request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY post_id, pseudo ASC LIMIT :firstCommentPage, :nbCommentsPerPage');
         $request->bindValue(':firstCommentPage', $firstCommentPage, \PDO::PARAM_INT);
         $request->bindValue(':nbCommentsPerPage', $nbCommentsPerPage, \PDO::PARAM_INT);
