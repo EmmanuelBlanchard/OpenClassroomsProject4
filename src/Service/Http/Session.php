@@ -56,20 +56,6 @@ class Session
         return null;
     }
 
-    public function showSession($typeMessage): ?array
-    {
-        if (isset($_SESSION[$typeMessage])) {
-            $key = $this->getSessionMessage($typeMessage);
-            $this->removeSession($typeMessage);
-            return $key;
-        }
-    }
-
-    public function removeSession($typeMessage): void
-    {
-        unset($_SESSION[$typeMessage]);
-    }
-
     public function stopSession(): void
     {
         $_SESSION = [];
