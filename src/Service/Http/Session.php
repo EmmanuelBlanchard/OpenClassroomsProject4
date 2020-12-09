@@ -14,11 +14,6 @@ class Session
         }
     }
     
-    public function startSession(): void
-    {
-        session_start();
-    }
- 
     public function getToken(): string
     {
         return $_SESSION['csrfToken'];
