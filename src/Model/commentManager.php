@@ -36,6 +36,24 @@ class CommentManager
         return $nbTotalComments;
     }
 
+    public function getNbCommentsReported(): int
+    {
+        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_comments_reported FROM comments WHERE reported=1');
+        $request->execute();
+        $result = $request->fetch();
+        $nbTotalCommentsReported = (int)$result['nb_total_comments_reported'];
+        return $nbTotalCommentsReported;
+    }
+
+    public function getNbCommentsApproved(): ?int
+    {
+        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_comments_approved FROM comments WHERE approved=1');
+        $request->execute();
+        $result = $request->fetch();
+        return $result === false ? null : (int)$result['nb_total_comments_approved'];
+        //$nbTotalCommentsApproved = (int)$result['nb_total_comments_approved'];
+        //return $nbTotalCommentsApproved;
+    }
     public function getPostNbComments(int $postId): ?int
     {
         $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_comments FROM comments WHERE post_id = :post_id');

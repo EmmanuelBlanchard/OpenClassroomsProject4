@@ -71,6 +71,24 @@ class PostManager
         return $nbTotalPosts;
     }
 
+    public function getNbEpisodesPublish(): int
+    {
+        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_episodes_publish FROM posts WHERE post_status=\'publish\' ');
+        $request->execute();
+        $result = $request->fetch();
+        $nbTotalEpisodesPublish = (int)$result['nb_total_episodes_publish'];
+        return $nbTotalEpisodesPublish;
+    }
+
+    public function getNbEpisodesDraft(): int
+    {
+        $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_episodes_draft FROM posts WHERE post_status=\'draft\' ');
+        $request->execute();
+        $result = $request->fetch();
+        $nbTotalEpisodesDraft = (int)$result['nb_total_episodes_draft'];
+        return $nbTotalEpisodesDraft;
+    }
+
     public function getNbEpisodes():int
     {
         $request = $this->database->prepare('SELECT COUNT(*) AS nb_total_episodes FROM posts');

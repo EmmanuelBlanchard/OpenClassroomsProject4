@@ -90,7 +90,21 @@ class AdminController
             header('Location: index.php?action=login');
             exit();
         }
-        $this->view->render(['template' => 'blogcontrolpanelpage', 'sessionmessage' => $session->getSessionMessage('message')], 'backoffice');
+        
+        /* Essai: recuperation de données */
+        $pseudorecovery = $this->session->getSessionMessage('pseudo');
+        $pseudo = $pseudorecovery;
+        $id = $this->session->getSessionMessage('id');
+        
+        $nbTotalEpisodesPublish = $this->postManager->getNbEpisodesPublish();
+        $nbTotalEpisodesDraft = $this->postManager->getNbEpisodesDraft();
+        $nbTotalEpisodes = $this->postManager->getNbEpisodes();
+        
+        $nbTotalComments = $this->commentManager->getNbComments();
+        $nbTotalCommentsReported = $this->commentManager->getNbCommentsReported();
+        $nbTotalCommentsApproved = $this->commentManager->getNbCommentsApproved();
+
+        $this->view->render(['template' => 'blogcontrolpanelpage', 'pseudo' => $pseudo, 'id' => $id, 'nbTotalComments' => $nbTotalComments, 'nbTotalCommentsReported' => $nbTotalCommentsReported, 'nbTotalCommentsApproved' => $nbTotalCommentsApproved, 'nbTotalEpisodesPublish' => $nbTotalEpisodesPublish, 'nbTotalEpisodesDraft' => $nbTotalEpisodesDraft, 'nbTotalEpisodes' => $nbTotalEpisodes, 'sessionmessage' => $session->getSessionMessage('message')], 'backoffice');
     }
     
     public function myProfile(Session $session, Token $token, Request $request): void

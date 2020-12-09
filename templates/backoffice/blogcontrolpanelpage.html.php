@@ -1,5 +1,4 @@
 <div class="wrap">
-    <h1>Tableau de bord</h1>
     <div id="welcome-panel" class="welcome-panel">
         <div class="welcome-panel-content">
             <h2>Bienvenue sur le Blog de Jean Forteroche</h2>
@@ -10,14 +9,21 @@
             <?php endif; ?>
             <div class="welcome-panel-column-container">
                 <div class="welcome-panel-column">
-                    <p class="homeTitle">Accueil</p>                    
-                    <p class="pControlPanelPage"> Bienvenue dans le panneau de configuration du blog ! </p>
+                    <p class="pControlPanelPage"> Votre profil est <?=$data['pseudo']; ?> </p>
+                    <p class="pControlPanelPage"> Votre identifiant est <?=$data['id']; ?> </p>
 
-                    <p class="pControlPanelPage">Actuellement, votre profil est JeanForteroche</p>
-                    <p class="pControlPanelPage">Vous avez créé *** nombres d'épisodes</p>
-                    <p class="pControlPanelPage">Voici la liste des épisodes :</p>
-                    <p class="pControlPanelPage">Il y a actuellement *** commentaires sur le site</p>
-                    <p class="pControlPanelPage">Vous avez *** nombres de commentaires sur le site</p>
+                    <ul> Episodes
+                        <li>Il y a <?=$data['nbTotalEpisodesPublish']; ?> épisodes publiés</li>
+                        <li>Il y a <?=$data['nbTotalEpisodesDraft']; ?> brouillons d'épisodes</li>
+                        <li>Il y a <?=$data['nbTotalEpisodesPublish']; ?> épisodes créés au total</li>
+                    </ul>
+
+                    <ul> Commentaires
+                        <li>Il y a <?=$data['nbTotalComments']; ?> commentaires sur le site</li>
+                        <li>Il y a <?=$data['nbTotalCommentsReported']; ?> commentaires reportés sur le site</li>
+                        <li>Il y a <?=$data['nbTotalCommentsApproved']; ?> commentaires approuvés sur le site</li>
+                    </ul>
+
                     <p class="pControlPanelPage">Vous avez accueilli *** visiteurs depuis 1 mois</p>
                     <p class="pControlPanelPage">Vous avez accueilli *** visiteurs depuis 1 an</p>
                 </div>
