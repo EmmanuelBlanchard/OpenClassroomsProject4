@@ -172,7 +172,6 @@ p {
     color: #F5F5F5;
 }
 .pApproveComments {
- /*color: #33ff8a;*/
  color: #33ff36;
 }
 .pReportComments, .pApproveComments {
@@ -189,7 +188,7 @@ p {
     background-color: #025AA0;
 }
 .sectionH4TitlePostComment {
-    margin-left: 1rem;  /* avant 20px */
+    margin-left: 1rem;
     margin-top: 1.5rem;
 }
 form {
@@ -349,7 +348,6 @@ footer p {
     text-align: center;
     font-family: 'merienda_oneregular', Arial, sans-serif, serif;
 }
-/* Ajout marges pour un peu d espace */
 article, section h2, article h3, .linkPreviousPost, .linkNextPost, .linkPreviousPage, .linkNextPage, footer {
     margin: 1.5rem 0rem;
 }
@@ -377,9 +375,6 @@ article, section h2, article h3, .linkPreviousPost, .linkNextPost, .linkPrevious
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    /* Essai, ajout de la propriete background-color pour un meilleur contraste que 
-    #212529 et #025AA0 => 2.18
-    #212529 et #f5f5f5 => 14.15 */
     border: 3px solid rgb(242, 243, 248);
 	border-radius: 20px;
     background-color: #f5f5f5;
@@ -548,7 +543,7 @@ button, input, optgroup, select, textarea {
 }
 .text-muted {
     color: #6c757d !important;
-    /* effacement des regles css de la balise p */
+    /*Pour effacer les regles css de la balise <p> */
     width: auto;
 }
 .btn:not(:disabled):not(.disabled) {

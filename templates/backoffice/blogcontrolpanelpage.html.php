@@ -19,5 +19,4 @@
             <li>Il y a <?=$data['nbTotalCommentsReported']; ?> commentaires reportés sur le site</li>
             <li>Il y a <?=$data['nbTotalCommentsApproved']; ?> commentaires approuvés sur le site</li>
         </ul>
-
 </div>

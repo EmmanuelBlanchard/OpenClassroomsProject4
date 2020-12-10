@@ -21,24 +21,16 @@ body {
 	padding: 48px 0 0; /* Height of navbar */
 	box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
-/* pour h2 a cote du bouton ajouter */
+/* Dans templates\backoffcie\readepisodes.html.php, pour avoir la balise <h2> a cote du bouton ajouter */
 .h2inline {
 	display: inline-block;
 }
-/* bouton ajouter a cote du h2 de Liste des episodes */
+/* Dans templates\backoffcie\readepisodes.html.php, bouton ajouter a cote du h2 de Liste des episodes */
 .abuttonadd {
     margin-left: 1.5rem;
-	margin-bottom: 1rem; /* Avant 10px */
+	margin-bottom: 1rem;
 }
 @media (max-width: 767.98px) {
-	/* Resoudre probleme sidebar disparait en version mobile
-	mettre en dessous de la navbar */
-	/*
-	/* Avant dans le code de l'exemple bootstrap 4.5 */ /*
-	.sidebar {
-		top: 5rem;
-	}
-	*/
 	#sidebarMenu {
 		display: block;
 		position: relative;
@@ -50,8 +42,6 @@ body {
 	.sidebar-sticky {
 		height: auto ! important;
 	}
-
-	/* Try responsive table */
 	/* Force table to not be like tables anymore */
 	table, thead, tbody, th, td, tr { 
 		display: block;
@@ -173,7 +163,7 @@ body {
 
 /********************************************************/
 /* focus textarea of tinyMCE */
-/* marche pas trouver le bon selecteur ... */
+/* marche pas: Trouver le bon selecteur */
 .tox .tox-editor-container:focus {
 	color: #495057;
 	background-color: #fff;
@@ -182,15 +172,6 @@ body {
 	box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
 }
 
-/* Essai bootstrap sign in and bootstrap floating labels */
-/*
-.form-signin {
-	width: 100%;
-	max-width: 330px;
-	padding: 15px;
-	margin: auto;
-}
-*/
 .form-signin {
 	width: 100%;
 	max-width: 420px;
