@@ -33,6 +33,11 @@ body {
 td {
 	text-align: center;
 }
+/* Justifier les textes du champ Introduction dans le tableau Liste des épisodes */
+/* Justifier les textes du champ Commentaire dans le tableau Liste des commentaires */
+td[data-title="Introduction"], td[data-title="Commentaire"] {
+	text-align: justify;
+}
 @media (max-width: 767.98px) {
 	#sidebarMenu {
 		display: block;
