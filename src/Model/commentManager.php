@@ -103,7 +103,6 @@ class CommentManager
         $firstCommentPage=($currentPage-1)*$nbCommentsPerPage;
 
         $request = $this->database->prepare('SELECT comments.id, comments.pseudo, comments.comment, comments.comment_date, comments.post_id, comments.reported, comments.approved, posts.chapter FROM comments INNER JOIN posts ON posts.id = comments.post_id ORDER BY posts.chapter, comments.comment_date ASC LIMIT :firstCommentPage, :nbCommentsPerPage');
-        //$request = $this->database->prepare('SELECT id, pseudo, comment, comment_date, post_id, reported, approved FROM comments ORDER BY post_id, pseudo ASC LIMIT :firstCommentPage, :nbCommentsPerPage');
         $request->bindValue(':firstCommentPage', $firstCommentPage, \PDO::PARAM_INT);
         $request->bindValue(':nbCommentsPerPage', $nbCommentsPerPage, \PDO::PARAM_INT);
         $request->execute();
