@@ -20,6 +20,4 @@
             <li>Il y a <?=$data['nbTotalCommentsApproved']; ?> commentaires approuvés sur le site</li>
         </ul>
 
-        <p>Vous avez accueilli *** visiteurs depuis 1 mois</p>
-        <p>Vous avez accueilli *** visiteurs depuis 1 an</p>
 </div>
