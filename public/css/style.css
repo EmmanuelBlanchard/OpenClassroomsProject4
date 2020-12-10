@@ -101,7 +101,7 @@ header h1 {
 }
 .classImg img {
     margin: auto;
-    width: 91vw;
+    width: 46vw;
     height: auto;
     border-radius: 6%;
 }
@@ -1017,8 +1017,8 @@ button, input, optgroup, select, textarea {
 @media all and (min-width: 1745px) {
     header h1 {
         top: 10%;
-        left: 37%;
-        font-size: 32px;
+        left: 28%;
+        font-size: 28px;
     }
 }
 /* TV Full HD - 1080px*1920px DPR=1 */
