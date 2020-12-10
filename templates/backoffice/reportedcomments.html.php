@@ -39,7 +39,7 @@
             </table>
             <a class="btn btn-primary" href="index.php?action=blogControlPanel">Retour</a>
         </div>
-<?php elseif ($data['allcommentspagination'] !== null): ?>
+<?php elseif ($data['allreportedcomment'] !== null): ?>
     <h2>Liste des commentaires signalés</h2>
     <?php if ($data['sessionerreur'] !== null): ?>
             <div class="alert alert-danger" role="alert">
