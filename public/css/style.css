@@ -322,14 +322,13 @@ label[for=remenberLogin] {
     transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
     background-color: #FFF;
     color: #013E70;
-    border: inset #013E70;
+    border: 0.3em inset #013E70;
     border-radius: 2em;
-    padding: 10px 10px;
+    padding: 7px 7px;
     font-weight: 600;
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
     margin-top: 2.5%;
 }
-
 .linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover,
  .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover, .inputTypeSubmitValidateLogin:hover, .inputTypeSubmitRenewPassword:hover,
   .inputTypeSubmitChangePassword:hover, .inputTypeSubmitSaveDraft:hover, .inputTypeSubmitPreview:hover, .inputTypeSubmitPublish:hover,
@@ -617,7 +616,6 @@ button, input, optgroup, select, textarea {
         width: 91vw;
     }
     article {
-        width: 200px;
         border: 0.3em solid rgb(242, 243, 248);
         border-radius: 0.375em;
         margin-bottom: 0.5em;
@@ -650,9 +648,6 @@ button, input, optgroup, select, textarea {
         top: 7%;
         left: 15%;
         font-size: 13px;
-    }
-    article {
-        width: 280px;
     }
 }
 /* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
@@ -705,7 +700,7 @@ button, input, optgroup, select, textarea {
 @media all and (min-width: 375px) and (min-resolution: 3dppx) {
     header h1 {
         top: 10%;
-        left: 27%;
+        left: 23%;
     }
 }
 /* Mobile menu LG Optimus L70 - 384px*640px and DPR=1 */
@@ -846,7 +841,7 @@ button, input, optgroup, select, textarea {
     }
     /* Button up from tablet screen */
     .menu li.button a {
-      padding: 10px 15px;
+      padding: 5px 5px;   /* padding: 10px 15px; */
       margin: 5px 0;
     }
     .button a {
