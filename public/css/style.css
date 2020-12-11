@@ -1026,10 +1026,10 @@ button, input, optgroup, select, textarea {
     header h1 {
         top: 10%;
         left: 26%;
-        font-size: 42px;
+        font-size: 34px;
     }
     .classImg img {
-        width: 60vw;
+        width: 50vw;
     }
 }
 /* 4K Ultra HD Television - 3840*2160px */
