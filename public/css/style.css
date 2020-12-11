@@ -840,7 +840,7 @@ button, input, optgroup, select, textarea {
         justify-content: center;
     }
     .menu li a {
-        padding: 0px 0px;
+        padding: 0px;
         font-size: 1.3em;
     }
     nav li.item.episodes {
@@ -848,11 +848,11 @@ button, input, optgroup, select, textarea {
     }
     .logo {
         flex: 1;
-        font-size: 1.6rem;
+        font-size: 1.6em;
         padding: 7.5px 10px 7.5px 10px;
     }
     .item {
-        font-size: 1.3rem;
+        font-size: 1.3em;
         padding: 10px;
     }
     .item.button {
@@ -862,7 +862,7 @@ button, input, optgroup, select, textarea {
     }
     /* Button up from tablet screen */
     .menu li.button a {
-      padding: 5px 5px;   /* padding: 10px 15px; */
+      padding: 5px;   /* padding: 10px 15px; */
       margin: 5px 0;
     }
     .button a {
