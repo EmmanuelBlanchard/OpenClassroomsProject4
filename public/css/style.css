@@ -103,7 +103,7 @@ header h1 {
     margin: auto;
     width: 46vw;
     height: auto;
-    border-radius: 6%;
+    border-radius: 2%;
 }
 main {
     display: flex;
@@ -214,7 +214,7 @@ textarea {
 }
 input[type="text"],input[type="password"], input[type="email"], textarea {
     transition: border 3s ease, background-color 3s ease, color 3s ease;
-    border: inset #e2e2e2;
+    border: 0.1em inset #e2e2e2;
     background-color: #FFF;
     color: #000000;
     font-weight: 600;
@@ -229,7 +229,7 @@ input[name="author"] {
 }
 input:focus, textarea:focus {
     transition: border 2s ease, background-color 2s ease, color 2s ease;
-    border: dashed #023E6E;
+    border: 0.1em dashed #023E6E;
     background-color: #e2e2e2;
     color: #023E6E;
 }
@@ -260,14 +260,14 @@ label[for=remenberLogin] {
 .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword ,
  .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft, .inputTypeSubmitPreview, .inputTypeSubmitPublish,
   .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
-    width: 8rem;
+    width: 4rem;    /*Avant width: 8rem;*/
     text-align: center;
     transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
     background-color: #FFF;
     color: #013E70;
-    border: inset #013E70;
+    border: 0.1em inset #013E70;
     border-radius: 2em;
-    padding: 10px 10px;
+    padding: 5px;   /* Avant 10px 10px; */
     font-weight: 600;
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
     margin-left: 4.5%;
@@ -289,7 +289,7 @@ label[for=remenberLogin] {
     width: auto;
 }
 .linkReadTheEntireEpisode {
-    width: 12rem;
+    width: 7rem;    /* Avant width: 12rem;*/
 }
 .inputTypeSubmitPublishComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword, .inputTypeSubmitChangePassword,
  .inputTypeSubmitSaveDraft, .inputTypeSubmitPreview, .inputTypeSubmitPublish {
@@ -299,44 +299,35 @@ label[for=remenberLogin] {
 .linkToTheReportOfThePostComment {
     margin-left: 72.5%;
 }
+.linkToTheReportOfThePostComment {
+    width: 4rem;
+}
 .divLinkPage {
     display: flex;
 }
-.linkPreviousPost, .linkNextPost {
+.linkPreviousPost, .linkNextPost, .linkPreviousPage, .linkNextPage {
     display: inline-flex;
     text-align: center;
     transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
     background-color: #FFF;
     color: #013E70;
-    border: inset #013E70;
-    border-radius: 2em;
-    padding: 10px 10px;
-    font-weight: 600;
-    font-family: 'fondamentoregular', Arial, sans-serif, serif;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-    margin-left: 16.5%;
-}
-.linkPreviousPage, .linkNextPage {
-    display: inline-flex;
-    transition: border 1.3s ease, background-color 1.3s ease, color 0.7s ease;
-    background-color: #FFF;
-    color: #013E70;
-    border: 0.3em inset #013E70;
+    border: 0.1em inset #013E70;
     border-radius: 2em;
     padding: 5px 5px;   /* Avant 7px 7px */
     font-weight: 600;
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
-    /* Provisoire pour voir si necessaire */
-    /*
-    margin-top: 2.5%;*/
+}
+.linkPreviousPost, .linkNextPost {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    margin-left: 16.5%;
 }
 .linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover,
  .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover, .inputTypeSubmitValidateLogin:hover, .inputTypeSubmitRenewPassword:hover,
   .inputTypeSubmitChangePassword:hover, .inputTypeSubmitSaveDraft:hover, .inputTypeSubmitPreview:hover, .inputTypeSubmitPublish:hover,
   .homeTab:hover, .myProfileTab:hover, .episodeListTab:hover, .createAnEpisodeTab:hover, .commentsTab:hover, .logoutTab:hover {
     transition: border 2.5s ease, background-color 2.5s ease, color 2.0s ease;
-    border: outset #e2e2e2;
+    border: 0.1em outset #e2e2e2;
     color: #FFF;
     background: linear-gradient( #0267a0, #025aa0);
 }
@@ -352,12 +343,6 @@ footer p {
 article, section h2, article h3, footer {
     margin: 1.5rem 0rem;
 }
-/* Provisoire commenté pour voir si necessaire ... */
-/*
-.linkPreviousPage, .linkNextPage {
-    margin: 1.5rem 1rem;
-}
-*/
 .sectionPostComment, .pCreatedAt, .sectionH4TitleComments {
     margin-bottom: 3.5rem;
 }
@@ -621,23 +606,15 @@ button, input, optgroup, select, textarea {
         width: 91vw;
     }
     article {
-        border: 0.3em solid rgb(242, 243, 248);
+        border: 0.2em solid rgb(242, 243, 248);
         border-radius: 0.375em;
         margin-bottom: 0.5em;
-    }
-    .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword ,
- .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft, .inputTypeSubmitPreview, .inputTypeSubmitPublish,
-  .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab,
-  .linkPreviousPost, .linkNextPost {
-      width: auto;
-      padding: 5px;
-      border: 0.2em inset #013E70;
     }
     .sectionPostComment, .pCreatedAt, .sectionH4TitleComments {
         margin-bottom: .5rem;
     }
     .sectionPostComment {
-        border: 0.3em solid rgb(242, 243, 248);
+        border: 0.2em solid rgb(242, 243, 248);
         border-radius: 0.375em;
     }
     .btn-group-lg > .btn, .btn-lg {
@@ -838,7 +815,6 @@ button, input, optgroup, select, textarea {
     }
     .menu li a {
         padding: 0px;
-        font-size: 1.3em;
     }
     nav li.item.episodes {
         border: 0;
@@ -870,7 +846,7 @@ button, input, optgroup, select, textarea {
       text-decoration: none;
     }
     article, .sectionPostComment {
-        border: 0.2em solid rgb(242, 243, 248);
+        border: 0.15em solid rgb(242, 243, 248);
         border-radius: 0.7em;
     }
     .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment,
@@ -879,8 +855,8 @@ button, input, optgroup, select, textarea {
        .logoutTab, .linkPreviousPage, .linkNextPage, .linkPreviousPost, .linkNextPost {
         padding: 7px;
     }
-    .linkPreviousPost, .linkNextPost {
-        border: 0.2em inset #013E70;
+    .linkToTheReportOfThePostComment {
+        width: 5rem;
     }
 }
 /* TV 720 HD - 720px*1280px DPR=1 */
@@ -1013,7 +989,7 @@ button, input, optgroup, select, textarea {
         font-size: 22px;
     }
     main {
-        width: 1000px;
+        width: 900px;
         border: 3px solid rgb(242, 243, 248);
         border-radius: 20px;
         background-color: #f5f5f5;
