@@ -91,7 +91,6 @@ class AdminController
             exit();
         }
         
-        /* Essai: recuperation de données */
         $pseudorecovery = $this->session->getSessionMessage('pseudo');
         $pseudo = $pseudorecovery;
         $id = $this->session->getSessionMessage('id');
