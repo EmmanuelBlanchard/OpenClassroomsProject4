@@ -625,16 +625,13 @@ button, input, optgroup, select, textarea {
         border-radius: 0.375em;
         margin-bottom: 0.5em;
     }
-    .linkPreviousPost, .linkNextPost {
-        border: 0.3em inset #013E70;
-        padding: 5px;
-    }
     .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword ,
  .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft, .inputTypeSubmitPreview, .inputTypeSubmitPublish,
-  .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
+  .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab,
+  .linkPreviousPost, .linkNextPost {
       width: auto;
       padding: 5px;
-      border: 0.3em inset #013E70;
+      border: 0.2em inset #013E70;
     }
     .sectionPostComment, .pCreatedAt, .sectionH4TitleComments {
         margin-bottom: .5rem;
