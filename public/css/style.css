@@ -324,10 +324,12 @@ label[for=remenberLogin] {
     color: #013E70;
     border: 0.3em inset #013E70;
     border-radius: 2em;
-    padding: 7px 7px;
+    padding: 5px 5px;   /* Avant 7px 7px */
     font-weight: 600;
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
-    margin-top: 2.5%;
+    /* Provisoire pour voir si necessaire */
+    /*
+    margin-top: 2.5%;*/
 }
 .linkToTheRestOfThePost:hover, .linkReadTheEntireEpisode:hover, .inputTypeSubmitPublishComment:hover, .linkToTheReportOfThePostComment:hover,
  .linkPreviousPost:hover, .linkNextPost:hover, .linkPreviousPage:hover, .linkNextPage:hover, .inputTypeSubmitValidateLogin:hover, .inputTypeSubmitRenewPassword:hover,
@@ -350,9 +352,12 @@ footer p {
 article, section h2, article h3, footer {
     margin: 1.5rem 0rem;
 }
+/* Provisoire commenté pour voir si necessaire ... */
+/*
 .linkPreviousPage, .linkNextPage {
     margin: 1.5rem 1rem;
 }
+*/
 .sectionPostComment, .pCreatedAt, .sectionH4TitleComments {
     margin-bottom: 3.5rem;
 }
