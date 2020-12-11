@@ -627,13 +627,13 @@ button, input, optgroup, select, textarea {
     }
     .linkPreviousPost, .linkNextPost {
         border: 0.3em inset #013E70;
-        padding: 5px 5px;
+        padding: 5px;
     }
     .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword ,
  .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft, .inputTypeSubmitPreview, .inputTypeSubmitPublish,
   .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
       width: auto;
-      padding: 5px 5px;
+      padding: 5px;
       border: 0.3em inset #013E70;
     }
     .sectionPostComment, .pCreatedAt, .sectionH4TitleComments {
@@ -823,6 +823,9 @@ button, input, optgroup, select, textarea {
 }
 /* Tablet menu */
 @media all and (min-width: 700px) {
+    body {
+        font-size: 1rem;
+    }
     header h1 {
         top: 18%;
         left: 18%;
@@ -836,8 +839,21 @@ button, input, optgroup, select, textarea {
         flex-direction: row;
         justify-content: center;
     }
+    .menu li a {
+        padding: 0px 0px;
+        font-size: 1.3em;
+    }
+    nav li.item.episodes {
+        border: 0;
+    }
     .logo {
         flex: 1;
+        font-size: 1.6rem;
+        padding: 7.5px 10px 7.5px 10px;
+    }
+    .item {
+        font-size: 1.3rem;
+        padding: 10px;
     }
     .item.button {
         width: auto;
@@ -855,6 +871,19 @@ button, input, optgroup, select, textarea {
     }
     .button a:hover {
       text-decoration: none;
+    }
+    article, .sectionPostComment {
+        border: 0.2em solid rgb(242, 243, 248);
+        border-radius: 0.7em;
+    }
+    .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment,
+     .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword, .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft,
+      .inputTypeSubmitPreview, .inputTypeSubmitPublish, .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab,
+       .logoutTab, .linkPreviousPage, .linkNextPage, .linkPreviousPost, .linkNextPost {
+        padding: 7px;
+    }
+    .linkPreviousPost, .linkNextPost {
+        border: 0.2em inset #013E70;
     }
 }
 /* TV 720 HD - 720px*1280px DPR=1 */
@@ -991,6 +1020,12 @@ button, input, optgroup, select, textarea {
         border: 3px solid rgb(242, 243, 248);
         border-radius: 20px;
         background-color: #f5f5f5;
+    }
+    .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment,
+     .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword, .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft,
+      .inputTypeSubmitPreview, .inputTypeSubmitPublish, .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab,
+       .logoutTab, .linkPreviousPage, .linkNextPage {
+        padding: 10px;
     }
     section h2, .sectionH4TitleComments,.pControlPanelPage, .pError {
         color: #025AA0;
