@@ -206,7 +206,6 @@ form p {
 label {
     display: block;
 }
-/* Couleur de fond #025AA0 , => color: #e2e2e2; Ratio : 5.45, #FFFFF7; Ratio : 7.03 */
 span {
     color: #e2e2e2;
 }
@@ -316,7 +315,7 @@ label[for=remenberLogin] {
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
-    margin-left: 17.5%;
+    margin-left: 16.5%;
 }
 .linkPreviousPage, .linkNextPage {
     display: inline-flex;
@@ -423,6 +422,9 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: .5rem;
 	font-weight: 500;
 	line-height: 1.2;
+}
+.h2, h2 {
+	font-size: 2rem;
 }
 .h3, h3 {
 	font-size: 1.75rem;
@@ -578,10 +580,31 @@ button, input, optgroup, select, textarea {
 }
 /* Mobile menu Nokia 8110 - 240px*320px and DPR=1 */
 @media all and (min-width: 240px) and (min-resolution: 1dppx) {
+    body {
+        font-size: 0.6rem;
+    }
     header h1 {
         top: 5%;
-        left: 23%;
+        left: 21%;
         font-size: 10px;
+    }
+    .h2, h2 {
+        font-size: 1.6rem;
+    }
+    h3 {
+        font-size: 1.3rem;
+    }
+    .classImg img {
+        width: 91vw;
+    }
+    .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword ,
+ .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft, .inputTypeSubmitPreview, .inputTypeSubmitPublish,
+  .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
+      width: auto;
+      padding: 7px 7px;
+    }
+    .sectionPostComment, .pCreatedAt, .sectionH4TitleComments {
+        margin-bottom: .5rem;
     }
     .btn-group-lg > .btn, .btn-lg {
         font-size: 1rem;
