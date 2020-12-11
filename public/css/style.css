@@ -583,6 +583,25 @@ button, input, optgroup, select, textarea {
     body {
         font-size: 0.6rem;
     }
+    .logo {
+        font-size: 1.3rem;
+        padding: 7.5px 10px 7.5px 10px;
+    }
+    .item {
+        font-size: 1rem;
+    }
+    .menu li a {
+        padding: 0px 0px;
+    }
+    nav li.item.episodes {
+        border: 0.1em solid rgb(242, 243, 248);
+        border-radius: 0.4em;
+        padding: 5px;
+        margin: 5px;
+    }
+    .item.button a {
+        padding: 5px;
+    }
     header h1 {
         top: 5%;
         left: 21%;
@@ -591,20 +610,35 @@ button, input, optgroup, select, textarea {
     .h2, h2 {
         font-size: 1.6rem;
     }
-    h3 {
+    .h3, h3 {
         font-size: 1.3rem;
     }
     .classImg img {
         width: 91vw;
     }
+    article {
+        width: 200px;
+        border: 0.3em solid rgb(242, 243, 248);
+        border-radius: 0.375em;
+        margin-bottom: 0.5em;
+    }
+    .linkPreviousPost, .linkNextPost {
+        border: 0.3em inset #013E70;
+        padding: 5px 5px;
+    }
     .linkToTheRestOfThePost, .linkReadTheEntireEpisode, .inputTypeSubmitPublishComment, .linkToTheReportOfThePostComment, .inputTypeSubmitValidateLogin, .inputTypeSubmitRenewPassword ,
  .inputTypeSubmitChangePassword, .inputTypeSubmitSaveDraft, .inputTypeSubmitPreview, .inputTypeSubmitPublish,
   .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab, .logoutTab {
       width: auto;
-      padding: 7px 7px;
+      padding: 5px 5px;
+      border: 0.3em inset #013E70;
     }
     .sectionPostComment, .pCreatedAt, .sectionH4TitleComments {
         margin-bottom: .5rem;
+    }
+    .sectionPostComment {
+        border: 0.3em solid rgb(242, 243, 248);
+        border-radius: 0.375em;
     }
     .btn-group-lg > .btn, .btn-lg {
         font-size: 1rem;
