@@ -617,6 +617,9 @@ button, input, optgroup, select, textarea {
         left: 15%;
         font-size: 13px;
     }
+    article {
+        width: 280px;
+    }
 }
 /* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
 @media all and (min-width: 320px) and (min-resolution: 2dppx) {
