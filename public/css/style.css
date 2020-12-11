@@ -964,7 +964,7 @@ button, input, optgroup, select, textarea {
         font-size: 22px;
     }
     .classImg img {
-        width: 70vw;
+        width: 63vw;    /* avant 70vw */
     }
 }
 /* Width 983px */
@@ -979,7 +979,7 @@ button, input, optgroup, select, textarea {
     header h1 {
         top: 10%;
         left: 28%;
-        font-size: 27px;
+        font-size: 22px;
     }
     main {
         width: 1000px;
@@ -1011,7 +1011,7 @@ button, input, optgroup, select, textarea {
 @media all and (min-width: 1024px) and (min-resolution: 2dppx) {
     header h1 {
         top: 10%;
-        left: 24%;
+        left: 26%;
     }
 }
 /* Tablet menu Ipad Pro 12,9-inch - 1024px*1366px and DPR=2 */
