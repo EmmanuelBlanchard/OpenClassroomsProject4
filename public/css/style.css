@@ -315,6 +315,7 @@ label[for=remenberLogin] {
     font-weight: 600;
     font-family: 'fondamentoregular', Arial, sans-serif, serif;
     margin-top: 2.5%;
+    margin-bottom: 2.5%;
     margin-left: 17.5%;
 }
 .linkPreviousPage, .linkNextPage {
@@ -348,8 +349,11 @@ footer p {
     text-align: center;
     font-family: 'merienda_oneregular', Arial, sans-serif, serif;
 }
-article, section h2, article h3, .linkPreviousPost, .linkNextPost, .linkPreviousPage, .linkNextPage, footer {
+article, section h2, article h3, footer {
     margin: 1.5rem 0rem;
+}
+.linkPreviousPage, .linkNextPage {
+    margin: 1.5rem 1rem;
 }
 .sectionPostComment, .pCreatedAt, .sectionH4TitleComments {
     margin-bottom: 3.5rem;
