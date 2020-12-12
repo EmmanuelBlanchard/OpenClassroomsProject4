@@ -741,6 +741,14 @@ button, input, optgroup, select, textarea {
         top: 11%;
     }
 }
+/* Mobile menu - 481px-639px and DPR=1 */
+@media all and (min-width: 481px) and (max-width: 639px) and (min-resolution: 1dppx) {
+    header h1 {
+        top: 9%;
+        left: 27%;
+        font-size: 16px;
+    }
+}
 /* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
 @media all and (min-width: 568px) and (min-resolution: 2dppx) {
     header h1 {
@@ -750,11 +758,6 @@ button, input, optgroup, select, textarea {
 }
 /* Tablet menu Blacberry Playbook - 600px*1024px and DPR=? */
 @media all and (min-width: 600px) and (min-resolution: 1dppx) {
-    header h1 {
-        top: 30%;
-        left: 23%;
-        font-size: 19px;
-    }
     p {
         width: 556px;
     }
