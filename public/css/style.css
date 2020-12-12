@@ -624,9 +624,9 @@ button, input, optgroup, select, textarea {
 /* Mobile menu Nokia 8110 - 240px*320px and DPR=1 */
 @media all and (min-width: 320px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 7%;
-        left: 15%;
-        font-size: 13px;
+        top: 9%;
+        left: 23%;
+        font-size: 12px;
     }
     .linkToTheReportOfThePostComment {
         margin-left: 72.5%;
@@ -643,7 +643,7 @@ button, input, optgroup, select, textarea {
 /* Mobile menu - 360px*640px and DPR=1 */
 @media all and (min-width: 360px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 45%;
+        top: 10%;
         left: 23%;
     }
 }
