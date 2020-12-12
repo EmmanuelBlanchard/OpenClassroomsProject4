@@ -297,7 +297,7 @@ label[for=remenberLogin] {
 }
 /* Voir a divers pixels et adapter valeurs, pas la bonne methode enlever et voir avec flexbox */
 .linkToTheReportOfThePostComment {
-    margin-left: 72.5%;
+	margin-left: 63%;
 }
 .linkToTheReportOfThePostComment {
     width: 4rem;
@@ -627,6 +627,9 @@ button, input, optgroup, select, textarea {
         top: 7%;
         left: 15%;
         font-size: 13px;
+    }
+    .linkToTheReportOfThePostComment {
+        margin-left: 72.5%;
     }
 }
 /* Mobile menu Iphon 5 - 320px*568px and DPR=2 */
