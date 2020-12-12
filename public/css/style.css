@@ -802,14 +802,14 @@ button, input, optgroup, select, textarea {
     }
 }
 /* Tablet menu */
-@media all and (min-width: 700px) {
+@media all and (min-width: 700px) and (max-width: 767px) {
     body {
         font-size: 1rem;
     }
     header h1 {
-        top: 10%;
-        left: 18%;
-        font-size: 27px;
+        top: 9%;
+        left: 23%;
+        font-size: 25px;
     }
     nav {
         display: flex;
@@ -865,13 +865,6 @@ button, input, optgroup, select, textarea {
         width: 5rem;
     }
 }
-/* TV 720 HD - 720px*1280px DPR=1 */
-@media all and (min-width: 720px) {
-    header h1 {
-        top: 9%;
-        left: 19%;
-    }
-}
 /* Mobile menu Iphon 6/7/8 PLUS - 414px*736px and DPR=3 */
 @media all and (min-width: 736px) and (min-resolution: 3dppx) {
     header h1 {
@@ -895,14 +888,14 @@ button, input, optgroup, select, textarea {
 /* Iphon 6/7/8 Plus breakpoints 736px */
 @media all and (min-width: 736px) {
     header h1 {
-        top: 10%;
+        top: 9%;
     }
 }
 /* Galaxy S9 breakpoints 740px */
 @media all and (min-width: 739px) {
     header h1 {
         top: 9%;
-        left: 26%;
+        left: 23%;
         font-size: 25px;
     }
 }
