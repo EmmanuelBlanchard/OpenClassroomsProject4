@@ -21,11 +21,11 @@ body {
 	padding: 48px 0 0; /* Height of navbar */
 	box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
-/* Dans templates\backoffcie\readepisodes.html.php, pour avoir la balise <h2> a cote du bouton ajouter */
+/* Dans templates\backoffice\readepisodes.html.php, pour avoir la balise <h2> a cote du bouton ajouter */
 .h2inline {
 	display: inline-block;
 }
-/* Dans templates\backoffcie\readepisodes.html.php, bouton ajouter a cote du h2 de Liste des episodes */
+/* Dans templates\backoffice\readepisodes.html.php, bouton ajouter a cote du h2 de Liste des episodes */
 .abuttonadd {
     margin-left: 1.5rem;
 	margin-bottom: 1rem;
