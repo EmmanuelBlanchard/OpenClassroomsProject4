@@ -72,8 +72,7 @@ td[data-title="Introduction"], td[data-title="Commentaire"] {
 		border: none;
 		border-bottom: 1px solid #eee; 
 		position: relative;
-		padding-left: 27% !important;/*
-		padding-left: 50% !important;*/
+		padding-left: 32% !important;
 		white-space: normal;
 		text-align:center;
 	}
