@@ -873,12 +873,6 @@ button, input, optgroup, select, textarea {
         font-size: 25px;
     }
 }
-/* Mobile menu Iphon X/XS - 375px*812px and DPR=3  */
-@media all and (min-width: 812px) and (min-resolution: 3dppx) {
-    header h1 {
-        top: 12%;
-    }
-}
 /* Mobile menu Pixel 2 XL - 411px*823px DPR=3.5 */
 @media all and (min-width: 823px) and (min-resolution: 3.5dppx) {
     header h1 {
