@@ -650,7 +650,6 @@ button, input, optgroup, select, textarea {
 /* Mobile menu LG Optimus L70 - 384px*640px and DPR=1 */
 @media all and (min-width: 384px) and (min-resolution: 1dppx) {
     header h1 {
-        top: 11%;
         left: 27%;
     }
 }
@@ -658,7 +657,6 @@ button, input, optgroup, select, textarea {
 @media all and (min-width: 411px) and (min-resolution: 2dppx) {
     header h1 {
         top: 10%;
-        left: 28%;
     }
 }
 /* Mobile menu Pixel 2 XL - 411px*823px and DPR=3.5 */
