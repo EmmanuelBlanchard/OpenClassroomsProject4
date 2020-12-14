@@ -56,6 +56,15 @@ class Session
         return null;
     }
 
+    public function getMessageWithoutUnset(string $typeMessage): ?string
+    {
+        if (isset($_SESSION[$typeMessage])) {
+            $sessionMessage = $_SESSION[$typeMessage];
+            return $sessionMessage;
+        }
+        return null;
+    }
+
     public function stopSession(): void
     {
         $_SESSION = [];

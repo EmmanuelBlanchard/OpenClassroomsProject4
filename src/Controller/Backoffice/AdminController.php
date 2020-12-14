@@ -91,9 +91,8 @@ class AdminController
             exit();
         }
         
-        $pseudorecovery = $this->session->getSessionMessage('pseudo');
-        $pseudo = $pseudorecovery;
-        $id = $this->session->getSessionMessage('id');
+        $pseudo = $this->session->getMessageWithoutUnset('pseudo');
+        $id = $this->session->getMessageWithoutUnset('id');
         
         $nbTotalEpisodesPublish = $this->postManager->getNbEpisodesPublish();
         $nbTotalEpisodesDraft = $this->postManager->getNbEpisodesDraft();
@@ -342,14 +341,18 @@ class AdminController
         }
         if (isset($commentId) && !empty($commentId)) {
             $dataComment = $this->commentManager->showOneComment($commentId);
+
+            var_dump($dataComment['chapter']);
+            die();
+
             // On verifie si le commentaire existe
             if (!$dataComment) {
-                $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' de l\'épisode n°' . $dataComment['post_id'] . ' n\'existe pas');
+                $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' de l\'épisode n°' . $dataComment['chapter'] . ' n\'existe pas');
                 header('Location: index.php?action=readComments');
                 exit();
             }
             $dataComment = $this->commentManager->deleteComment($commentId);
-            $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' de l\'épisode n°' . $dataComment['post_id'] . ' supprimé');
+            $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' de l\'épisode n°' . $dataComment['chapter'] . ' supprimé');
             header('Location: index.php?action=readComments');
             exit();
         }

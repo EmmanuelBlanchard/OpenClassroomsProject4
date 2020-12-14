@@ -155,8 +155,11 @@ class CommentManager
     }
 
     public function showOneComment(int $id): ?array
-    {
+    {/*
         $request = $this->database->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, post_id, reported, approved FROM comments WHERE id = :id ORDER BY post_id, pseudo DESC');
+        */
+        $request = $this->database->prepare('SELECT comments.id, comments.pseudo, comments.comment, DATE_FORMAT(comments.comment_date, \'%e %M %Y à %H:%i\') AS comment_date_fr, comments.post_id, posts.chapter FROM comments INNER JOIN posts ON posts.id = comments.post_id ORDER BY posts.chapter, comments.comment_date DESC');
+
         $request->bindValue(':id', $id, \PDO::PARAM_INT);
         $request->execute();
         $result = $request->fetch();
