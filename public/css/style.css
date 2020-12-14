@@ -647,32 +647,6 @@ button, input, optgroup, select, textarea {
         left: 23%;
     }
 }
-/* Mobile menu Microsoft Lumia 950 - 360px*640px and DPR=4 */
-@media only screen and (device-width: 360px) and (device-height: 640px) and (min-resolution: 4dppx) {
-    header h1 {
-        top: 9%;
-    }
-}
-/* Mobile menu Galasy S9 - 360px*740px and DPR=4 */
-@media only screen and (device-width: 360px) and (device-height: 740px) and (min-resolution: 4dppx) {
-    header h1 {
-        top: 10%;
-    }
-}
-/* Mobile menu Iphon 6/7/8 - 375px*667px and DPR=2 */
-@media all and (min-width: 375px) and (min-resolution: 2dppx) {
-    header h1 {
-        top: 10%;
-        left: 23%;
-    }
-}
-/* Mobile menu Iphon X/XS - 375px*812px and DPR=3  */
-@media all and (min-width: 375px) and (min-resolution: 3dppx) {
-    header h1 {
-        top: 10%;
-        left: 23%;
-    }
-}
 /* Mobile menu LG Optimus L70 - 384px*640px and DPR=1 */
 @media all and (min-width: 384px) and (min-resolution: 1dppx) {
     header h1 {
