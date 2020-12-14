@@ -316,11 +316,6 @@ class AdminController
         }
         if (isset($commentId) && !empty($commentId)) {
             $dataComment = $this->commentManager->showOneComment($commentId);
-
-            var_dump($dataComment);
-            var_dump($commentId, $dataComment['chapter']);
-            die();
-            
             // On verifie si le commentaire existe
             if (!$dataComment) {
                 $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' de l\'épisode n°' . $dataComment['chapter'] . ' n\'existe pas');
@@ -345,10 +340,6 @@ class AdminController
         }
         if (isset($commentId) && !empty($commentId)) {
             $dataComment = $this->commentManager->showOneComment($commentId);
-
-            var_dump($commentId, $dataComment['chapter']); // int(35) string(1) "1"
-            die();
-
             // On verifie si le commentaire existe
             if (!$dataComment) {
                 $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' de l\'épisode n°' . $dataComment['chapter'] . ' n\'existe pas');

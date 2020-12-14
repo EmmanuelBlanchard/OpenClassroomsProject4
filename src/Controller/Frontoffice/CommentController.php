@@ -33,9 +33,6 @@ class CommentController
 
     public function addComment(int $postId, array $data, Token $token, Request $request): void
     {
-        //var_dump($token, $request->getPostItem('csrfToken'), $_POST);
-        //die();
-
         if ($request->getPostItem('csrfToken') !== null) {
             if (!$token->verify($request->getPostItem('csrfToken'))) {
                 $this->session->setSessionMessage('erreur', 'Votre commentaire ne peut être posté !');
