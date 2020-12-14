@@ -769,9 +769,6 @@ button, input, optgroup, select, textarea {
         left: 29%;
         font-size: 19px;
     }
-    p {
-        width: 556px;
-    }
 }
 /* Mobile menu LG Optimus L70 - 384px*640px and DPR=1 */
 @media all and (min-width: 640px) and (min-resolution: 1dppx) {
@@ -887,7 +884,7 @@ button, input, optgroup, select, textarea {
         font-size: 22px;
     }
     .classImg img {
-        width: 63vw;    /* avant 70vw */
+        width: 63vw;
     }
 }
 /* Width 983px */
