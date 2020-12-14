@@ -653,24 +653,6 @@ button, input, optgroup, select, textarea {
         left: 27%;
     }
 }
-/* Mobile menu Pixel 2 XL - 411px*823px and DPR=3.5 */
-@media all and (min-width: 411px) and (min-resolution: 3.5dppx) {
-    header h1 {
-        top: 11%;
-    }
-}
-/* Mobile menu Nexus 6P - 412px*732px and DPR=3.5 */
-@media all and (min-width: 412px) and (min-resolution: 3.5dppx) {
-    header h1 {
-        top: 11%;
-    }
-}
-/* Mobile menu Iphon XR - 414px*896px and DPR=2 */
-@media all and (min-width: 414px) and (min-resolution: 2dppx) {
-    header h1 {
-        top: 13%;
-    }
-}
 /* Mobile menu Iphon 6/7/8 PLUS - 414px*736px and DPR=3 */
 @media only screen and (device-width: 414px) and (device-height: 736px) and (min-resolution: 3dppx) {
     header h1 {
