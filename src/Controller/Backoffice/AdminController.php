@@ -317,14 +317,18 @@ class AdminController
         if (isset($commentId) && !empty($commentId)) {
             $dataComment = $this->commentManager->showOneComment($commentId);
 
+            var_dump($dataComment);
+            var_dump($commentId, $dataComment['chapter']);
+            die();
+            
             // On verifie si le commentaire existe
             if (!$dataComment) {
-                $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' de l\'épisode n°' . $dataComment['post_id'] . ' n\'existe pas');
+                $session->setSessionMessage('erreur', 'Le commentaire n°' .$commentId . ' de l\'épisode n°' . $dataComment['chapter'] . ' n\'existe pas');
                 header('Location: index.php?action=readComments');
                 exit();
             }
             $this->commentManager->approveComment($commentId);
-            $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' de l\'épisode n°' . $dataComment['post_id'] . ' approuvé');
+            $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' de l\'épisode n°' . $dataComment['chapter'] . ' approuvé');
             header('Location: index.php?action=reportedComments');
             exit();
         }
@@ -342,7 +346,7 @@ class AdminController
         if (isset($commentId) && !empty($commentId)) {
             $dataComment = $this->commentManager->showOneComment($commentId);
 
-            var_dump($dataComment['chapter']);
+            var_dump($commentId, $dataComment['chapter']); // int(35) string(1) "1"
             die();
 
             // On verifie si le commentaire existe
@@ -351,7 +355,7 @@ class AdminController
                 header('Location: index.php?action=readComments');
                 exit();
             }
-            $dataComment = $this->commentManager->deleteComment($commentId);
+            $this->commentManager->deleteComment($commentId);
             $session->setSessionMessage('message', 'Commentaire n°' . $commentId . ' de l\'épisode n°' . $dataComment['chapter'] . ' supprimé');
             header('Location: index.php?action=readComments');
             exit();

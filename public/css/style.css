@@ -761,7 +761,7 @@ button, input, optgroup, select, textarea {
       .inputTypeSubmitPreview, .inputTypeSubmitPublish, .homeTab, .myProfileTab, .episodeListTab, .createAnEpisodeTab, .commentsTab,
        .logoutTab, .linkPreviousPage, .linkNextPage, .linkPreviousPost, .linkNextPost {
         padding: 7px;
-        width: 8rem;
+        width: auto;
     }
     .linkToTheReportOfThePostComment {
         width: 5rem;
