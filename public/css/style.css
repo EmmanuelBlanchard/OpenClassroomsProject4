@@ -647,18 +647,6 @@ button, input, optgroup, select, textarea {
         left: 23%;
     }
 }
-/* Mobil menu Lumia 550 - 360px*640px and DPR=2 */
-@media all and (min-width: 360px) and (min-resolution: 2dppx) {
-    header h1 {
-        top: 10%;
-    }
-}
-/* Mobil menu Galaxy Note3 and Galaxy S5 - 360px*640px and DPR=3 */
-@media all and (min-width: 360px) and (min-resolution: 3dppx) {
-    header h1 {
-        top: 10%;
-    }
-}
 /* Mobile menu Microsoft Lumia 950 - 360px*640px and DPR=4 */
 @media only screen and (device-width: 360px) and (device-height: 640px) and (min-resolution: 4dppx) {
     header h1 {
