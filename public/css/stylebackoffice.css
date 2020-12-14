@@ -38,7 +38,7 @@ td {
 td[data-title="Introduction"], td[data-title="Commentaire"] {
 	text-align: justify;
 }
-@media (max-width: 767.98px) {
+@media (max-width: 960px) {
 	#sidebarMenu {
 		display: block;
 		position: relative;
