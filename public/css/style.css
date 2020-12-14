@@ -873,12 +873,6 @@ button, input, optgroup, select, textarea {
         font-size: 25px;
     }
 }
-/* Mobile menu Pixel 2 XL - 411px*823px DPR=3.5 */
-@media all and (min-width: 823px) and (min-resolution: 3.5dppx) {
-    header h1 {
-        top: 9%;
-    }
-}
 /* Tablet width 834px and DPR=1 */
 @media all and (min-width: 834px) and (min-resolution: 1dppx) {
     header h1 {
