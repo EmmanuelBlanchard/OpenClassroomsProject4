@@ -865,40 +865,6 @@ button, input, optgroup, select, textarea {
         width: 5rem;
     }
 }
-/* Mobile menu Iphon 6/7/8 PLUS - 414px*736px and DPR=3 */
-@media all and (min-width: 736px) and (min-resolution: 3dppx) {
-    header h1 {
-        left: 23%;
-    }
-}
-/* Mobile menu Pixel 2 - 411px*731px and DPR=2 */
-@media all and (min-width: 731px) and (min-resolution: 2dppx) {
-    header h1 {
-        top: 9%;
-        left: 23%;
-    }
-}
-/* Mobile menu Nexus 5X - 412px*732px and DPR=2 */
-@media all and (min-width: 732px) and (min-resolution: 2dppx) {
-    header h1 {
-        top: 9%;
-        left: 23%;
-    }
-}
-/* Iphon 6/7/8 Plus breakpoints 736px */
-@media all and (min-width: 736px) {
-    header h1 {
-        top: 9%;
-    }
-}
-/* Galaxy S9 breakpoints 740px */
-@media all and (min-width: 739px) {
-    header h1 {
-        top: 9%;
-        left: 23%;
-        font-size: 25px;
-    }
-}
 /* Laptop width 768px*1366px and DPR=1 */
 @media all and (min-width: 768px) and (min-resolution: 1dppx) {
     header h1 {
