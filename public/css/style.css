@@ -802,7 +802,7 @@ button, input, optgroup, select, textarea {
     }
 }
 /* Tablet menu */
-@media all and (min-width: 700px) and (max-width: 767px) {
+@media all and (min-width: 700px) {
     body {
         font-size: 1rem;
     }
