@@ -653,12 +653,6 @@ button, input, optgroup, select, textarea {
         left: 27%;
     }
 }
-/* Mobile menu Pixel 2 - 411px*731px and DPR=2 */
-@media all and (min-width: 411px) and (min-resolution: 2dppx) {
-    header h1 {
-        top: 10%;
-    }
-}
 /* Mobile menu Pixel 2 XL - 411px*823px and DPR=3.5 */
 @media all and (min-width: 411px) and (min-resolution: 3.5dppx) {
     header h1 {
