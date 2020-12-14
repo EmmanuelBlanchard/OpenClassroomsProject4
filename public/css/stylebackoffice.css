@@ -93,6 +93,57 @@ td[data-title="Introduction"], td[data-title="Commentaire"] {
 		content: attr(data-title); 
 	}
 }
+@media (max-width: 846px) {
+	td { 
+		padding-left: 22% !important;
+	}
+}
+@media (max-width: 834px) {
+	td { 
+		padding-left: 25% !important;
+	}
+}
+@media (max-width: 731px) {
+	td { 
+		padding-left: 24% !important;
+	}
+}
+@media (max-width: 640px) {
+	td { 
+		padding-left: 24% !important;
+	}
+}
+@media (max-width: 414px) {
+	td { 
+		padding-left: 32% !important;
+	}
+}
+@media (max-width: 411px) {
+	td { 
+		padding-left: 32% !important;
+	}
+}
+@media (max-width: 360px) {
+	td { 
+		padding-left: 35% !important;
+	}
+}
+@media (max-width: 320px) {
+	td {
+		padding-left: 42% !important;
+	}
+}
+@media (max-width: 240px) {
+	.navbar-brand {
+		font-size: 0.9rem !important;
+	}
+	td { 
+		padding-left: 54% !important;
+	}
+	.btn-primary {
+		font-size: 0.625rem;
+	}
+}
 
 .sidebar-sticky {
 	position: relative;
