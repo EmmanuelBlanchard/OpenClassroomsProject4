@@ -910,6 +910,9 @@ button, input, optgroup, select, textarea {
         left: 28%;
         font-size: 28px;
     }
+    .classImg img {
+        width: 50vw;
+    }
 }
 /* TV Full HD - 1080px*1920px DPR=1 */
 @media all and (min-width: 1920px) and (min-resolution: 1dppx) {
