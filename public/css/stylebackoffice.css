@@ -113,6 +113,16 @@ td[data-title="Introduction"], td[data-title="Commentaire"] {
 		padding-left: 24% !important;
 	}
 }
+@media (max-width: 540px) {
+	td { 
+		padding-left: 28% !important;
+	}
+}
+@media (max-width: 460px) {
+	td { 
+		padding-left: 30% !important;
+	}
+}
 @media (max-width: 414px) {
 	td { 
 		padding-left: 32% !important;
@@ -133,7 +143,12 @@ td[data-title="Introduction"], td[data-title="Commentaire"] {
 		padding-left: 42% !important;
 	}
 }
-@media (max-width: 240px) {
+@media (max-width: 300px) {
+	td { 
+		padding-left: 47% !important;
+	}
+}
+@media (max-width: 270px) {
 	.navbar-brand {
 		font-size: 0.9rem !important;
 	}
