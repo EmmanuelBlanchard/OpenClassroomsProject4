@@ -29,7 +29,8 @@
                 /\<xsl\:[^>]+\>/g,  // Protect <xsl:...>
                 /<\?php.*?\?>/g  // Protect php code
             ]
-             });</script>
+             });
+        </script>
     </head>
 
     <body>
