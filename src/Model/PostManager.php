@@ -20,7 +20,7 @@ class PostManager
         $request = $this->database->prepare('SET lc_time_names = \'fr_FR\';');
         $request->execute();
         
-        $request = $this->database->prepare('SELECT id, chapter, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr, post_status FROM posts WHERE post_status=\'publish\' ORDER BY chapter, post_date DESC LIMIT 0,3');
+        $request = $this->database->prepare('SELECT id, posts.chapter, title, introduction, CONCAT_WS(\' \', \'le\', DAYNAME(post_date), DAY(post_date), MONTHNAME(post_date), YEAR(post_date)) AS post_date_fr, post_status FROM posts WHERE post_status=\'publish\' ORDER BY chapter DESC, post_date DESC LIMIT 0,3');
         $request->execute();
         $result = $request->fetchAll();
         return !$result ? null : $result;
