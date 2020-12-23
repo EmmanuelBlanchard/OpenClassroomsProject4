@@ -40,7 +40,6 @@ class AdminController
 
     public function login(array $data, Session $session, Token $token, Request $request): void
     {
-        
         if ($request->getPostItem('csrfToken') !== null) {
             if (!$token->verify($request->getPostItem('csrfToken'))) {
                 $this->session->setSessionMessage('erreur', 'Vous ne pouvez pas vous connecter !');
