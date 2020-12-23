@@ -40,11 +40,6 @@ class AdminController
 
     public function login(array $data, Session $session, Token $token, Request $request): void
     {
-        //var_dump($data);
-        //echo '<pre>';
-        //var_dump($session, $request->getPostItem('csrfToken'));
-        //echo '</pre>';
-        //die();
         
         if ($request->getPostItem('csrfToken') !== null) {
             if (!$token->verify($request->getPostItem('csrfToken'))) {

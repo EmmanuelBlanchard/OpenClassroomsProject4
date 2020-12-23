@@ -8,10 +8,6 @@ class View
 {
     public function render(array $data, string $origin): void
     {
-        //echo"<pre>";
-        //print_r($data);
-        //echo"</pre>";
-        //die();
         ob_start();
         require_once "../templates/${origin}/${data['template']}.html.php";
         $content = ob_get_clean();
